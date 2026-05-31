@@ -212,7 +212,27 @@ def build_parser() -> argparse.ArgumentParser:
     v.add_argument("-v", "--verbose", action="store_true")
     v.set_defaults(func=_cmd_verify_links)
 
+    q = sub.add_parser("preqin", help="Convert a Preqin deals export to dashboard/preqin.json (Startups to Watch)")
+    q.add_argument("--xlsx", type=Path, default=None, help="Preqin deals .xlsx (default: scout/data/preqin_deals.xlsx)")
+    q.add_argument("--out", type=Path, default=None, help="Output JSON (default: dashboard/preqin.json)")
+    q.set_defaults(func=_cmd_preqin)
+
     return p
+
+
+def _cmd_preqin(args: argparse.Namespace) -> int:
+    from . import preqin
+
+    kwargs = {}
+    if args.xlsx:
+        kwargs["xlsx_path"] = args.xlsx
+    if args.out:
+        kwargs["out_path"] = args.out
+    payload = preqin.export(**kwargs)
+    st = payload["stats"]
+    print(f"Wrote dashboard/preqin.json — {st['deals']} deals "
+          f"({st['ai_deals']} AI), ${st['total_capital_mn']}mn across {st['investors']} investors.")
+    return 0
 
 
 def main(argv: list[str] | None = None) -> int:

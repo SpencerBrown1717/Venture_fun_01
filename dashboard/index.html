@@ -67,6 +67,7 @@
       <button class="tab" data-tab="formd" role="tab">✓ Confirmed Form D <span class="tab-count" id="formdCount">0</span></button>
       <button class="tab" data-tab="review" role="tab">◎ Needs Review <span class="tab-count" id="reviewCount">0</span></button>
       <button class="tab" data-tab="board" role="tab">▲ Leaderboard</button>
+      <button class="tab" data-tab="watch" role="tab">★ Startups to Watch <span class="tab-count" id="watchCount">0</span></button>
     </nav>
 
     <!-- ALL COMPANIES TAB -->
@@ -201,6 +202,27 @@
           <div class="catlist" id="geoList"></div>
         </div>
       </div>
+    </section>
+    <!-- STARTUPS TO WATCH TAB (Preqin deals) -->
+    <section class="tabpanel" id="panel-watch" hidden>
+      <div class="radar-intro">
+        <h2>Startups to Watch</h2>
+        <p>Recently <b>funded</b> AI-native startups from a <b>Preqin deals export</b> — confirmed
+        financing rounds with their investor syndicates. <span class="muted">Where the radar infers,
+        this is reported: each card is a completed deal with named investors and round size.</span></p>
+      </div>
+      <div class="watch-controls">
+        <select id="watchStage" aria-label="Stage filter"><option value="">All stages</option></select>
+        <select id="watchSort" aria-label="Sort">
+          <option value="size">Sort: Deal size ↓</option>
+          <option value="date">Sort: Newest</option>
+          <option value="name">Sort: A→Z</option>
+        </select>
+        <label class="toggle"><input type="checkbox" id="watchAiOnly" checked /><span>AI only</span></label>
+      </div>
+      <div id="watchStrip" class="watch-strip"></div>
+      <div id="watchGroups" class="cards"></div>
+      <div id="watchEmpty" class="empty" hidden>No deals match.</div>
     </section>
   </main>
 

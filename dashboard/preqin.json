@@ -1,0 +1,3220 @@
+{
+  "generated_at": "2026-05-31T23:05:35Z",
+  "source": "Preqin deals export \u00b7 2026-03-25",
+  "stats": {
+    "deals": 93,
+    "ai_deals": 92,
+    "total_capital_mn": 2313.0,
+    "currency": "USD",
+    "investors": 179,
+    "top_investors": [
+      {
+        "name": "Y Combinator",
+        "deals": 16
+      },
+      {
+        "name": "Andreessen Horowitz",
+        "deals": 12
+      },
+      {
+        "name": "Sequoia Capital",
+        "deals": 4
+      },
+      {
+        "name": "MaC Venture Capital",
+        "deals": 3
+      },
+      {
+        "name": "Long Journey Ventures",
+        "deals": 3
+      },
+      {
+        "name": "Mayfield Fund",
+        "deals": 3
+      },
+      {
+        "name": "Antigravity",
+        "deals": 3
+      },
+      {
+        "name": "Basis Set",
+        "deals": 3
+      }
+    ]
+  },
+  "deals": [
+    {
+      "deal_id": "V449716",
+      "company": "Novaworks, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-23",
+      "deal_size_usd_mn": 8.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software",
+        "HR & Workforce Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "ServiceNow Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Stalwart Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449825",
+      "company": "Ezra AI Labs Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-23",
+      "deal_size_usd_mn": 3.2,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "HR & Workforce Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Telegraph Hill Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Penny Jar Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "LMNT Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449531",
+      "company": "Anori, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-19",
+      "deal_size_usd_mn": 26.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Engineering Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Prologis",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Builders VC",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Series X Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449857",
+      "company": "Hamilton AI Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-19",
+      "deal_size_usd_mn": 7.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Cambrian Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Correlation Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Weekend Fund",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Bling Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "HF0",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449516",
+      "company": "Health Universe",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-19",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Healthcare IT",
+        "Medical Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "HealthTech",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Kleiner Perkins",
+          "type": "Private Equity Firm (Investor)"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449519",
+      "company": "PADO AI Orchestration, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-19",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Data Centers",
+        "IT Infrastructure",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Iaas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "NovaWave Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449465",
+      "company": "Autoscience Institute",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 14.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Search Engines",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "EdTech",
+        "Machine Learning",
+        "Research (Non-Medical)",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Toyota Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "MaC Venture Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "S32",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449443",
+      "company": "Eragon Corp.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 12.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Operating Systems (OS)"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Long Journey Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Soma Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Axiom",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449343",
+      "company": "Multiply Technology, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 9.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Advertising Agencies & Media Buyers",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Artificial Intelligence",
+        "Paas",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Mayfield Fund",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Sorenson Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449347",
+      "company": "Manifold",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 8.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Costanoa Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Rain Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Modern Technical Fund Management",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449437",
+      "company": "Respan",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Infrastructure",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Hat Trick Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Antigravity",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V449360",
+      "company": "Laminar",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-18",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448925",
+      "company": "Great Sky",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-13",
+      "deal_size_usd_mn": 14.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "Electronics",
+        "Hardware",
+        "Semiconductors",
+        "Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Cloud Computing"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Range Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Bison Ventures",
+          "type": "Private Equity Firm (Investor)"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448924",
+      "company": "Nyne",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-13",
+      "deal_size_usd_mn": 5.3,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Marketing/Advertising",
+        "Customer Relationship Management",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "South Park Commons",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448885",
+      "company": "Ezra Climate, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-12",
+      "deal_size_usd_mn": 8.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Financial Services",
+        "Accounting/Finance Software",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "FinTech",
+        "Machine Learning"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Wireframe Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Congruent Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Leap Forward Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "KDX Management",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Stepchange",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448671",
+      "company": "Standard Kernel Co.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-11",
+      "deal_size_usd_mn": 20.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Hardware",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Felicis Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Cowboy Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Essence VC",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448771",
+      "company": "Handle",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-11",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Business Support Services",
+        "Insurance",
+        "Social Networking & Communication Platform",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448722",
+      "company": "Kled",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-11",
+      "deal_size_usd_mn": 5.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "K5 Global",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448735",
+      "company": "Taya",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-11",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Consumer Products",
+      "sub_industries": [
+        "Accessories",
+        "Consumer Electronics",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Mobile Apps",
+        "Wearables & Quantified Self"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "MaC Venture Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448749",
+      "company": "AgentMail, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-10",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Email",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Chatbots",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448539",
+      "company": "Anchr, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-10",
+      "deal_size_usd_mn": 5.8,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Operating Systems (OS)"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas",
+        "Smart Supply Chain"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Long Journey Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Offline Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448550",
+      "company": "Armadin, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-10",
+      "deal_size_usd_mn": null,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Ballistic Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448615",
+      "company": "Crafting Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-09",
+      "deal_size_usd_mn": 5.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Data Centers",
+        "IT Infrastructure",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Mobile Apps",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "WndrCo",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Mischief",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448570",
+      "company": "Advocacy",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-06",
+      "deal_size_usd_mn": 3.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Relentless",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448180",
+      "company": "Cylake",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-05",
+      "deal_size_usd_mn": 45.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Cloud Computing"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Greylock Partners",
+          "type": "Private Equity Firm (Investor)"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448187",
+      "company": "Cotool, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-05",
+      "deal_size_usd_mn": 7.4,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "WndrCo",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448179",
+      "company": "Inhouse",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-05",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Legal Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "RegTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Switch VC",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Royal Street Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Run Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V448218",
+      "company": "Cybervergent",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-05",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "IT Security/Cybersecurity",
+      "sub_industries": [
+        "IT Security/Cybersecurity"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Tekedia Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447947",
+      "company": "JetStream Security Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-03",
+      "deal_size_usd_mn": 34.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "IT Security/Cybersecurity",
+      "sub_industries": [
+        "IT Infrastructure",
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Redpoint Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447914",
+      "company": "Worldscape.ai",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-03",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Defence",
+        "Application Integration Software",
+        "Monitoring & Security Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Paas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Radius Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447871",
+      "company": "14.ai",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-03",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Consulting Services",
+        "Analytics & Performance Software",
+        "Customer Relationship Management"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "SV Angel",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Base Case Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447789",
+      "company": "Procode AI",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-03-02",
+      "deal_size_usd_mn": 4.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Medical Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "HealthTech",
+        "Mobile Apps"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Progression",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447891",
+      "company": "Pensive Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-27",
+      "deal_size_usd_mn": 6.87,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Education & Training Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "EdTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Mayfield Fund",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Sequoia Capital",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447611",
+      "company": "Trace",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-26",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Goodwater Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Wefunder",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447576",
+      "company": "Quill Notes, LLC",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-25",
+      "deal_size_usd_mn": 6.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Content Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "500 Global",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Morado Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "AME Cloud Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Basis Set",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447425",
+      "company": "t54 Labs",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-25",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Franklin Templeton",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Anagram Asset Management",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Ripple VC",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447115",
+      "company": "Sophia Space Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-24",
+      "deal_size_usd_mn": 10.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Aerospace",
+      "sub_industries": [
+        "Data Centers",
+        "Aerospace",
+        "Defence",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Manufacturing",
+        "Research (Non-Medical)"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Unlock Venture Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Alpha Fund Management",
+          "type": "Hedge Fund Manager"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446940",
+      "company": "Giant Labs Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-23",
+      "deal_size_usd_mn": 8.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Multimedia & Graphics"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Mobile Apps",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Matrix Partners",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Flex Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Griffin Gaming Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Perceptive Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446982",
+      "company": "Mirai",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-19",
+      "deal_size_usd_mn": 10.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Engineering Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Edge Computing",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Uncork Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446636",
+      "company": "Kana",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-18",
+      "deal_size_usd_mn": 15.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "eMarketing/Digital Marketing",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Mayfield Fund",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447096",
+      "company": "Comeryx Insurance Services, Inc",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-18",
+      "deal_size_usd_mn": 7.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Insurance",
+      "sub_industries": [
+        "Insurance"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "InsureTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Boulder Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446747",
+      "company": "Sphinx Labs, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-17",
+      "deal_size_usd_mn": 7.1,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Accounting/Finance Software",
+        "Analytics & Performance Software",
+        "Legal Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "RegTech",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446574",
+      "company": "Certivo, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-17",
+      "deal_size_usd_mn": 4.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Content Management Software",
+        "Legal Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "RegTech",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Pioneer Square Labs",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446609",
+      "company": "Vybe AI, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-16",
+      "deal_size_usd_mn": 10.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Web Development",
+        "Application Integration Software",
+        "Engineering Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "First Round Capital",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446336",
+      "company": "Archimetis",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-12",
+      "deal_size_usd_mn": 11.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Homebrew",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Borusan Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446452",
+      "company": "Manufact, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-12",
+      "deal_size_usd_mn": 6.3,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Development",
+        "Analytics & Performance Software",
+        "Browser Software & Plug-ins",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Liquid 2 Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Ritual Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446369",
+      "company": "Ando",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-12",
+      "deal_size_usd_mn": 4.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "HR & Workforce Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Slow",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Mana Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Blitzscaling Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Monochrome Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446282",
+      "company": "Scala",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-11",
+      "deal_size_usd_mn": 8.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Madrona Venture Group",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "FUSE",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V447534",
+      "company": "ThirdAI Automation Inc",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-11",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Capria Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445916",
+      "company": "InfiniMind",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 900.0,
+      "currency": "JPY",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Infrastructure",
+        "Analytics & Performance Software",
+        "Content Management Software",
+        "Music & Video Streaming Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Headline",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446148",
+      "company": "Reflow Systems Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 15.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Big Data",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Designer Fund",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Basis Set",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Bling Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Better Tomorrow Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446128",
+      "company": "Simple AI Lab Company",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 14.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Mobile Apps"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "True Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "First Harmonic",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446008",
+      "company": "Clearly AI, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 8.4,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Basis Set",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Crosspoint Capital Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Ritual Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446023",
+      "company": "GenFlux",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 4.2,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "eMarketing/Digital Marketing",
+        "Web Applications",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Delphi Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446530",
+      "company": "Veria Labs",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": 3.2,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "IT Security/Cybersecurity",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Amino Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Liquid 2 Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Lombardstreet Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "BBQ Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Schema Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Antigravity",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V446176",
+      "company": "AdZen",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-10",
+      "deal_size_usd_mn": null,
+      "currency": null,
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "eMarketing/Digital Marketing",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Artificial Intelligence",
+        "Chatbots",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Inventus Capital Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Fiat Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "SVQUAD",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445976",
+      "company": "Shizuku AI",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-09",
+      "deal_size_usd_mn": 15.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Multimedia & Graphics"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445755",
+      "company": "Orange Slice, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-06",
+      "deal_size_usd_mn": 5.3,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "1984 Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Moxxie Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445693",
+      "company": "Sapiom, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-05",
+      "deal_size_usd_mn": 15.75,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Financial Services",
+      "sub_industries": [
+        "Financial Services",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "FinTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Accel",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Menlo Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Array Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Gradient Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Coinbase Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Okta Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Operator Collective",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445725",
+      "company": "Veritus, Inc",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-05",
+      "deal_size_usd_mn": 10.1,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Credit Collections & Services",
+        "Accounting/Finance Software",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Chatbots",
+        "Lending",
+        "Mobile Messaging",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Emergence Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Crosslink Capital",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Threshold Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445449",
+      "company": "Adaption Labs",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 50.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Deep Learning",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Emergence Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Alpha Intelligence Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Fifty Years",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Threshold Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Mozilla Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Neo",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445408",
+      "company": "Powerline",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 7.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "LG Technology Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "MaC Venture Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "J-Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "CLAI",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445425",
+      "company": "Uptool, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 6.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software",
+        "Engineering Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Kleiner Perkins",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Khosla Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Eclipse Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445441",
+      "company": "Expert Intelligence",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 5.8,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Scientific Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Sierra Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "TSVC",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Acorn Pacific Ventures",
+          "type": "Private Equity Firm (Investor)"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445607",
+      "company": "Fibr.ai",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 5.7,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Internet",
+      "sub_industries": [
+        "Web Applications",
+        "Web Development",
+        "Analytics & Performance Software",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Mobile Apps",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Accel",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "MVP Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445430",
+      "company": "Feltsense",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-04",
+      "deal_size_usd_mn": 5.1,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Sales & Marketing Software",
+        "Information Services",
+        "Media",
+        "Digital Media"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Western Technology Investment",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Okapi Venture Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Mucker Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Bee Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Boost VC",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Draper",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Liquid 2 Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Precursor Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "MS&AD Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Calm Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Launch Factory",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Outside VC",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "FalconX Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Theory Forge Management",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445346",
+      "company": "Phylo, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-03",
+      "deal_size_usd_mn": 13.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Biotechnology",
+      "sub_industries": [
+        "Biotechnology",
+        "Medical Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "HealthTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Menlo Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "SV Angel",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Zetta Venture Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Conviction",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445267",
+      "company": "Ditto",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-03",
+      "deal_size_usd_mn": 9.2,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Chatbots",
+        "Deep Learning",
+        "Machine Learning"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Gradient Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Scribble Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445424",
+      "company": "Derapi, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-03",
+      "deal_size_usd_mn": 7.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Tuesday Capital",
+          "type": "Private Equity Firm (Investor)"
+        },
+        {
+          "name": "Radicle Impact Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "E8 Angels",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Ubiquity Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Union Labs",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Earthshot Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Breakthrough Venture Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Raisewell Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445469",
+      "company": "Airrived Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-02-03",
+      "deal_size_usd_mn": 6.1,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software",
+        "Operating Systems (OS)"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Plug and Play",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Rebellion Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Cannage Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444917",
+      "company": "Poetiq, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-29",
+      "deal_size_usd_mn": 45.8,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Internet",
+        "Web Applications",
+        "Software",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Fyrfly Venture Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Operator Collective",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V445294",
+      "company": "Uplift AI",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-29",
+      "deal_size_usd_mn": 3.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": null,
+      "sub_industries": [
+        "Web Applications",
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Connectivity Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Moment Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444637",
+      "company": "Factify Technologies IL Ltd.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-28",
+      "deal_size_usd_mn": 43.32,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Application Integration Software",
+        "Content Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Valley Capital Partners",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444694",
+      "company": "Sentra",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-28",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Analytics & Performance Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Precursor Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Parable",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Antigravity",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444808",
+      "company": "Modelence",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-28",
+      "deal_size_usd_mn": 3.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Infrastructure",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Iaas",
+        "Paas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444653",
+      "company": "Flapping Airplanes",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-27",
+      "deal_size_usd_mn": 180.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Search Engines",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Menlo Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Sequoia Capital",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "GV",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Conviction",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444646",
+      "company": "Risotto",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-27",
+      "deal_size_usd_mn": 10.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Infrastructure",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Chatbots",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Bonfire Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Ritual Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": false
+    },
+    {
+      "deal_id": "V444496",
+      "company": "Midship Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-27",
+      "deal_size_usd_mn": 4.15,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Accounting/Finance Software"
+      ],
+      "verticals": [
+        "FinTech",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Costanoa Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444192",
+      "company": "Inferact, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-22",
+      "deal_size_usd_mn": 150.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Analytics & Performance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Deep Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Lightspeed Venture Partners",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Redpoint Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Sequoia Capital",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444849",
+      "company": "Blockit AI, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-22",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Connectivity Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Sequoia Capital",
+          "type": "Fund Manager"
+        },
+        {
+          "name": "Haystack",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Original Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V443977",
+      "company": "Furl, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-21",
+      "deal_size_usd_mn": 9.88,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Ten Eleven",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444111",
+      "company": "Nexxa.ai, Inc.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-21",
+      "deal_size_usd_mn": 9.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Engineering Software"
+      ],
+      "verticals": [
+        "Machine Learning",
+        "Saas",
+        "Sensor Data"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Andreessen Horowitz",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444012",
+      "company": "AiStrike",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-21",
+      "deal_size_usd_mn": 7.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "IT Security/Cybersecurity",
+      "sub_industries": [
+        "IT Security/Cybersecurity",
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Blumberg Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Oregon Venture Fund",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444395",
+      "company": "DiversiFi",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-16",
+      "deal_size_usd_mn": 7.92,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Logistics Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Sorenson Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Kickstart",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Peterson Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V443451",
+      "company": "Merge Labs, PBC",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-15",
+      "deal_size_usd_mn": 252.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Bioinformatics",
+        "Medical Devices & Equipment",
+        "Monitoring Equipment",
+        "Therapeutic Devices",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Deep Learning",
+        "HealthTech",
+        "Machine Learning",
+        "Nanotechnology",
+        "Saas",
+        "Wearables & Quantified Self"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Fifty Years",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Openai Startup Fund Management",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Interface Fund",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V443398",
+      "company": "Pinch AI Corp.",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-15",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Monitoring & Security Software"
+      ],
+      "verticals": [
+        "E-commerce",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "PayPal Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Infinity Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V443417",
+      "company": "Meld",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-14",
+      "deal_size_usd_mn": 7.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Financial Services",
+      "sub_industries": [
+        "e-Financial",
+        "Accounting/Finance Software",
+        "Application Integration Software"
+      ],
+      "verticals": [
+        "Financial Data",
+        "Lending",
+        "Machine Learning",
+        "Online Banking",
+        "Paas",
+        "Processing & Payment Infrastructure"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Faction",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V443121",
+      "company": "AlphaLit",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-13",
+      "deal_size_usd_mn": 3.2,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Legal Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "RegTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Slow",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V442940",
+      "company": "Neuramint Limited",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-12",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "IT Infrastructure",
+        "Application Integration Software",
+        "Systems Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Lattice Capital Management",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V442776",
+      "company": "Topos Bio",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-08",
+      "deal_size_usd_mn": 10.5,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Biotechnology",
+      "sub_industries": [
+        "Bioinformatics",
+        "Healthcare IT"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "HealthTech"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Neo Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Threshold Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V444098",
+      "company": "Cashmere Publishing",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-07",
+      "deal_size_usd_mn": 5.34,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Analytics & Performance Software",
+        "Application Integration Software",
+        "Content Management Software"
+      ],
+      "verticals": [
+        "Artificial Intelligence",
+        "Big Data",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Reach Capital",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Fortitude Ventures",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V442309",
+      "company": "Unusual",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2026-01-02",
+      "deal_size_usd_mn": 3.6,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Software",
+      "sub_industries": [
+        "Web Applications",
+        "Sales & Marketing Software"
+      ],
+      "verticals": [
+        "AdTech",
+        "Machine Learning",
+        "Saas"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Y Combinator",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Long Journey Ventures",
+          "type": "Private Equity Firm"
+        },
+        {
+          "name": "Phosphor Capital",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    },
+    {
+      "deal_id": "V442923",
+      "company": "Allos",
+      "stage": "Seed",
+      "deal_status": "Completed",
+      "deal_date": "2025-12-29",
+      "deal_size_usd_mn": 5.0,
+      "currency": "USD",
+      "city": null,
+      "primary_industry": "Biotechnology",
+      "sub_industries": [
+        "Biopharmaceuticals",
+        "Pharmaceutical Research & Development"
+      ],
+      "verticals": [
+        "Artificial Intelligence"
+      ],
+      "lead_partners": [],
+      "investors": [
+        {
+          "name": "Berkeley SkyDeck Fund",
+          "type": "Private Equity Firm"
+        }
+      ],
+      "is_ai": true
+    }
+  ]
+}

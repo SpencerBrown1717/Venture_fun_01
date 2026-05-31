@@ -11,11 +11,13 @@
 
 const state = {
   data: null,
+  preqin: null,
   companies: [],
   byId: {},
   filtered: [],
   view: "grid",
   tab: "all",
+  watchFilters: { stage: "", sort: "size", aiOnly: true },
   review: loadReview(),
   filters: {
     aiOnly: true, category: "", financing: "", tier: "", source: "",
@@ -124,15 +126,22 @@ async function load() {
   }
   state.companies = state.data.companies || [];
   state.companies.forEach((c) => { state.byId[c.id] = c; });
+  // Preqin "Startups to Watch" is an optional companion dataset.
+  try {
+    const pr = await fetch("preqin.json", { cache: "no-store" });
+    if (pr.ok) state.preqin = await pr.json();
+  } catch (_) { state.preqin = null; }
   initControls();
   initTabs();
   initHealth();
+  initWatch();
   renderHealth();
   renderTrends();
   renderBoard();
   updateRadarCount();
   updateFormdCount();
   updateReviewCount();
+  updateWatchCount();
   apply();
 }
 
@@ -200,7 +209,7 @@ function renderHealth() {
 }
 
 // --- Tabs ------------------------------------------------------------------
-const TABS = ["all", "radar", "formd", "review", "board"];
+const TABS = ["all", "radar", "formd", "review", "board", "watch"];
 function initTabs() {
   document.querySelectorAll(".tab").forEach((t) =>
     t.addEventListener("click", () => switchTab(t.getAttribute("data-tab")))
@@ -213,6 +222,7 @@ function switchTab(name) {
   if (name === "radar") renderRadar();
   if (name === "formd") renderFormd();
   if (name === "review") renderReview();
+  if (name === "watch") renderWatch();
 }
 
 function updateRadarCount() {
@@ -290,6 +300,93 @@ function renderBoard() {
   $("board").innerHTML = head + `<tbody>${body}</tbody>`;
   $("board").querySelectorAll("[data-board]").forEach((tr) =>
     tr.addEventListener("click", () => openMemo(tr.getAttribute("data-board"))));
+}
+
+// --- Startups to Watch (Preqin deals) --------------------------------------
+function preqinDeals() { return (state.preqin && state.preqin.deals) || []; }
+function updateWatchCount() {
+  const n = preqinDeals().filter((d) => d.is_ai).length || preqinDeals().length;
+  $("watchCount").textContent = n;
+}
+function initWatch() {
+  const deals = preqinDeals();
+  if (!deals.length) return;
+  const stages = [...new Set(deals.map((d) => d.stage).filter(Boolean))].sort();
+  $("watchStage").innerHTML = `<option value="">All stages</option>` +
+    stages.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+  $("watchStage").addEventListener("change", (e) => { state.watchFilters.stage = e.target.value; renderWatch(); });
+  $("watchSort").addEventListener("change", (e) => { state.watchFilters.sort = e.target.value; renderWatch(); });
+  $("watchAiOnly").addEventListener("change", (e) => { state.watchFilters.aiOnly = e.target.checked; renderWatch(); });
+}
+function renderWatch() {
+  const f = state.watchFilters;
+  let rows = preqinDeals().slice();
+  if (!rows.length) {
+    $("watchEmpty").hidden = false;
+    $("watchEmpty").textContent = "No Preqin dataset loaded.";
+    $("watchStrip").innerHTML = "";
+    $("watchGroups").innerHTML = "";
+    return;
+  }
+  if (f.aiOnly) rows = rows.filter((d) => d.is_ai);
+  if (f.stage) rows = rows.filter((d) => d.stage === f.stage);
+  rows.sort((a, b) => {
+    if (f.sort === "name") return a.company.localeCompare(b.company);
+    if (f.sort === "date") return (b.deal_date || "").localeCompare(a.deal_date || "");
+    return (b.deal_size_usd_mn || 0) - (a.deal_size_usd_mn || 0);
+  });
+
+  const s = (state.preqin && state.preqin.stats) || {};
+  const total = rows.reduce((a, d) => a + (d.deal_size_usd_mn || 0), 0);
+  const strip = [
+    { num: rows.length, lbl: "Funded startups", accent: true },
+    { num: `$${total >= 1000 ? (total / 1000).toFixed(1) + "B" : Math.round(total) + "M"}`, lbl: "Capital tracked" },
+    { num: s.investors ?? "—", lbl: "Investors" },
+    { num: state.preqin.source || "Preqin", lbl: "Source", small: true },
+  ];
+  $("watchStrip").innerHTML = strip.map((c) =>
+    `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}" ${c.small ? 'style="font-size:18px"' : ""}>${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`
+  ).join("");
+
+  $("watchEmpty").hidden = rows.length !== 0;
+  $("watchGroups").innerHTML = rows.map(dealCardHtml).join("");
+}
+
+const fmtMn = (n) => {
+  if (!n) return "undisclosed";
+  if (n >= 1000) return `$${(n / 1000).toFixed(1)}B`;
+  return n >= 1 ? `$${n % 1 ? n.toFixed(1) : n}M` : `$${Math.round(n * 1000)}K`;
+};
+
+function dealCardHtml(d) {
+  const verticals = (d.verticals || []).slice(0, 4).map((v) => `<span class="tag cat">${escapeHtml(v)}</span>`).join("");
+  const subs = (d.sub_industries || []).slice(0, 2).map((v) => `<span class="tag">${escapeHtml(v)}</span>`).join("");
+  const invs = (d.investors || []);
+  const invChips = invs.slice(0, 6).map((i) => `<span class="inv">${escapeHtml(i.name)}</span>`).join("");
+  const more = invs.length > 6 ? `<span class="inv more">+${invs.length - 6}</span>` : "";
+  const leads = (d.lead_partners || []).length
+    ? `<div class="founders-line"><span class="fk">Lead</span>${escapeHtml(d.lead_partners.join(", "))}</div>` : "";
+  return `
+    <div class="card deal">
+      <div class="card-top">
+        <div>
+          <h3>${escapeHtml(d.company)}</h3>
+          <div class="sub">${escapeHtml(d.city || "—")} · ${escapeHtml(d.deal_date || "?")}</div>
+        </div>
+        <div class="opp-badge size"><div class="v">${fmtMn(d.deal_size_usd_mn)}</div><div class="l">round</div></div>
+      </div>
+      <div class="metaline">
+        <span class="pill-meta fin-confirmed">${escapeHtml(d.stage || "Deal")}</span>
+        <span class="pill-meta">${escapeHtml(d.deal_status || "")}</span>
+        ${d.primary_industry ? `<span class="pill-meta">${escapeHtml(d.primary_industry)}</span>` : ""}
+      </div>
+      <div class="tags">${verticals}${subs}</div>
+      ${leads}
+      <div class="inv-block">
+        <div class="fk">${invs.length} investor${invs.length === 1 ? "" : "s"}</div>
+        <div class="inv-row">${invChips}${more}</div>
+      </div>
+    </div>`;
 }
 
 // --- Trends ----------------------------------------------------------------
