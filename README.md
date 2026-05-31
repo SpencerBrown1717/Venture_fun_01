@@ -53,10 +53,12 @@ turns a raw public record into an investor-ready recommendation:
 library — **no install required**.
 
 ```bash
-# 1. Build the sample dataset from REAL Delaware incorporations.
-#    Pulls firms *incorporated in DE* filing a Form D (last ~45 days) from
-#    SEC EDGAR — every record has a verifiable SEC CIK. No scraping, no API key.
-python -m scout gen-sample --max-age-days 45
+# 1. Build/grow the dataset from REAL Delaware incorporations.
+#    Harvests firms *incorporated in DE* that filed a Form D, month by month
+#    across the whole year, from SEC EDGAR — every record has a verifiable SEC
+#    CIK. Pooled funds are dropped; each run MERGES into the existing dataset so
+#    it grows organically as new C-corps form. No scraping, no API key.
+python -m scout gen-sample --since 2026-01-01 --limit 400
 
 # 2. Discover + classify + research from the sample, then export
 python -m scout run --source sample --research --export
@@ -145,7 +147,9 @@ the heuristic classifier and heuristic memos — it never hard-fails.
 
 Useful `run` flags: `--source {sample,delaware,delaware_icis,sec_edgar}`, `--limit N`,
 `--max-age-days N`, `--llm`, `--research`, `--no-fetch-site`, `--export`,
-`--query`, `--days-back`, `--forms`, `--user-agent`.
+`--query`, `--days-back`, `--since YYYY-MM-DD`, `--forms`, `--user-agent`.
+`gen-sample` flags: `--since YYYY-MM-DD` (default Jan 1 of the current year),
+`--limit N` (operating companies to keep), `--no-merge` (overwrite instead of grow).
 
 ---
 
@@ -154,11 +158,12 @@ Useful `run` flags: `--source {sample,delaware,delaware_icis,sec_edgar}`, `--lim
 There are two supported paths:
 
 **A. GitHub Actions (recommended, always-on — stretch goal 8).**
-`.github/workflows/deploy.yml` regenerates the dataset from the **reliable
-EDGAR-backed Delaware feed**, runs the full analyst swarm, commits the refreshed
-data, and publishes `dashboard/` to Pages on every push, on a **weekly schedule**
-(keeping the 30-day discovery window current), and on manual dispatch — so the public
-dashboard keeps refreshing itself with no manual intervention.
+`.github/workflows/deploy.yml` grows the dataset from the **reliable
+EDGAR-backed Delaware feed** (harvesting the whole year month-by-month and
+**merging** new C-corps into the existing corpus), runs the full analyst swarm,
+commits the refreshed data, and publishes `dashboard/` to Pages on every push,
+on a **monthly schedule** (so the feed fills up as new companies form), and on
+manual dispatch — so the public dashboard keeps growing with no manual intervention.
 
 > One-time setup: repo **Settings → Pages → Build and deployment → Source =
 > GitHub Actions**. The dashboard then serves at the site root.

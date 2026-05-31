@@ -28,6 +28,8 @@ class DelawareSource(Source):
         query: str = "",
         forms: str = "D",
         user_agent: str = "",
+        since: str = "",
+        until: str = "",
         request_delay: float = 0.2,
         # Accept --max-age-days as an alias so the CLI flag works for both
         # the EDGAR-backed and ICIS sources.
@@ -41,6 +43,8 @@ class DelawareSource(Source):
             "days_back": days_back,
             "query": query,
             "forms": forms,
+            "since": since,
+            "until": until,
             "request_delay": request_delay,
         }
         if user_agent:

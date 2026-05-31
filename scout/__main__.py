@@ -33,12 +33,14 @@ from .pipeline import Pipeline
 
 
 def _cmd_gen_sample(args: argparse.Namespace) -> int:
-    from .seed import write
+    from .seed import write, DEFAULT_SINCE
 
     path = write(
         args.out,
-        days_back=args.max_age_days,
+        since=args.since or DEFAULT_SINCE,
         limit=args.limit,
+        merge=not args.no_merge,
+        general_fill=args.general_fill,
     )
     print(f"Wrote Delaware sample dataset -> {path}")
     return 0
@@ -68,6 +70,7 @@ def _cmd_run(args: argparse.Namespace) -> int:
         source_kwargs = {
             "days_back": max(args.days_back, args.max_age_days),
             "query": args.query,
+            "since": args.since,
         }
         if args.user_agent:
             source_kwargs["user_agent"] = args.user_agent
@@ -138,11 +141,15 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--db", default="scout.db", help="SQLite database path")
     sub = p.add_subparsers(dest="command", required=True)
 
-    g = sub.add_parser("gen-sample", help="Scrape Delaware ICIS and write sample_companies.json")
+    g = sub.add_parser("gen-sample", help="Harvest real DE incorporations (SEC EDGAR) into sample_companies.json")
     g.add_argument("--out", default=None, help="Output JSON path (default: scout/data/sample_companies.json)")
+    g.add_argument("--since", default="", help="Earliest formation/filing date ISO (default: Jan 1 of current year)")
     g.add_argument("--max-age-days", type=int, default=30, dest="max_age_days",
-                   help="Keep entities incorporated within this many days (default: 30)")
-    g.add_argument("--limit", type=int, default=120, help="Max entities to harvest")
+                   help="(legacy) keep entities incorporated within this many days")
+    g.add_argument("--limit", type=int, default=250, help="Max operating companies to keep per run (default: 250)")
+    g.add_argument("--no-merge", action="store_true", help="Overwrite instead of merging with the existing dataset")
+    g.add_argument("--general-fill", action="store_true", dest="general_fill",
+                   help="Also sweep all sectors (not just AI) for raw volume — AI firms still flagged/highlighted")
     g.set_defaults(func=_cmd_gen_sample)
 
     r = sub.add_parser("run", help="Discover, classify, (research), and store")
@@ -159,6 +166,7 @@ def build_parser() -> argparse.ArgumentParser:
     # sec_edgar options
     r.add_argument("--query", default="", help="[sec_edgar] full-text query bias")
     r.add_argument("--days-back", type=int, default=30, dest="days_back", help="[sec_edgar] lookback window")
+    r.add_argument("--since", default="", help="[sec_edgar/delaware] explicit ISO start date (overrides --days-back)")
     r.add_argument("--forms", default="D", help="[sec_edgar] form types")
     r.add_argument("--user-agent", default="", help="[sec_edgar] required descriptive User-Agent")
     r.set_defaults(func=_cmd_run)

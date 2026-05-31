@@ -58,6 +58,8 @@ class SecEdgarSource(Source):
         days_back: int = 30,
         query: str = "",
         inc_state: str = "",          # state of incorporation filter, e.g. "DE"
+        since: str = "",              # explicit ISO start date, overrides days_back
+        until: str = "",              # explicit ISO end date (default: today)
         request_delay: float = 0.2,
         **_: object,
     ) -> None:
@@ -66,6 +68,8 @@ class SecEdgarSource(Source):
         self.days_back = days_back
         self.query = query  # optional full-text query to bias toward AI filings
         self.inc_state = (inc_state or "").upper()
+        self.since = since
+        self.until = until
         self.request_delay = request_delay
 
     def _get(self, params: dict) -> dict:
@@ -76,7 +80,18 @@ class SecEdgarSource(Source):
 
     def fetch(self, limit: int = 100) -> Iterator[Company]:
         end = date.today()
-        start = end - timedelta(days=self.days_back)
+        if self.until:
+            try:
+                end = date.fromisoformat(self.until)
+            except ValueError:
+                pass
+        if self.since:
+            try:
+                start = date.fromisoformat(self.since)
+            except ValueError:
+                start = end - timedelta(days=self.days_back)
+        else:
+            start = end - timedelta(days=self.days_back)
         fetched = 0
         page_from = 0
         page_size = 100

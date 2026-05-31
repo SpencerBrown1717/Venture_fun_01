@@ -16,12 +16,29 @@ pipeline degrades gracefully rather than crashing.
 from __future__ import annotations
 
 import re
+import threading
+import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from typing import Optional
 
 DEFAULT_UA = "AI-Incorporation-Scout/1.0 (contact: scout@example.com)"
+
+# SEC fair-access asks for < 10 requests/second. A shared token gate keeps us
+# safely under that even when enrichment runs across several worker threads.
+_RATE_LOCK = threading.Lock()
+_MIN_INTERVAL = 0.18  # ~5.5 requests/sec — comfortably under SEC's limit
+_last_call = [0.0]
+
+
+def _throttle() -> None:
+    with _RATE_LOCK:
+        now = time.monotonic()
+        wait = _MIN_INTERVAL - (now - _last_call[0])
+        if wait > 0:
+            time.sleep(wait)
+        _last_call[0] = time.monotonic()
 
 _ENTITY_SUFFIXES = ("LLC", "L.L.C", "INC", "L.P", "LP", "LTD", "CORP", "TRUST", "FUND", "PARTNERS", "MANAGEMENT")
 
@@ -82,11 +99,20 @@ def fetch_form_d_detail(
     if not cik or not accession:
         return None
     url = _doc_url(cik, accession)
-    try:
-        req = urllib.request.Request(url, headers={"User-Agent": user_agent})
-        with urllib.request.urlopen(req, timeout=timeout) as resp:
-            xml = resp.read().decode("utf-8", "replace")
-    except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+    xml = ""
+    for attempt in range(3):  # polite retries under load / transient 429s
+        try:
+            _throttle()
+            req = urllib.request.Request(url, headers={"User-Agent": user_agent})
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
+                xml = resp.read().decode("utf-8", "replace")
+            break
+        except (urllib.error.URLError, TimeoutError, OSError, ValueError):
+            if attempt < 2:
+                time.sleep(0.8 * (attempt + 1))
+                continue
+            return None
+    if not xml:
         return None
 
     industry = _tag(xml, "industryGroupType")

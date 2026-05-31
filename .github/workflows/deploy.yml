@@ -9,7 +9,7 @@ on:
   push:
     branches: [main]
   schedule:
-    - cron: "17 13 * * 1" # every Monday ~06:17 PT (keeps the 30-day window current)
+    - cron: "17 13 1 * *" # monthly (1st ~06:17 PT) — fills up as new C-corps form
   workflow_dispatch:
 
 permissions:
@@ -31,13 +31,15 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Refresh sample — real DE incorporations + Form D enrichment
-        # Pulls operating companies incorporated in DE from SEC EDGAR, drops
-        # pooled funds, and enriches each with real officers, stage, and capital.
-        run: python -m scout gen-sample --max-age-days 120 --limit 40
+      - name: Grow dataset — real DE incorporations (all of this year) + Form D enrichment
+        # Harvests operating companies incorporated in DE from SEC EDGAR month by
+        # month for the whole year, drops pooled funds, enriches each with real
+        # officers / stage / capital, and MERGES into the existing dataset so the
+        # corpus grows organically as new C-corps form.
+        run: python -m scout gen-sample --since $(date +%Y)-01-01 --limit 400 --general-fill
 
       - name: Run Venture Analyst Swarm on the enriched sample
-        run: python -m scout run --source sample --research --no-fetch-site --export
+        run: python -m scout run --source sample --limit 500 --research --no-fetch-site --export
 
       - name: Commit refreshed dataset (keeps repo data current)
         continue-on-error: true
