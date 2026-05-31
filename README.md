@@ -106,6 +106,46 @@ the source SEC filing, plus a "Verification" section in the analysis drawer.
 > (`--source delaware_icis`) for completeness, but it is **not** used for the
 > sample or the scheduled refresh because the portal is unreliable.
 
+### Pre-Form-D Radar — catching companies *before* the financing signal
+
+Form D shows what has already become visible. But many of the best companies
+raise on **SAFEs**, are pre-seed, or are stealth — so they have **no useful Form
+D yet**. The **Pre-Form-D Radar** adds that earlier layer from a real,
+open-source signal:
+
+> **The open YC dataset** (`yc-oss/api`) — a public mirror of Y Combinator's
+> company directory. YC companies are the canonical SAFE-stage / pre-Form-D
+> companies, each with a real website and an authoritative YC profile page.
+
+```bash
+# Form D companies + the pre-Form-D (accelerator) radar, scored together:
+python -m scout run --source sample --research --include-pre-form-d --export
+# or just the accelerator feed:
+python -m scout discover --source accelerators --research --export
+```
+
+Every record runs through an **inference layer** (`scout/inference/`) that labels
+it transparently — never claiming a SAFE was confirmed:
+
+- **Source tier** (1 SEC-confirmed → 5 weak/name-only).
+- **Financing-stage inference**: `Confirmed Form D`, `Probable SAFE-stage`,
+  `Pre-Form-D / early signal`, … (an inference about *visibility*, not a
+  confirmed financing event).
+- **Evidence score** (how much we *know*) kept **separate** from the
+  **opportunity score** (how *interesting* it looks) — so a promising company
+  with thin evidence is shown as high-opportunity / low-confidence, never as
+  high-confidence.
+- **Source records** + a **missing-data checklist** powering the drawer's "Why
+  this company is here" evidence panel, with every source linked.
+
+**Honesty-first:** founders are only ever shown when they come from a verified
+source (SEC filing or website extraction). We **never fabricate** founder
+identities; unknown founders are shown as unknown.
+
+A lightweight de-duplication layer (`scout/dedupe/`) merges the same startup when
+it appears in both the accelerator feed and a later Form D filing, preserving all
+source provenance.
+
 ### Run against the live SEC EDGAR source
 
 Form D filings (notices of exempt securities offerings) are filed by recently

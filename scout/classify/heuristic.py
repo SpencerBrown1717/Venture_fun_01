@@ -103,13 +103,16 @@ class HeuristicClassifier:
     threshold: float = THRESHOLD
 
     def classify(self, company: Company) -> Company:
+        raw = company.raw or {}
+        tags_text = " ".join((raw.get("yc_tags") or []) + (raw.get("yc_industries") or []))
         text_fields = {
             "name": company.name or "",
             "website": company.website or "",
             "description": company.description or "",
+            "tags": tags_text,
         }
         # Name matches matter more than description matches.
-        field_weight = {"name": 1.6, "website": 1.1, "description": 1.0}
+        field_weight = {"name": 1.6, "website": 1.1, "description": 1.0, "tags": 1.4}
 
         score_accum = 0.0
         signals: list[str] = []

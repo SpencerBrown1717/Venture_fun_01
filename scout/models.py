@@ -16,6 +16,13 @@ def slugify(value: str) -> str:
     return value.strip("-")
 
 
+def _has(row: dict, key: str) -> bool:
+    try:
+        return key in row.keys()
+    except AttributeError:
+        return key in row
+
+
 def make_company_id(source: str, source_id: str, name: str) -> str:
     """Stable, deterministic id so re-running the pipeline upserts instead of duplicating."""
     basis = f"{source}:{source_id or name}".lower()
@@ -44,6 +51,16 @@ class Company:
     verification: list[str] = field(default_factory=list)  # provenance strings
     description: str = ""
     raw: dict[str, Any] = field(default_factory=dict)
+
+    # --- Pre-Form-D Radar intelligence (populated by scout.inference) ---
+    domain: str = ""
+    source_records: list[dict[str, Any]] = field(default_factory=list)  # provenance
+    source_tier: int = 0            # 1 (SEC) .. 5 (weak)
+    financing_stage: str = ""       # inferred, never a confirmed-SAFE claim
+    probable_safe_stage: bool = False
+    form_d_found: bool = False
+    evidence_score: int = 0         # how much we know (separate from opportunity)
+    badges: list[str] = field(default_factory=list)
 
     # --- populated by the classifier ---
     ai_score: float = 0.0           # 0..1 confidence the company is AI-related
@@ -75,6 +92,9 @@ class Company:
     def to_dict(self) -> dict[str, Any]:
         d = asdict(self)
         d["month"] = self.month
+        from .inference.evidence_score import missing_data, evidence_confidence
+        d["missing_data"] = missing_data(self, self.source_records)
+        d["evidence_confidence"] = evidence_confidence(self.evidence_score)
         return d
 
     def to_row(self) -> dict[str, Any]:
@@ -102,6 +122,14 @@ class Company:
             "competitive": json.dumps(self.competitive) if self.competitive else None,
             "recommendation": json.dumps(self.recommendation) if self.recommendation else None,
             "raw": json.dumps(self.raw),
+            "domain": self.domain,
+            "source_records": json.dumps(self.source_records),
+            "source_tier": self.source_tier,
+            "financing_stage": self.financing_stage,
+            "probable_safe_stage": int(self.probable_safe_stage),
+            "form_d_found": int(self.form_d_found),
+            "evidence_score": self.evidence_score,
+            "badges": json.dumps(self.badges),
         }
 
     @classmethod
@@ -129,4 +157,12 @@ class Company:
             competitive=json.loads(row["competitive"]) if row["competitive"] else None,
             recommendation=json.loads(row["recommendation"]) if row["recommendation"] else None,
             raw=json.loads(row["raw"]) if row["raw"] else {},
+            domain=row["domain"] if _has(row, "domain") else "",
+            source_records=json.loads(row["source_records"]) if _has(row, "source_records") and row["source_records"] else [],
+            source_tier=row["source_tier"] if _has(row, "source_tier") and row["source_tier"] is not None else 0,
+            financing_stage=row["financing_stage"] if _has(row, "financing_stage") else "",
+            probable_safe_stage=bool(row["probable_safe_stage"]) if _has(row, "probable_safe_stage") else False,
+            form_d_found=bool(row["form_d_found"]) if _has(row, "form_d_found") else False,
+            evidence_score=row["evidence_score"] if _has(row, "evidence_score") and row["evidence_score"] is not None else 0,
+            badges=json.loads(row["badges"]) if _has(row, "badges") and row["badges"] else [],
         )

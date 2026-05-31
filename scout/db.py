@@ -38,6 +38,14 @@ CREATE TABLE IF NOT EXISTS companies (
     competitive     TEXT,
     recommendation  TEXT,
     raw             TEXT,
+    domain              TEXT,
+    source_records      TEXT,
+    source_tier         INTEGER DEFAULT 0,
+    financing_stage     TEXT,
+    probable_safe_stage INTEGER DEFAULT 0,
+    form_d_found        INTEGER DEFAULT 0,
+    evidence_score      INTEGER DEFAULT 0,
+    badges              TEXT,
     updated_at      TEXT DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_companies_score ON companies(ai_score);
@@ -58,9 +66,12 @@ class Database:
     def _migrate(self) -> None:
         """Add columns introduced after a DB was first created (idempotent)."""
         existing = {r["name"] for r in self._conn.execute("PRAGMA table_info(companies)")}
-        int_cols = {"website_verified", "verified_real"}
+        int_cols = {"website_verified", "verified_real", "source_tier",
+                    "probable_safe_stage", "form_d_found", "evidence_score"}
         for col in ("memo", "founders", "scores", "competitive", "recommendation",
-                    "website_verified", "verified_real", "verification"):
+                    "website_verified", "verified_real", "verification",
+                    "domain", "source_records", "source_tier", "financing_stage",
+                    "probable_safe_stage", "form_d_found", "evidence_score", "badges"):
             if col not in existing:
                 typ = "INTEGER DEFAULT 0" if col in int_cols else "TEXT"
                 self._conn.execute(f"ALTER TABLE companies ADD COLUMN {col} {typ}")

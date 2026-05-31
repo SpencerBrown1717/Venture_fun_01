@@ -13,8 +13,15 @@ const state = {
   view: "grid",
   tab: "feed",
   watch: new Set(JSON.parse(localStorage.getItem("scout:watch") || "[]")),
-  filters: { aiOnly: true, category: "", stage: "", minScore: 0, sort: "score", query: "", _dateFloor: null },
+  filters: { aiOnly: true, category: "", stage: "", financing: "", tier: "", minScore: 0, sort: "score", query: "", _dateFloor: null },
 };
+
+// Backward-compatible accessors (data.json may predate the radar fields).
+const formDFound = (c) => c.form_d_found !== undefined ? c.form_d_found : !!(c.raw && c.raw.cik);
+const tierOf = (c) => c.source_tier || (formDFound(c) ? 1 : (c.raw && c.raw.accelerator ? 2 : 5));
+const financingOf = (c) => c.financing_stage || (formDFound(c) ? "Confirmed Form D" : "Unknown financing status");
+const evidenceOf = (c) => (c.evidence_score !== undefined ? c.evidence_score : 50);
+const TIER_LABEL = { 1: "SEC confirmed", 2: "Accelerator", 3: "Website + founder", 4: "Domain + job", 5: "Weak signal" };
 
 const $ = (id) => document.getElementById(id);
 const fmtPct = (x) => `${Math.round((x || 0) * 100)}%`;
@@ -62,6 +69,7 @@ async function load() {
   renderStats();
   renderTrends();
   updateWatchCount();
+  updateRadarCount();
   apply();
 }
 
@@ -84,9 +92,11 @@ function renderStats() {
   ai.forEach((c) => { if (c.ai_category) catCount[c.ai_category] = (catCount[c.ai_category] || 0) + 1; });
   const hottest = Object.entries(catCount).sort((a, b) => b[1] - a[1])[0];
 
+  const preFormD = s.pre_form_d ?? state.companies.filter((c) => !formDFound(c)).length;
   const cards = [
     { num: s.total ?? state.companies.length, lbl: "Discovered" },
     { num: ai.length, lbl: "AI-related", accent: true },
+    { num: preFormD, lbl: "Pre-Form-D", accent: true },
     { num: verified, lbl: "SEC-verified" },
     { num: fmtMoney(capital) || "—", lbl: "Capital tracked", serif: true },
     { num: hottest ? hottest[0] : "—", lbl: "Hottest category", serif: true },
@@ -106,8 +116,29 @@ function initTabs() {
 function switchTab(name) {
   state.tab = name;
   document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.getAttribute("data-tab") === name));
-  ["feed", "trends", "watch"].forEach((n) => { $("panel-" + n).hidden = n !== name; });
+  ["feed", "radar", "trends", "watch"].forEach((n) => { $("panel-" + n).hidden = n !== name; });
   if (name === "watch") renderWatchlist();
+  if (name === "radar") renderRadar();
+}
+
+function updateRadarCount() {
+  const ids = new Set(state.data.radar || []);
+  const n = ids.size || state.companies.filter((c) => c.is_ai && !formDFound(c) && evidenceOf(c) >= 25).length;
+  $("radarCount").textContent = n;
+}
+
+function renderRadar() {
+  const ids = new Set(state.data.radar || []);
+  let rows = ids.size
+    ? state.companies.filter((c) => ids.has(c.id))
+    : state.companies.filter((c) => c.is_ai && !formDFound(c) && evidenceOf(c) >= 25);
+  rows.sort((a, b) => ((b.scores && b.scores.overall) || 0) - ((a.scores && a.scores.overall) || 0));
+  $("radarEmpty").hidden = rows.length !== 0;
+  $("radarGroups").className = "groups" + (state.view === "list" ? " list" : "");
+  $("radarGroups").innerHTML = rows.length
+    ? `<div class="month-group"><div class="month-head">Tracking ${rows.length} pre-Form-D ${rows.length === 1 ? "company" : "companies"}</div><div class="cards">${rows.map(cardHtml).join("")}</div></div>`
+    : "";
+  bindCards($("radarGroups"));
 }
 
 // --- Trends ----------------------------------------------------------------
@@ -150,6 +181,8 @@ function initControls() {
 
   $("aiOnly").addEventListener("change", (e) => { state.filters.aiOnly = e.target.checked; apply(); });
   $("category").addEventListener("change", (e) => { state.filters.category = e.target.value; apply(); });
+  $("financing").addEventListener("change", (e) => { state.filters.financing = e.target.value; apply(); });
+  $("tier").addEventListener("change", (e) => { state.filters.tier = e.target.value; apply(); });
   $("stage").addEventListener("change", (e) => { state.filters.stage = e.target.value; apply(); });
   $("sort").addEventListener("change", (e) => { state.filters.sort = e.target.value; apply(); });
   $("minScore").addEventListener("input", (e) => {
@@ -243,6 +276,9 @@ function apply() {
 
   if (f.aiOnly) rows = rows.filter((c) => c.is_ai);
   if (f.category) rows = rows.filter((c) => c.ai_category === f.category);
+  if (f.financing === "__none__") rows = rows.filter((c) => !formDFound(c));
+  else if (f.financing) rows = rows.filter((c) => financingOf(c) === f.financing);
+  if (f.tier) rows = rows.filter((c) => String(tierOf(c)) === f.tier);
   if (f.stage) rows = rows.filter((c) => stageOf(c) === f.stage);
   if (f.minScore > 0) rows = rows.filter((c) => (c.ai_score || 0) >= f.minScore);
   if (f._minRaised) rows = rows.filter((c) => raisedOf(c) >= f._minRaised);
@@ -263,6 +299,7 @@ function apply() {
     if (f.sort === "name") return a.name.localeCompare(b.name);
     if (f.sort === "date") return (b.formation_date || "").localeCompare(a.formation_date || "");
     if (f.sort === "raised") return raisedOf(b) - raisedOf(a);
+    if (f.sort === "evidence") return evidenceOf(b) - evidenceOf(a);
     if (f.sort === "conf") return (b.ai_score || 0) - (a.ai_score || 0);
     return ((b.scores && b.scores.overall) || 0) - ((a.scores && a.scores.overall) || 0) || (b.ai_score || 0) - (a.ai_score || 0);
   });
@@ -314,22 +351,46 @@ function verifiedBadge(c) {
     : `<span class="vbadge" title="${escapeHtml(title)}">✓ Verified</span>`;
 }
 
+function linkFor(c) {
+  const edgarUrl = (c.raw && (c.raw.filing_url || c.raw.edgar_url)) || "";
+  const ycUrl = (c.raw && c.raw.accelerator_url) || "";
+  if (c.website && c.website_verified) {
+    return { url: c.website, label: c.website.replace(/^https?:\/\//, "").replace(/\/$/, "") };
+  }
+  if (edgarUrl) return { url: edgarUrl, label: "SEC filing ↗" };
+  if (ycUrl) return { url: ycUrl, label: "YC profile ↗" };
+  if (c.website) return { url: c.website, label: c.domain || "website ↗" };
+  return { url: "", label: "" };
+}
+
+const FINANCE_CLASS = {
+  "Confirmed Form D": "fin-confirmed", "Probable SAFE-stage": "fin-safe",
+  "Probable SAFE-stage or bootstrapped": "fin-safe", "Pre-Form-D / early signal": "fin-early",
+  "Weak unverified signal": "fin-weak", "Unknown financing status": "fin-weak",
+};
+
+function badgesHtml(c, max = 4) {
+  const b = c.badges || [];
+  if (!b.length) return "";
+  return `<div class="badges">${b.slice(0, max).map((x) =>
+    `<span class="badge b-${slug(x)}">${escapeHtml(x)}</span>`).join("")}</div>`;
+}
+const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
 function cardHtml(c) {
-  const edgarUrl = (c.raw && c.raw.edgar_url) || (c.raw && c.raw.filing_url) || "";
-  const link = c.website && c.website_verified ? c.website : edgarUrl;
-  const linkLabel = c.website && c.website_verified
-    ? c.website.replace(/^https?:\/\//, "").replace(/\/$/, "")
-    : edgarUrl ? "SEC filing ↗" : "";
+  const { url: link, label: linkLabel } = linkFor(c);
   const cat = c.ai_category ? `<span class="tag cat">${escapeHtml(c.ai_category)}</span>` : "";
   const rec = c.recommendation;
   const recBadge = rec ? `<span class="verdict ${VERDICT_CLASS[rec.verdict] || ""}">${escapeHtml(rec.verdict)}</span>` : "";
   const opp = c.scores ? `<div class="opp-badge"><div class="v">${c.scores.overall}</div><div class="l">opp</div></div>` : "";
   const stage = stageOf(c);
   const raised = raisedOf(c);
+  const fin = financingOf(c);
   const meta = [
+    `<span class="pill-meta ${FINANCE_CLASS[fin] || ""}">${escapeHtml(fin)}</span>`,
     stage ? `<span class="pill-meta">${escapeHtml(stage)}</span>` : "",
     raised ? `<span class="pill-meta raised">${fmtMoney(raised)} raised</span>` : "",
-    `<span class="pill-meta">conf ${fmtPct(c.ai_score)}</span>`,
+    `<span class="pill-meta" title="Evidence score — how much we know">ev ${evidenceOf(c)}</span>`,
   ].join("");
   const realFounders = (c.founders || []).filter((f) => f.source === "sec_filing");
   const fline = realFounders.length
@@ -349,6 +410,7 @@ function cardHtml(c) {
       <div class="metaline">${meta}</div>
       ${c.description ? `<p class="desc">${escapeHtml(c.description)}</p>` : ""}
       ${fline}
+      ${badgesHtml(c)}
       <div class="tags">${cat}${recBadge}</div>
       <div class="card-foot">
         ${link ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(linkLabel)}</a>` : `<span class="sub">no website yet</span>`}
@@ -441,6 +503,37 @@ function verificationHtml(c) {
   return `<div class="memo-sec"><h4>Verification ${status}</h4>${items ? `<ul>${items}</ul>` : "<p>No authoritative signal found.</p>"}</div>`;
 }
 
+const SRC_LABEL = {
+  sec_form_d: "SEC Form D", state_incorporation: "State registry", accelerator: "Accelerator",
+  website: "Company website", job_posting: "Hiring signal", founder_profile: "Founder identity",
+  product_launch: "Product launch",
+};
+
+function evidencePanelHtml(c) {
+  const recs = c.source_records || [];
+  const tier = tierOf(c);
+  const conf = c.evidence_confidence || "";
+  const rows = recs.map((r) => {
+    const u = r.source_url;
+    const nm = escapeHtml(r.source_name || SRC_LABEL[r.source_type] || r.source_type);
+    const link = u ? `<a href="${escapeHtml(u)}" target="_blank" rel="noopener">${nm} ↗</a>` : nm;
+    return `<li><span class="ev-type">${escapeHtml(SRC_LABEL[r.source_type] || r.source_type)}</span> ${link}${r.notes ? ` <span class="muted">· ${escapeHtml(r.notes)}</span>` : ""}</li>`;
+  }).join("");
+  const missing = (c.missing_data || []).map((m) => `<li class="miss">${escapeHtml(m)}</li>`).join("");
+  return `
+    <div class="memo-sec evidence">
+      <h4>Why this company is here
+        <span class="badge-gen" title="How much independent public evidence supports this record (separate from opportunity).">evidence ${evidenceOf(c)}/100 · ${escapeHtml(conf)}</span>
+      </h4>
+      <div class="ev-meta">
+        <span class="pill-meta tier-${tier}">Tier ${tier} · ${escapeHtml(TIER_LABEL[tier] || "")}</span>
+        <span class="pill-meta ${FINANCE_CLASS[financingOf(c)] || ""}">${escapeHtml(financingOf(c))}</span>
+      </div>
+      ${rows ? `<div class="ev-block"><div class="k">Sources used</div><ul class="ev-list">${rows}</ul></div>` : ""}
+      ${missing ? `<div class="ev-block"><div class="k">Missing / not yet checked</div><ul class="ev-list">${missing}</ul></div>` : ""}
+    </div>`;
+}
+
 function openMemo(id) {
   const c = state.companies.find((x) => x.id === id);
   if (!c) return;
@@ -456,24 +549,28 @@ function openMemo(id) {
   const raised = raisedOf(c);
   const edgarUrl = raw.edgar_url || "";
   const filingUrl = raw.filing_url || edgarUrl;
+  const ycUrl = raw.accelerator_url || "";
   const cta = `
     <div class="drawer-cta">
       ${c.website && c.website_verified ? `<a class="primary" href="${escapeHtml(c.website)}" target="_blank" rel="noopener">Visit website ↗</a>` : ""}
       ${filingUrl ? `<a href="${escapeHtml(filingUrl)}" target="_blank" rel="noopener">SEC Form D ↗</a>` : ""}
       ${edgarUrl ? `<a href="${escapeHtml(edgarUrl)}" target="_blank" rel="noopener">All EDGAR filings ↗</a>` : ""}
+      ${ycUrl ? `<a href="${escapeHtml(ycUrl)}" target="_blank" rel="noopener">YC profile ↗</a>` : ""}
     </div>`;
 
   $("drawer").innerHTML = `
     <button class="close" aria-label="Close">×</button>
     <h2>${escapeHtml(c.name)} ${verifiedBadge(c)}</h2>
     <div class="memo-sub">${escapeHtml(m.one_liner || c.description || "")} <span class="badge-gen">${escapeHtml(m.generated_by || "heuristic")}</span></div>
+    ${badgesHtml(c, 12)}
     ${recHtml}
     <div class="memo-grid">
-      <div class="memo-kv"><div class="k">Category</div><div class="v">${escapeHtml(m.market_category || c.ai_category || "—")}</div></div>
+      <div class="memo-kv"><div class="k">Financing signal</div><div class="v">${escapeHtml(financingOf(c))}</div></div>
       <div class="memo-kv"><div class="k">Stage</div><div class="v">${escapeHtml(stageOf(c) || "—")}</div></div>
       <div class="memo-kv"><div class="k">Capital raised</div><div class="v">${raised ? fmtMoney(raised) : "—"}</div></div>
-      <div class="memo-kv"><div class="k">Jurisdiction</div><div class="v">${escapeHtml(c.jurisdiction || "—")}</div></div>
+      <div class="memo-kv"><div class="k">Category</div><div class="v">${escapeHtml(m.market_category || c.ai_category || "—")}</div></div>
     </div>
+    ${evidencePanelHtml(c)}
     ${foundersHtml(c.founders)}
     ${scoreBarsHtml(c.scores)}
     ${m.thesis ? `<div class="memo-sec"><h4>Investment thesis</h4><p>${escapeHtml(m.thesis)}</p></div>` : ""}

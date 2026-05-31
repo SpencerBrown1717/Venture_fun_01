@@ -6,6 +6,7 @@ registered by name so the pipeline / CLI can select sources at runtime.
 
 from __future__ import annotations
 
+from .accelerators import AcceleratorSource
 from .base import Source
 from .delaware import DelawareSource
 from .delaware_icis import DelawareIcisSource
@@ -17,6 +18,7 @@ REGISTRY: dict[str, type[Source]] = {
     DelawareSource.name: DelawareSource,
     DelawareIcisSource.name: DelawareIcisSource,
     SecEdgarSource.name: SecEdgarSource,
+    AcceleratorSource.name: AcceleratorSource,
 }
 
 
@@ -30,5 +32,5 @@ def get_source(name: str, **kwargs) -> Source:
 
 __all__ = [
     "Source", "SampleSource", "DelawareSource", "DelawareIcisSource",
-    "SecEdgarSource", "REGISTRY", "get_source",
+    "SecEdgarSource", "AcceleratorSource", "REGISTRY", "get_source",
 ]

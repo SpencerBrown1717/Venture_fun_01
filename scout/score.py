@@ -94,6 +94,19 @@ class ScoringAgent:
                 f"{len(real)} named officer(s)/director(s) in SEC filing"
                 + (f"; ${raised:,} raised" if raised else "")
             )
+        elif raw.get("accelerator"):
+            # Accelerator-backed (e.g. YC): competitive selection is a real team
+            # signal even before a Form D names officers.
+            base = 66
+            if raw.get("is_hiring"):
+                base += 6  # actively building a team
+            if raw.get("top_company"):
+                base += 6
+            team = base + _jitter(cid, "team", 4)
+            bits = [f"{raw['accelerator']} {raw.get('batch') or ''}".strip()]
+            if raw.get("is_hiring"):
+                bits.append("actively hiring")
+            team_reason = "; ".join(bits) + " (no Form D officers yet)"
         elif company.founders:
             ped = sum(f.get("pedigree", 50) for f in company.founders) / len(company.founders)
             team = ped + _jitter(cid, "team", 5)
@@ -141,6 +154,7 @@ class ScoringAgent:
         evidence += min(0.25, len(desc) / 800)
         evidence += min(0.20, len(company.ai_signals) * 0.04)
         evidence += 0.20 if company.founders else 0.0
+        evidence += 0.15 if (company.raw or {}).get("accelerator") else 0.0
         evidence += 0.10 * (1 - abs(0.5 - company.ai_score) * 2 if company.ai_score < 0.5 else company.ai_score * 0.2 + 0.1)
         confidence = round(min(0.95, max(0.25, 0.2 + evidence)), 2)
 

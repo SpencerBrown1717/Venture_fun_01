@@ -17,7 +17,7 @@
   <div class="statusbar">
     <div class="sb-left"><span class="dot"></span> SCOUT <span class="sb-sep">//</span> INCORPORATION INTELLIGENCE</div>
     <div class="sb-right">
-      <span class="sb-feed">● SCANNING SEC EDGAR <span class="sb-sep">·</span> DELAWARE</span>
+      <span class="sb-feed">● SCANNING SEC EDGAR <span class="sb-sep">·</span> DELAWARE <span class="sb-sep">·</span> YC BATCHES</span>
       <span class="sb-clock" id="clock">--:--</span>
     </div>
   </div>
@@ -29,10 +29,10 @@
         <div class="kicker">— Autonomous venture discovery</div>
         <h1>The companies<br />nobody is watching <em>yet.</em></h1>
         <p class="lede">
-          An autonomous agent ingests public <b>incorporation records</b>, verifies each
-          firm against <b>SEC EDGAR</b>, classifies AI-related formations, pulls the real
-          <b>founding team</b>, and ranks them by opportunity — surfacing companies in their
-          first weeks, before they reach mainstream databases.
+          An autonomous agent ingests public <b>incorporation records</b> and
+          <b>accelerator batches</b>, verifies each firm, classifies AI-related formations,
+          and ranks them by opportunity — surfacing companies in their first weeks, including
+          <b>SAFE-stage</b> startups <em>before</em> any financing filing becomes public.
         </p>
         <div class="how">
           <span class="how-step"><b>01</b> Ingest DE filings</span>
@@ -55,6 +55,7 @@
     <!-- Tabs -->
     <nav class="tabs" role="tablist">
       <button class="tab active" data-tab="feed" role="tab">◷ Discovery Feed</button>
+      <button class="tab" data-tab="radar" role="tab">⦿ Pre-Form-D Radar <span class="tab-count" id="radarCount">0</span></button>
       <button class="tab" data-tab="trends" role="tab">◬ Trends</button>
       <button class="tab" data-tab="watch" role="tab">★ Watchlist <span class="tab-count" id="watchCount">0</span></button>
     </nav>
@@ -75,9 +76,25 @@
           <input type="checkbox" id="aiOnly" checked /><span>AI only</span>
         </label>
         <select id="category" aria-label="Category filter"></select>
+        <select id="financing" aria-label="Financing signal filter">
+          <option value="">All financing signals</option>
+          <option value="Confirmed Form D">Confirmed Form D</option>
+          <option value="Probable SAFE-stage">Probable SAFE-stage</option>
+          <option value="Pre-Form-D / early signal">Pre-Form-D / early signal</option>
+          <option value="__none__">No Form D found</option>
+        </select>
+        <select id="tier" aria-label="Source tier filter">
+          <option value="">All source tiers</option>
+          <option value="1">Tier 1 · SEC confirmed</option>
+          <option value="2">Tier 2 · Accelerator</option>
+          <option value="3">Tier 3 · Website + founder</option>
+          <option value="4">Tier 4 · Domain + job</option>
+          <option value="5">Tier 5 · Weak signal</option>
+        </select>
         <select id="stage" aria-label="Stage filter"></select>
         <select id="sort" aria-label="Sort">
           <option value="score">Sort: Opportunity ↓</option>
+          <option value="evidence">Sort: Evidence ↓</option>
           <option value="conf">Sort: Confidence ↓</option>
           <option value="date">Sort: Newest</option>
           <option value="raised">Sort: Capital raised ↓</option>
@@ -96,6 +113,18 @@
       <div class="resultmeta" id="resultMeta"></div>
       <div id="groups" class="groups"></div>
       <div id="empty" class="empty" hidden>No companies match these filters.</div>
+    </section>
+
+    <!-- PRE-FORM-D RADAR TAB -->
+    <section class="tabpanel" id="panel-radar" hidden>
+      <div class="radar-intro">
+        <h2>Pre-Form-D Radar</h2>
+        <p>Companies with <b>no public Form D signal yet</b>, but enough early evidence to merit
+        tracking — SAFE-stage, bootstrapped, stealth, or pre-seed. <span class="muted">“Probable
+        SAFE-stage” is an inference from public signals, not a confirmed financing event.</span></p>
+      </div>
+      <div id="radarGroups" class="groups"></div>
+      <div id="radarEmpty" class="empty" hidden>No pre-Form-D companies match yet.</div>
     </section>
 
     <!-- TRENDS TAB -->
@@ -132,7 +161,7 @@
   <aside class="drawer" id="drawer" hidden aria-label="Investment analysis"></aside>
 
   <footer class="footer">
-    <span>Every company verified via SEC EDGAR · data precomputed by an autonomous Python agent · auto-refreshed weekly on GitHub Actions.</span>
+    <span>Form D companies verified via SEC EDGAR · pre-Form-D companies sourced from the open YC dataset · every claim labeled and linked · auto-refreshed monthly on GitHub Actions.</span>
     <span class="foot-links">
       <a href="https://github.com/SpencerBrown1717/Venture_Discovery_02" target="_blank" rel="noopener">SOURCE</a>
       <a href="https://github.com/SpencerBrown1717/Venture_Discovery_02#readme" target="_blank" rel="noopener">README</a>

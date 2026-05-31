@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from .db import Database
+from .dedupe import dedupe
 
 
 def _trends(companies: list[dict]) -> dict:
@@ -90,19 +91,34 @@ def export(db: Database, out_path: str | Path = "dashboard/data.json") -> dict:
     out.parent.mkdir(parents=True, exist_ok=True)
 
     companies = [c.to_dict() for c in db.all()]
+    companies, merged = dedupe(companies)
     stats = db.stats()
+
+    pre_form_d = [c for c in companies if not c.get("form_d_found")]
+    radar = [
+        c for c in pre_form_d
+        if c.get("is_ai") and len(c.get("source_records") or []) >= 1
+        and (c.get("evidence_score") or 0) >= 25
+    ]
+    radar.sort(key=lambda c: ((c.get("scores") or {}).get("overall", 0), c.get("evidence_score", 0)), reverse=True)
 
     months = sorted({c["month"] for c in companies}, reverse=True)
     payload = {
         "generated_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "stats": {
             **stats,
+            "total": len(companies),
             "months": len(months),
             "sources": sorted({c["source"] for c in companies}),
+            "pre_form_d": len(pre_form_d),
+            "confirmed_form_d": sum(1 for c in companies if c.get("form_d_found")),
+            "probable_safe": sum(1 for c in companies if c.get("probable_safe_stage")),
+            "merged_duplicates": merged,
         },
         "months": months,
         "trends": _trends(companies),
         "leaderboard": _leaderboard(companies),
+        "radar": [c["id"] for c in radar],
         "companies": companies,
     }
 

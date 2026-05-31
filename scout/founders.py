@@ -3,16 +3,16 @@
 Goal: produce structured founder/executive summaries — names, roles, public
 profiles, previous companies, and relevant background.
 
-Reality check: for *brand-new* companies, reliable founder data lives behind
-people-data APIs (PeopleDataLabs, Clearbit, LinkedIn) that need paid keys and
-are out of scope here. So this agent ships two honest modes:
+Honesty-first: we NEVER fabricate founder identities. Founders come only from
+verified sources:
 
-  * `synthetic` (default): deterministic, clearly-labeled illustrative profiles
-    so the end-to-end product and dashboard are fully demonstrable offline.
-  * `llm` (optional): extract real names/roles from fetched website text via an
-    OpenAI-compatible model, falling back to synthetic on any failure.
+  * `sec_filing`: real officers/directors parsed from a Form D (preferred).
+  * `llm` (optional): real names/roles extracted from fetched website text.
 
-Every profile carries a `source` field so nothing masquerades as verified fact.
+If no verified source exists, founders are left empty and the dashboard shows
+"founder verification: missing" rather than inventing people. A deterministic
+`synthetic` mode still exists for offline demos but is OFF by default
+(`allow_synthetic=False`). Every profile carries a `source` field.
 """
 
 from __future__ import annotations
@@ -53,6 +53,7 @@ def _rng_ints(seed: str, n: int) -> list[int]:
 class FounderAgent:
     use_llm: bool = False
     model: str = "gpt-4o-mini"
+    allow_synthetic: bool = False   # never fabricate founders by default (honesty)
 
     def __post_init__(self) -> None:
         self._client = None
@@ -76,7 +77,10 @@ class FounderAgent:
             if founders:
                 company.founders = founders
                 return company
-        company.founders = self._synthesize(company)
+        # No verified source → leave founders empty and let the dashboard show
+        # "founder verification: missing" honestly. We never fabricate identities.
+        if self.allow_synthetic:
+            company.founders = self._synthesize(company)
         return company
 
     # -- synthetic ----------------------------------------------------------

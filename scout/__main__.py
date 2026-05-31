@@ -82,6 +82,13 @@ def _cmd_run(args: argparse.Namespace) -> int:
     for err in report.errors[:10]:
         print(f"  ! {err}")
 
+    # Pre-Form-D Radar: also ingest the accelerator (YC) source into the same DB.
+    if getattr(args, "include_pre_form_d", False) and args.source != "accelerators":
+        accel = pipeline.run("accelerators", limit=args.pre_form_d_limit)
+        print(accel.summary())
+        for err in accel.errors[:5]:
+            print(f"  ! {err}")
+
     if args.export:
         info = export_dashboard(db, args.export_path)
         print(f"exported {info['count']} companies across {info['months']} months -> {info['path']}")
@@ -169,7 +176,28 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--since", default="", help="[sec_edgar/delaware] explicit ISO start date (overrides --days-back)")
     r.add_argument("--forms", default="D", help="[sec_edgar] form types")
     r.add_argument("--user-agent", default="", help="[sec_edgar] required descriptive User-Agent")
+    r.add_argument("--include-pre-form-d", action="store_true", dest="include_pre_form_d",
+                   help="Also ingest the accelerator (YC) pre-Form-D source into the same dataset")
+    r.add_argument("--pre-form-d-limit", type=int, default=120, dest="pre_form_d_limit",
+                   help="Max accelerator companies to ingest with --include-pre-form-d")
     r.set_defaults(func=_cmd_run)
+
+    d = sub.add_parser("discover", help="Ingest one source (alias of run, research off by default)")
+    d.add_argument("--source", default="accelerators", help="Source connector name")
+    d.add_argument("--limit", type=int, default=120)
+    d.add_argument("--max-age-days", type=int, default=30, dest="max_age_days")
+    d.add_argument("--llm", action="store_true")
+    d.add_argument("--research", action="store_true")
+    d.add_argument("--research-min-score", type=float, default=0.5, dest="research_min_score")
+    d.add_argument("--no-fetch-site", action="store_true")
+    d.add_argument("--export", action="store_true")
+    d.add_argument("--export-path", default="dashboard/data.json")
+    d.add_argument("--query", default="")
+    d.add_argument("--days-back", type=int, default=30, dest="days_back")
+    d.add_argument("--since", default="")
+    d.add_argument("--forms", default="D")
+    d.add_argument("--user-agent", default="")
+    d.set_defaults(func=_cmd_run)
 
     e = sub.add_parser("export", help="Export dashboard data from the database")
     e.add_argument("--export-path", default="dashboard/data.json")

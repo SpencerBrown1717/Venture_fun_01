@@ -24,6 +24,7 @@ from typing import Optional
 
 from .classify import get_classifier
 from .competitive import MarketAgent
+from .inference import apply_intelligence
 from .db import Database
 from .founders import FounderAgent
 from .models import Company
@@ -87,6 +88,7 @@ class Pipeline:
             try:
                 verify_company(company)
                 self._classifier.classify(company)
+                apply_intelligence(company)  # tier, financing stage, evidence, badges
                 if company.is_ai:
                     report.classified_ai += 1
             except Exception as exc:
@@ -107,6 +109,7 @@ class Pipeline:
                     self._scorer.score(company)             # uses founders
                     self._market.analyze(company)
                     self._reporter.report(company)          # uses scores + market + founders
+                    apply_intelligence(company)             # refresh after founders/site enrich
                     report.analyzed += 1
                 except Exception as exc:
                     report.errors.append(f"analyze {company.name}: {exc}")
