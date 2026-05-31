@@ -1,10 +1,11 @@
-name: Scout — discover & deploy dashboard
+name: Deploy SCOUT dashboard to GitHub Pages
 
-# Always-on Venture Intelligence (stretch goal 8):
-# regenerate the data with the autonomous pipeline and publish the dashboard to
-# GitHub Pages. Runs on push, weekly (so the monthly window stays fresh), and on
-# demand. The data source is SEC EDGAR's DE state-of-incorporation filter, which
-# is a reliable free API — so scheduled runs don't depend on flaky scraping.
+# Publishes the static dashboard/ folder to GitHub Pages.
+#
+# Design: the DEPLOY never depends on the data pipeline. The committed
+# dashboard/data.json is always shippable, so a flaky SEC EDGAR fetch can never
+# block the site from going live. The data refresh runs best-effort (monthly /
+# on demand) and simply commits a newer data.json when it succeeds.
 on:
   push:
     branches: [main]
@@ -31,19 +32,16 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Grow dataset — real DE incorporations (all of this year) + Form D enrichment
-        # Harvests operating companies incorporated in DE from SEC EDGAR month by
-        # month for the whole year, drops pooled funds, enriches each with real
-        # officers / stage / capital, and MERGES into the existing dataset so the
-        # corpus grows organically as new C-corps form.
+      # --- Best-effort data refresh (never blocks the deploy) -------------
+      - name: Grow dataset — real DE incorporations + Form D enrichment
+        continue-on-error: true
         run: python -m scout gen-sample --since $(date +%Y)-01-01 --limit 400 --general-fill
 
       - name: Run Venture Analyst Swarm (Form D + Pre-Form-D Radar)
-        # Form D companies from the sample + the open-source YC accelerator feed
-        # (real pre-Form-D / SAFE-stage companies), all scored and exported together.
+        continue-on-error: true
         run: python -m scout run --source sample --limit 500 --research --no-fetch-site --include-pre-form-d --pre-form-d-limit 200 --export
 
-      - name: Commit refreshed dataset (keeps repo data current)
+      - name: Commit refreshed dataset (if it changed)
         continue-on-error: true
         run: |
           git config user.name "scout-bot"
@@ -51,6 +49,10 @@ jobs:
           git add scout/data/sample_companies.json scout/data/fixtures/yc_ai_companies.json dashboard/data.json
           git commit -m "chore: refresh Delaware dataset [skip ci]" || echo "no changes"
           git push || echo "push skipped"
+
+      # --- Always publish the committed dashboard -------------------------
+      - name: Ensure Pages serves static assets verbatim
+        run: touch dashboard/.nojekyll
 
       - name: Upload dashboard as Pages artifact
         uses: actions/upload-pages-artifact@v3
