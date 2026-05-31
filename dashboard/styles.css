@@ -385,13 +385,111 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 .ev-list li.miss { color: var(--txt-3); }
 .ev-list li.miss::before { content: "○ "; color: var(--txt-3); }
 
+/* ===========================================================================
+   Data Health panel (spec 5.12)
+   =========================================================================== */
+.health {
+  border: 1px solid var(--line); border-radius: var(--radius);
+  background: linear-gradient(180deg, var(--panel), var(--bg-2));
+  margin-bottom: 30px; overflow: hidden;
+}
+.health-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 18px; border-bottom: 1px solid var(--line);
+}
+.health-title { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-dim); }
+.health-gen { font-family: var(--mono); font-size: 10.5px; color: var(--txt-3); }
+.health-toggle {
+  margin-left: auto; background: none; border: 1px solid var(--line-2); cursor: pointer;
+  color: var(--txt-3); font-family: var(--mono); font-size: 10.5px; border-radius: 7px; padding: 4px 10px;
+}
+.health-toggle:hover { color: var(--txt); border-color: var(--accent-dim); }
+.health-strip { display: grid; grid-template-columns: repeat(6, 1fr); }
+.hstat { padding: 16px 18px; border-right: 1px solid var(--line); }
+.hstat:last-child { border-right: none; }
+.hnum { font-family: var(--serif); font-size: 30px; line-height: 1; }
+.hnum.accent { color: var(--accent); }
+.hlbl { font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--txt-3); margin-top: 6px; }
+.health-detail {
+  border-top: 1px solid var(--line); padding: 14px 18px;
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 4px 28px;
+}
+.health-detail[hidden] { display: none; }
+.hd-row { display: flex; justify-content: space-between; gap: 12px; padding: 5px 0; border-bottom: 1px dashed var(--line); }
+.hd-k { font-family: var(--mono); font-size: 11px; color: var(--txt-3); letter-spacing: 0.03em; }
+.hd-v { font-size: 13px; color: var(--txt); }
+
+/* ===========================================================================
+   Review workflow — card chips, drawer buttons, queue (spec 5.x / 12.8)
+   =========================================================================== */
+.rvchip {
+  font-family: var(--mono); font-size: 10.5px; cursor: pointer;
+  background: var(--panel-2); color: var(--txt-3); border: 1px solid var(--line-2);
+  border-radius: 8px; padding: 6px 10px; transition: all 0.15s; white-space: nowrap;
+}
+.rvchip.rv-none { border-style: dashed; }
+.rvchip.rv-none:hover { color: var(--txt); border-color: var(--accent-dim); }
+.rvchip.rv-needs_review   { color: var(--mid);    border-color: rgba(255,209,102,0.45); background: rgba(255,209,102,0.08); }
+.rvchip.rv-track_weekly   { color: var(--track);  border-color: rgba(139,233,253,0.45); background: rgba(139,233,253,0.08); }
+.rvchip.rv-outreach_ready { color: var(--accent); border-color: rgba(198,242,78,0.5);   background: rgba(198,242,78,0.10); }
+.rvchip.rv-pass           { color: var(--txt-3);  border-color: var(--line-2); }
+
+.rvbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+.rvbtn {
+  font-family: var(--mono); font-size: 11px; cursor: pointer;
+  background: var(--panel); color: var(--txt-2); border: 1px solid var(--line-2);
+  border-radius: 9px; padding: 8px 12px; transition: all 0.15s;
+}
+.rvbtn:hover { color: var(--txt); border-color: var(--accent-dim); }
+.rvbtn.on { color: #0a0b0d; background: var(--accent); border-color: var(--accent); }
+.rvbtn.clear { color: var(--txt-3); }
+.rvbtn.clear:hover { color: #ff8a8a; border-color: rgba(255,138,138,0.4); }
+.next-action { color: var(--txt); font-size: 14px; }
+
+/* Review queue groups */
+.review-queue { display: flex; flex-direction: column; gap: 32px; }
+.rq-head {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 10px;
+  padding-bottom: 10px; margin-bottom: 16px; border-bottom: 1px solid var(--line);
+}
+.rq-head .rq-icon { font-size: 14px; }
+.rq-head .count { font-family: var(--mono); font-size: 11px; color: var(--txt-3); margin-left: 4px; }
+.rq-head.rv-needs_review   { color: var(--mid); }
+.rq-head.rv-track_weekly   { color: var(--track); }
+.rq-head.rv-outreach_ready { color: var(--accent); }
+.rq-head.rv-pass           { color: var(--txt-3); }
+
+/* ===========================================================================
+   Leaderboard table
+   =========================================================================== */
+.board-wrap { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; margin-bottom: 28px; }
+.board { width: 100%; border-collapse: collapse; background: linear-gradient(180deg, var(--panel), var(--bg-2)); }
+.board th {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--txt-3); text-align: left; padding: 12px 16px; border-bottom: 1px solid var(--line); font-weight: 500;
+}
+.board th.num, .board td.num { text-align: right; }
+.board td { padding: 12px 16px; border-bottom: 1px solid var(--line); font-size: 13.5px; color: var(--txt-2); }
+.board tr[data-board] { cursor: pointer; transition: background 0.12s; }
+.board tr[data-board]:hover { background: rgba(198,242,78,0.04); }
+.board tr:last-child td { border-bottom: none; }
+.board .rank { font-family: var(--mono); color: var(--txt-3); width: 40px; }
+.board .bname { font-family: var(--serif); font-size: 16px; color: var(--txt); }
+.board .vdot { color: var(--hi); font-size: 11px; }
+.board .bcat { color: var(--accent-dim); font-family: var(--mono); font-size: 11px; }
+.board td.num b { font-family: var(--serif); font-size: 18px; color: var(--accent); }
+
 /* ---- Responsive ---- */
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; }
   .radar { display: none; }
-  .stats { grid-template-columns: repeat(2, 1fr); }
-  .stat:nth-child(2n) { border-right: none; }
-  .stat { border-bottom: 1px solid var(--line); }
+  .health-strip { grid-template-columns: repeat(3, 1fr); }
+  .hstat:nth-child(3n) { border-right: none; }
+  .hstat { border-bottom: 1px solid var(--line); }
+  .health-detail { grid-template-columns: 1fr; }
   .trends-grid { grid-template-columns: 1fr; }
+  .tabs { overflow-x: auto; }
+  .board .bcat { display: none; }
   .viewtoggle { display: none; }
 }

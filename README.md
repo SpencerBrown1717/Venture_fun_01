@@ -1,15 +1,23 @@
-# AI Incorporation Scout Agent
+# SCOUT — Pre-Form-D Venture Radar
 
-> An autonomous agent that discovers newly formed companies from public sources,
-> classifies how AI-related they are, builds intelligence on them, and surfaces
-> the results in an investor-facing dashboard — *before* they hit mainstream
-> startup databases.
+> An agentic venture-discovery system that finds AI-native companies *before*
+> they become obvious through public funding databases — separating **verified
+> evidence** from **inference** at every step, and ranking what may become
+> visible next.
 
-This is a **Week 1** submission for the AI Incorporation Scout assignment, plus
-**most of the Week 2 stretch goals**: a multi-agent *Venture Analyst Swarm*
-(research memos, founder discovery, opportunity scoring, competitive landscapes,
-and a final recommendation), trend detection, a natural-language query
-interface, and an always-on GitHub Actions deployment.
+> **Form D shows what has already become visible. The Pre-Form-D Radar shows
+> what may become visible next.**
+
+This is a complete build of the **OpenClaw Venture Radar / Pre-Form-D Startup
+Discovery** assignment, plus **most of the frontier stretch**: a multi-agent
+*Venture Analyst Swarm* (research memos, founder discovery, opportunity scoring,
+competitive landscapes, a final recommendation), trend/momentum detection, a
+local review workflow, a natural-language query interface, and an always-on
+GitHub Actions deployment.
+
+The deliverable is an editorial, minimal, single-page analyst tool: dark,
+typographic, calm — built so an evaluator understands the value within 60
+seconds.
 
 ---
 
@@ -105,6 +113,33 @@ the source SEC filing, plus a "Verification" section in the analysis drawer.
 > The original ICIS scraper is kept as a separate, best-effort source
 > (`--source delaware_icis`) for completeness, but it is **not** used for the
 > sample or the scheduled refresh because the portal is unreliable.
+
+### The dashboard — an analyst workflow in five tabs
+
+The static dashboard (`dashboard/`) is organized around the assignment's required
+operator workflow. It reads a single precomputed `data.json` and needs no build
+step or backend.
+
+- **Data Health** — an always-visible operator panel: generated-at, sources,
+  total / AI / pre-Form-D / confirmed counts, average evidence & opportunity,
+  verified-website and founder coverage, and your review-queue size.
+- **All Companies** — the full feed with natural-language search and filters for
+  AI category, financing signal, source tier, **source type**, review status,
+  **min evidence**, and **min opportunity**.
+- **Pre-Form-D Radar** — the headline view: probable SAFE-stage / pre-seed AI
+  companies with *no public Form D yet*, framed explicitly as inference.
+- **Confirmed Form D** — the SEC-verified ground truth the radar anticipates,
+  each card linked to its authoritative EDGAR record.
+- **Needs Review** — a local triage queue. Set any company to **Needs review**,
+  **Track weekly**, **Outreach ready**, or **Pass** (stored in `localStorage`,
+  no backend) and it groups here.
+- **Leaderboard** — top AI companies by opportunity score, with category and
+  momentum signals beneath.
+
+Every company opens an **analysis drawer** with the recommendation, an
+evidence panel ("Why this company is here" — sources used vs. missing-data
+checklist), the **recommended next action**, triage controls, founders, the
+6-dimension opportunity score, competitive landscape, risks, and verification.
 
 ### Pre-Form-D Radar — catching companies *before* the financing signal
 

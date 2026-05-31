@@ -1,27 +1,89 @@
 "use strict";
 
 // ===========================================================================
-// SCOUT — static venture-intelligence dashboard.
-// Reads precomputed data.json (from `python -m scout export`) and renders a
-// filterable / sortable / searchable investor view with a watchlist + drawer.
+// SCOUT — Pre-Form-D Venture Radar (static).
+// Reads precomputed data.json (from the scout pipeline) and renders a
+// filterable / sortable / searchable analyst workflow with a review queue,
+// data-health panel, leaderboard, and per-company evidence drawer.
+//
+// Design intent: separate VERIFIED EVIDENCE from INFERENCE, everywhere.
 // ===========================================================================
 
 const state = {
   data: null,
   companies: [],
+  byId: {},
   filtered: [],
   view: "grid",
-  tab: "feed",
-  watch: new Set(JSON.parse(localStorage.getItem("scout:watch") || "[]")),
-  filters: { aiOnly: true, category: "", stage: "", financing: "", tier: "", minScore: 0, sort: "score", query: "", _dateFloor: null },
+  tab: "all",
+  review: loadReview(),
+  filters: {
+    aiOnly: true, category: "", financing: "", tier: "", source: "",
+    reviewFilter: "", minEv: 0, minOpp: 0, sort: "score", query: "",
+    _minRaised: 0, _dateFloor: null,
+  },
 };
 
-// Backward-compatible accessors (data.json may predate the radar fields).
+// --- Review workflow (localStorage, no backend) ----------------------------
+const REVIEW = {
+  needs_review:   { label: "Needs review",   short: "Review",   icon: "◎" },
+  track_weekly:   { label: "Track weekly",   short: "Tracking", icon: "↻" },
+  outreach_ready: { label: "Outreach ready", short: "Outreach", icon: "✦" },
+  pass:           { label: "Pass",           short: "Pass",     icon: "—" },
+};
+const REVIEW_ORDER = ["needs_review", "track_weekly", "outreach_ready", "pass"];
+const CYCLE = [null, "needs_review", "track_weekly", "outreach_ready", "pass"];
+
+function loadReview() {
+  let map = {};
+  try { map = JSON.parse(localStorage.getItem("scout:review") || "{}") || {}; } catch (_) {}
+  // Migrate the old binary watchlist → "track weekly".
+  if (!Object.keys(map).length) {
+    try {
+      const old = JSON.parse(localStorage.getItem("scout:watch") || "[]");
+      old.forEach((id) => { map[id] = "track_weekly"; });
+    } catch (_) {}
+  }
+  return map;
+}
+function saveReview() { localStorage.setItem("scout:review", JSON.stringify(state.review)); }
+function reviewOf(id) { return state.review[id] || null; }
+function setReview(id, status) {
+  if (!status) delete state.review[id]; else state.review[id] = status;
+  saveReview();
+  refreshAfterReview(id);
+}
+function cycleReview(id) {
+  const cur = reviewOf(id);
+  const next = CYCLE[(CYCLE.indexOf(cur) + 1) % CYCLE.length];
+  setReview(id, next);
+}
+function refreshAfterReview(id) {
+  updateReviewCount();
+  document.querySelectorAll(`[data-rvchip="${CSS.escape(id)}"]`).forEach((el) => {
+    const st = reviewOf(id);
+    el.className = `rvchip ${st ? "rv-" + st : "rv-none"}`;
+    el.textContent = st ? `${REVIEW[st].icon} ${REVIEW[st].short}` : "+ Triage";
+  });
+  document.querySelectorAll(`[data-rvbtn][data-id="${CSS.escape(id)}"]`).forEach((b) => {
+    b.classList.toggle("on", b.getAttribute("data-rvbtn") === reviewOf(id));
+  });
+  if (state.tab === "review") renderReview();
+}
+
+// --- Backward-compatible accessors -----------------------------------------
 const formDFound = (c) => c.form_d_found !== undefined ? c.form_d_found : !!(c.raw && c.raw.cik);
 const tierOf = (c) => c.source_tier || (formDFound(c) ? 1 : (c.raw && c.raw.accelerator ? 2 : 5));
 const financingOf = (c) => c.financing_stage || (formDFound(c) ? "Confirmed Form D" : "Unknown financing status");
 const evidenceOf = (c) => (c.evidence_score !== undefined ? c.evidence_score : 50);
+const oppOf = (c) => (c.scores && c.scores.overall) || 0;
+const sourceTypesOf = (c) => (c.source_records || []).map((r) => r.source_type);
 const TIER_LABEL = { 1: "SEC confirmed", 2: "Accelerator", 3: "Website + founder", 4: "Domain + job", 5: "Weak signal" };
+const SRC_LABEL = {
+  sec_form_d: "SEC Form D", state_incorporation: "State registry", accelerator: "Accelerator",
+  website: "Company website", job_posting: "Hiring signal", founder_profile: "Founder identity",
+  product_launch: "Product launch", domain_signal: "Domain signal",
+};
 
 const $ = (id) => document.getElementById(id);
 const fmtPct = (x) => `${Math.round((x || 0) * 100)}%`;
@@ -40,10 +102,7 @@ const VERDICT_CLASS = {
   "Monitor": "v-monitor", "Pass for now": "v-pass",
 };
 
-const raisedOf = (c) => {
-  const r = c.raw || {};
-  return r.amount_sold || r.offering_amount || 0;
-};
+const raisedOf = (c) => { const r = c.raw || {}; return r.amount_sold || r.offering_amount || 0; };
 const stageOf = (c) => (c.raw && c.raw.stage) || (c.memo && c.memo.estimated_stage) || "";
 const fmtMoney = (n) => {
   if (!n) return "";
@@ -64,54 +123,84 @@ async function load() {
     return;
   }
   state.companies = state.data.companies || [];
+  state.companies.forEach((c) => { state.byId[c.id] = c; });
   initControls();
   initTabs();
-  renderStats();
+  initHealth();
+  renderHealth();
   renderTrends();
-  updateWatchCount();
+  renderBoard();
   updateRadarCount();
+  updateFormdCount();
+  updateReviewCount();
   apply();
 }
 
 function startClock() {
   const tick = () => {
-    const d = new Date();
-    $("clock").textContent = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    $("clock").textContent = new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
   };
   tick();
   setInterval(tick, 30000);
 }
 
-// --- Stats -----------------------------------------------------------------
-function renderStats() {
-  const s = state.data.stats || {};
-  const ai = state.companies.filter((c) => c.is_ai);
-  const verified = state.companies.filter((c) => c.verified_real).length;
-  const capital = ai.reduce((a, c) => a + raisedOf(c), 0);
-  const catCount = {};
-  ai.forEach((c) => {
-    // "General AI" is the catch-all bucket — exclude it from "hottest" so the
-    // stat surfaces a meaningful subsector.
-    if (c.ai_category && c.ai_category !== "General AI") catCount[c.ai_category] = (catCount[c.ai_category] || 0) + 1;
+// --- Data Health (spec 5.12) ----------------------------------------------
+function initHealth() {
+  $("healthToggle").addEventListener("click", () => {
+    const d = $("healthDetail");
+    const open = d.hidden;
+    d.hidden = !open;
+    $("healthToggle").setAttribute("aria-expanded", String(open));
+    $("healthToggle").textContent = open ? "details ▴" : "details ▾";
   });
-  const hottest = Object.entries(catCount).sort((a, b) => b[1] - a[1])[0];
+}
 
-  const preFormD = s.pre_form_d ?? state.companies.filter((c) => !formDFound(c)).length;
-  const cards = [
-    { num: s.total ?? state.companies.length, lbl: "Discovered" },
+function renderHealth() {
+  const cs = state.companies;
+  const s = state.data.stats || {};
+  const ai = cs.filter((c) => c.is_ai);
+  const preFormD = cs.filter((c) => !formDFound(c));
+  const confirmed = cs.filter((c) => formDFound(c));
+  const probableSafe = cs.filter((c) => c.probable_safe_stage);
+  const verifiedSite = cs.filter((c) => c.website_verified).length;
+  const withFounders = cs.filter((c) => (c.founders || []).length).length;
+  const withSources = cs.filter((c) => (c.source_records || []).length).length;
+  const avgEv = Math.round(cs.reduce((a, c) => a + evidenceOf(c), 0) / Math.max(1, cs.length));
+  const avgOpp = Math.round(ai.reduce((a, c) => a + oppOf(c), 0) / Math.max(1, ai.length));
+  const needsReview = Object.keys(state.review).length;
+
+  const strip = [
+    { num: cs.length, lbl: "Companies" },
     { num: ai.length, lbl: "AI-related", accent: true },
-    { num: preFormD, lbl: "Pre-Form-D", accent: true },
-    { num: verified, lbl: "Verified real" },
-    { num: fmtMoney(capital) || "—", lbl: "Capital tracked", serif: true },
-    { num: hottest ? hottest[0] : "—", lbl: "Hottest category", serif: true },
+    { num: preFormD.length, lbl: "Pre-Form-D", accent: true },
+    { num: confirmed.length, lbl: "Confirmed Form D" },
+    { num: avgEv, lbl: "Avg evidence" },
+    { num: avgOpp, lbl: "Avg opportunity" },
   ];
-  $("stats").innerHTML = cards.map((c) =>
-    `<div class="stat"><div class="lbl">${escapeHtml(c.lbl)}</div>
-     <div class="num ${c.accent ? "accent" : ""} ${c.serif ? "serif-sm" : ""}">${escapeHtml(c.num)}</div></div>`
+  $("healthStrip").innerHTML = strip.map((c) =>
+    `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}">${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`
   ).join("");
+
+  const gen = state.data.generated_at ? new Date(state.data.generated_at) : null;
+  $("healthGen").textContent = gen ? `generated ${gen.toISOString().replace("T", " ").slice(0, 16)} UTC` : "";
+
+  const sources = (s.sources || []).join(", ") || "—";
+  const detail = [
+    ["Sources", escapeHtml(sources)],
+    ["Months covered", String((state.data.months || []).length)],
+    ["Probable SAFE-stage", String(probableSafe.length)],
+    ["Verified websites", `${verifiedSite} / ${cs.length}`],
+    ["Companies with founders", `${withFounders} / ${cs.length}`],
+    ["Companies with source records", `${withSources} / ${cs.length}`],
+    ["Merged duplicates", String(s.merged_duplicates ?? 0)],
+    ["In your review queue", String(needsReview)],
+  ];
+  $("healthDetail").innerHTML = detail.map(([k, v]) =>
+    `<div class="hd-row"><span class="hd-k">${k}</span><span class="hd-v">${v}</span></div>`).join("");
 }
 
 // --- Tabs ------------------------------------------------------------------
+const TABS = ["all", "radar", "formd", "review", "board"];
 function initTabs() {
   document.querySelectorAll(".tab").forEach((t) =>
     t.addEventListener("click", () => switchTab(t.getAttribute("data-tab")))
@@ -120,9 +209,10 @@ function initTabs() {
 function switchTab(name) {
   state.tab = name;
   document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.getAttribute("data-tab") === name));
-  ["feed", "radar", "trends", "watch"].forEach((n) => { $("panel-" + n).hidden = n !== name; });
-  if (name === "watch") renderWatchlist();
+  TABS.forEach((n) => { $("panel-" + n).hidden = n !== name; });
   if (name === "radar") renderRadar();
+  if (name === "formd") renderFormd();
+  if (name === "review") renderReview();
 }
 
 function updateRadarCount() {
@@ -130,19 +220,76 @@ function updateRadarCount() {
   const n = ids.size || state.companies.filter((c) => c.is_ai && !formDFound(c) && evidenceOf(c) >= 25).length;
   $("radarCount").textContent = n;
 }
+function updateFormdCount() {
+  $("formdCount").textContent = state.companies.filter((c) => formDFound(c)).length;
+}
+function updateReviewCount() { $("reviewCount").textContent = Object.keys(state.review).length; }
 
 function renderRadar() {
   const ids = new Set(state.data.radar || []);
   let rows = ids.size
     ? state.companies.filter((c) => ids.has(c.id))
     : state.companies.filter((c) => c.is_ai && !formDFound(c) && evidenceOf(c) >= 25);
-  rows.sort((a, b) => ((b.scores && b.scores.overall) || 0) - ((a.scores && a.scores.overall) || 0));
+  rows.sort((a, b) => oppOf(b) - oppOf(a));
   $("radarEmpty").hidden = rows.length !== 0;
   $("radarGroups").className = "groups" + (state.view === "list" ? " list" : "");
   $("radarGroups").innerHTML = rows.length
     ? `<div class="month-group"><div class="month-head">Tracking ${rows.length} pre-Form-D ${rows.length === 1 ? "company" : "companies"}</div><div class="cards">${rows.map(cardHtml).join("")}</div></div>`
     : "";
   bindCards($("radarGroups"));
+}
+
+function renderFormd() {
+  let rows = state.companies.filter((c) => formDFound(c));
+  // AI-relevant filings surface first, then by opportunity / capital.
+  rows.sort((a, b) => (b.is_ai - a.is_ai) || oppOf(b) - oppOf(a) || raisedOf(b) - raisedOf(a));
+  $("formdEmpty").hidden = rows.length !== 0;
+  $("formdGroups").className = "groups" + (state.view === "list" ? " list" : "");
+  $("formdGroups").innerHTML = rows.length
+    ? `<div class="month-group"><div class="month-head">${rows.length} SEC-verified Form D ${rows.length === 1 ? "company" : "companies"}</div><div class="cards">${rows.map(cardHtml).join("")}</div></div>`
+    : "";
+  bindCards($("formdGroups"));
+}
+
+// --- Review queue ----------------------------------------------------------
+function renderReview() {
+  const ids = Object.keys(state.review);
+  $("reviewEmpty").hidden = ids.length !== 0;
+  if (!ids.length) { $("reviewGroups").innerHTML = ""; return; }
+
+  const html = REVIEW_ORDER.map((status) => {
+    const rows = state.companies.filter((c) => reviewOf(c.id) === status);
+    if (!rows.length) return "";
+    rows.sort((a, b) => oppOf(b) - oppOf(a));
+    return `
+      <div class="rq-group">
+        <div class="rq-head rv-${status}"><span class="rq-icon">${REVIEW[status].icon}</span>${REVIEW[status].label}
+          <span class="count">${rows.length}</span></div>
+        <div class="cards">${rows.map(cardHtml).join("")}</div>
+      </div>`;
+  }).join("");
+  $("reviewGroups").innerHTML = html;
+  bindCards($("reviewGroups"));
+}
+
+// --- Leaderboard -----------------------------------------------------------
+function renderBoard() {
+  const board = (state.data.leaderboard || []).slice(0, 25);
+  const head = `<thead><tr><th>#</th><th>Company</th><th>Category</th><th class="num">Opp</th><th class="num">Conf</th><th>Verdict</th></tr></thead>`;
+  const body = board.map((r, i) => {
+    const c = state.byId[r.id];
+    return `<tr data-board="${escapeHtml(r.id)}">
+      <td class="rank">${i + 1}</td>
+      <td class="bname">${escapeHtml(r.name)}${c && c.verified_real ? ' <span class="vdot" title="SEC-verified">✓</span>' : ""}</td>
+      <td class="bcat">${escapeHtml(r.ai_category || "—")}</td>
+      <td class="num"><b>${r.overall}</b></td>
+      <td class="num">${fmtPct(r.confidence)}</td>
+      <td><span class="verdict ${VERDICT_CLASS[r.verdict] || ""}">${escapeHtml(r.verdict || "")}</span></td>
+    </tr>`;
+  }).join("");
+  $("board").innerHTML = head + `<tbody>${body}</tbody>`;
+  $("board").querySelectorAll("[data-board]").forEach((tr) =>
+    tr.addEventListener("click", () => openMemo(tr.getAttribute("data-board"))));
 }
 
 // --- Trends ----------------------------------------------------------------
@@ -178,21 +325,22 @@ function initControls() {
   const cats = [...new Set(state.companies.filter((c) => c.ai_category).map((c) => c.ai_category))].sort();
   $("category").innerHTML = `<option value="">All categories</option>` + cats.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join("");
 
-  const stages = [...new Set(state.companies.map(stageOf).filter(Boolean))];
-  const stageOrder = ["Stealth / Pre-seed", "Pre-seed", "Seed", "Series A", "Series B", "Growth"];
-  stages.sort((a, b) => stageOrder.indexOf(a) - stageOrder.indexOf(b));
-  $("stage").innerHTML = `<option value="">All stages</option>` + stages.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(s)}</option>`).join("");
+  const srcTypes = [...new Set(state.companies.flatMap(sourceTypesOf))].sort();
+  $("source").innerHTML = `<option value="">All source types</option>` +
+    srcTypes.map((s) => `<option value="${escapeHtml(s)}">${escapeHtml(SRC_LABEL[s] || s)}</option>`).join("");
 
   $("aiOnly").addEventListener("change", (e) => { state.filters.aiOnly = e.target.checked; apply(); });
   $("category").addEventListener("change", (e) => { state.filters.category = e.target.value; apply(); });
   $("financing").addEventListener("change", (e) => { state.filters.financing = e.target.value; apply(); });
   $("tier").addEventListener("change", (e) => { state.filters.tier = e.target.value; apply(); });
-  $("stage").addEventListener("change", (e) => { state.filters.stage = e.target.value; apply(); });
+  $("source").addEventListener("change", (e) => { state.filters.source = e.target.value; apply(); });
+  $("reviewFilter").addEventListener("change", (e) => { state.filters.reviewFilter = e.target.value; apply(); });
   $("sort").addEventListener("change", (e) => { state.filters.sort = e.target.value; apply(); });
-  $("minScore").addEventListener("input", (e) => {
-    state.filters.minScore = e.target.value / 100;
-    $("minScoreLabel").textContent = `${e.target.value}%`;
-    apply();
+  $("minEv").addEventListener("input", (e) => {
+    state.filters.minEv = +e.target.value; $("minEvLabel").textContent = e.target.value; apply();
+  });
+  $("minOpp").addEventListener("input", (e) => {
+    state.filters.minOpp = +e.target.value; $("minOppLabel").textContent = e.target.value; apply();
   });
   $("search").addEventListener("input", debounce((e) => runQuery(e.target.value), 200));
   $("viewGrid").addEventListener("click", () => setView("grid"));
@@ -215,9 +363,11 @@ function setView(v) {
   $("viewGrid").classList.toggle("active", v === "grid");
   $("viewList").classList.toggle("active", v === "list");
   render();
+  if (state.tab === "radar") renderRadar();
+  if (state.tab === "formd") renderFormd();
 }
 
-// --- Natural-language query (stretch goal 7) -------------------------------
+// --- Natural-language query ------------------------------------------------
 function runQuery(text) {
   const q = (text || "").toLowerCase().trim();
   state.filters.query = q;
@@ -237,13 +387,6 @@ function runQuery(text) {
     $("category").value = matchedCat; state.filters.category = matchedCat;
   }
 
-  // stage intent
-  const stageMap = { "pre-seed": "Pre-seed", "preseed": "Pre-seed", "seed": "Seed", "series a": "Series A", "series b": "Series B", "growth": "Growth", "stealth": "Stealth / Pre-seed" };
-  for (const [k, v] of Object.entries(stageMap)) {
-    if (q.includes(k) && [...$("stage").options].some((o) => o.value === v)) { $("stage").value = v; state.filters.stage = v; break; }
-  }
-
-  // capital intent: "raised over $5m" / "over 5m"
   const cap = q.match(/(?:over|above|>\s*)\$?\s*(\d+(?:\.\d+)?)\s*(k|m|b)?/);
   state.filters._minRaised = 0;
   if (cap && (q.includes("rais") || q.includes("$") || q.includes("over") || q.includes("above"))) {
@@ -253,11 +396,10 @@ function runQuery(text) {
     state.filters._minRaised = v;
   }
 
-  // time window
   state.filters._dateFloor = null;
   const months = state.data.months || [];
   if (q.includes("this month") && months[0]) {
-    const d = new Date(); state.filters._dateFloor = `${months[0]}-01`;
+    state.filters._dateFloor = `${months[0]}-01`;
   } else {
     const days = q.match(/last\s+(\d+)\s+days?/);
     if (q.includes("last 30 days") || days) {
@@ -268,7 +410,7 @@ function runQuery(text) {
   }
 
   if (q.includes("high confidence") || q.includes("strong")) {
-    $("minScore").value = 75; $("minScoreLabel").textContent = "75%"; state.filters.minScore = 0.75;
+    $("minOpp").value = 70; $("minOppLabel").textContent = "70"; state.filters.minOpp = 70;
   }
   apply();
 }
@@ -283,8 +425,11 @@ function apply() {
   if (f.financing === "__none__") rows = rows.filter((c) => !formDFound(c));
   else if (f.financing) rows = rows.filter((c) => financingOf(c) === f.financing);
   if (f.tier) rows = rows.filter((c) => String(tierOf(c)) === f.tier);
-  if (f.stage) rows = rows.filter((c) => stageOf(c) === f.stage);
-  if (f.minScore > 0) rows = rows.filter((c) => (c.ai_score || 0) >= f.minScore);
+  if (f.source) rows = rows.filter((c) => sourceTypesOf(c).includes(f.source));
+  if (f.reviewFilter === "__untriaged__") rows = rows.filter((c) => !reviewOf(c.id));
+  else if (f.reviewFilter) rows = rows.filter((c) => reviewOf(c.id) === f.reviewFilter);
+  if (f.minEv > 0) rows = rows.filter((c) => evidenceOf(c) >= f.minEv);
+  if (f.minOpp > 0) rows = rows.filter((c) => oppOf(c) >= f.minOpp);
   if (f._minRaised) rows = rows.filter((c) => raisedOf(c) >= f._minRaised);
   if (f._dateFloor) rows = rows.filter((c) => (c.formation_date || "") >= f._dateFloor);
 
@@ -305,7 +450,7 @@ function apply() {
     if (f.sort === "raised") return raisedOf(b) - raisedOf(a);
     if (f.sort === "evidence") return evidenceOf(b) - evidenceOf(a);
     if (f.sort === "conf") return (b.ai_score || 0) - (a.ai_score || 0);
-    return ((b.scores && b.scores.overall) || 0) - ((a.scores && a.scores.overall) || 0) || (b.ai_score || 0) - (a.ai_score || 0);
+    return oppOf(b) - oppOf(a) || (b.ai_score || 0) - (a.ai_score || 0);
   });
 
   state.filtered = rows;
@@ -314,7 +459,7 @@ function apply() {
 
 function render() {
   const rows = state.filtered;
-  $("resultMeta").textContent = `${rows.length} ${rows.length === 1 ? "company" : "companies"} · click any card for the full memo · ★ to save`;
+  $("resultMeta").textContent = `${rows.length} ${rows.length === 1 ? "company" : "companies"} · click any card for the full memo · set a review status to triage`;
   $("empty").hidden = rows.length !== 0;
 
   const groups = {}; const order = [];
@@ -337,10 +482,13 @@ function render() {
 
 function bindCards(root) {
   root.querySelectorAll("[data-memo]").forEach((b) =>
-    b.addEventListener("click", (e) => { if (e.target.closest(".star") || e.target.closest("a")) return; openMemo(b.getAttribute("data-memo")); })
+    b.addEventListener("click", (e) => {
+      if (e.target.closest(".rvchip") || e.target.closest("a")) return;
+      openMemo(b.getAttribute("data-memo"));
+    })
   );
-  root.querySelectorAll(".star").forEach((s) =>
-    s.addEventListener("click", (e) => { e.stopPropagation(); toggleWatch(s.getAttribute("data-id")); })
+  root.querySelectorAll(".rvchip").forEach((s) =>
+    s.addEventListener("click", (e) => { e.stopPropagation(); cycleReview(s.getAttribute("data-rvchip")); })
   );
 }
 
@@ -372,10 +520,6 @@ const FINANCE_CLASS = {
   "Probable SAFE-stage or bootstrapped": "fin-safe", "Pre-Form-D / early signal": "fin-early",
   "Weak unverified signal": "fin-weak", "Unknown financing status": "fin-weak",
 };
-
-// Badges that just restate the financing pill already shown in the metaline.
-// We hide them on compact cards to avoid triple-labeling, but keep them in the
-// full drawer for completeness.
 const FIN_DUP_BADGES = new Set(["Confirmed Form D", "No Form D found", "Probable SAFE-stage"]);
 
 function badgesHtml(c, max = 4, skipFinDup = false) {
@@ -386,6 +530,13 @@ function badgesHtml(c, max = 4, skipFinDup = false) {
     `<span class="badge b-${slug(x)}">${escapeHtml(x)}</span>`).join("")}</div>`;
 }
 const slug = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
+function rvChipHtml(c) {
+  const st = reviewOf(c.id);
+  const cls = st ? "rv-" + st : "rv-none";
+  const txt = st ? `${REVIEW[st].icon} ${REVIEW[st].short}` : "+ Triage";
+  return `<button class="rvchip ${cls}" data-rvchip="${escapeHtml(c.id)}" title="Click to cycle review status">${txt}</button>`;
+}
 
 function cardHtml(c) {
   const { url: link, label: linkLabel } = linkFor(c);
@@ -400,13 +551,12 @@ function cardHtml(c) {
     `<span class="pill-meta ${FINANCE_CLASS[fin] || ""}">${escapeHtml(fin)}</span>`,
     stage ? `<span class="pill-meta">${escapeHtml(stage)}</span>` : "",
     raised ? `<span class="pill-meta raised">${fmtMoney(raised)} raised</span>` : "",
-    `<span class="pill-meta" title="Evidence score — how much we know">ev ${evidenceOf(c)}</span>`,
+    `<span class="pill-meta" title="Evidence score — how much we know (separate from opportunity)">ev ${evidenceOf(c)}</span>`,
   ].join("");
   const realFounders = (c.founders || []).filter((f) => f.source === "sec_filing");
   const fline = realFounders.length
     ? `<div class="founders-line"><span class="fk">Team</span>${escapeHtml(realFounders.slice(0, 3).map((f) => f.name).join(", "))}${realFounders.length > 3 ? ` +${realFounders.length - 3}` : ""}</div>`
     : "";
-  const on = state.watch.has(c.id) ? "on" : "";
 
   return `
     <div class="card" data-memo="${escapeHtml(c.id)}">
@@ -425,30 +575,11 @@ function cardHtml(c) {
       <div class="card-foot">
         ${link ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(linkLabel)}</a>` : `<span class="sub">no website yet</span>`}
         <div class="foot-actions">
-          <button class="star ${on}" data-id="${escapeHtml(c.id)}" title="Save to watchlist">★</button>
+          ${rvChipHtml(c)}
           <button class="memo-btn">Analysis →</button>
         </div>
       </div>
     </div>`;
-}
-
-// --- Watchlist -------------------------------------------------------------
-function toggleWatch(id) {
-  if (state.watch.has(id)) state.watch.delete(id); else state.watch.add(id);
-  localStorage.setItem("scout:watch", JSON.stringify([...state.watch]));
-  updateWatchCount();
-  document.querySelectorAll(`.star[data-id="${CSS.escape(id)}"]`).forEach((s) => s.classList.toggle("on", state.watch.has(id)));
-  if (state.tab === "watch") renderWatchlist();
-}
-function updateWatchCount() { $("watchCount").textContent = state.watch.size; }
-function renderWatchlist() {
-  const rows = state.companies.filter((c) => state.watch.has(c.id));
-  $("watchEmpty").hidden = rows.length !== 0;
-  $("watchlist").className = "groups" + (state.view === "list" ? " list" : "");
-  $("watchlist").innerHTML = rows.length
-    ? `<div class="month-group"><div class="cards">${rows.map(cardHtml).join("")}</div></div>`
-    : "";
-  bindCards($("watchlist"));
 }
 
 // --- Drawer ----------------------------------------------------------------
@@ -513,12 +644,6 @@ function verificationHtml(c) {
   return `<div class="memo-sec"><h4>Verification ${status}</h4>${items ? `<ul>${items}</ul>` : "<p>No authoritative signal found.</p>"}</div>`;
 }
 
-const SRC_LABEL = {
-  sec_form_d: "SEC Form D", state_incorporation: "State registry", accelerator: "Accelerator",
-  website: "Company website", job_posting: "Hiring signal", founder_profile: "Founder identity",
-  product_launch: "Product launch",
-};
-
 function evidencePanelHtml(c) {
   const recs = c.source_records || [];
   const tier = tierOf(c);
@@ -539,13 +664,36 @@ function evidencePanelHtml(c) {
         <span class="pill-meta tier-${tier}">Tier ${tier} · ${escapeHtml(TIER_LABEL[tier] || "")}</span>
         <span class="pill-meta ${FINANCE_CLASS[financingOf(c)] || ""}">${escapeHtml(financingOf(c))}</span>
       </div>
-      ${rows ? `<div class="ev-block"><div class="k">Sources used</div><ul class="ev-list">${rows}</ul></div>` : ""}
+      ${rows ? `<div class="ev-block"><div class="k">Sources used (verified)</div><ul class="ev-list">${rows}</ul></div>` : ""}
       ${missing ? `<div class="ev-block"><div class="k">Missing / not yet checked</div><ul class="ev-list">${missing}</ul></div>` : ""}
     </div>`;
 }
 
+function recommendedAction(c) {
+  const miss = c.missing_data || [];
+  const verdict = (c.recommendation && c.recommendation.verdict) || "";
+  let line;
+  if (!formDFound(c)) {
+    const checks = miss.length ? miss.slice(0, 2).map((m) => m.toLowerCase()).join(" and ") : "founder identity";
+    line = `Verify ${checks}, then watch for a Form D filing. Re-score weekly.`;
+  } else {
+    line = verdict === "Strong interest"
+      ? "Financing confirmed — strong signal. Consider direct outreach."
+      : "Form D confirmed. Track for follow-on signals and team build-out.";
+  }
+  return `<div class="memo-sec"><h4>Recommended next action</h4><p class="next-action">${escapeHtml(line)}</p></div>`;
+}
+
+function reviewActionsHtml(c) {
+  const cur = reviewOf(c.id);
+  const btns = REVIEW_ORDER.map((s) =>
+    `<button class="rvbtn ${cur === s ? "on" : ""}" data-rvbtn="${s}" data-id="${escapeHtml(c.id)}">${REVIEW[s].icon} ${REVIEW[s].label}</button>`
+  ).join("");
+  return `<div class="memo-sec"><h4>Triage</h4><div class="rvbtns">${btns}<button class="rvbtn clear" data-rvbtn="" data-id="${escapeHtml(c.id)}">Clear</button></div></div>`;
+}
+
 function openMemo(id) {
-  const c = state.companies.find((x) => x.id === id);
+  const c = state.byId[id];
   if (!c) return;
   const m = c.memo || {};
   const rec = c.recommendation;
@@ -581,6 +729,8 @@ function openMemo(id) {
       <div class="memo-kv"><div class="k">Category</div><div class="v">${escapeHtml(m.market_category || c.ai_category || "—")}</div></div>
     </div>
     ${evidencePanelHtml(c)}
+    ${recommendedAction(c)}
+    ${reviewActionsHtml(c)}
     ${foundersHtml(c.founders)}
     ${scoreBarsHtml(c.scores)}
     ${m.thesis ? `<div class="memo-sec"><h4>Investment thesis</h4><p>${escapeHtml(m.thesis)}</p></div>` : ""}
@@ -593,6 +743,9 @@ function openMemo(id) {
   $("drawerOverlay").hidden = false;
   $("drawer").scrollTop = 0;
   $("drawer").querySelector(".close").addEventListener("click", closeMemo);
+  $("drawer").querySelectorAll("[data-rvbtn]").forEach((b) =>
+    b.addEventListener("click", () => { setReview(b.getAttribute("data-id"), b.getAttribute("data-rvbtn")); })
+  );
 }
 function closeMemo() { $("drawer").hidden = true; $("drawerOverlay").hidden = true; }
 
