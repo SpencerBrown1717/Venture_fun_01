@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-31T18:28:10+00:00",
+  "generated_at": "2026-05-31T18:33:08+00:00",
   "stats": {
-    "total": 289,
+    "total": 294,
     "ai_total": 15,
-    "avg_score": 0.038,
+    "avg_score": 0.037,
     "months": 5,
     "sources": [
       "delaware"
@@ -22367,6 +22367,337 @@
       "competitive": null,
       "recommendation": null,
       "id": "delaware-4b05d2921aa6",
+      "month": "2026-01"
+    },
+    {
+      "name": "Architect Financial Technologies Inc.",
+      "source": "delaware",
+      "source_id": "0001953535",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-01-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "verified_real": true,
+      "verification": [
+        "SEC EDGAR CIK 0001953535"
+      ],
+      "description": "Form D filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $35,549,952 raised (Series B).",
+      "raw": {
+        "cik": "0001953535",
+        "accession": "0001953535-26-000001:primary_doc.xml",
+        "file_date": "2026-01-13",
+        "file_type": "D",
+        "inc_states": [
+          "DE"
+        ],
+        "biz_states": [
+          "IL"
+        ],
+        "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001953535&type=D",
+        "registry": "SEC EDGAR",
+        "industry_group": "Other Technology",
+        "is_fund": false,
+        "offering_amount": 40549924,
+        "amount_sold": 35549952,
+        "revenue_range": "",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/1953535/000195353526000001/primary_doc.xml",
+        "stage": "Series B"
+      },
+      "ai_score": 0.0,
+      "is_ai": false,
+      "ai_signals": [],
+      "ai_category": "",
+      "memo": null,
+      "founders": [
+        {
+          "name": "Brett Harrison",
+          "role": "Executive Officer, Director",
+          "location": "Chicago, IL",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Brett%20Harrison%20Architect%20Financial%20Technologies%20Inc.",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Steven Venino",
+          "role": "Director",
+          "location": "Chicago, IL",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Steven%20Venino%20Architect%20Financial%20Technologies%20Inc.",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Venu Palparthi",
+          "role": "Director",
+          "location": "Chicago, IL",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Venu%20Palparthi%20Architect%20Financial%20Technologies%20Inc.",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Karista Vaeth",
+          "role": "Director",
+          "location": "Chicago, IL",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Karista%20Vaeth%20Architect%20Financial%20Technologies%20Inc.",
+          "source": "sec_filing"
+        },
+        {
+          "name": "John Smollen",
+          "role": "Director",
+          "location": "Chicago, IL",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=John%20Smollen%20Architect%20Financial%20Technologies%20Inc.",
+          "source": "sec_filing"
+        }
+      ],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "delaware-53712a18482a",
+      "month": "2026-01"
+    },
+    {
+      "name": "OnBrand Software, Inc.",
+      "source": "delaware",
+      "source_id": "0002022968",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-01-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "verified_real": true,
+      "verification": [
+        "SEC EDGAR CIK 0002022968"
+      ],
+      "description": "Form D/A filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $3,499,999 raised (Seed).",
+      "raw": {
+        "cik": "0002022968",
+        "accession": "0001470831-26-000027:primary_doc.xml",
+        "file_date": "2026-01-13",
+        "file_type": "D/A",
+        "inc_states": [
+          "DE"
+        ],
+        "biz_states": [
+          "TX"
+        ],
+        "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002022968&type=D",
+        "registry": "SEC EDGAR",
+        "industry_group": "Other Technology",
+        "is_fund": false,
+        "offering_amount": 3499999,
+        "amount_sold": 3499999,
+        "revenue_range": "",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/2022968/000147083126000027/primary_doc.xml",
+        "stage": "Seed"
+      },
+      "ai_score": 0.0,
+      "is_ai": false,
+      "ai_signals": [],
+      "ai_category": "",
+      "memo": null,
+      "founders": [
+        {
+          "name": "Preston Plowman",
+          "role": "Executive Officer, Director, Promoter",
+          "location": "McKinney, TX",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Preston%20Plowman%20OnBrand%20Software%2C%20Inc.",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Brian Kimball",
+          "role": "Executive Officer, Director, Promoter",
+          "location": "McKinney, TX",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Brian%20Kimball%20OnBrand%20Software%2C%20Inc.",
+          "source": "sec_filing"
+        }
+      ],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "delaware-48ea3c92c25f",
+      "month": "2026-01"
+    },
+    {
+      "name": "ER REIT VI LLC",
+      "source": "delaware",
+      "source_id": "0002104261",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-01-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "verified_real": true,
+      "verification": [
+        "SEC EDGAR CIK 0002104261"
+      ],
+      "description": "Form D filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $121,000 raised (Pre-seed).",
+      "raw": {
+        "cik": "0002104261",
+        "accession": "0002104261-26-000001:primary_doc.xml",
+        "file_date": "2026-01-13",
+        "file_type": "D",
+        "inc_states": [
+          "DE"
+        ],
+        "biz_states": [
+          "NY"
+        ],
+        "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002104261&type=D",
+        "registry": "SEC EDGAR",
+        "industry_group": "REITS and Finance",
+        "is_fund": false,
+        "offering_amount": 125000,
+        "amount_sold": 121000,
+        "revenue_range": "",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/2104261/000210426126000001/primary_doc.xml",
+        "stage": "Pre-seed"
+      },
+      "ai_score": 0.0,
+      "is_ai": false,
+      "ai_signals": [],
+      "ai_category": "",
+      "memo": null,
+      "founders": [
+        {
+          "name": "Mark Seelig",
+          "role": "Director",
+          "location": "Plainview, NY",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mark%20Seelig%20ER%20REIT%20VI%20LLC",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Adam Seelig",
+          "role": "Director",
+          "location": "Plainview, NY",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Adam%20Seelig%20ER%20REIT%20VI%20LLC",
+          "source": "sec_filing"
+        },
+        {
+          "name": "James Hausman",
+          "role": "Director",
+          "location": "Plainview, NY",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=James%20Hausman%20ER%20REIT%20VI%20LLC",
+          "source": "sec_filing"
+        }
+      ],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "delaware-70008743c262",
+      "month": "2026-01"
+    },
+    {
+      "name": "NexPoint Life Sciences III DST",
+      "source": "delaware",
+      "source_id": "0002008210",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-01-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "verified_real": true,
+      "verification": [
+        "SEC EDGAR CIK 0002008210"
+      ],
+      "description": "Form D/A filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $25,178,789 raised (Series B).",
+      "raw": {
+        "cik": "0002008210",
+        "accession": "0002008210-26-000001:primary_doc.xml",
+        "file_date": "2026-01-13",
+        "file_type": "D/A",
+        "inc_states": [
+          "DE"
+        ],
+        "biz_states": [
+          "TX"
+        ],
+        "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002008210&type=D",
+        "registry": "SEC EDGAR",
+        "industry_group": "Other Real Estate",
+        "is_fund": false,
+        "offering_amount": 30661253,
+        "amount_sold": 25178789,
+        "revenue_range": "",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/2008210/000200821026000001/primary_doc.xml",
+        "stage": "Series B"
+      },
+      "ai_score": 0.0,
+      "is_ai": false,
+      "ai_signals": [],
+      "ai_category": "",
+      "memo": null,
+      "founders": [
+        {
+          "name": "Brian Mitts",
+          "role": "Executive Officer",
+          "location": "Dallas, TX",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Brian%20Mitts%20NexPoint%20Life%20Sciences%20III%20DST",
+          "source": "sec_filing"
+        },
+        {
+          "name": "Matt McGraner",
+          "role": "Executive Officer",
+          "location": "Dallas, TX",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Matt%20McGraner%20NexPoint%20Life%20Sciences%20III%20DST",
+          "source": "sec_filing"
+        }
+      ],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "delaware-ec34aa04ba53",
+      "month": "2026-01"
+    },
+    {
+      "name": "Griffin Capital Qualified Opportunity Zone Fund IV, L.P.",
+      "source": "delaware",
+      "source_id": "0002007564",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-01-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "verified_real": true,
+      "verification": [
+        "SEC EDGAR CIK 0002007564"
+      ],
+      "description": "Form D/A filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $342,008,125 raised (Growth).",
+      "raw": {
+        "cik": "0002007564",
+        "accession": "0002007564-26-000001:primary_doc.xml",
+        "file_date": "2026-01-13",
+        "file_type": "D/A",
+        "inc_states": [
+          "DE"
+        ],
+        "biz_states": [
+          "CA"
+        ],
+        "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0002007564&type=D",
+        "registry": "SEC EDGAR",
+        "industry_group": "Other Real Estate",
+        "is_fund": false,
+        "offering_amount": 500000000,
+        "amount_sold": 342008125,
+        "revenue_range": "",
+        "filing_url": "https://www.sec.gov/Archives/edgar/data/2007564/000200756426000001/primary_doc.xml",
+        "stage": "Growth"
+      },
+      "ai_score": 0.0,
+      "is_ai": false,
+      "ai_signals": [],
+      "ai_category": "",
+      "memo": null,
+      "founders": [
+        {
+          "name": "Kevin Shields",
+          "role": "Executive Officer",
+          "location": "El Segundo, CA",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Kevin%20Shields%20Griffin%20Capital%20Qualified%20Opportunity%20Zone%20Fund%20IV%2C%20L.P.",
+          "source": "sec_filing"
+        }
+      ],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "delaware-272860a45620",
       "month": "2026-01"
     },
     {
