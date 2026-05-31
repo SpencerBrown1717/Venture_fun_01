@@ -1,11 +1,11 @@
-name: Deploy SCOUT dashboard to GitHub Pages
+name: Scout — deploy dashboard
 
-# Publishes the static dashboard/ folder to GitHub Pages.
-#
-# Design: the DEPLOY never depends on the data pipeline. The committed
-# dashboard/data.json is always shippable, so a flaky SEC EDGAR fetch can never
-# block the site from going live. The data refresh runs best-effort (monthly /
-# on demand) and simply commits a newer data.json when it succeeds.
+# Publishes the static dashboard to GitHub Pages via the modern Actions flow.
+# - On push: deploy the already-committed dashboard instantly (reliable; no
+#   dependency on live data sources).
+# - On schedule / manual: also refresh the dataset from SEC EDGAR first, commit
+#   it, then deploy. A flaky source can never take the site down — the committed
+#   dashboard/data.json is always the fallback.
 on:
   push:
     branches: [main]
@@ -32,16 +32,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      # --- Best-effort data refresh (never blocks the deploy) -------------
-      - name: Grow dataset — real DE incorporations + Form D enrichment
+      - name: Refresh dataset — real DE incorporations + Pre-Form-D Radar
+        # Only on schedule/manual runs, and never fatal: if SEC EDGAR is slow or
+        # changes shape, we keep the committed dataset and still deploy.
+        if: github.event_name != 'push'
         continue-on-error: true
-        run: python -m scout gen-sample --since $(date +%Y)-01-01 --limit 400 --general-fill
+        run: |
+          python -m scout gen-sample --since $(date +%Y)-01-01 --limit 400 --general-fill
+          python -m scout run --source sample --limit 500 --research --no-fetch-site --include-pre-form-d --pre-form-d-limit 200 --export
 
-      - name: Run Venture Analyst Swarm (Form D + Pre-Form-D Radar)
-        continue-on-error: true
-        run: python -m scout run --source sample --limit 500 --research --no-fetch-site --include-pre-form-d --pre-form-d-limit 200 --export
-
-      - name: Commit refreshed dataset (if it changed)
+      - name: Commit refreshed dataset (keeps repo data current)
+        if: github.event_name != 'push'
         continue-on-error: true
         run: |
           git config user.name "scout-bot"
@@ -50,14 +51,19 @@ jobs:
           git commit -m "chore: refresh Delaware dataset [skip ci]" || echo "no changes"
           git push || echo "push skipped"
 
-      # --- Always publish the committed dashboard -------------------------
-      - name: Ensure Pages serves static assets verbatim
-        run: touch dashboard/.nojekyll
+      - name: Assemble Pages site
+        # Site root = the redirect index.html; the full app lives at /dashboard/.
+        # .nojekyll serves every file as-is (no Jekyll processing).
+        run: |
+          mkdir -p _site/dashboard
+          cp -r dashboard/. _site/dashboard/
+          cp index.html _site/index.html
+          touch _site/.nojekyll
 
-      - name: Upload dashboard as Pages artifact
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dashboard
+          path: _site
 
   deploy:
     needs: build
