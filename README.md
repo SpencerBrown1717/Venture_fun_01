@@ -6,35 +6,44 @@
 > startup databases.
 
 This is a **Week 1** submission for the AI Incorporation Scout assignment, plus
-a few **Week 2 stretch goals** (research memos, trend detection, and a natural
-language query interface).
+**most of the Week 2 stretch goals**: a multi-agent *Venture Analyst Swarm*
+(research memos, founder discovery, opportunity scoring, competitive landscapes,
+and a final recommendation), trend detection, a natural-language query
+interface, and an always-on GitHub Actions deployment.
 
 ---
 
 ## What it does
 
+A pipeline of cooperating, specialized agents — the **Venture Analyst Swarm** —
+turns a raw public record into an investor-ready recommendation:
+
 ```
-            ┌────────────┐   ┌────────────┐   ┌────────────┐   ┌──────────┐
- public ──▶ │  COLLECT   │─▶ │ CLASSIFY   │─▶ │ RESEARCH   │─▶ │  STORE   │
- sources    │ connectors │   │ AI score   │   │ memo agent │   │ SQLite   │
-            └────────────┘   └────────────┘   └────────────┘   └────┬─────┘
-                                                                     │ export
-                                                                     ▼
-                                                            ┌──────────────────┐
-                                                            │ static dashboard │
-                                                            │  (GitHub Pages)  │
-                                                            └──────────────────┘
+   DISCOVERY → CLASSIFIER → RESEARCH → FOUNDER → SCORING → MARKET → REPORTING
+   (sources)   (AI score)   (memo +    (team    (6-dim   (leaders  (verdict +
+                            website)   profiles) opp)     + peers)  rationale)
+                                          │
+                                          ▼
+                                    STORE (SQLite) ── export ──▶ static dashboard
+                                                                  (GitHub Pages)
 ```
 
-1. **Collect** newly formed company records from public sources (live SEC EDGAR
-   Form D filings, plus a bundled offline sample dataset).
-2. **Classify** each company's AI-relatedness with a transparent, calibrated
-   confidence score (`0..1`) and a subsector category. Optional LLM upgrade.
-3. **Research** (stretch goal) each promising company: visit its website,
-   estimate market category & stage, and draft a one-page investment memo.
-4. **Store** everything in a structured SQLite database (idempotent upserts).
-5. **Export** a precomputed `data.json` powering a static, GitHub Pages–ready
-   dashboard with grouping, sorting, filtering, trend charts, and NL search.
+1. **Discovery** — collect newly formed company records from public sources
+   (live SEC EDGAR Form D filings + a bundled offline sample dataset).
+2. **Classifier** — transparent, calibrated AI-relatedness score (`0..1`) and a
+   subsector category. Optional LLM upgrade.
+3. **Research** *(stretch 1)* — visit the website, estimate market & stage, draft
+   a one-page investment memo.
+4. **Founder** *(stretch 2)* — structured founder/executive profiles.
+5. **Scoring** *(stretch 4)* — a 6-dimension opportunity score + confidence.
+6. **Market** *(stretch 5)* — competitive landscape: real category leaders,
+   discovered peers, white space.
+7. **Reporting** *(stretch 3)* — synthesize into a final recommendation
+   (verdict + conviction + rationale).
+8. **Store & Export** — persist to SQLite (idempotent upserts) and emit a
+   precomputed `data.json` powering a static dashboard with a Top-Opportunities
+   leaderboard, grouping/sorting/filtering, trend charts *(stretch 6)*, and
+   natural-language search *(stretch 7)*.
 
 ---
 
@@ -104,14 +113,23 @@ Useful `run` flags: `--source {sample,sec_edgar}`, `--limit N`, `--llm`,
 
 ## Deploying the dashboard to GitHub Pages
 
-The `dashboard/` folder is fully static (HTML/CSS/JS + `data.json`).
+There are two supported paths:
 
-1. Commit `dashboard/` (including `data.json`).
-2. In your repo settings → **Pages**, set the source to the `dashboard/` folder
-   (or copy its contents to `/docs` or a `gh-pages` branch).
-3. Done — the dashboard reads `data.json` relative to itself.
+**A. GitHub Actions (recommended, always-on — stretch goal 8).**
+`.github/workflows/deploy.yml` runs the pipeline (offline sample baseline + a
+best-effort live SEC EDGAR enrichment) and publishes `dashboard/` to Pages on
+every push, on a **daily schedule**, and on manual dispatch — so the public
+dashboard keeps refreshing itself with no manual intervention.
 
-To refresh the data: re-run the pipeline with `--export`, then commit the
+> One-time setup: repo **Settings → Pages → Build and deployment → Source =
+> GitHub Actions**. The dashboard then serves at the site root.
+
+**B. Deploy from branch (zero config).**
+Set **Settings → Pages → Source = Deploy from a branch**, branch `main`, folder
+`/ (root)`. The root `index.html` redirects to `./dashboard/`, which reads its
+committed `data.json`.
+
+To refresh data manually: re-run the pipeline with `--export` and commit the
 updated `dashboard/data.json`.
 
 ---
@@ -121,11 +139,15 @@ updated `dashboard/data.json`.
 ```
 scout/
 ├── __main__.py          # CLI entrypoint (argparse)
-├── pipeline.py          # orchestration: collect → classify → research → store
+├── pipeline.py          # Venture Analyst Swarm orchestration (stretch 3)
 ├── models.py            # Company dataclass + stable IDs (idempotent upserts)
 ├── db.py                # SQLite storage layer (schema, upsert, queries, stats)
-├── export.py            # DB → dashboard/data.json + trend aggregation
+├── export.py            # DB → dashboard/data.json + trends + leaderboard
 ├── seed.py              # deterministic sample-dataset generator
+├── score.py             # opportunity scoring engine (stretch 4)
+├── founders.py          # founder discovery agent (stretch 2)
+├── competitive.py       # competitive landscape generator (stretch 5)
+├── recommend.py         # reporting agent: final recommendation (stretch 3)
 ├── sources/             # pluggable data-source connectors
 │   ├── base.py          #   Source ABC
 │   ├── sample.py        #   offline bundled dataset
@@ -133,16 +155,20 @@ scout/
 ├── classify/            # AI-relatedness classification
 │   ├── heuristic.py     #   transparent, calibrated keyword/logistic scorer
 │   └── llm.py           #   optional OpenAI classifier (graceful fallback)
-├── research/            # autonomous research agent (stretch goal 1)
+├── research/            # autonomous research agent (stretch 1)
 │   └── memo.py          #   website visit + investment-memo generation
 └── data/
     └── sample_companies.json
 
 dashboard/               # static, GitHub Pages–ready front-end
-├── index.html
+├── index.html           #   leaderboard, trends, filters, NL search, drawer
 ├── styles.css
 ├── app.js
 └── data.json            # precomputed export (committed for instant deploy)
+
+index.html               # root redirect → dashboard/ (for branch-based Pages)
+.github/workflows/
+└── deploy.yml           # always-on: run pipeline + deploy Pages (stretch 8)
 ```
 
 ### Data model
@@ -164,13 +190,27 @@ into a calibrated `0..1` confidence, with field weighting (a name match counts
 more than a description match) and whole-word matching to avoid false positives
 like *"Mountain **AI**r"*.
 
-### Research agent (stretch goal 1)
+### The analyst swarm (stretch goals 1–5)
 
-For companies above a confidence threshold, the agent optionally fetches the
-company website (dependency-free HTML→text extraction), estimates market
-category and funding stage, and drafts a one-page memo: one-liner, thesis,
-reasoning, market read, and key risks. It always produces a memo, degrading
-from *LLM prose* → *site-enriched heuristic* → *metadata-only heuristic*.
+For companies above a confidence threshold, a sequence of specialized agents
+runs (orchestrated in `pipeline.py`):
+
+- **Research** (`research/memo.py`) optionally fetches the website
+  (dependency-free HTML→text), estimates market & stage, and drafts a memo:
+  one-liner, thesis, reasoning, market read, risks. Degrades *LLM prose →
+  site-enriched heuristic → metadata-only heuristic*; always produces a memo.
+- **Founder** (`founders.py`) emits structured founder profiles. With `--llm`
+  and fetched site text it extracts named people; otherwise it generates clearly
+  **labeled synthetic** profiles so the product is fully demonstrable offline.
+- **Scoring** (`score.py`) produces six explainable 0–100 sub-scores (team,
+  market, differentiation, technical, defensibility, timing) blending category
+  priors, company evidence, and a deterministic per-company variation, plus an
+  overall score and an evidence-based confidence.
+- **Market** (`competitive.py`) maps each company to real category leaders (from
+  a curated KB), discovered peers in the dataset, and a white-space prompt.
+- **Reporting** (`recommend.py`) synthesizes the above into a verdict
+  (*Strong interest → Track → Monitor → Pass*), a conviction level, and a
+  rationale citing the strongest/weakest signals.
 
 ### Trend detection (stretch goal 6)
 
@@ -218,6 +258,18 @@ intent onto the existing filter controls — no backend required.
   securities; it misses companies that haven't raised, and includes some funds
   /SPVs. It's a high-signal *slice*, not full incorporation coverage. Adding a
   state-registry or Companies House connector would broaden the funnel.
+- **Founder profiles are synthetic by default.** Reliable founder data for
+  brand-new companies requires paid people-data APIs (PeopleDataLabs, Clearbit,
+  LinkedIn). The default agent generates clearly-labeled illustrative profiles
+  (every profile carries `"source": "synthetic"`); the `--llm` path extracts
+  real names from website text when available. Nothing is presented as verified.
+- **Opportunity scores are heuristic/illustrative.** They blend category priors
+  with available evidence and a deterministic per-company variation — a
+  defensible, auditable scaffold, not a calibrated model. They're meant to show
+  the *structure*; a real data layer (funding, traction, team graph) plugs in
+  behind the same interface.
+- **Competitive leaders are a curated snapshot.** Grounded in real companies but
+  not exhaustive or live; adjacency grows as the scout discovers more peers.
 - **Heuristic classifier has blind spots.** It keys on names/descriptions, so a
   genuinely-AI company with a generic name and no description can be missed
   (false negative), and a buzzword-stuffed non-AI company can score high (false
@@ -235,8 +287,16 @@ intent onto the existing filter controls — no backend required.
 
 - ✅ **Goal 1 — Autonomous Research Agent:** website visit + one-page investment
   memo (market category, stage, thesis, risks, reasoning).
+- ✅ **Goal 2 — Founder Discovery Agent:** structured founder/executive profiles
+  (LLM website extraction, with labeled-synthetic fallback).
+- ✅ **Goal 3 — Venture Analyst Swarm:** cooperating Discovery/Research/Founder/
+  Scoring/Market/Reporting agents producing a final recommendation.
+- ✅ **Goal 4 — Opportunity Scoring Engine:** six explainable dimensions +
+  overall score + confidence.
+- ✅ **Goal 5 — Competitive Landscape Generator:** category leaders, discovered
+  peers, and white space per company.
 - ✅ **Goal 6 — Trend Detection Engine:** month-over-month AI momentum, category
   & geographic distributions, accelerating/cooling sectors.
 - ✅ **Goal 7 — Natural Language Interface:** plain-English dashboard queries.
-- 🔜 Goals 2–5 & 8 (founders, scoring engine, multi-agent swarm, competitive
-  maps, always-on platform) are natural extensions of the same architecture.
+- ✅ **Goal 8 — Always-on platform:** scheduled GitHub Action discovers,
+  analyzes, and redeploys the dashboard with no manual intervention.

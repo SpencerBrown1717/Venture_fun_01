@@ -102,7 +102,7 @@ def build_parser() -> argparse.ArgumentParser:
     r.add_argument("--source", default="sample", help="Source connector name (sample, sec_edgar)")
     r.add_argument("--limit", type=int, default=200)
     r.add_argument("--llm", action="store_true", help="Use LLM classifier/memos (needs OPENAI_API_KEY)")
-    r.add_argument("--research", action="store_true", help="Run the investment-memo research agent")
+    r.add_argument("--research", action="store_true", help="Run the full Venture Analyst Swarm (memo + founders + scoring + competitive + recommendation)")
     r.add_argument("--research-min-score", type=float, default=0.5, dest="research_min_score")
     r.add_argument("--no-fetch-site", action="store_true", help="Don't visit company websites during research")
     r.add_argument("--export", action="store_true", help="Export dashboard data after the run")

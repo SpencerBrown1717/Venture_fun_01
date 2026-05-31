@@ -52,6 +52,11 @@ def _trends(companies: list[dict]) -> dict:
 
     geo = Counter(c.get("jurisdiction") or "Unknown" for c in ai)
     categories = Counter(c.get("ai_category") for c in ai if c.get("ai_category"))
+    verdicts = Counter(
+        (c.get("recommendation") or {}).get("verdict")
+        for c in ai
+        if c.get("recommendation")
+    )
 
     return {
         "ai_by_month": [{"month": m, "count": by_month[m]} for m in months],
@@ -59,7 +64,25 @@ def _trends(companies: list[dict]) -> dict:
         "geography": [{"jurisdiction": k, "count": v} for k, v in geo.most_common(10)],
         "accelerating": accelerating[:5],
         "cooling": cooling[:5],
+        "verdicts": [{"verdict": k, "count": v} for k, v in verdicts.most_common() if k],
     }
+
+
+def _leaderboard(companies: list[dict], n: int = 12) -> list[dict]:
+    """Top AI opportunities by overall score (stretch goal 4/8 surfacing)."""
+    scored = [c for c in companies if c.get("is_ai") and c.get("scores")]
+    scored.sort(key=lambda c: c["scores"].get("overall", 0), reverse=True)
+    return [
+        {
+            "id": c["id"],
+            "name": c["name"],
+            "ai_category": c.get("ai_category"),
+            "overall": c["scores"].get("overall"),
+            "confidence": c["scores"].get("confidence"),
+            "verdict": (c.get("recommendation") or {}).get("verdict"),
+        }
+        for c in scored[:n]
+    ]
 
 
 def export(db: Database, out_path: str | Path = "dashboard/data.json") -> dict:
@@ -79,6 +102,7 @@ def export(db: Database, out_path: str | Path = "dashboard/data.json") -> dict:
         },
         "months": months,
         "trends": _trends(companies),
+        "leaderboard": _leaderboard(companies),
         "companies": companies,
     }
 

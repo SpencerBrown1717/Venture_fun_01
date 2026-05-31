@@ -1,0 +1,62 @@
+name: Scout — discover & deploy dashboard
+
+# Always-on Venture Intelligence (stretch goal 8):
+# regenerate the data with the autonomous pipeline and publish the dashboard to
+# GitHub Pages. Runs on push, on a daily schedule, and on demand.
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "17 13 * * *" # daily ~06:17 PT
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Generate sample dataset
+        run: python -m scout gen-sample
+
+      - name: Run the Venture Analyst Swarm (offline baseline)
+        run: python -m scout run --source sample --research --no-fetch-site --export
+
+      - name: Enrich with live SEC EDGAR Form D filings (best-effort)
+        continue-on-error: true
+        run: |
+          python -m scout run \
+            --source sec_edgar \
+            --query '"artificial intelligence"' \
+            --days-back 120 --limit 40 \
+            --user-agent "AI-Incorporation-Scout (github-actions; contact: scout@example.com)" \
+            --research --export
+
+      - name: Upload dashboard as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dashboard
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

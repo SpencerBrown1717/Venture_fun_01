@@ -48,8 +48,12 @@ class Company:
     ai_signals: list[str] = field(default_factory=list)
     ai_category: str = ""           # best-guess AI subsector
 
-    # --- populated by the research agent (optional) ---
-    memo: Optional[dict[str, Any]] = None
+    # --- populated by the Venture Analyst Swarm (optional) ---
+    memo: Optional[dict[str, Any]] = None          # research agent (stretch 1)
+    founders: list[dict[str, Any]] = field(default_factory=list)  # founder agent (stretch 2)
+    scores: Optional[dict[str, Any]] = None        # scoring engine (stretch 4)
+    competitive: Optional[dict[str, Any]] = None   # market/competitive agent (stretch 5)
+    recommendation: Optional[dict[str, Any]] = None  # reporting agent (stretch 3)
 
     id: str = ""
 
@@ -87,6 +91,10 @@ class Company:
             "ai_signals": json.dumps(self.ai_signals),
             "ai_category": self.ai_category,
             "memo": json.dumps(self.memo) if self.memo else None,
+            "founders": json.dumps(self.founders) if self.founders else None,
+            "scores": json.dumps(self.scores) if self.scores else None,
+            "competitive": json.dumps(self.competitive) if self.competitive else None,
+            "recommendation": json.dumps(self.recommendation) if self.recommendation else None,
             "raw": json.dumps(self.raw),
         }
 
@@ -107,5 +115,9 @@ class Company:
             ai_signals=json.loads(row["ai_signals"]) if row["ai_signals"] else [],
             ai_category=row["ai_category"] or "",
             memo=json.loads(row["memo"]) if row["memo"] else None,
+            founders=json.loads(row["founders"]) if row["founders"] else [],
+            scores=json.loads(row["scores"]) if row["scores"] else None,
+            competitive=json.loads(row["competitive"]) if row["competitive"] else None,
+            recommendation=json.loads(row["recommendation"]) if row["recommendation"] else None,
             raw=json.loads(row["raw"]) if row["raw"] else {},
         )

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-31T16:49:54+00:00",
+  "generated_at": "2026-05-31T17:07:20+00:00",
   "stats": {
     "total": 41,
     "ai_total": 20,
@@ -53,22 +53,30 @@
     "categories": [
       {
         "category": "AI Infrastructure",
-        "count": 6
+        "count": 3
       },
       {
-        "category": "Developer Tools",
-        "count": 4
+        "category": "Computer Vision",
+        "count": 3
+      },
+      {
+        "category": "Healthcare AI",
+        "count": 3
+      },
+      {
+        "category": "Fintech AI",
+        "count": 3
       },
       {
         "category": "AI Agents",
         "count": 2
       },
       {
-        "category": "Fintech AI",
+        "category": "NLP / Language",
         "count": 2
       },
       {
-        "category": "Computer Vision",
+        "category": "Data / Analytics",
         "count": 2
       },
       {
@@ -76,15 +84,7 @@
         "count": 1
       },
       {
-        "category": "Healthcare AI",
-        "count": 1
-      },
-      {
-        "category": "Data / Analytics",
-        "count": 1
-      },
-      {
-        "category": "NLP / Language",
+        "category": "Developer Tools",
         "count": 1
       }
     ],
@@ -132,13 +132,19 @@
     ],
     "accelerating": [
       {
-        "category": "Healthcare AI",
+        "category": "Computer Vision",
+        "current": 2,
+        "previous": 1,
+        "delta": 1
+      },
+      {
+        "category": "Data / Analytics",
         "current": 1,
         "previous": 0,
         "delta": 1
       },
       {
-        "category": "Developer Tools",
+        "category": "Healthcare AI",
         "current": 1,
         "previous": 0,
         "delta": 1
@@ -146,24 +152,132 @@
     ],
     "cooling": [
       {
+        "category": "Fintech AI",
+        "current": 0,
+        "previous": 2,
+        "delta": -2
+      },
+      {
         "category": "AI Agents",
         "current": 0,
         "previous": 1,
         "delta": -1
+      }
+    ],
+    "verdicts": [
+      {
+        "verdict": "Track closely",
+        "count": 13
       },
       {
-        "category": "Fintech AI",
-        "current": 0,
-        "previous": 1,
-        "delta": -1
+        "verdict": "Strong interest",
+        "count": 7
       }
     ]
   },
+  "leaderboard": [
+    {
+      "id": "sample-1a8303ed5061",
+      "name": "Quanta MLOps",
+      "ai_category": "AI Infrastructure",
+      "overall": 83,
+      "confidence": 0.89,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-4ac64e759b89",
+      "name": "Mistwave Robotics",
+      "ai_category": "Robotics",
+      "overall": 82,
+      "confidence": 0.89,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-1a2f9dedd75f",
+      "name": "Kindred Care Copilot",
+      "ai_category": "Healthcare AI",
+      "overall": 81,
+      "confidence": 0.92,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-cec956522a6a",
+      "name": "Talos Perception",
+      "ai_category": "Computer Vision",
+      "overall": 79,
+      "confidence": 0.93,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-b4e2cae73ef8",
+      "name": "Meridian Drug Discovery",
+      "ai_category": "Healthcare AI",
+      "overall": 79,
+      "confidence": 0.85,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-088d8040efbf",
+      "name": "Glia Neural",
+      "ai_category": "AI Infrastructure",
+      "overall": 78,
+      "confidence": 0.93,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-cadeb9269643",
+      "name": "Pulse Trading Intelligence",
+      "ai_category": "Fintech AI",
+      "overall": 78,
+      "confidence": 0.89,
+      "verdict": "Strong interest"
+    },
+    {
+      "id": "sample-ba2c029c8894",
+      "name": "Forge Agentic",
+      "ai_category": "AI Agents",
+      "overall": 77,
+      "confidence": 0.94,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-61002b6d6d99",
+      "name": "Solace Health AI",
+      "ai_category": "Healthcare AI",
+      "overall": 75,
+      "confidence": 0.89,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-5e0bb4bde985",
+      "name": "Ledger Sentinel",
+      "ai_category": "Fintech AI",
+      "overall": 75,
+      "confidence": 0.81,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-aa862d910fe2",
+      "name": "Nexus Vector",
+      "ai_category": "AI Infrastructure",
+      "overall": 75,
+      "confidence": 0.81,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-fb3ebac5a1d9",
+      "name": "Quill Copilot",
+      "ai_category": "Developer Tools",
+      "overall": 74,
+      "confidence": 0.85,
+      "verdict": "Track closely"
+    }
+  ],
   "companies": [
     {
       "name": "Forge Agentic",
       "source": "sample",
-      "source_id": "sample-4226174",
+      "source_id": "sample-5893216",
       "jurisdiction": "Paris, FR",
       "formation_date": "2026-03-26",
       "discovered_date": "2026-05-31",
@@ -171,7 +285,7 @@
       "description": "Agentic workflow automation framework with tool use and long-horizon planning.",
       "raw": {
         "name": "Forge Agentic",
-        "source_id": "sample-4226174",
+        "source_id": "sample-5893216",
         "jurisdiction": "Paris, FR",
         "formation_date": "2026-03-26",
         "website": "https://forgeagentic.ai",
@@ -205,13 +319,77 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-377a91c4eb36",
+      "founders": [
+        {
+          "name": "Zoe Patel",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Ramp (since acquired); background in Computational Biology.",
+          "previous_companies": [
+            "Ramp"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Patel%20forgeagentic.ai",
+          "pedigree": 73,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 68,
+            "reason": "1 founder(s) profiled; avg pedigree 73/100"
+          },
+          "market_size": {
+            "score": 84,
+            "reason": "AI Agents TAM prior."
+          },
+          "product_differentiation": {
+            "score": 80,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 79,
+            "reason": "AI Agents technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 66,
+            "reason": "AI Agents moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 93,
+            "reason": "Current investor momentum in AI Agents."
+          }
+        },
+        "overall": 77,
+        "confidence": 0.94
+      },
+      "competitive": {
+        "category": "AI Agents",
+        "leaders": [
+          "Cognition (Devin)",
+          "Sierra",
+          "Adept",
+          "CrewAI",
+          "LangChain"
+        ],
+        "adjacent": [
+          "Verdant Agents"
+        ],
+        "white_space": "reliability, evaluation, and a defensible workflow wedge.",
+        "positioning": "Enters AI Agents against incumbents like Cognition (Devin), Sierra, Adept. Key white space: reliability, evaluation, and a defensible workflow wedge."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.82,
+        "overall": 77,
+        "rationale": "Overall opportunity score 77/100 (confidence 94%). Strongest on timing and market size; watch defensibility. Led by Zoe Patel (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+      },
+      "id": "sample-ba2c029c8894",
       "month": "2026-03"
     },
     {
       "name": "Glia Neural",
       "source": "sample",
-      "source_id": "sample-7645511",
+      "source_id": "sample-5439209",
       "jurisdiction": "London, UK",
       "formation_date": "2025-10-15",
       "discovered_date": "2026-05-31",
@@ -219,7 +397,7 @@
       "description": "Neural network accelerators and an inference runtime for edge devices.",
       "raw": {
         "name": "Glia Neural",
-        "source_id": "sample-7645511",
+        "source_id": "sample-5439209",
         "jurisdiction": "London, UK",
         "formation_date": "2025-10-15",
         "website": "https://glianeural.ai",
@@ -253,13 +431,90 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-b5fdce75a3f4",
+      "founders": [
+        {
+          "name": "Mateo Kim",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Weights & Biases (since acquired); background in Robotics.",
+          "previous_companies": [
+            "Weights & Biases"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Kim%20glianeural.ai",
+          "pedigree": 65,
+          "source": "synthetic"
+        },
+        {
+          "name": "Lena Walsh",
+          "role": "Co-founder & CTO",
+          "background": "Second-time founder; Robotics at Berkeley.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lena%20Walsh%20glianeural.ai",
+          "pedigree": 55,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 59,
+            "reason": "2 founder(s) profiled; avg pedigree 60/100"
+          },
+          "market_size": {
+            "score": 85,
+            "reason": "AI Infrastructure TAM prior."
+          },
+          "product_differentiation": {
+            "score": 68,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 94,
+            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 83,
+            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 92,
+            "reason": "Current investor momentum in AI Infrastructure."
+          }
+        },
+        "overall": 78,
+        "confidence": 0.93
+      },
+      "competitive": {
+        "category": "AI Infrastructure",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Together AI",
+          "Modal",
+          "Fireworks AI",
+          "CoreWeave"
+        ],
+        "adjacent": [
+          "Quanta MLOps",
+          "Nexus Vector"
+        ],
+        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
+        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.82,
+        "overall": 78,
+        "rationale": "Overall opportunity score 78/100 (confidence 93%). Strongest on technical depth and timing; watch team. Led by Mateo Kim (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+      },
+      "id": "sample-088d8040efbf",
       "month": "2025-10"
     },
     {
       "name": "Orchard Computer Vision",
       "source": "sample",
-      "source_id": "sample-6554219",
+      "source_id": "sample-5491765",
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-05-07",
       "discovered_date": "2026-05-31",
@@ -267,7 +522,7 @@
       "description": "Computer vision for precision agriculture: crop health and yield detection.",
       "raw": {
         "name": "Orchard Computer Vision",
-        "source_id": "sample-6554219",
+        "source_id": "sample-5491765",
         "jurisdiction": "Washington, USA",
         "formation_date": "2026-05-07",
         "website": "https://orchardcv.com",
@@ -279,15 +534,15 @@
         "computer vision (name)",
         "computer vision (description)"
       ],
-      "ai_category": "AI Infrastructure",
+      "ai_category": "Computer Vision",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "Computer vision for precision agriculture: crop health and yield detection.",
-        "market_category": "AI Infrastructure",
+        "market_category": "Computer Vision",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Orchard Computer Vision surfaced via sample as a newly formed entity in Washington, USA. Classifier confidence that it is AI-related is high (99%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: computer vision (name), computer vision (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "thesis": "Orchard Computer Vision surfaced via sample as a newly formed entity in Washington, USA. Classifier confidence that it is AI-related is high (99%), best fitting the Computer Vision category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: computer vision (name), computer vision (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
+        "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "risks": [
           "Standard early-stage execution and distribution risk."
         ],
@@ -297,13 +552,77 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-a63518c25f10",
+      "founders": [
+        {
+          "name": "Ethan Novak",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Nuro (since acquired); background in NLP.",
+          "previous_companies": [
+            "Nuro"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Novak%20orchardcv.com",
+          "pedigree": 74,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 73,
+            "reason": "1 founder(s) profiled; avg pedigree 74/100"
+          },
+          "market_size": {
+            "score": 71,
+            "reason": "Computer Vision TAM prior."
+          },
+          "product_differentiation": {
+            "score": 65,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 93,
+            "reason": "Computer Vision technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 65,
+            "reason": "Computer Vision moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 71,
+            "reason": "Current investor momentum in Computer Vision."
+          }
+        },
+        "overall": 73,
+        "confidence": 0.85
+      },
+      "competitive": {
+        "category": "Computer Vision",
+        "leaders": [
+          "Scale AI",
+          "Roboflow",
+          "Landing AI",
+          "V7"
+        ],
+        "adjacent": [
+          "Talos Perception",
+          "Cortex Vision Systems"
+        ],
+        "white_space": "proprietary data loops in underserved industrial verticals.",
+        "positioning": "Enters Computer Vision against incumbents like Scale AI, Roboflow, Landing AI. Key white space: proprietary data loops in underserved industrial verticals."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.77,
+        "overall": 73,
+        "rationale": "Overall opportunity score 73/100 (confidence 85%). Strongest on technical depth and team; watch defensibility. Led by Ethan Novak (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+      },
+      "id": "sample-cbac239a5dfd",
       "month": "2026-05"
     },
     {
       "name": "Kindred Care Copilot",
       "source": "sample",
-      "source_id": "sample-9691178",
+      "source_id": "sample-9660196",
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-11-26",
       "discovered_date": "2026-05-31",
@@ -311,7 +630,7 @@
       "description": "AI patient-triage copilot for primary care clinics and telehealth.",
       "raw": {
         "name": "Kindred Care Copilot",
-        "source_id": "sample-9691178",
+        "source_id": "sample-9660196",
         "jurisdiction": "Paris, FR",
         "formation_date": "2025-11-26",
         "website": "https://kindredcare.ai",
@@ -325,17 +644,17 @@
         "ai (description)",
         "copilot (description)"
       ],
-      "ai_category": "Developer Tools",
+      "ai_category": "Healthcare AI",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "AI patient-triage copilot for primary care clinics and telehealth.",
-        "market_category": "Developer Tools",
+        "market_category": "Healthcare AI",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Kindred Care Copilot surfaced via sample as a newly formed entity in Paris, FR. Classifier confidence that it is AI-related is high (98%), best fitting the Developer Tools category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: copilot (name), ai (website), ai (description), copilot (description). Market read: Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
-        "market_note": "Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
+        "thesis": "Kindred Care Copilot surfaced via sample as a newly formed entity in Paris, FR. Classifier confidence that it is AI-related is high (98%), best fitting the Healthcare AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: copilot (name), ai (website), ai (description), copilot (description). Market read: Large regulated market; reimbursement, clinical validation, and data access gate the upside.",
+        "market_note": "Large regulated market; reimbursement, clinical validation, and data access gate the upside.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "Regulatory and compliance overhead can slow go-to-market."
         ],
         "signals": [
           "copilot (name)",
@@ -345,13 +664,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-5a56b578e428",
+      "founders": [
+        {
+          "name": "Ethan Chen",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Scale AI (since acquired); background in NLP.",
+          "previous_companies": [
+            "Scale AI"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Chen%20kindredcare.ai",
+          "pedigree": 73,
+          "source": "synthetic"
+        },
+        {
+          "name": "Yuki Haddad",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Amazon AWS; PhD, ETH Z\u00fcrich.",
+          "previous_companies": [
+            "Amazon AWS"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Yuki%20Haddad%20kindredcare.ai",
+          "pedigree": 89,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 79,
+            "reason": "2 founder(s) profiled; avg pedigree 81/100"
+          },
+          "market_size": {
+            "score": 92,
+            "reason": "Healthcare AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 65,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 85,
+            "reason": "Healthcare AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 86,
+            "reason": "Healthcare AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 77,
+            "reason": "Current investor momentum in Healthcare AI."
+          }
+        },
+        "overall": 81,
+        "confidence": 0.92
+      },
+      "competitive": {
+        "category": "Healthcare AI",
+        "leaders": [
+          "Abridge",
+          "Ambience",
+          "Hippocratic AI",
+          "OpenEvidence"
+        ],
+        "adjacent": [
+          "Meridian Drug Discovery",
+          "Solace Health AI"
+        ],
+        "white_space": "reimbursement pathways and clinical validation.",
+        "positioning": "Enters Healthcare AI against incumbents like Abridge, Ambience, Hippocratic AI. Key white space: reimbursement pathways and clinical validation."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.84,
+        "overall": 81,
+        "rationale": "Overall opportunity score 81/100 (confidence 92%). Strongest on market size and defensibility; watch differentiation. Led by Ethan Chen (Co-founder & CEO). Competes with Abridge, Ambience, Hippocratic AI."
+      },
+      "id": "sample-1a2f9dedd75f",
       "month": "2025-11"
     },
     {
       "name": "Mistwave Robotics",
       "source": "sample",
-      "source_id": "sample-8214273",
+      "source_id": "sample-153473",
       "jurisdiction": "Paris, FR",
       "formation_date": "2026-01-28",
       "discovered_date": "2026-05-31",
@@ -359,7 +753,7 @@
       "description": "Autonomous mobile robots for warehouse picking using reinforcement learning.",
       "raw": {
         "name": "Mistwave Robotics",
-        "source_id": "sample-8214273",
+        "source_id": "sample-153473",
         "jurisdiction": "Paris, FR",
         "formation_date": "2026-01-28",
         "website": "https://mistwave.io",
@@ -391,13 +785,74 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-e2439d4a81f2",
+      "founders": [
+        {
+          "name": "Yuki Ferraro",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Tesla Autopilot; PhD, Oxford.",
+          "previous_companies": [
+            "Tesla Autopilot"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Yuki%20Ferraro%20mistwave.io",
+          "pedigree": 84,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 83,
+            "reason": "1 founder(s) profiled; avg pedigree 84/100"
+          },
+          "market_size": {
+            "score": 83,
+            "reason": "Robotics TAM prior."
+          },
+          "product_differentiation": {
+            "score": 72,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 97,
+            "reason": "Robotics technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 76,
+            "reason": "Robotics moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 82,
+            "reason": "Current investor momentum in Robotics."
+          }
+        },
+        "overall": 82,
+        "confidence": 0.89
+      },
+      "competitive": {
+        "category": "Robotics",
+        "leaders": [
+          "Figure",
+          "Physical Intelligence",
+          "Skild AI",
+          "Covariant"
+        ],
+        "adjacent": [],
+        "white_space": "real-world reliability and a profitable beachhead deployment.",
+        "positioning": "Enters Robotics against incumbents like Figure, Physical Intelligence, Skild AI. Key white space: real-world reliability and a profitable beachhead deployment."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.84,
+        "overall": 82,
+        "rationale": "Overall opportunity score 82/100 (confidence 89%). Strongest on technical depth and team; watch differentiation. Led by Yuki Ferraro (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
+      },
+      "id": "sample-4ac64e759b89",
       "month": "2026-01"
     },
     {
       "name": "Lattice Inference Labs",
       "source": "sample",
-      "source_id": "sample-6170276",
+      "source_id": "sample-7510137",
       "jurisdiction": "Massachusetts, USA",
       "formation_date": "2026-01-18",
       "discovered_date": "2026-05-31",
@@ -405,7 +860,7 @@
       "description": "High-throughput LLM inference engine with speculative decoding for cheaper serving.",
       "raw": {
         "name": "Lattice Inference Labs",
-        "source_id": "sample-6170276",
+        "source_id": "sample-7510137",
         "jurisdiction": "Massachusetts, USA",
         "formation_date": "2026-01-18",
         "website": "https://latticeinfer.ai",
@@ -418,17 +873,17 @@
         "llm (description)",
         "inference engine (description)"
       ],
-      "ai_category": "AI Infrastructure",
+      "ai_category": "NLP / Language",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "High-throughput LLM inference engine with speculative decoding for cheaper serving.",
-        "market_category": "AI Infrastructure",
+        "market_category": "NLP / Language",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Lattice Inference Labs surfaced via sample as a newly formed entity in Massachusetts, USA. Classifier confidence that it is AI-related is high (98%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (website), llm (description), inference engine (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "thesis": "Lattice Inference Labs surfaced via sample as a newly formed entity in Massachusetts, USA. Classifier confidence that it is AI-related is high (98%), best fitting the NLP / Language category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (website), llm (description), inference engine (description). Market read: Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
+        "market_note": "Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "Exposed to frontier-model commoditization and platform risk."
         ],
         "signals": [
           "ai (website)",
@@ -437,13 +892,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-7550b7b1bf01",
+      "founders": [
+        {
+          "name": "Priya Larsson",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Applied Mathematics at ETH Z\u00fcrich.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Larsson%20latticeinfer.ai",
+          "pedigree": 58,
+          "source": "synthetic"
+        },
+        {
+          "name": "Yuki Ferraro",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Cohere (since acquired); background in Computer Science.",
+          "previous_companies": [
+            "Cohere"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Yuki%20Ferraro%20latticeinfer.ai",
+          "pedigree": 71,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 66,
+            "reason": "2 founder(s) profiled; avg pedigree 64/100"
+          },
+          "market_size": {
+            "score": 81,
+            "reason": "NLP / Language TAM prior."
+          },
+          "product_differentiation": {
+            "score": 60,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 86,
+            "reason": "NLP / Language technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 47,
+            "reason": "NLP / Language moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 76,
+            "reason": "Current investor momentum in NLP / Language."
+          }
+        },
+        "overall": 69,
+        "confidence": 0.9
+      },
+      "competitive": {
+        "category": "NLP / Language",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Cohere",
+          "Mistral AI",
+          "AI21 Labs"
+        ],
+        "adjacent": [
+          "Beacon NLP"
+        ],
+        "white_space": "domain ownership and data advantages vs. frontier-model commoditization.",
+        "positioning": "Enters NLP / Language against incumbents like OpenAI, Anthropic, Cohere. Key white space: domain ownership and data advantages vs. frontier-model commoditization."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.75,
+        "overall": 69,
+        "rationale": "Overall opportunity score 69/100 (confidence 90%). Strongest on technical depth and market size; watch defensibility. Led by Priya Larsson (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
+      },
+      "id": "sample-66a82cbabb73",
       "month": "2026-01"
     },
     {
       "name": "Quanta MLOps",
       "source": "sample",
-      "source_id": "sample-6054203",
+      "source_id": "sample-5083876",
       "jurisdiction": "Delaware, USA",
       "formation_date": "2025-12-21",
       "discovered_date": "2026-05-31",
@@ -451,7 +981,7 @@
       "description": "MLOps platform for model serving, monitoring, and drift detection at scale.",
       "raw": {
         "name": "Quanta MLOps",
-        "source_id": "sample-6054203",
+        "source_id": "sample-5083876",
         "jurisdiction": "Delaware, USA",
         "formation_date": "2025-12-21",
         "website": "https://quantamlops.io",
@@ -483,13 +1013,79 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-3d5b6018f6c0",
+      "founders": [
+        {
+          "name": "Priya Silva",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Apple; PhD, University of Toronto.",
+          "previous_companies": [
+            "Apple"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Silva%20quantamlops.io",
+          "pedigree": 89,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 84,
+            "reason": "1 founder(s) profiled; avg pedigree 89/100"
+          },
+          "market_size": {
+            "score": 85,
+            "reason": "AI Infrastructure TAM prior."
+          },
+          "product_differentiation": {
+            "score": 67,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 94,
+            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 82,
+            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 86,
+            "reason": "Current investor momentum in AI Infrastructure."
+          }
+        },
+        "overall": 83,
+        "confidence": 0.89
+      },
+      "competitive": {
+        "category": "AI Infrastructure",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Together AI",
+          "Modal",
+          "Fireworks AI",
+          "CoreWeave"
+        ],
+        "adjacent": [
+          "Nexus Vector",
+          "Glia Neural"
+        ],
+        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
+        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.85,
+        "overall": 83,
+        "rationale": "Overall opportunity score 83/100 (confidence 89%). Strongest on technical depth and timing; watch differentiation. Led by Priya Silva (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+      },
+      "id": "sample-1a8303ed5061",
       "month": "2025-12"
     },
     {
       "name": "Pulse Trading Intelligence",
       "source": "sample",
-      "source_id": "sample-395146",
+      "source_id": "sample-6479706",
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-03-16",
       "discovered_date": "2026-05-31",
@@ -497,7 +1093,7 @@
       "description": "Reinforcement learning trading signals for systematic crypto strategies.",
       "raw": {
         "name": "Pulse Trading Intelligence",
-        "source_id": "sample-395146",
+        "source_id": "sample-6479706",
         "jurisdiction": "Toronto, CA",
         "formation_date": "2026-03-16",
         "website": "https://pulsetrading.ai",
@@ -529,13 +1125,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-fbbcf964f621",
+      "founders": [
+        {
+          "name": "Maya Novak",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Benchling (since acquired); background in Robotics.",
+          "previous_companies": [
+            "Benchling"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Maya%20Novak%20pulsetrading.ai",
+          "pedigree": 68,
+          "source": "synthetic"
+        },
+        {
+          "name": "Maya Rossi",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Amazon AWS; PhD, Tsinghua.",
+          "previous_companies": [
+            "Amazon AWS"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Maya%20Rossi%20pulsetrading.ai",
+          "pedigree": 95,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 82,
+            "reason": "2 founder(s) profiled; avg pedigree 81/100"
+          },
+          "market_size": {
+            "score": 81,
+            "reason": "Fintech AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 65,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 78,
+            "reason": "Fintech AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 84,
+            "reason": "Fintech AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 74,
+            "reason": "Current investor momentum in Fintech AI."
+          }
+        },
+        "overall": 78,
+        "confidence": 0.89
+      },
+      "competitive": {
+        "category": "Fintech AI",
+        "leaders": [
+          "Ramp",
+          "Sardine",
+          "Stripe Radar",
+          "Hummingbird"
+        ],
+        "adjacent": [
+          "Ledger Sentinel",
+          "Vantage Risk Models"
+        ],
+        "white_space": "regulatory-grade accuracy and incumbent data moats.",
+        "positioning": "Enters Fintech AI against incumbents like Ramp, Sardine, Stripe Radar. Key white space: regulatory-grade accuracy and incumbent data moats."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.81,
+        "overall": 78,
+        "rationale": "Overall opportunity score 78/100 (confidence 89%). Strongest on defensibility and team; watch differentiation. Led by Maya Novak (Co-founder & CEO). Competes with Ramp, Sardine, Stripe Radar."
+      },
+      "id": "sample-cadeb9269643",
       "month": "2026-03"
     },
     {
       "name": "Solace Health AI",
       "source": "sample",
-      "source_id": "sample-4600931",
+      "source_id": "sample-6466827",
       "jurisdiction": "New York, USA",
       "formation_date": "2025-10-28",
       "discovered_date": "2026-05-31",
@@ -543,7 +1214,7 @@
       "description": "Clinical documentation copilot that drafts notes from ambient visit audio.",
       "raw": {
         "name": "Solace Health AI",
-        "source_id": "sample-4600931",
+        "source_id": "sample-6466827",
         "jurisdiction": "New York, USA",
         "formation_date": "2025-10-28",
         "website": "https://solacehealth.ai",
@@ -556,17 +1227,17 @@
         "ai (website)",
         "copilot (description)"
       ],
-      "ai_category": "Developer Tools",
+      "ai_category": "Healthcare AI",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "Clinical documentation copilot that drafts notes from ambient visit audio.",
-        "market_category": "Developer Tools",
+        "market_category": "Healthcare AI",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Solace Health AI surfaced via sample as a newly formed entity in New York, USA. Classifier confidence that it is AI-related is high (93%), best fitting the Developer Tools category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), copilot (description). Market read: Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
-        "market_note": "Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
+        "thesis": "Solace Health AI surfaced via sample as a newly formed entity in New York, USA. Classifier confidence that it is AI-related is high (93%), best fitting the Healthcare AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), copilot (description). Market read: Large regulated market; reimbursement, clinical validation, and data access gate the upside.",
+        "market_note": "Large regulated market; reimbursement, clinical validation, and data access gate the upside.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "Regulatory and compliance overhead can slow go-to-market."
         ],
         "signals": [
           "ai (name)",
@@ -575,13 +1246,77 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-3483ff947589",
+      "founders": [
+        {
+          "name": "Diego Reyes",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Weights & Biases (since acquired); background in Robotics.",
+          "previous_companies": [
+            "Weights & Biases"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Diego%20Reyes%20solacehealth.ai",
+          "pedigree": 64,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 67,
+            "reason": "1 founder(s) profiled; avg pedigree 64/100"
+          },
+          "market_size": {
+            "score": 89,
+            "reason": "Healthcare AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 66,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 80,
+            "reason": "Healthcare AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 73,
+            "reason": "Healthcare AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 74,
+            "reason": "Current investor momentum in Healthcare AI."
+          }
+        },
+        "overall": 75,
+        "confidence": 0.89
+      },
+      "competitive": {
+        "category": "Healthcare AI",
+        "leaders": [
+          "Abridge",
+          "Ambience",
+          "Hippocratic AI",
+          "OpenEvidence"
+        ],
+        "adjacent": [
+          "Meridian Drug Discovery",
+          "Kindred Care Copilot"
+        ],
+        "white_space": "reimbursement pathways and clinical validation.",
+        "positioning": "Enters Healthcare AI against incumbents like Abridge, Ambience, Hippocratic AI. Key white space: reimbursement pathways and clinical validation."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.79,
+        "overall": 75,
+        "rationale": "Overall opportunity score 75/100 (confidence 89%). Strongest on market size and technical depth; watch differentiation. Led by Diego Reyes (Co-founder & CEO). Competes with Abridge, Ambience, Hippocratic AI."
+      },
+      "id": "sample-61002b6d6d99",
       "month": "2025-10"
     },
     {
       "name": "Talos Perception",
       "source": "sample",
-      "source_id": "sample-2266977",
+      "source_id": "sample-7349132",
       "jurisdiction": "California, USA",
       "formation_date": "2026-05-01",
       "discovered_date": "2026-05-31",
@@ -589,7 +1324,7 @@
       "description": "Perception stack and sensor fusion for autonomous industrial vehicles.",
       "raw": {
         "name": "Talos Perception",
-        "source_id": "sample-2266977",
+        "source_id": "sample-7349132",
         "jurisdiction": "California, USA",
         "formation_date": "2026-05-01",
         "website": "https://talosperception.ai",
@@ -623,13 +1358,77 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-550d2a66f583",
+      "founders": [
+        {
+          "name": "Arjun Cohen",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Palantir; PhD, Oxford.",
+          "previous_companies": [
+            "Palantir"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Arjun%20Cohen%20talosperception.ai",
+          "pedigree": 89,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 89,
+            "reason": "1 founder(s) profiled; avg pedigree 89/100"
+          },
+          "market_size": {
+            "score": 80,
+            "reason": "Computer Vision TAM prior."
+          },
+          "product_differentiation": {
+            "score": 66,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 85,
+            "reason": "Computer Vision technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 73,
+            "reason": "Computer Vision moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 76,
+            "reason": "Current investor momentum in Computer Vision."
+          }
+        },
+        "overall": 79,
+        "confidence": 0.93
+      },
+      "competitive": {
+        "category": "Computer Vision",
+        "leaders": [
+          "Scale AI",
+          "Roboflow",
+          "Landing AI",
+          "V7"
+        ],
+        "adjacent": [
+          "Orchard Computer Vision",
+          "Cortex Vision Systems"
+        ],
+        "white_space": "proprietary data loops in underserved industrial verticals.",
+        "positioning": "Enters Computer Vision against incumbents like Scale AI, Roboflow, Landing AI. Key white space: proprietary data loops in underserved industrial verticals."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.83,
+        "overall": 79,
+        "rationale": "Overall opportunity score 79/100 (confidence 93%). Strongest on team and technical depth; watch differentiation. Led by Arjun Cohen (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+      },
+      "id": "sample-cec956522a6a",
       "month": "2026-05"
     },
     {
       "name": "Meridian Drug Discovery",
       "source": "sample",
-      "source_id": "sample-2289004",
+      "source_id": "sample-7670526",
       "jurisdiction": "Texas, USA",
       "formation_date": "2026-05-22",
       "discovered_date": "2026-05-31",
@@ -637,7 +1436,7 @@
       "description": "Deep learning models that predict protein-ligand binding for drug discovery.",
       "raw": {
         "name": "Meridian Drug Discovery",
-        "source_id": "sample-2289004",
+        "source_id": "sample-7670526",
         "jurisdiction": "Texas, USA",
         "formation_date": "2026-05-22",
         "website": "https://meridianbio.ai",
@@ -667,13 +1466,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-4e2491218252",
+      "founders": [
+        {
+          "name": "Theo Schmidt",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Nuro (since acquired); background in Computational Biology.",
+          "previous_companies": [
+            "Nuro"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Theo%20Schmidt%20meridianbio.ai",
+          "pedigree": 67,
+          "source": "synthetic"
+        },
+        {
+          "name": "Diego Haddad",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Meta AI (FAIR); PhD, ETH Z\u00fcrich.",
+          "previous_companies": [
+            "Meta AI (FAIR)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Diego%20Haddad%20meridianbio.ai",
+          "pedigree": 89,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 82,
+            "reason": "2 founder(s) profiled; avg pedigree 78/100"
+          },
+          "market_size": {
+            "score": 93,
+            "reason": "Healthcare AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 59,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 77,
+            "reason": "Healthcare AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 87,
+            "reason": "Healthcare AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 74,
+            "reason": "Current investor momentum in Healthcare AI."
+          }
+        },
+        "overall": 79,
+        "confidence": 0.85
+      },
+      "competitive": {
+        "category": "Healthcare AI",
+        "leaders": [
+          "Abridge",
+          "Ambience",
+          "Hippocratic AI",
+          "OpenEvidence"
+        ],
+        "adjacent": [
+          "Kindred Care Copilot",
+          "Solace Health AI"
+        ],
+        "white_space": "reimbursement pathways and clinical validation.",
+        "positioning": "Enters Healthcare AI against incumbents like Abridge, Ambience, Hippocratic AI. Key white space: reimbursement pathways and clinical validation."
+      },
+      "recommendation": {
+        "verdict": "Strong interest",
+        "conviction": 0.81,
+        "overall": 79,
+        "rationale": "Overall opportunity score 79/100 (confidence 85%). Strongest on market size and defensibility; watch differentiation. Led by Theo Schmidt (Co-founder & CEO). Competes with Abridge, Ambience, Hippocratic AI."
+      },
+      "id": "sample-b4e2cae73ef8",
       "month": "2026-05"
     },
     {
       "name": "Vantage Risk Models",
       "source": "sample",
-      "source_id": "sample-561230",
+      "source_id": "sample-7669647",
       "jurisdiction": "Toronto, CA",
       "formation_date": "2025-11-16",
       "discovered_date": "2026-05-31",
@@ -681,7 +1555,7 @@
       "description": "Machine learning credit risk and fraud models for fintech lenders.",
       "raw": {
         "name": "Vantage Risk Models",
-        "source_id": "sample-561230",
+        "source_id": "sample-7669647",
         "jurisdiction": "Toronto, CA",
         "formation_date": "2025-11-16",
         "website": "https://vantagerisk.ai",
@@ -711,13 +1585,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-a6569b385b74",
+      "founders": [
+        {
+          "name": "Noah Rossi",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Weights & Biases (since acquired); background in Machine Learning.",
+          "previous_companies": [
+            "Weights & Biases"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Noah%20Rossi%20vantagerisk.ai",
+          "pedigree": 71,
+          "source": "synthetic"
+        },
+        {
+          "name": "Hannah Novak",
+          "role": "Co-founder & CTO",
+          "background": "Second-time founder; Machine Learning at Caltech.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Hannah%20Novak%20vantagerisk.ai",
+          "pedigree": 50,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 66,
+            "reason": "2 founder(s) profiled; avg pedigree 60/100"
+          },
+          "market_size": {
+            "score": 81,
+            "reason": "Fintech AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 63,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 73,
+            "reason": "Fintech AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 68,
+            "reason": "Fintech AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 68,
+            "reason": "Current investor momentum in Fintech AI."
+          }
+        },
+        "overall": 70,
+        "confidence": 0.84
+      },
+      "competitive": {
+        "category": "Fintech AI",
+        "leaders": [
+          "Ramp",
+          "Sardine",
+          "Stripe Radar",
+          "Hummingbird"
+        ],
+        "adjacent": [
+          "Pulse Trading Intelligence",
+          "Ledger Sentinel"
+        ],
+        "white_space": "regulatory-grade accuracy and incumbent data moats.",
+        "positioning": "Enters Fintech AI against incumbents like Ramp, Sardine, Stripe Radar. Key white space: regulatory-grade accuracy and incumbent data moats."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.74,
+        "overall": 70,
+        "rationale": "Overall opportunity score 70/100 (confidence 84%). Strongest on market size and technical depth; watch differentiation. Led by Noah Rossi (Co-founder & CEO). Competes with Ramp, Sardine, Stripe Radar."
+      },
+      "id": "sample-c5da7552e2d2",
       "month": "2025-11"
     },
     {
       "name": "Helio Forecast",
       "source": "sample",
-      "source_id": "sample-8297441",
+      "source_id": "sample-5581220",
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-02-13",
       "discovered_date": "2026-05-31",
@@ -725,7 +1674,7 @@
       "description": "Predictive analytics for energy grids using deep learning demand models.",
       "raw": {
         "name": "Helio Forecast",
-        "source_id": "sample-8297441",
+        "source_id": "sample-5581220",
         "jurisdiction": "Washington, USA",
         "formation_date": "2026-02-13",
         "website": "https://helioforecast.com",
@@ -755,13 +1704,76 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-fe2d473cf541",
+      "founders": [
+        {
+          "name": "Zoe Cohen",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Computational Biology at Stanford.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Cohen%20helioforecast.com",
+          "pedigree": 61,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 57,
+            "reason": "1 founder(s) profiled; avg pedigree 61/100"
+          },
+          "market_size": {
+            "score": 82,
+            "reason": "Data / Analytics TAM prior."
+          },
+          "product_differentiation": {
+            "score": 69,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 76,
+            "reason": "Data / Analytics technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 64,
+            "reason": "Data / Analytics moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 69,
+            "reason": "Current investor momentum in Data / Analytics."
+          }
+        },
+        "overall": 69,
+        "confidence": 0.85
+      },
+      "competitive": {
+        "category": "Data / Analytics",
+        "leaders": [
+          "Databricks",
+          "Snowflake Cortex",
+          "Hex",
+          "Sigma"
+        ],
+        "adjacent": [
+          "Atlas Data Science"
+        ],
+        "white_space": "moving from dashboards to autonomous action.",
+        "positioning": "Enters Data / Analytics against incumbents like Databricks, Snowflake Cortex, Hex. Key white space: moving from dashboards to autonomous action."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.74,
+        "overall": 69,
+        "rationale": "Overall opportunity score 69/100 (confidence 85%). Strongest on market size and technical depth; watch team. Led by Zoe Cohen (Co-founder & CEO). Competes with Databricks, Snowflake Cortex, Hex."
+      },
+      "id": "sample-8f89c323f165",
       "month": "2026-02"
     },
     {
       "name": "Quill Copilot",
       "source": "sample",
-      "source_id": "sample-671878",
+      "source_id": "sample-2620231",
       "jurisdiction": "Texas, USA",
       "formation_date": "2025-10-10",
       "discovered_date": "2026-05-31",
@@ -769,7 +1781,7 @@
       "description": "AI pair programmer that reviews pull requests and writes tests automatically.",
       "raw": {
         "name": "Quill Copilot",
-        "source_id": "sample-671878",
+        "source_id": "sample-2620231",
         "jurisdiction": "Texas, USA",
         "formation_date": "2025-10-10",
         "website": "https://quillcopilot.dev",
@@ -799,13 +1811,75 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-e22b0a672892",
+      "founders": [
+        {
+          "name": "Elena Kim",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Databricks; PhD, Stanford.",
+          "previous_companies": [
+            "Databricks"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Kim%20quillcopilot.dev",
+          "pedigree": 91,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 88,
+            "reason": "1 founder(s) profiled; avg pedigree 91/100"
+          },
+          "market_size": {
+            "score": 75,
+            "reason": "Developer Tools TAM prior."
+          },
+          "product_differentiation": {
+            "score": 67,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 74,
+            "reason": "Developer Tools technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 58,
+            "reason": "Developer Tools moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 80,
+            "reason": "Current investor momentum in Developer Tools."
+          }
+        },
+        "overall": 74,
+        "confidence": 0.85
+      },
+      "competitive": {
+        "category": "Developer Tools",
+        "leaders": [
+          "GitHub Copilot",
+          "Cursor",
+          "Replit",
+          "Codeium",
+          "Sourcegraph"
+        ],
+        "adjacent": [],
+        "white_space": "agentic workflows beyond autocomplete and enterprise governance.",
+        "positioning": "Enters Developer Tools against incumbents like GitHub Copilot, Cursor, Replit. Key white space: agentic workflows beyond autocomplete and enterprise governance."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.77,
+        "overall": 74,
+        "rationale": "Overall opportunity score 74/100 (confidence 85%). Strongest on team and timing; watch defensibility. Led by Elena Kim (Co-founder & CEO). Competes with GitHub Copilot, Cursor, Replit."
+      },
+      "id": "sample-fb3ebac5a1d9",
       "month": "2025-10"
     },
     {
       "name": "Ledger Sentinel",
       "source": "sample",
-      "source_id": "sample-3824611",
+      "source_id": "sample-9867698",
       "jurisdiction": "California, USA",
       "formation_date": "2026-03-07",
       "discovered_date": "2026-05-31",
@@ -813,7 +1887,7 @@
       "description": "Machine learning fraud detection for real-time payments and card networks.",
       "raw": {
         "name": "Ledger Sentinel",
-        "source_id": "sample-3824611",
+        "source_id": "sample-9867698",
         "jurisdiction": "California, USA",
         "formation_date": "2026-03-07",
         "website": "https://ledgersentinel.com",
@@ -824,30 +1898,105 @@
       "ai_signals": [
         "machine learning (description)"
       ],
-      "ai_category": "Computer Vision",
+      "ai_category": "Fintech AI",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "Machine learning fraud detection for real-time payments and card networks.",
-        "market_category": "Computer Vision",
+        "market_category": "Fintech AI",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Ledger Sentinel surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is moderate (73%), best fitting the Computer Vision category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: machine learning (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
-        "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
+        "thesis": "Ledger Sentinel surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is moderate (73%), best fitting the Fintech AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: machine learning (description). Market read: High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
+        "market_note": "High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "Regulatory and compliance overhead can slow go-to-market."
         ],
         "signals": [
           "machine learning (description)"
         ],
         "website_analyzed": false
       },
-      "id": "sample-3a6fbf1d29e2",
+      "founders": [
+        {
+          "name": "Arjun Ferraro",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Figma (since acquired); background in Machine Learning.",
+          "previous_companies": [
+            "Figma"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Arjun%20Ferraro%20ledgersentinel.com",
+          "pedigree": 65,
+          "source": "synthetic"
+        },
+        {
+          "name": "Omar Khan",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Amazon AWS; PhD, MIT.",
+          "previous_companies": [
+            "Amazon AWS"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Khan%20ledgersentinel.com",
+          "pedigree": 93,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 80,
+            "reason": "2 founder(s) profiled; avg pedigree 79/100"
+          },
+          "market_size": {
+            "score": 83,
+            "reason": "Fintech AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 64,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 75,
+            "reason": "Fintech AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 70,
+            "reason": "Fintech AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 75,
+            "reason": "Current investor momentum in Fintech AI."
+          }
+        },
+        "overall": 75,
+        "confidence": 0.81
+      },
+      "competitive": {
+        "category": "Fintech AI",
+        "leaders": [
+          "Ramp",
+          "Sardine",
+          "Stripe Radar",
+          "Hummingbird"
+        ],
+        "adjacent": [
+          "Pulse Trading Intelligence",
+          "Vantage Risk Models"
+        ],
+        "white_space": "regulatory-grade accuracy and incumbent data moats.",
+        "positioning": "Enters Fintech AI against incumbents like Ramp, Sardine, Stripe Radar. Key white space: regulatory-grade accuracy and incumbent data moats."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.77,
+        "overall": 75,
+        "rationale": "Overall opportunity score 75/100 (confidence 81%). Strongest on market size and team; watch differentiation. Led by Arjun Ferraro (Co-founder & CEO). Competes with Ramp, Sardine, Stripe Radar."
+      },
+      "id": "sample-5e0bb4bde985",
       "month": "2026-03"
     },
     {
       "name": "Cortex Vision Systems",
       "source": "sample",
-      "source_id": "sample-4713158",
+      "source_id": "sample-6416777",
       "jurisdiction": "Singapore, SG",
       "formation_date": "2026-03-30",
       "discovered_date": "2026-05-31",
@@ -855,7 +2004,7 @@
       "description": "Computer vision platform for real-time defect detection on manufacturing lines.",
       "raw": {
         "name": "Cortex Vision Systems",
-        "source_id": "sample-4713158",
+        "source_id": "sample-6416777",
         "jurisdiction": "Singapore, SG",
         "formation_date": "2026-03-30",
         "website": "https://cortexvision.io",
@@ -866,15 +2015,15 @@
       "ai_signals": [
         "computer vision (description)"
       ],
-      "ai_category": "AI Infrastructure",
+      "ai_category": "Computer Vision",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "Computer vision platform for real-time defect detection on manufacturing lines.",
-        "market_category": "AI Infrastructure",
+        "market_category": "Computer Vision",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Cortex Vision Systems surfaced via sample as a newly formed entity in Singapore, SG. Classifier confidence that it is AI-related is moderate (69%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: computer vision (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "thesis": "Cortex Vision Systems surfaced via sample as a newly formed entity in Singapore, SG. Classifier confidence that it is AI-related is moderate (69%), best fitting the Computer Vision category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: computer vision (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
+        "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "risks": [
           "Standard early-stage execution and distribution risk."
         ],
@@ -883,13 +2032,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-492fc9f9e913",
+      "founders": [
+        {
+          "name": "Yuki Rossi",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Applied Mathematics at Tsinghua.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Yuki%20Rossi%20cortexvision.io",
+          "pedigree": 62,
+          "source": "synthetic"
+        },
+        {
+          "name": "Diego Andersson",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Apple; PhD, Tsinghua.",
+          "previous_companies": [
+            "Apple"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Diego%20Andersson%20cortexvision.io",
+          "pedigree": 83,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 70,
+            "reason": "2 founder(s) profiled; avg pedigree 72/100"
+          },
+          "market_size": {
+            "score": 77,
+            "reason": "Computer Vision TAM prior."
+          },
+          "product_differentiation": {
+            "score": 53,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 88,
+            "reason": "Computer Vision technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 78,
+            "reason": "Computer Vision moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 79,
+            "reason": "Current investor momentum in Computer Vision."
+          }
+        },
+        "overall": 73,
+        "confidence": 0.81
+      },
+      "competitive": {
+        "category": "Computer Vision",
+        "leaders": [
+          "Scale AI",
+          "Roboflow",
+          "Landing AI",
+          "V7"
+        ],
+        "adjacent": [
+          "Orchard Computer Vision",
+          "Talos Perception"
+        ],
+        "white_space": "proprietary data loops in underserved industrial verticals.",
+        "positioning": "Enters Computer Vision against incumbents like Scale AI, Roboflow, Landing AI. Key white space: proprietary data loops in underserved industrial verticals."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.75,
+        "overall": 73,
+        "rationale": "Overall opportunity score 73/100 (confidence 81%). Strongest on technical depth and timing; watch differentiation. Led by Yuki Rossi (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+      },
+      "id": "sample-a8ea1a95dd85",
       "month": "2026-03"
     },
     {
       "name": "Beacon NLP",
       "source": "sample",
-      "source_id": "sample-6061944",
+      "source_id": "sample-280823",
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-11-19",
       "discovered_date": "2026-05-31",
@@ -897,7 +2121,7 @@
       "description": "Natural language processing for legal contract review and obligation extraction.",
       "raw": {
         "name": "Beacon NLP",
-        "source_id": "sample-6061944",
+        "source_id": "sample-280823",
         "jurisdiction": "Paris, FR",
         "formation_date": "2025-11-19",
         "website": "https://beaconnlp.com",
@@ -925,13 +2149,88 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-c8dd5754605f",
+      "founders": [
+        {
+          "name": "Hannah Kim",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Figma (since acquired); background in NLP.",
+          "previous_companies": [
+            "Figma"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Hannah%20Kim%20beaconnlp.com",
+          "pedigree": 69,
+          "source": "synthetic"
+        },
+        {
+          "name": "Lena Novak",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Nuro (since acquired); background in Computational Biology.",
+          "previous_companies": [
+            "Nuro"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lena%20Novak%20beaconnlp.com",
+          "pedigree": 68,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 68,
+            "reason": "2 founder(s) profiled; avg pedigree 68/100"
+          },
+          "market_size": {
+            "score": 88,
+            "reason": "NLP / Language TAM prior."
+          },
+          "product_differentiation": {
+            "score": 67,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 84,
+            "reason": "NLP / Language technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 50,
+            "reason": "NLP / Language moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 74,
+            "reason": "Current investor momentum in NLP / Language."
+          }
+        },
+        "overall": 72,
+        "confidence": 0.81
+      },
+      "competitive": {
+        "category": "NLP / Language",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Cohere",
+          "Mistral AI",
+          "AI21 Labs"
+        ],
+        "adjacent": [
+          "Lattice Inference Labs"
+        ],
+        "white_space": "domain ownership and data advantages vs. frontier-model commoditization.",
+        "positioning": "Enters NLP / Language against incumbents like OpenAI, Anthropic, Cohere. Key white space: domain ownership and data advantages vs. frontier-model commoditization."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.75,
+        "overall": 72,
+        "rationale": "Overall opportunity score 72/100 (confidence 81%). Strongest on market size and technical depth; watch defensibility. Led by Hannah Kim (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
+      },
+      "id": "sample-0b739b98d47b",
       "month": "2025-11"
     },
     {
       "name": "Atlas Data Science",
       "source": "sample",
-      "source_id": "sample-8974217",
+      "source_id": "sample-9396991",
       "jurisdiction": "Berlin, DE",
       "formation_date": "2026-05-27",
       "discovered_date": "2026-05-31",
@@ -939,7 +2238,7 @@
       "description": "Predictive analytics and forecasting copilots for retail supply chains.",
       "raw": {
         "name": "Atlas Data Science",
-        "source_id": "sample-8974217",
+        "source_id": "sample-9396991",
         "jurisdiction": "Berlin, DE",
         "formation_date": "2026-05-27",
         "website": "https://atlasds.io",
@@ -951,15 +2250,15 @@
         "data science (name)",
         "predictive (description)"
       ],
-      "ai_category": "Developer Tools",
+      "ai_category": "Data / Analytics",
       "memo": {
         "generated_by": "heuristic",
         "one_liner": "Predictive analytics and forecasting copilots for retail supply chains.",
-        "market_category": "Developer Tools",
+        "market_category": "Data / Analytics",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Atlas Data Science surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is moderate (62%), best fitting the Developer Tools category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: data science (name), predictive (description). Market read: Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
-        "market_note": "Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
+        "thesis": "Atlas Data Science surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is moderate (62%), best fitting the Data / Analytics category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: data science (name), predictive (description). Market read: Durable enterprise budget line; differentiation requires going beyond dashboards into action.",
+        "market_note": "Durable enterprise budget line; differentiation requires going beyond dashboards into action.",
         "risks": [
           "Standard early-stage execution and distribution risk."
         ],
@@ -969,13 +2268,87 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-6db27545112d",
+      "founders": [
+        {
+          "name": "Aisha Rossi",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at NVIDIA; PhD, Oxford.",
+          "previous_companies": [
+            "NVIDIA"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Rossi%20atlasds.io",
+          "pedigree": 89,
+          "source": "synthetic"
+        },
+        {
+          "name": "Priya Larsson",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Weights & Biases (since acquired); background in Machine Learning.",
+          "previous_companies": [
+            "Weights & Biases"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Larsson%20atlasds.io",
+          "pedigree": 67,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 78,
+            "reason": "2 founder(s) profiled; avg pedigree 78/100"
+          },
+          "market_size": {
+            "score": 77,
+            "reason": "Data / Analytics TAM prior."
+          },
+          "product_differentiation": {
+            "score": 62,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 75,
+            "reason": "Data / Analytics technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 60,
+            "reason": "Data / Analytics moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 73,
+            "reason": "Current investor momentum in Data / Analytics."
+          }
+        },
+        "overall": 71,
+        "confidence": 0.84
+      },
+      "competitive": {
+        "category": "Data / Analytics",
+        "leaders": [
+          "Databricks",
+          "Snowflake Cortex",
+          "Hex",
+          "Sigma"
+        ],
+        "adjacent": [
+          "Helio Forecast"
+        ],
+        "white_space": "moving from dashboards to autonomous action.",
+        "positioning": "Enters Data / Analytics against incumbents like Databricks, Snowflake Cortex, Hex. Key white space: moving from dashboards to autonomous action."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.75,
+        "overall": 71,
+        "rationale": "Overall opportunity score 71/100 (confidence 84%). Strongest on team and market size; watch defensibility. Led by Aisha Rossi (Co-founder & CEO). Competes with Databricks, Snowflake Cortex, Hex."
+      },
+      "id": "sample-f345768a015c",
       "month": "2026-05"
     },
     {
       "name": "Verdant Agents",
       "source": "sample",
-      "source_id": "sample-1768492",
+      "source_id": "sample-8259424",
       "jurisdiction": "Berlin, DE",
       "formation_date": "2025-11-28",
       "discovered_date": "2026-05-31",
@@ -983,7 +2356,7 @@
       "description": "Autonomous AI agents that operate enterprise back-office workflows end to end.",
       "raw": {
         "name": "Verdant Agents",
-        "source_id": "sample-1768492",
+        "source_id": "sample-8259424",
         "jurisdiction": "Berlin, DE",
         "formation_date": "2025-11-28",
         "website": "https://verdantagents.com",
@@ -1013,13 +2386,77 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-0709a445b772",
+      "founders": [
+        {
+          "name": "Diego Walsh",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Applied Mathematics at MIT.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Diego%20Walsh%20verdantagents.com",
+          "pedigree": 62,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 67,
+            "reason": "1 founder(s) profiled; avg pedigree 62/100"
+          },
+          "market_size": {
+            "score": 75,
+            "reason": "AI Agents TAM prior."
+          },
+          "product_differentiation": {
+            "score": 62,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 74,
+            "reason": "AI Agents technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 55,
+            "reason": "AI Agents moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 87,
+            "reason": "Current investor momentum in AI Agents."
+          }
+        },
+        "overall": 69,
+        "confidence": 0.85
+      },
+      "competitive": {
+        "category": "AI Agents",
+        "leaders": [
+          "Cognition (Devin)",
+          "Sierra",
+          "Adept",
+          "CrewAI",
+          "LangChain"
+        ],
+        "adjacent": [
+          "Forge Agentic"
+        ],
+        "white_space": "reliability, evaluation, and a defensible workflow wedge.",
+        "positioning": "Enters AI Agents against incumbents like Cognition (Devin), Sierra, Adept. Key white space: reliability, evaluation, and a defensible workflow wedge."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.74,
+        "overall": 69,
+        "rationale": "Overall opportunity score 69/100 (confidence 85%). Strongest on timing and market size; watch defensibility. Led by Diego Walsh (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+      },
+      "id": "sample-897345a1fed5",
       "month": "2025-11"
     },
     {
       "name": "Nexus Vector",
       "source": "sample",
-      "source_id": "sample-8664979",
+      "source_id": "sample-898046",
       "jurisdiction": "California, USA",
       "formation_date": "2025-10-27",
       "discovered_date": "2026-05-31",
@@ -1027,7 +2464,7 @@
       "description": "Managed vector database and retrieval layer for production RAG applications.",
       "raw": {
         "name": "Nexus Vector",
-        "source_id": "sample-8664979",
+        "source_id": "sample-898046",
         "jurisdiction": "California, USA",
         "formation_date": "2025-10-27",
         "website": "https://nexusvector.io",
@@ -1055,13 +2492,79 @@
         ],
         "website_analyzed": false
       },
-      "id": "sample-d131a1a05771",
+      "founders": [
+        {
+          "name": "Mateo Walsh",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Computational Biology at CMU.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Walsh%20nexusvector.io",
+          "pedigree": 50,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 46,
+            "reason": "1 founder(s) profiled; avg pedigree 50/100"
+          },
+          "market_size": {
+            "score": 93,
+            "reason": "AI Infrastructure TAM prior."
+          },
+          "product_differentiation": {
+            "score": 64,
+            "reason": "1 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 92,
+            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 77,
+            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 90,
+            "reason": "Current investor momentum in AI Infrastructure."
+          }
+        },
+        "overall": 75,
+        "confidence": 0.81
+      },
+      "competitive": {
+        "category": "AI Infrastructure",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Together AI",
+          "Modal",
+          "Fireworks AI",
+          "CoreWeave"
+        ],
+        "adjacent": [
+          "Quanta MLOps",
+          "Glia Neural"
+        ],
+        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
+        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.77,
+        "overall": 75,
+        "rationale": "Overall opportunity score 75/100 (confidence 81%). Strongest on market size and technical depth; watch team. Led by Mateo Walsh (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+      },
+      "id": "sample-aa862d910fe2",
       "month": "2025-10"
     },
     {
       "name": "Aperture Diffusion",
       "source": "sample",
-      "source_id": "sample-3425663",
+      "source_id": "sample-6737317",
       "jurisdiction": "Berlin, DE",
       "formation_date": "2025-11-05",
       "discovered_date": "2026-05-31",
@@ -1069,7 +2572,7 @@
       "description": "Diffusion-model image generation API tuned for product photography.",
       "raw": {
         "name": "Aperture Diffusion",
-        "source_id": "sample-3425663",
+        "source_id": "sample-6737317",
         "jurisdiction": "Berlin, DE",
         "formation_date": "2025-11-05",
         "website": "https://aperturediffusion.ai",
@@ -1083,13 +2586,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-692a6b31e32c",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-7ec0464f8574",
       "month": "2025-11"
     },
     {
       "name": "Cognitive Coffee Roasters",
       "source": "sample",
-      "source_id": "sample-2160331",
+      "source_id": "sample-8598743",
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-03-22",
       "discovered_date": "2026-05-31",
@@ -1097,7 +2604,7 @@
       "description": "Specialty coffee roastery and neighborhood cafe.",
       "raw": {
         "name": "Cognitive Coffee Roasters",
-        "source_id": "sample-2160331",
+        "source_id": "sample-8598743",
         "jurisdiction": "Washington, USA",
         "formation_date": "2026-03-22",
         "website": "https://cognitivecoffee.com",
@@ -1110,13 +2617,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-cbd146613960",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-77608c076640",
       "month": "2026-03"
     },
     {
       "name": "Smart Home Comfort",
       "source": "sample",
-      "source_id": "sample-2234992",
+      "source_id": "sample-6544366",
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-01-23",
       "discovered_date": "2026-05-31",
@@ -1124,7 +2635,7 @@
       "description": "Installs smart thermostats and connected home automation hardware.",
       "raw": {
         "name": "Smart Home Comfort",
-        "source_id": "sample-2234992",
+        "source_id": "sample-6544366",
         "jurisdiction": "Washington, USA",
         "formation_date": "2026-01-23",
         "website": "https://smarthomecomfort.com",
@@ -1139,13 +2650,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-a317d2e75aa9",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-ebe0566efbd2",
       "month": "2026-01"
     },
     {
       "name": "Echo Synthesis",
       "source": "sample",
-      "source_id": "sample-4962153",
+      "source_id": "sample-8144685",
       "jurisdiction": "Singapore, SG",
       "formation_date": "2026-03-01",
       "discovered_date": "2026-05-31",
@@ -1153,7 +2668,7 @@
       "description": "Generative voice and avatar platform for localized marketing content.",
       "raw": {
         "name": "Echo Synthesis",
-        "source_id": "sample-4962153",
+        "source_id": "sample-8144685",
         "jurisdiction": "Singapore, SG",
         "formation_date": "2026-03-01",
         "website": "https://echosynth.ai",
@@ -1166,13 +2681,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-64ed1c326514",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-863128790e4a",
       "month": "2026-03"
     },
     {
       "name": "Synthro Media",
       "source": "sample",
-      "source_id": "sample-2966954",
+      "source_id": "sample-5215575",
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-01-09",
       "discovered_date": "2026-05-31",
@@ -1180,7 +2699,7 @@
       "description": "Generative video synthesis platform for short-form social content.",
       "raw": {
         "name": "Synthro Media",
-        "source_id": "sample-2966954",
+        "source_id": "sample-5215575",
         "jurisdiction": "Toronto, CA",
         "formation_date": "2026-01-09",
         "website": "https://synthro.ai",
@@ -1193,13 +2712,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-b633294dd47f",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-fd59d3046744",
       "month": "2026-01"
     },
     {
       "name": "Prism Foundation Models",
       "source": "sample",
-      "source_id": "sample-9250479",
+      "source_id": "sample-7616493",
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-10-21",
       "discovered_date": "2026-05-31",
@@ -1207,7 +2730,7 @@
       "description": "Builds small, efficient foundation models fine-tuned for regulated industries.",
       "raw": {
         "name": "Prism Foundation Models",
-        "source_id": "sample-9250479",
+        "source_id": "sample-7616493",
         "jurisdiction": "Paris, FR",
         "formation_date": "2025-10-21",
         "website": "https://prismfm.ai",
@@ -1220,13 +2743,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-a3dd49a01474",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-3c99e6b0b86f",
       "month": "2025-10"
     },
     {
       "name": "Sentient Underwriting",
       "source": "sample",
-      "source_id": "sample-3620887",
+      "source_id": "sample-3412766",
       "jurisdiction": "Tel Aviv, IL",
       "formation_date": "2026-02-11",
       "discovered_date": "2026-05-31",
@@ -1234,7 +2761,7 @@
       "description": "AI underwriting engine for specialty insurance and credit risk.",
       "raw": {
         "name": "Sentient Underwriting",
-        "source_id": "sample-3620887",
+        "source_id": "sample-3412766",
         "jurisdiction": "Tel Aviv, IL",
         "formation_date": "2026-02-11",
         "website": "https://sentientuw.com",
@@ -1247,13 +2774,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-54caf64e76da",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-6190c0f526eb",
       "month": "2026-02"
     },
     {
       "name": "Model Citizen Apparel",
       "source": "sample",
-      "source_id": "sample-3343601",
+      "source_id": "sample-328439",
       "jurisdiction": "California, USA",
       "formation_date": "2026-05-20",
       "discovered_date": "2026-05-31",
@@ -1261,7 +2792,7 @@
       "description": "Direct-to-consumer sustainable clothing brand.",
       "raw": {
         "name": "Model Citizen Apparel",
-        "source_id": "sample-3343601",
+        "source_id": "sample-328439",
         "jurisdiction": "California, USA",
         "formation_date": "2026-05-20",
         "website": "https://modelcitizen.com",
@@ -1274,13 +2805,17 @@
       ],
       "ai_category": "",
       "memo": null,
-      "id": "sample-d5c7a3fd5d0b",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-97a3b549425c",
       "month": "2026-05"
     },
     {
       "name": "Coastal Catering Co",
       "source": "sample",
-      "source_id": "sample-5565073",
+      "source_id": "sample-303304",
       "jurisdiction": "California, USA",
       "formation_date": "2026-04-23",
       "discovered_date": "2026-05-31",
@@ -1288,7 +2823,7 @@
       "description": "Full-service event catering and private chef services.",
       "raw": {
         "name": "Coastal Catering Co",
-        "source_id": "sample-5565073",
+        "source_id": "sample-303304",
         "jurisdiction": "California, USA",
         "formation_date": "2026-04-23",
         "website": "https://coastalcatering.com",
@@ -1299,13 +2834,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-8c721ebc8fe7",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-ed6c1d16824c",
       "month": "2026-04"
     },
     {
       "name": "Willow & Sage Interiors",
       "source": "sample",
-      "source_id": "sample-2411926",
+      "source_id": "sample-2923645",
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-03-02",
       "discovered_date": "2026-05-31",
@@ -1313,7 +2852,7 @@
       "description": "Residential interior design and home staging studio.",
       "raw": {
         "name": "Willow & Sage Interiors",
-        "source_id": "sample-2411926",
+        "source_id": "sample-2923645",
         "jurisdiction": "Toronto, CA",
         "formation_date": "2026-03-02",
         "website": "https://willowsageinteriors.com",
@@ -1324,13 +2863,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-9cd3a2d16e60",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-c445b632f92f",
       "month": "2026-03"
     },
     {
       "name": "Brightline Marketing",
       "source": "sample",
-      "source_id": "sample-3502263",
+      "source_id": "sample-3883064",
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-02-27",
       "discovered_date": "2026-05-31",
@@ -1338,7 +2881,7 @@
       "description": "Boutique brand and performance marketing agency.",
       "raw": {
         "name": "Brightline Marketing",
-        "source_id": "sample-3502263",
+        "source_id": "sample-3883064",
         "jurisdiction": "Washington, USA",
         "formation_date": "2026-02-27",
         "website": "https://brightlinemktg.com",
@@ -1349,13 +2892,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-1c6be311b12c",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-4603d28827f5",
       "month": "2026-02"
     },
     {
       "name": "Intelligent Cleaning Services",
       "source": "sample",
-      "source_id": "sample-4172312",
+      "source_id": "sample-4756185",
       "jurisdiction": "Tel Aviv, IL",
       "formation_date": "2026-02-16",
       "discovered_date": "2026-05-31",
@@ -1363,7 +2910,7 @@
       "description": "Commercial janitorial and facilities cleaning services.",
       "raw": {
         "name": "Intelligent Cleaning Services",
-        "source_id": "sample-4172312",
+        "source_id": "sample-4756185",
         "jurisdiction": "Tel Aviv, IL",
         "formation_date": "2026-02-16",
         "website": "https://intellicleanpro.com",
@@ -1374,13 +2921,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-6b02cfef7a0f",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-c6f942ab74a0",
       "month": "2026-02"
     },
     {
       "name": "Cascade Speech",
       "source": "sample",
-      "source_id": "sample-2343152",
+      "source_id": "sample-4047888",
       "jurisdiction": "Singapore, SG",
       "formation_date": "2026-02-05",
       "discovered_date": "2026-05-31",
@@ -1388,7 +2939,7 @@
       "description": "Real-time speech-to-speech translation powered by transformer models.",
       "raw": {
         "name": "Cascade Speech",
-        "source_id": "sample-2343152",
+        "source_id": "sample-4047888",
         "jurisdiction": "Singapore, SG",
         "formation_date": "2026-02-05",
         "website": "https://cascadespeech.com",
@@ -1399,13 +2950,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-6b9892da09dc",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-e89342a903a9",
       "month": "2026-02"
     },
     {
       "name": "Granite Peak Construction",
       "source": "sample",
-      "source_id": "sample-7559621",
+      "source_id": "sample-9935384",
       "jurisdiction": "London, UK",
       "formation_date": "2026-01-27",
       "discovered_date": "2026-05-31",
@@ -1413,7 +2968,7 @@
       "description": "Commercial construction and general contracting services.",
       "raw": {
         "name": "Granite Peak Construction",
-        "source_id": "sample-7559621",
+        "source_id": "sample-9935384",
         "jurisdiction": "London, UK",
         "formation_date": "2026-01-27",
         "website": "https://granitepeakbuild.com",
@@ -1424,13 +2979,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-721e646ca001",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-146386d0b68b",
       "month": "2026-01"
     },
     {
       "name": "Evergreen Landscaping",
       "source": "sample",
-      "source_id": "sample-4901358",
+      "source_id": "sample-733456",
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-01-22",
       "discovered_date": "2026-05-31",
@@ -1438,7 +2997,7 @@
       "description": "Landscape design, installation, and seasonal maintenance.",
       "raw": {
         "name": "Evergreen Landscaping",
-        "source_id": "sample-4901358",
+        "source_id": "sample-733456",
         "jurisdiction": "Toronto, CA",
         "formation_date": "2026-01-22",
         "website": "https://evergreenscape.com",
@@ -1449,13 +3008,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-77024d05c8bb",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-634576752b86",
       "month": "2026-01"
     },
     {
       "name": "Harborview Logistics",
       "source": "sample",
-      "source_id": "sample-4693674",
+      "source_id": "sample-1971517",
       "jurisdiction": "Paris, FR",
       "formation_date": "2026-01-12",
       "discovered_date": "2026-05-31",
@@ -1463,7 +3026,7 @@
       "description": "Freight forwarding and last-mile delivery across the eastern seaboard.",
       "raw": {
         "name": "Harborview Logistics",
-        "source_id": "sample-4693674",
+        "source_id": "sample-1971517",
         "jurisdiction": "Paris, FR",
         "formation_date": "2026-01-12",
         "website": "https://harborviewlogistics.com",
@@ -1474,13 +3037,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-df7586485378",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-a1a13ff33e95",
       "month": "2026-01"
     },
     {
       "name": "Mountain Air HVAC",
       "source": "sample",
-      "source_id": "sample-1320554",
+      "source_id": "sample-4506214",
       "jurisdiction": "Delaware, USA",
       "formation_date": "2025-12-29",
       "discovered_date": "2026-05-31",
@@ -1488,7 +3055,7 @@
       "description": "Residential heating, ventilation, and air conditioning installation.",
       "raw": {
         "name": "Mountain Air HVAC",
-        "source_id": "sample-1320554",
+        "source_id": "sample-4506214",
         "jurisdiction": "Delaware, USA",
         "formation_date": "2025-12-29",
         "website": "https://mountainairhvac.com",
@@ -1499,13 +3066,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-a6e463bacb13",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-4ebfe9688c24",
       "month": "2025-12"
     },
     {
       "name": "Riverside Family Dental",
       "source": "sample",
-      "source_id": "sample-5715301",
+      "source_id": "sample-600967",
       "jurisdiction": "Singapore, SG",
       "formation_date": "2025-12-08",
       "discovered_date": "2026-05-31",
@@ -1513,7 +3084,7 @@
       "description": "General and cosmetic dentistry practice serving the metro area.",
       "raw": {
         "name": "Riverside Family Dental",
-        "source_id": "sample-5715301",
+        "source_id": "sample-600967",
         "jurisdiction": "Singapore, SG",
         "formation_date": "2025-12-08",
         "website": "https://riversidedental.com",
@@ -1524,13 +3095,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-f81456930d8d",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-91647a51e0f2",
       "month": "2025-12"
     },
     {
       "name": "Summit Fitness Collective",
       "source": "sample",
-      "source_id": "sample-2121001",
+      "source_id": "sample-5750632",
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-12-03",
       "discovered_date": "2026-05-31",
@@ -1538,7 +3113,7 @@
       "description": "Boutique fitness studio offering strength and conditioning classes.",
       "raw": {
         "name": "Summit Fitness Collective",
-        "source_id": "sample-2121001",
+        "source_id": "sample-5750632",
         "jurisdiction": "Paris, FR",
         "formation_date": "2025-12-03",
         "website": "https://summitfitness.com",
@@ -1549,13 +3124,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-6ee627eae5cd",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-4aff20bc294a",
       "month": "2025-12"
     },
     {
       "name": "Sterling Property Group",
       "source": "sample",
-      "source_id": "sample-3598968",
+      "source_id": "sample-7077829",
       "jurisdiction": "Berlin, DE",
       "formation_date": "2025-11-02",
       "discovered_date": "2026-05-31",
@@ -1563,7 +3142,7 @@
       "description": "Commercial real estate brokerage and property management.",
       "raw": {
         "name": "Sterling Property Group",
-        "source_id": "sample-3598968",
+        "source_id": "sample-7077829",
         "jurisdiction": "Berlin, DE",
         "formation_date": "2025-11-02",
         "website": "https://sterlingpropertygroup.com",
@@ -1574,13 +3153,17 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-39e96fd2fd67",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-0d326bdf81a8",
       "month": "2025-11"
     },
     {
       "name": "Apex Auto Repair",
       "source": "sample",
-      "source_id": "sample-8450434",
+      "source_id": "sample-2093308",
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-10-29",
       "discovered_date": "2026-05-31",
@@ -1588,7 +3171,7 @@
       "description": "Independent auto repair shop and tire service center.",
       "raw": {
         "name": "Apex Auto Repair",
-        "source_id": "sample-8450434",
+        "source_id": "sample-2093308",
         "jurisdiction": "Paris, FR",
         "formation_date": "2025-10-29",
         "website": "https://apexautorepair.com",
@@ -1599,7 +3182,11 @@
       "ai_signals": [],
       "ai_category": "",
       "memo": null,
-      "id": "sample-92d0c81181c5",
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-e0ea9de4f550",
       "month": "2025-10"
     }
   ]

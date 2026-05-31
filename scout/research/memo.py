@@ -104,6 +104,7 @@ class MemoAgent:
 
     def __post_init__(self) -> None:
         self._client = None
+        self.last_site_text = ""  # exposes fetched page text for downstream agents
         if self.use_llm:
             try:
                 from openai import OpenAI
@@ -118,6 +119,7 @@ class MemoAgent:
     # -- public API ---------------------------------------------------------
     def research(self, company: Company) -> Company:
         site = self._visit_site(company.website) if self.fetch_site else None
+        self.last_site_text = (site or {}).get("text", "") if site else ""
         if site and site.get("meta_description") and not company.description:
             company.description = site["meta_description"][:500]
 

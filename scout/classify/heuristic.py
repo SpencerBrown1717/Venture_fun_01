@@ -66,19 +66,33 @@ WEAK_SIGNALS: list[tuple[str, float]] = [
     ("perception", 0.8),
 ]
 
-# Subsector -> indicative phrases. First strong match wins; order matters.
+# Subsector -> indicative phrases. Matching is boundary-aware and score-based:
+# the category with the most keyword hits wins (ties broken by this order), so a
+# single generic word can't hijack the label. Keywords are treated as prefixes
+# (e.g. "diagnos" -> "diagnosis"/"diagnostic") but respect a left word boundary,
+# so "compute" no longer matches inside "computer".
 CATEGORIES: list[tuple[str, list[str]]] = [
-    ("AI Infrastructure", ["gpu", "inference", "training", "compute", "vector database",
-                            "mlops", "ml ops", "model serving", "fine-tun", "data center"]),
-    ("Developer Tools", ["copilot", "code", "developer", "sdk", "api", "devtool", "ide"]),
-    ("AI Agents", ["agent", "agentic", "autonomous agent", "workflow automation"]),
-    ("Computer Vision", ["vision", "image", "perception", "video", "detection"]),
-    ("NLP / Language", ["language model", "llm", "nlp", "natural language", "speech", "voice"]),
-    ("Robotics", ["robot", "drone", "autonomous vehicle", "manipulation"]),
-    ("Healthcare AI", ["health", "clinical", "diagnos", "patient", "bio", "drug", "medical"]),
-    ("Fintech AI", ["fraud", "trading", "credit", "fintech", "underwriting", "risk"]),
-    ("Generative Media", ["generative", "image generation", "synthesis", "avatar", "content"]),
-    ("Data / Analytics", ["analytics", "data science", "predictive", "forecast", "insight"]),
+    ("Robotics", ["robot", "drone", "autonomous vehicle", "autonomous mobile",
+                  "manipulation", "warehouse picking"]),
+    ("Computer Vision", ["computer vision", "vision", "image recognition", "perception",
+                         "video", "defect detection", "object detection", "camera"]),
+    ("NLP / Language", ["language model", "llm", "nlp", "natural language", "speech",
+                        "voice", "translation", "contract review"]),
+    ("Generative Media", ["generative", "image generation", "video synthesis", "synthesis",
+                          "avatar", "content generation", "text-to"]),
+    ("AI Agents", ["agentic", "autonomous agent", "ai agent", "ai agents", "workflow automation",
+                   "long-horizon", "tool use"]),
+    ("Healthcare AI", ["clinical", "diagnos", "patient", "drug discovery", "medical",
+                       "healthcare", "protein", "telehealth", "triage"]),
+    ("Fintech AI", ["fraud", "trading", "credit risk", "fintech", "underwriting",
+                    "payments", "lending", "insurance"]),
+    ("AI Infrastructure", ["gpu", "inference", "vector database", "mlops", "ml ops",
+                           "model serving", "fine-tun", "data center", "accelerator",
+                           "retrieval", "rag", "drift detection"]),
+    ("Developer Tools", ["copilot", "code", "developer", "sdk", "pair programmer",
+                         "devtool", "ide", "pull request"]),
+    ("Data / Analytics", ["analytics", "data science", "predictive analytics", "forecast",
+                          "insight", "demand model"]),
 ]
 
 THRESHOLD = 0.5  # is_ai cutoff on the 0..1 score
@@ -136,7 +150,18 @@ class HeuristicClassifier:
 
     @staticmethod
     def _categorize(text: str) -> str:
-        for category, keywords in CATEGORIES:
-            if any(kw in text for kw in keywords):
-                return category
-        return "General AI"
+        """Score-based: the category with the most keyword hits wins.
+
+        Keywords match as prefixes but require a left word boundary, so generic
+        substrings (e.g. "compute" in "computer") don't trigger false matches.
+        """
+        best_cat, best_score, best_rank = "General AI", 0, len(CATEGORIES)
+        for rank, (category, keywords) in enumerate(CATEGORIES):
+            score = sum(
+                1
+                for kw in keywords
+                if re.search(r"(?<![a-z0-9])" + re.escape(kw), text)
+            )
+            if score > best_score or (score == best_score and score > 0 and rank < best_rank):
+                best_cat, best_score, best_rank = category, score, rank
+        return best_cat if best_score > 0 else "General AI"

@@ -30,6 +30,10 @@ CREATE TABLE IF NOT EXISTS companies (
     ai_signals      TEXT,
     ai_category     TEXT,
     memo            TEXT,
+    founders        TEXT,
+    scores          TEXT,
+    competitive     TEXT,
+    recommendation  TEXT,
     raw             TEXT,
     updated_at      TEXT DEFAULT (datetime('now'))
 );
@@ -45,7 +49,15 @@ class Database:
         self._conn = sqlite3.connect(self.path)
         self._conn.row_factory = sqlite3.Row
         self._conn.executescript(SCHEMA)
+        self._migrate()
         self._conn.commit()
+
+    def _migrate(self) -> None:
+        """Add columns introduced after a DB was first created (idempotent)."""
+        existing = {r["name"] for r in self._conn.execute("PRAGMA table_info(companies)")}
+        for col in ("memo", "founders", "scores", "competitive", "recommendation"):
+            if col not in existing:
+                self._conn.execute(f"ALTER TABLE companies ADD COLUMN {col} TEXT")
 
     def close(self) -> None:
         self._conn.close()
