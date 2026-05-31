@@ -35,8 +35,12 @@ from .pipeline import Pipeline
 def _cmd_gen_sample(args: argparse.Namespace) -> int:
     from .seed import write
 
-    path = write(args.out, seed=args.seed)
-    print(f"Wrote sample dataset -> {path}")
+    path = write(
+        args.out,
+        max_age_days=args.max_age_days,
+        limit=args.limit,
+    )
+    print(f"Wrote Delaware sample dataset -> {path}")
     return 0
 
 
@@ -59,6 +63,8 @@ def _cmd_run(args: argparse.Namespace) -> int:
         }
         if args.user_agent:
             source_kwargs["user_agent"] = args.user_agent
+    elif args.source == "delaware":
+        source_kwargs = {"max_age_days": args.max_age_days}
 
     report = pipeline.run(args.source, limit=args.limit, **source_kwargs)
     print(report.summary())
@@ -124,14 +130,18 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--db", default="scout.db", help="SQLite database path")
     sub = p.add_subparsers(dest="command", required=True)
 
-    g = sub.add_parser("gen-sample", help="Generate the bundled sample dataset")
+    g = sub.add_parser("gen-sample", help="Scrape Delaware ICIS and write sample_companies.json")
     g.add_argument("--out", default=None, help="Output JSON path (default: scout/data/sample_companies.json)")
-    g.add_argument("--seed", type=int, default=7)
+    g.add_argument("--max-age-days", type=int, default=30, dest="max_age_days",
+                   help="Keep entities incorporated within this many days (default: 30)")
+    g.add_argument("--limit", type=int, default=120, help="Max entities to harvest")
     g.set_defaults(func=_cmd_gen_sample)
 
     r = sub.add_parser("run", help="Discover, classify, (research), and store")
-    r.add_argument("--source", default="sample", help="Source connector name (sample, sec_edgar)")
+    r.add_argument("--source", default="sample", help="Source connector name (sample, delaware, sec_edgar)")
     r.add_argument("--limit", type=int, default=200)
+    r.add_argument("--max-age-days", type=int, default=30, dest="max_age_days",
+                   help="[delaware] keep entities incorporated within N days")
     r.add_argument("--llm", action="store_true", help="Use LLM classifier/memos (needs OPENAI_API_KEY)")
     r.add_argument("--research", action="store_true", help="Run the full Venture Analyst Swarm (memo + founders + scoring + competitive + recommendation)")
     r.add_argument("--research-min-score", type=float, default=0.5, dest="research_min_score")

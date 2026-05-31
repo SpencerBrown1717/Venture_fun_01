@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-05-31T17:16:55+00:00",
+  "generated_at": "2026-05-31T17:26:38+00:00",
   "stats": {
     "total": 52,
-    "ai_total": 24,
-    "avg_score": 0.472,
+    "ai_total": 23,
+    "avg_score": 0.431,
     "months": 8,
     "sources": [
       "sample"
@@ -39,7 +39,7 @@
       },
       {
         "month": "2026-02",
-        "count": 3
+        "count": 2
       },
       {
         "month": "2026-03",
@@ -64,11 +64,11 @@
         "count": 4
       },
       {
-        "category": "AI Agents",
-        "count": 4
+        "category": "Computer Vision",
+        "count": 3
       },
       {
-        "category": "Computer Vision",
+        "category": "AI Agents",
         "count": 3
       },
       {
@@ -102,11 +102,11 @@
         "count": 3
       },
       {
-        "jurisdiction": "New York, USA",
+        "jurisdiction": "Paris, FR",
         "count": 3
       },
       {
-        "jurisdiction": "Paris, FR",
+        "jurisdiction": "New York, USA",
         "count": 3
       },
       {
@@ -149,7 +149,7 @@
     "verdicts": [
       {
         "verdict": "Track closely",
-        "count": 20
+        "count": 19
       },
       {
         "verdict": "Strong interest",
@@ -163,7 +163,7 @@
       "name": "Figure AI Inc.",
       "ai_category": "Robotics",
       "overall": 83,
-      "confidence": 0.9,
+      "confidence": 0.61,
       "verdict": "Strong interest"
     },
     {
@@ -171,7 +171,7 @@
       "name": "Together AI Inc.",
       "ai_category": "AI Infrastructure",
       "overall": 82,
-      "confidence": 0.88,
+      "confidence": 0.59,
       "verdict": "Strong interest"
     },
     {
@@ -179,7 +179,7 @@
       "name": "Pinecone Systems Inc.",
       "ai_category": "AI Infrastructure",
       "overall": 82,
-      "confidence": 0.78,
+      "confidence": 0.53,
       "verdict": "Strong interest"
     },
     {
@@ -187,23 +187,15 @@
       "name": "Covariant Inc.",
       "ai_category": "Robotics",
       "overall": 78,
-      "confidence": 0.86,
+      "confidence": 0.57,
       "verdict": "Strong interest"
-    },
-    {
-      "id": "sample-df630351a491",
-      "name": "Perplexity AI Inc.",
-      "ai_category": "AI Infrastructure",
-      "overall": 77,
-      "confidence": 0.86,
-      "verdict": "Track closely"
     },
     {
       "id": "sample-096dff9610aa",
       "name": "Mistral AI SAS",
       "ai_category": "General AI",
       "overall": 77,
-      "confidence": 0.87,
+      "confidence": 0.58,
       "verdict": "Track closely"
     },
     {
@@ -211,15 +203,7 @@
       "name": "Weaviate B.V.",
       "ai_category": "AI Infrastructure",
       "overall": 77,
-      "confidence": 0.78,
-      "verdict": "Track closely"
-    },
-    {
-      "id": "sample-ecfb14b2d3f6",
-      "name": "Weights & Biases Inc.",
-      "ai_category": "AI Infrastructure",
-      "overall": 76,
-      "confidence": 0.87,
+      "confidence": 0.53,
       "verdict": "Track closely"
     },
     {
@@ -227,7 +211,15 @@
       "name": "Runway AI Inc.",
       "ai_category": "Computer Vision",
       "overall": 76,
-      "confidence": 0.82,
+      "confidence": 0.57,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-df630351a491",
+      "name": "Perplexity AI Inc.",
+      "ai_category": "AI Infrastructure",
+      "overall": 76,
+      "confidence": 0.57,
       "verdict": "Track closely"
     },
     {
@@ -235,15 +227,15 @@
       "name": "Skild AI Inc.",
       "ai_category": "Robotics",
       "overall": 75,
-      "confidence": 0.87,
+      "confidence": 0.57,
       "verdict": "Track closely"
     },
     {
-      "id": "sample-3cf2592ddca3",
-      "name": "Sierra Technologies Inc.",
-      "ai_category": "AI Agents",
+      "id": "sample-ecfb14b2d3f6",
+      "name": "Weights & Biases Inc.",
+      "ai_category": "AI Infrastructure",
       "overall": 75,
-      "confidence": 0.83,
+      "confidence": 0.58,
       "verdict": "Track closely"
     },
     {
@@ -251,7 +243,15 @@
       "name": "Landing AI Inc.",
       "ai_category": "Computer Vision",
       "overall": 74,
-      "confidence": 0.87,
+      "confidence": 0.58,
+      "verdict": "Track closely"
+    },
+    {
+      "id": "sample-cc6d328ceee6",
+      "name": "Replit Inc.",
+      "ai_category": "AI Agents",
+      "overall": 74,
+      "confidence": 0.58,
       "verdict": "Track closely"
     }
   ],
@@ -263,8 +263,8 @@
       "jurisdiction": "California, USA",
       "formation_date": "2025-11-05",
       "discovered_date": "2026-05-31",
-      "website": "https://landing.ai",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Visual inspection and computer vision for manufacturing.",
       "raw": {
         "name": "Landing AI Inc.",
@@ -274,11 +274,10 @@
         "description": "Visual inspection and computer vision for manufacturing.",
         "website": "https://landing.ai"
       },
-      "ai_score": 0.9827,
+      "ai_score": 0.9382,
       "is_ai": true,
       "ai_signals": [
         "ai (name)",
-        "ai (website)",
         "computer vision (description)"
       ],
       "ai_category": "Computer Vision",
@@ -287,15 +286,14 @@
         "one_liner": "Visual inspection and computer vision for manufacturing.",
         "market_category": "Computer Vision",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Landing AI Inc. surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is high (98%), best fitting the Computer Vision category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), computer vision (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
+        "thesis": "Landing AI Inc. surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is high (94%), best fitting the Computer Vision category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), computer vision (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (name)",
-          "ai (website)",
           "computer vision (description)"
         ],
         "website_analyzed": false
@@ -308,7 +306,7 @@
           "previous_companies": [
             "Hugging Face"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Rossi%20landing.ai",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Rossi%20landingaiinc.",
           "pedigree": 76,
           "source": "synthetic"
         }
@@ -341,7 +339,7 @@
           }
         },
         "overall": 74,
-        "confidence": 0.87
+        "confidence": 0.58
       },
       "competitive": {
         "category": "Computer Vision",
@@ -360,9 +358,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.78,
+        "conviction": 0.69,
         "overall": 74,
-        "rationale": "Overall opportunity score 74/100 (confidence 87%). Strongest on technical depth and defensibility; watch differentiation. Led by Priya Rossi (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+        "rationale": "Overall opportunity score 74/100 (confidence 57%). Strongest on technical depth and defensibility; watch differentiation. Led by Priya Rossi (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
       },
       "id": "sample-972c7df11c96",
       "month": "2025-11"
@@ -374,8 +372,8 @@
       "jurisdiction": "London, UK",
       "formation_date": "2026-01-18",
       "discovered_date": "2026-05-31",
-      "website": "https://together.ai",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "High-throughput open-source LLM inference and fine-tuning platform.",
       "raw": {
         "name": "Together AI Inc.",
@@ -385,11 +383,10 @@
         "description": "High-throughput open-source LLM inference and fine-tuning platform.",
         "website": "https://together.ai"
       },
-      "ai_score": 0.9768,
+      "ai_score": 0.9183,
       "is_ai": true,
       "ai_signals": [
         "ai (name)",
-        "ai (website)",
         "llm (description)"
       ],
       "ai_category": "AI Infrastructure",
@@ -398,15 +395,14 @@
         "one_liner": "High-throughput open-source LLM inference and fine-tuning platform.",
         "market_category": "AI Infrastructure",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Together AI Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is high (98%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), llm (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "thesis": "Together AI Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is high (92%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), llm (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (name)",
-          "ai (website)",
           "llm (description)"
         ],
         "website_analyzed": false
@@ -419,7 +415,7 @@
           "previous_companies": [
             "Figma"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Ferraro%20together.ai",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Ferraro%20togetheraiinc.",
           "pedigree": 77,
           "source": "synthetic"
         }
@@ -439,7 +435,7 @@
             "reason": "2 strong AI signal(s); description specificity factored in."
           },
           "technical_complexity": {
-            "score": 96,
+            "score": 95,
             "reason": "AI Infrastructure technical baseline scaled by AI confidence."
           },
           "defensibility": {
@@ -452,7 +448,7 @@
           }
         },
         "overall": 82,
-        "confidence": 0.88
+        "confidence": 0.59
       },
       "competitive": {
         "category": "AI Infrastructure",
@@ -475,984 +471,12 @@
       },
       "recommendation": {
         "verdict": "Strong interest",
-        "conviction": 0.84,
+        "conviction": 0.75,
         "overall": 82,
-        "rationale": "Overall opportunity score 82/100 (confidence 88%). Strongest on technical depth and timing; watch differentiation. Led by Ethan Ferraro (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+        "rationale": "Overall opportunity score 82/100 (confidence 59%). Strongest on technical depth and timing; watch differentiation. Led by Ethan Ferraro (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
       },
       "id": "sample-3d51dc579471",
       "month": "2026-01"
-    },
-    {
-      "name": "Fireworks AI Inc.",
-      "source": "sample",
-      "source_id": "sample-6894828",
-      "jurisdiction": "Toronto, CA",
-      "formation_date": "2026-03-30",
-      "discovered_date": "2026-05-31",
-      "website": "https://fireworks.ai",
-      "website_verified": true,
-      "description": "Fast inference engine for open-source and custom language models.",
-      "raw": {
-        "name": "Fireworks AI Inc.",
-        "source_id": "sample-6894828",
-        "jurisdiction": "Toronto, CA",
-        "formation_date": "2026-03-30",
-        "description": "Fast inference engine for open-source and custom language models.",
-        "website": "https://fireworks.ai"
-      },
-      "ai_score": 0.9689,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "inference engine (description)"
-      ],
-      "ai_category": "NLP / Language",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "Fast inference engine for open-source and custom language models.",
-        "market_category": "NLP / Language",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Fireworks AI Inc. surfaced via sample as a newly formed entity in Toronto, CA. Classifier confidence that it is AI-related is high (97%), best fitting the NLP / Language category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), inference engine (description). Market read: Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
-        "market_note": "Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
-        "risks": [
-          "Exposed to frontier-model commoditization and platform risk."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "inference engine (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Aisha Kim",
-          "role": "Co-founder & CEO",
-          "background": "Early engineer at Nuro (since acquired); background in Applied Mathematics.",
-          "previous_companies": [
-            "Nuro"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Kim%20fireworks.ai",
-          "pedigree": 75,
-          "source": "synthetic"
-        },
-        {
-          "name": "Theo Silva",
-          "role": "Co-founder & CTO",
-          "background": "Second-time founder; Applied Mathematics at MIT.",
-          "previous_companies": [
-            "(prior startup, undisclosed)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Theo%20Silva%20fireworks.ai",
-          "pedigree": 56,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 66,
-            "reason": "2 founder(s) profiled; avg pedigree 65/100"
-          },
-          "market_size": {
-            "score": 87,
-            "reason": "NLP / Language TAM prior."
-          },
-          "product_differentiation": {
-            "score": 62,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 91,
-            "reason": "NLP / Language technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 48,
-            "reason": "NLP / Language moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 74,
-            "reason": "Current investor momentum in NLP / Language."
-          }
-        },
-        "overall": 71,
-        "confidence": 0.88
-      },
-      "competitive": {
-        "category": "NLP / Language",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Cohere",
-          "Mistral AI",
-          "AI21 Labs"
-        ],
-        "adjacent": [
-          "Groq Inc.",
-          "LangChain Inc."
-        ],
-        "white_space": "domain ownership and data advantages vs. frontier-model commoditization.",
-        "positioning": "Enters NLP / Language against incumbents like OpenAI, Anthropic, Cohere. Key white space: domain ownership and data advantages vs. frontier-model commoditization."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.76,
-        "overall": 71,
-        "rationale": "Overall opportunity score 71/100 (confidence 88%). Strongest on technical depth and market size; watch defensibility. Led by Aisha Kim (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
-      },
-      "id": "sample-2d840044c727",
-      "month": "2026-03"
-    },
-    {
-      "name": "Figure AI Inc.",
-      "source": "sample",
-      "source_id": "sample-7545575",
-      "jurisdiction": "Berlin, DE",
-      "formation_date": "2026-01-09",
-      "discovered_date": "2026-05-31",
-      "website": "https://figure.ai",
-      "website_verified": true,
-      "description": "Humanoid robots powered by AI for labor automation.",
-      "raw": {
-        "name": "Figure AI Inc.",
-        "source_id": "sample-7545575",
-        "jurisdiction": "Berlin, DE",
-        "formation_date": "2026-01-09",
-        "description": "Humanoid robots powered by AI for labor automation.",
-        "website": "https://figure.ai"
-      },
-      "ai_score": 0.9543,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)",
-        "automation (description)"
-      ],
-      "ai_category": "Robotics",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "Humanoid robots powered by AI for labor automation.",
-        "market_category": "Robotics",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Figure AI Inc. surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (95%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description), automation (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
-        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
-        "risks": [
-          "Hardware capital intensity and long deployment cycles."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)",
-          "automation (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Priya Haddad",
-          "role": "Co-founder & CEO",
-          "background": "Former senior researcher at Databricks; PhD, Tsinghua.",
-          "previous_companies": [
-            "Databricks"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Haddad%20figure.ai",
-          "pedigree": 89,
-          "source": "synthetic"
-        },
-        {
-          "name": "Elena Patel",
-          "role": "Co-founder & CTO",
-          "background": "Former senior researcher at Microsoft Research; PhD, MIT.",
-          "previous_companies": [
-            "Microsoft Research"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Patel%20figure.ai",
-          "pedigree": 92,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 92,
-            "reason": "2 founder(s) profiled; avg pedigree 90/100"
-          },
-          "market_size": {
-            "score": 82,
-            "reason": "Robotics TAM prior."
-          },
-          "product_differentiation": {
-            "score": 71,
-            "reason": "3 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 90,
-            "reason": "Robotics technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 82,
-            "reason": "Robotics moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 77,
-            "reason": "Current investor momentum in Robotics."
-          }
-        },
-        "overall": 83,
-        "confidence": 0.9
-      },
-      "competitive": {
-        "category": "Robotics",
-        "leaders": [
-          "Figure",
-          "Physical Intelligence",
-          "Skild AI",
-          "Covariant"
-        ],
-        "adjacent": [
-          "Covariant Inc.",
-          "Skild AI Inc."
-        ],
-        "white_space": "real-world reliability and a profitable beachhead deployment.",
-        "positioning": "Enters Robotics against incumbents like Figure, Physical Intelligence, Skild AI. Key white space: real-world reliability and a profitable beachhead deployment."
-      },
-      "recommendation": {
-        "verdict": "Strong interest",
-        "conviction": 0.85,
-        "overall": 83,
-        "rationale": "Overall opportunity score 83/100 (confidence 90%). Strongest on team and technical depth; watch differentiation. Led by Priya Haddad (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
-      },
-      "id": "sample-4b0b71cee1d0",
-      "month": "2026-01"
-    },
-    {
-      "name": "Harvey AI Inc.",
-      "source": "sample",
-      "source_id": "sample-6204007",
-      "jurisdiction": "Delaware, USA",
-      "formation_date": "2026-03-28",
-      "discovered_date": "2026-05-31",
-      "website": "https://harvey.ai",
-      "website_verified": true,
-      "description": "AI assistant for legal research and contract workflows.",
-      "raw": {
-        "name": "Harvey AI Inc.",
-        "source_id": "sample-6204007",
-        "jurisdiction": "Delaware, USA",
-        "formation_date": "2026-03-28",
-        "description": "AI assistant for legal research and contract workflows.",
-        "website": "https://harvey.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "General AI",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "AI assistant for legal research and contract workflows.",
-        "market_category": "General AI",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Harvey AI Inc. surfaced via sample as a newly formed entity in Delaware, USA. Classifier confidence that it is AI-related is high (92%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "risks": [
-          "Standard early-stage execution and distribution risk."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Daniel Reyes",
-          "role": "Co-founder & CEO",
-          "background": "Early engineer at Figma (since acquired); background in Computer Science.",
-          "previous_companies": [
-            "Figma"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Reyes%20harvey.ai",
-          "pedigree": 65,
-          "source": "synthetic"
-        },
-        {
-          "name": "Daniel Andersson",
-          "role": "Co-founder & CTO",
-          "background": "Former senior researcher at Meta AI (FAIR); PhD, Caltech.",
-          "previous_companies": [
-            "Meta AI (FAIR)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Andersson%20harvey.ai",
-          "pedigree": 86,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 72,
-            "reason": "2 founder(s) profiled; avg pedigree 75/100"
-          },
-          "market_size": {
-            "score": 79,
-            "reason": "General AI TAM prior."
-          },
-          "product_differentiation": {
-            "score": 57,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 79,
-            "reason": "General AI technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 56,
-            "reason": "General AI moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 67,
-            "reason": "Current investor momentum in General AI."
-          }
-        },
-        "overall": 69,
-        "confidence": 0.87
-      },
-      "competitive": {
-        "category": "General AI",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Google DeepMind",
-          "Mistral AI"
-        ],
-        "adjacent": [
-          "Scale AI Inc.",
-          "Mistral AI SAS",
-          "Snorkel AI Inc."
-        ],
-        "white_space": "a sharp ICP and a non-obvious wedge.",
-        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.74,
-        "overall": 69,
-        "rationale": "Overall opportunity score 69/100 (confidence 87%). Strongest on market size and technical depth; watch defensibility. Led by Daniel Reyes (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
-      },
-      "id": "sample-43f4edf00264",
-      "month": "2026-03"
-    },
-    {
-      "name": "Perplexity AI Inc.",
-      "source": "sample",
-      "source_id": "sample-5110450",
-      "jurisdiction": "California, USA",
-      "formation_date": "2026-03-10",
-      "discovered_date": "2026-05-31",
-      "website": "https://perplexity.ai",
-      "website_verified": true,
-      "description": "AI-native answer engine with real-time web retrieval.",
-      "raw": {
-        "name": "Perplexity AI Inc.",
-        "source_id": "sample-5110450",
-        "jurisdiction": "California, USA",
-        "formation_date": "2026-03-10",
-        "description": "AI-native answer engine with real-time web retrieval.",
-        "website": "https://perplexity.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "AI Infrastructure",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "AI-native answer engine with real-time web retrieval.",
-        "market_category": "AI Infrastructure",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Perplexity AI Inc. surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is high (92%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "risks": [
-          "Standard early-stage execution and distribution risk."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Elena Reyes",
-          "role": "Co-founder & CEO",
-          "background": "Second-time founder; NLP at Berkeley.",
-          "previous_companies": [
-            "(prior startup, undisclosed)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Reyes%20perplexity.ai",
-          "pedigree": 58,
-          "source": "synthetic"
-        },
-        {
-          "name": "Aisha Larsson",
-          "role": "Co-founder & CTO",
-          "background": "Early engineer at Scale AI (since acquired); background in Computer Science.",
-          "previous_companies": [
-            "Scale AI"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Larsson%20perplexity.ai",
-          "pedigree": 78,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 63,
-            "reason": "2 founder(s) profiled; avg pedigree 68/100"
-          },
-          "market_size": {
-            "score": 92,
-            "reason": "AI Infrastructure TAM prior."
-          },
-          "product_differentiation": {
-            "score": 66,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 90,
-            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 70,
-            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 85,
-            "reason": "Current investor momentum in AI Infrastructure."
-          }
-        },
-        "overall": 77,
-        "confidence": 0.86
-      },
-      "competitive": {
-        "category": "AI Infrastructure",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Together AI",
-          "Modal",
-          "Fireworks AI",
-          "CoreWeave"
-        ],
-        "adjacent": [
-          "Pinecone Systems Inc.",
-          "Weights & Biases Inc.",
-          "Together AI Inc.",
-          "Weaviate B.V."
-        ],
-        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
-        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.8,
-        "overall": 77,
-        "rationale": "Overall opportunity score 77/100 (confidence 86%). Strongest on market size and technical depth; watch team. Led by Elena Reyes (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
-      },
-      "id": "sample-df630351a491",
-      "month": "2026-03"
-    },
-    {
-      "name": "Sardine AI Inc.",
-      "source": "sample",
-      "source_id": "sample-2221449",
-      "jurisdiction": "Massachusetts, USA",
-      "formation_date": "2026-02-05",
-      "discovered_date": "2026-05-31",
-      "website": "https://sardine.ai",
-      "website_verified": true,
-      "description": "AI fraud prevention and compliance for fintech.",
-      "raw": {
-        "name": "Sardine AI Inc.",
-        "source_id": "sample-2221449",
-        "jurisdiction": "Massachusetts, USA",
-        "formation_date": "2026-02-05",
-        "description": "AI fraud prevention and compliance for fintech.",
-        "website": "https://sardine.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "Fintech AI",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "AI fraud prevention and compliance for fintech.",
-        "market_category": "Fintech AI",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Sardine AI Inc. surfaced via sample as a newly formed entity in Massachusetts, USA. Classifier confidence that it is AI-related is high (92%), best fitting the Fintech AI category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
-        "market_note": "High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
-        "risks": [
-          "Regulatory and compliance overhead can slow go-to-market."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Sofia Mbeki",
-          "role": "Co-founder & CEO",
-          "background": "Early engineer at Weights & Biases (since acquired); background in Electrical Engineering.",
-          "previous_companies": [
-            "Weights & Biases"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Sofia%20Mbeki%20sardine.ai",
-          "pedigree": 77,
-          "source": "synthetic"
-        },
-        {
-          "name": "Elena Yamamoto",
-          "role": "Co-founder & CTO",
-          "background": "Early engineer at Figma (since acquired); background in Machine Learning.",
-          "previous_companies": [
-            "Figma"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Yamamoto%20sardine.ai",
-          "pedigree": 79,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 74,
-            "reason": "2 founder(s) profiled; avg pedigree 78/100"
-          },
-          "market_size": {
-            "score": 83,
-            "reason": "Fintech AI TAM prior."
-          },
-          "product_differentiation": {
-            "score": 56,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 80,
-            "reason": "Fintech AI technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 77,
-            "reason": "Fintech AI moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 73,
-            "reason": "Current investor momentum in Fintech AI."
-          }
-        },
-        "overall": 74,
-        "confidence": 0.86
-      },
-      "competitive": {
-        "category": "Fintech AI",
-        "leaders": [
-          "Ramp",
-          "Sardine",
-          "Stripe Radar",
-          "Hummingbird"
-        ],
-        "adjacent": [],
-        "white_space": "regulatory-grade accuracy and incumbent data moats.",
-        "positioning": "Enters Fintech AI against incumbents like Ramp, Sardine, Stripe Radar. Key white space: regulatory-grade accuracy and incumbent data moats."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.78,
-        "overall": 74,
-        "rationale": "Overall opportunity score 74/100 (confidence 86%). Strongest on market size and technical depth; watch differentiation. Led by Sofia Mbeki (Co-founder & CEO). Competes with Ramp, Sardine, Stripe Radar."
-      },
-      "id": "sample-77382836b7d0",
-      "month": "2026-02"
-    },
-    {
-      "name": "Mistral AI SAS",
-      "source": "sample",
-      "source_id": "sample-4447169",
-      "jurisdiction": "Berlin, DE",
-      "formation_date": "2025-11-19",
-      "discovered_date": "2026-05-31",
-      "website": "https://mistral.ai",
-      "website_verified": true,
-      "description": "Open-weight foundation models and enterprise AI platform.",
-      "raw": {
-        "name": "Mistral AI SAS",
-        "source_id": "sample-4447169",
-        "jurisdiction": "Berlin, DE",
-        "formation_date": "2025-11-19",
-        "description": "Open-weight foundation models and enterprise AI platform.",
-        "website": "https://mistral.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "General AI",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "Open-weight foundation models and enterprise AI platform.",
-        "market_category": "General AI",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Mistral AI SAS surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (92%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "risks": [
-          "Standard early-stage execution and distribution risk."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Maya Silva",
-          "role": "Co-founder & CEO",
-          "background": "Former senior researcher at Databricks; PhD, Stanford.",
-          "previous_companies": [
-            "Databricks"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Maya%20Silva%20mistral.ai",
-          "pedigree": 90,
-          "source": "synthetic"
-        },
-        {
-          "name": "Ravi Patel",
-          "role": "Co-founder & CTO",
-          "background": "Former senior researcher at Google DeepMind; PhD, Oxford.",
-          "previous_companies": [
-            "Google DeepMind"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Patel%20mistral.ai",
-          "pedigree": 93,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 96,
-            "reason": "2 founder(s) profiled; avg pedigree 91/100"
-          },
-          "market_size": {
-            "score": 70,
-            "reason": "General AI TAM prior."
-          },
-          "product_differentiation": {
-            "score": 68,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 82,
-            "reason": "General AI technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 66,
-            "reason": "General AI moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 75,
-            "reason": "Current investor momentum in General AI."
-          }
-        },
-        "overall": 77,
-        "confidence": 0.87
-      },
-      "competitive": {
-        "category": "General AI",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Google DeepMind",
-          "Mistral AI"
-        ],
-        "adjacent": [
-          "Harvey AI Inc.",
-          "Scale AI Inc.",
-          "Snorkel AI Inc."
-        ],
-        "white_space": "a sharp ICP and a non-obvious wedge.",
-        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.8,
-        "overall": 77,
-        "rationale": "Overall opportunity score 77/100 (confidence 87%). Strongest on team and technical depth; watch defensibility. Led by Maya Silva (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
-      },
-      "id": "sample-096dff9610aa",
-      "month": "2025-11"
-    },
-    {
-      "name": "Skild AI Inc.",
-      "source": "sample",
-      "source_id": "sample-5439483",
-      "jurisdiction": "New York, USA",
-      "formation_date": "2025-11-16",
-      "discovered_date": "2026-05-31",
-      "website": "https://skild.ai",
-      "website_verified": true,
-      "description": "General-purpose AI brain for diverse robot embodiments.",
-      "raw": {
-        "name": "Skild AI Inc.",
-        "source_id": "sample-5439483",
-        "jurisdiction": "New York, USA",
-        "formation_date": "2025-11-16",
-        "description": "General-purpose AI brain for diverse robot embodiments.",
-        "website": "https://skild.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "Robotics",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "General-purpose AI brain for diverse robot embodiments.",
-        "market_category": "Robotics",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Skild AI Inc. surfaced via sample as a newly formed entity in New York, USA. Classifier confidence that it is AI-related is high (92%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
-        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
-        "risks": [
-          "Hardware capital intensity and long deployment cycles."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Ethan Chen",
-          "role": "Co-founder & CEO",
-          "background": "Second-time founder; Electrical Engineering at Stanford.",
-          "previous_companies": [
-            "(prior startup, undisclosed)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Chen%20skild.ai",
-          "pedigree": 51,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 51,
-            "reason": "1 founder(s) profiled; avg pedigree 51/100"
-          },
-          "market_size": {
-            "score": 80,
-            "reason": "Robotics TAM prior."
-          },
-          "product_differentiation": {
-            "score": 73,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 92,
-            "reason": "Robotics technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 86,
-            "reason": "Robotics moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 84,
-            "reason": "Current investor momentum in Robotics."
-          }
-        },
-        "overall": 75,
-        "confidence": 0.87
-      },
-      "competitive": {
-        "category": "Robotics",
-        "leaders": [
-          "Figure",
-          "Physical Intelligence",
-          "Skild AI",
-          "Covariant"
-        ],
-        "adjacent": [
-          "Figure AI Inc.",
-          "Covariant Inc."
-        ],
-        "white_space": "real-world reliability and a profitable beachhead deployment.",
-        "positioning": "Enters Robotics against incumbents like Figure, Physical Intelligence, Skild AI. Key white space: real-world reliability and a profitable beachhead deployment."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.79,
-        "overall": 75,
-        "rationale": "Overall opportunity score 75/100 (confidence 87%). Strongest on technical depth and defensibility; watch team. Led by Ethan Chen (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
-      },
-      "id": "sample-31c7626a17f6",
-      "month": "2025-11"
-    },
-    {
-      "name": "Snorkel AI Inc.",
-      "source": "sample",
-      "source_id": "sample-5687867",
-      "jurisdiction": "Berlin, DE",
-      "formation_date": "2025-10-24",
-      "discovered_date": "2026-05-31",
-      "website": "https://snorkel.ai",
-      "website_verified": true,
-      "description": "Data-centric AI platform for programmatic labeling.",
-      "raw": {
-        "name": "Snorkel AI Inc.",
-        "source_id": "sample-5687867",
-        "jurisdiction": "Berlin, DE",
-        "formation_date": "2025-10-24",
-        "description": "Data-centric AI platform for programmatic labeling.",
-        "website": "https://snorkel.ai"
-      },
-      "ai_score": 0.9198,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (name)",
-        "ai (website)",
-        "ai (description)"
-      ],
-      "ai_category": "General AI",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "Data-centric AI platform for programmatic labeling.",
-        "market_category": "General AI",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Snorkel AI Inc. surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (92%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (website), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
-        "risks": [
-          "Standard early-stage execution and distribution risk."
-        ],
-        "signals": [
-          "ai (name)",
-          "ai (website)",
-          "ai (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Liam Patel",
-          "role": "Co-founder & CEO",
-          "background": "Second-time founder; Robotics at Tsinghua.",
-          "previous_companies": [
-            "(prior startup, undisclosed)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Liam%20Patel%20snorkel.ai",
-          "pedigree": 54,
-          "source": "synthetic"
-        },
-        {
-          "name": "Daniel Garcia",
-          "role": "Co-founder & CTO",
-          "background": "Second-time founder; Applied Mathematics at ETH Z\u00fcrich.",
-          "previous_companies": [
-            "(prior startup, undisclosed)"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Garcia%20snorkel.ai",
-          "pedigree": 51,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 52,
-            "reason": "2 founder(s) profiled; avg pedigree 52/100"
-          },
-          "market_size": {
-            "score": 79,
-            "reason": "General AI TAM prior."
-          },
-          "product_differentiation": {
-            "score": 73,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 81,
-            "reason": "General AI technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 61,
-            "reason": "General AI moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 73,
-            "reason": "Current investor momentum in General AI."
-          }
-        },
-        "overall": 69,
-        "confidence": 0.86
-      },
-      "competitive": {
-        "category": "General AI",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Google DeepMind",
-          "Mistral AI"
-        ],
-        "adjacent": [
-          "Harvey AI Inc.",
-          "Scale AI Inc.",
-          "Mistral AI SAS"
-        ],
-        "white_space": "a sharp ICP and a non-obvious wedge.",
-        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.74,
-        "overall": 69,
-        "rationale": "Overall opportunity score 69/100 (confidence 86%). Strongest on technical depth and market size; watch team. Led by Liam Patel (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
-      },
-      "id": "sample-ec48f6dc1c2f",
-      "month": "2025-10"
     },
     {
       "name": "Cursor (Anysphere Inc.)",
@@ -1461,8 +485,8 @@
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-03-07",
       "discovered_date": "2026-05-31",
-      "website": "https://cursor.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "AI-native code editor with agentic pair programming.",
       "raw": {
         "name": "Cursor (Anysphere Inc.)",
@@ -1488,7 +512,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: agentic (description), ai (description). Market read: Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "market_note": "Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "agentic (description)",
@@ -1504,7 +528,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Cohen%20cursor.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Cohen%20cursor(anysphereinc.)",
           "pedigree": 60,
           "source": "synthetic"
         },
@@ -1515,7 +539,7 @@
           "previous_companies": [
             "Cruise"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Walsh%20cursor.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Walsh%20cursor(anysphereinc.)",
           "pedigree": 75,
           "source": "synthetic"
         }
@@ -1548,7 +572,7 @@
           }
         },
         "overall": 73,
-        "confidence": 0.82
+        "confidence": 0.57
       },
       "competitive": {
         "category": "AI Agents",
@@ -1561,7 +585,6 @@
         ],
         "adjacent": [
           "CrewAI Inc.",
-          "Sierra Technologies Inc.",
           "Replit Inc."
         ],
         "white_space": "reliability, evaluation, and a defensible workflow wedge.",
@@ -1569,9 +592,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.76,
+        "conviction": 0.68,
         "overall": 73,
-        "rationale": "Overall opportunity score 73/100 (confidence 82%). Strongest on timing and technical depth; watch defensibility. Led by Zoe Cohen (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+        "rationale": "Overall opportunity score 73/100 (confidence 56%). Strongest on timing and technical depth; watch defensibility. Led by Zoe Cohen (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
       },
       "id": "sample-44c3286d582d",
       "month": "2026-03"
@@ -1583,8 +606,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-01-28",
       "discovered_date": "2026-05-31",
-      "website": "https://replit.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Cloud IDE with AI agent for building and deploying apps.",
       "raw": {
         "name": "Replit Inc.",
@@ -1610,7 +633,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai agent (description), ai (description). Market read: Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "market_note": "Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai agent (description)",
@@ -1626,7 +649,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Clara%20Khan%20replit.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Clara%20Khan%20replitinc.",
           "pedigree": 62,
           "source": "synthetic"
         }
@@ -1659,7 +682,7 @@
           }
         },
         "overall": 74,
-        "confidence": 0.83
+        "confidence": 0.58
       },
       "competitive": {
         "category": "AI Agents",
@@ -1672,107 +695,240 @@
         ],
         "adjacent": [
           "Cursor (Anysphere Inc.)",
-          "CrewAI Inc.",
-          "Sierra Technologies Inc."
+          "CrewAI Inc."
         ],
         "white_space": "reliability, evaluation, and a defensible workflow wedge.",
         "positioning": "Enters AI Agents against incumbents like Cognition (Devin), Sierra, Adept. Key white space: reliability, evaluation, and a defensible workflow wedge."
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.77,
+        "conviction": 0.69,
         "overall": 74,
-        "rationale": "Overall opportunity score 74/100 (confidence 83%). Strongest on timing and technical depth; watch team. Led by Clara Khan (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+        "rationale": "Overall opportunity score 74/100 (confidence 57%). Strongest on timing and technical depth; watch team. Led by Clara Khan (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
       },
       "id": "sample-cc6d328ceee6",
       "month": "2026-01"
     },
     {
-      "name": "Covariant Inc.",
+      "name": "Fireworks AI Inc.",
       "source": "sample",
-      "source_id": "sample-4475430",
-      "jurisdiction": "London, UK",
-      "formation_date": "2025-11-26",
+      "source_id": "sample-6894828",
+      "jurisdiction": "Toronto, CA",
+      "formation_date": "2026-03-30",
       "discovered_date": "2026-05-31",
-      "website": "https://covariant.ai",
-      "website_verified": true,
-      "description": "AI robotics for warehouse picking and manipulation.",
+      "website": null,
+      "website_verified": false,
+      "description": "Fast inference engine for open-source and custom language models.",
       "raw": {
-        "name": "Covariant Inc.",
-        "source_id": "sample-4475430",
-        "jurisdiction": "London, UK",
-        "formation_date": "2025-11-26",
-        "description": "AI robotics for warehouse picking and manipulation.",
-        "website": "https://covariant.ai"
+        "name": "Fireworks AI Inc.",
+        "source_id": "sample-6894828",
+        "jurisdiction": "Toronto, CA",
+        "formation_date": "2026-03-30",
+        "description": "Fast inference engine for open-source and custom language models.",
+        "website": "https://fireworks.ai"
       },
-      "ai_score": 0.8606,
+      "ai_score": 0.8928,
       "is_ai": true,
       "ai_signals": [
-        "ai (website)",
-        "ai (description)",
-        "robotics (description)"
+        "ai (name)",
+        "inference engine (description)"
       ],
-      "ai_category": "Robotics",
+      "ai_category": "NLP / Language",
       "memo": {
         "generated_by": "heuristic",
-        "one_liner": "AI robotics for warehouse picking and manipulation.",
-        "market_category": "Robotics",
+        "one_liner": "Fast inference engine for open-source and custom language models.",
+        "market_category": "NLP / Language",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Covariant Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is high (86%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (website), ai (description), robotics (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
-        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "thesis": "Fireworks AI Inc. surfaced via sample as a newly formed entity in Toronto, CA. Classifier confidence that it is AI-related is high (89%), best fitting the NLP / Language category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), inference engine (description). Market read: Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
+        "market_note": "Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "risks": [
-          "Hardware capital intensity and long deployment cycles."
+          "No discoverable web presence yet; hard to verify traction.",
+          "Exposed to frontier-model commoditization and platform risk."
         ],
         "signals": [
-          "ai (website)",
-          "ai (description)",
-          "robotics (description)"
+          "ai (name)",
+          "inference engine (description)"
         ],
         "website_analyzed": false
       },
       "founders": [
         {
-          "name": "Zoe Walsh",
+          "name": "Aisha Kim",
           "role": "Co-founder & CEO",
-          "background": "Early engineer at Hugging Face (since acquired); background in NLP.",
+          "background": "Early engineer at Nuro (since acquired); background in Applied Mathematics.",
           "previous_companies": [
-            "Hugging Face"
+            "Nuro"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Walsh%20covariant.ai",
-          "pedigree": 77,
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Kim%20fireworksaiinc.",
+          "pedigree": 75,
+          "source": "synthetic"
+        },
+        {
+          "name": "Theo Silva",
+          "role": "Co-founder & CTO",
+          "background": "Second-time founder; Applied Mathematics at MIT.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Theo%20Silva%20fireworksaiinc.",
+          "pedigree": 56,
           "source": "synthetic"
         }
       ],
       "scores": {
         "dimensions": {
           "team_quality": {
-            "score": 74,
-            "reason": "1 founder(s) profiled; avg pedigree 77/100"
+            "score": 66,
+            "reason": "2 founder(s) profiled; avg pedigree 65/100"
           },
           "market_size": {
-            "score": 79,
-            "reason": "Robotics TAM prior."
+            "score": 87,
+            "reason": "NLP / Language TAM prior."
           },
           "product_differentiation": {
-            "score": 65,
+            "score": 62,
             "reason": "2 strong AI signal(s); description specificity factored in."
           },
           "technical_complexity": {
-            "score": 96,
+            "score": 90,
+            "reason": "NLP / Language technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 48,
+            "reason": "NLP / Language moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 74,
+            "reason": "Current investor momentum in NLP / Language."
+          }
+        },
+        "overall": 71,
+        "confidence": 0.59
+      },
+      "competitive": {
+        "category": "NLP / Language",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Cohere",
+          "Mistral AI",
+          "AI21 Labs"
+        ],
+        "adjacent": [
+          "Groq Inc.",
+          "LangChain Inc."
+        ],
+        "white_space": "domain ownership and data advantages vs. frontier-model commoditization.",
+        "positioning": "Enters NLP / Language against incumbents like OpenAI, Anthropic, Cohere. Key white space: domain ownership and data advantages vs. frontier-model commoditization."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.67,
+        "overall": 71,
+        "rationale": "Overall opportunity score 71/100 (confidence 59%). Strongest on technical depth and market size; watch defensibility. Led by Aisha Kim (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
+      },
+      "id": "sample-2d840044c727",
+      "month": "2026-03"
+    },
+    {
+      "name": "Figure AI Inc.",
+      "source": "sample",
+      "source_id": "sample-7545575",
+      "jurisdiction": "Berlin, DE",
+      "formation_date": "2026-01-09",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "Humanoid robots powered by AI for labor automation.",
+      "raw": {
+        "name": "Figure AI Inc.",
+        "source_id": "sample-7545575",
+        "jurisdiction": "Berlin, DE",
+        "formation_date": "2026-01-09",
+        "description": "Humanoid robots powered by AI for labor automation.",
+        "website": "https://figure.ai"
+      },
+      "ai_score": 0.8481,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)",
+        "automation (description)"
+      ],
+      "ai_category": "Robotics",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "Humanoid robots powered by AI for labor automation.",
+        "market_category": "Robotics",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Figure AI Inc. surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (85%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description), automation (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction.",
+          "Hardware capital intensity and long deployment cycles."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)",
+          "automation (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Priya Haddad",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Databricks; PhD, Tsinghua.",
+          "previous_companies": [
+            "Databricks"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Priya%20Haddad%20figureaiinc.",
+          "pedigree": 89,
+          "source": "synthetic"
+        },
+        {
+          "name": "Elena Patel",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Microsoft Research; PhD, MIT.",
+          "previous_companies": [
+            "Microsoft Research"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Patel%20figureaiinc.",
+          "pedigree": 92,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 92,
+            "reason": "2 founder(s) profiled; avg pedigree 90/100"
+          },
+          "market_size": {
+            "score": 82,
+            "reason": "Robotics TAM prior."
+          },
+          "product_differentiation": {
+            "score": 71,
+            "reason": "3 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 89,
             "reason": "Robotics technical baseline scaled by AI confidence."
           },
           "defensibility": {
-            "score": 80,
+            "score": 82,
             "reason": "Robotics moat profile (data/regulatory/network effects)."
           },
           "timing": {
-            "score": 83,
+            "score": 77,
             "reason": "Current investor momentum in Robotics."
           }
         },
-        "overall": 78,
-        "confidence": 0.86
+        "overall": 83,
+        "confidence": 0.61
       },
       "competitive": {
         "category": "Robotics",
@@ -1783,7 +939,7 @@
           "Covariant"
         ],
         "adjacent": [
-          "Figure AI Inc.",
+          "Covariant Inc.",
           "Skild AI Inc."
         ],
         "white_space": "real-world reliability and a profitable beachhead deployment.",
@@ -1791,138 +947,12 @@
       },
       "recommendation": {
         "verdict": "Strong interest",
-        "conviction": 0.8,
-        "overall": 78,
-        "rationale": "Overall opportunity score 78/100 (confidence 86%). Strongest on technical depth and timing; watch differentiation. Led by Zoe Walsh (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
+        "conviction": 0.76,
+        "overall": 83,
+        "rationale": "Overall opportunity score 83/100 (confidence 61%). Strongest on team and technical depth; watch differentiation. Led by Priya Haddad (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
       },
-      "id": "sample-eac43cb353c6",
-      "month": "2025-11"
-    },
-    {
-      "name": "Weights & Biases Inc.",
-      "source": "sample",
-      "source_id": "sample-1017556",
-      "jurisdiction": "London, UK",
-      "formation_date": "2026-03-17",
-      "discovered_date": "2026-05-31",
-      "website": "https://wandb.ai",
-      "website_verified": true,
-      "description": "MLOps platform for experiment tracking and model monitoring.",
-      "raw": {
-        "name": "Weights & Biases Inc.",
-        "source_id": "sample-1017556",
-        "jurisdiction": "London, UK",
-        "formation_date": "2026-03-17",
-        "description": "MLOps platform for experiment tracking and model monitoring.",
-        "website": "https://wandb.ai"
-      },
-      "ai_score": 0.8348,
-      "is_ai": true,
-      "ai_signals": [
-        "ai (website)",
-        "mlops (description)",
-        "model (description)"
-      ],
-      "ai_category": "AI Infrastructure",
-      "memo": {
-        "generated_by": "heuristic",
-        "one_liner": "MLOps platform for experiment tracking and model monitoring.",
-        "market_category": "AI Infrastructure",
-        "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Weights & Biases Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is high (83%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (website), mlops (description), model (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
-        "risks": [
-          "Standard early-stage execution and distribution risk."
-        ],
-        "signals": [
-          "ai (website)",
-          "mlops (description)",
-          "model (description)"
-        ],
-        "website_analyzed": false
-      },
-      "founders": [
-        {
-          "name": "Mateo Cohen",
-          "role": "Co-founder & CEO",
-          "background": "Former senior researcher at NVIDIA; PhD, ETH Z\u00fcrich.",
-          "previous_companies": [
-            "NVIDIA"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Cohen%20wandb.ai",
-          "pedigree": 82,
-          "source": "synthetic"
-        },
-        {
-          "name": "Daniel Patel",
-          "role": "Co-founder & CTO",
-          "background": "Early engineer at Cruise (since acquired); background in Machine Learning.",
-          "previous_companies": [
-            "Cruise"
-          ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Patel%20wandb.ai",
-          "pedigree": 67,
-          "source": "synthetic"
-        }
-      ],
-      "scores": {
-        "dimensions": {
-          "team_quality": {
-            "score": 72,
-            "reason": "2 founder(s) profiled; avg pedigree 74/100"
-          },
-          "market_size": {
-            "score": 83,
-            "reason": "AI Infrastructure TAM prior."
-          },
-          "product_differentiation": {
-            "score": 58,
-            "reason": "2 strong AI signal(s); description specificity factored in."
-          },
-          "technical_complexity": {
-            "score": 90,
-            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
-          },
-          "defensibility": {
-            "score": 72,
-            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
-          },
-          "timing": {
-            "score": 85,
-            "reason": "Current investor momentum in AI Infrastructure."
-          }
-        },
-        "overall": 76,
-        "confidence": 0.87
-      },
-      "competitive": {
-        "category": "AI Infrastructure",
-        "leaders": [
-          "OpenAI",
-          "Anthropic",
-          "Together AI",
-          "Modal",
-          "Fireworks AI",
-          "CoreWeave"
-        ],
-        "adjacent": [
-          "Pinecone Systems Inc.",
-          "Perplexity AI Inc.",
-          "Together AI Inc.",
-          "Weaviate B.V."
-        ],
-        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
-        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
-      },
-      "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.79,
-        "overall": 76,
-        "rationale": "Overall opportunity score 76/100 (confidence 87%). Strongest on technical depth and timing; watch differentiation. Led by Mateo Cohen (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
-      },
-      "id": "sample-ecfb14b2d3f6",
-      "month": "2026-03"
+      "id": "sample-4b0b71cee1d0",
+      "month": "2026-01"
     },
     {
       "name": "Scale AI Inc.",
@@ -1931,8 +961,8 @@
       "jurisdiction": "Paris, FR",
       "formation_date": "2026-02-11",
       "discovered_date": "2026-05-31",
-      "website": "https://scale.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Data engine and RLHF infrastructure for AI model development.",
       "raw": {
         "name": "Scale AI Inc.",
@@ -1959,7 +989,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description), model (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
         "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (name)",
@@ -1976,7 +1006,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Patel%20scale.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Patel%20scaleaiinc.",
           "pedigree": 62,
           "source": "synthetic"
         },
@@ -1987,7 +1017,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Nina%20Reyes%20scale.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Nina%20Reyes%20scaleaiinc.",
           "pedigree": 63,
           "source": "synthetic"
         }
@@ -2020,7 +1050,7 @@
           }
         },
         "overall": 67,
-        "confidence": 0.87
+        "confidence": 0.62
       },
       "competitive": {
         "category": "General AI",
@@ -2040,9 +1070,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.73,
+        "conviction": 0.66,
         "overall": 67,
-        "rationale": "Overall opportunity score 67/100 (confidence 87%). Strongest on technical depth and market size; watch team. Led by Ravi Patel (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
+        "rationale": "Overall opportunity score 67/100 (confidence 62%). Strongest on technical depth and market size; watch team. Led by Ravi Patel (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
       },
       "id": "sample-7339931afe12",
       "month": "2026-02"
@@ -2054,8 +1084,8 @@
       "jurisdiction": "Paris, FR",
       "formation_date": "2026-05-27",
       "discovered_date": "2026-05-31",
-      "website": "https://runwayml.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Generative video and creative AI tools for creators.",
       "raw": {
         "name": "Runway AI Inc.",
@@ -2081,7 +1111,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (name)",
@@ -2097,7 +1127,7 @@
           "previous_companies": [
             "Snorkel AI"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Walsh%20runwayml.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Walsh%20runwayaiinc.",
           "pedigree": 76,
           "source": "synthetic"
         },
@@ -2108,7 +1138,7 @@
           "previous_companies": [
             "Snorkel AI"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Rossi%20runwayml.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Rossi%20runwayaiinc.",
           "pedigree": 66,
           "source": "synthetic"
         }
@@ -2141,7 +1171,7 @@
           }
         },
         "overall": 76,
-        "confidence": 0.82
+        "confidence": 0.57
       },
       "competitive": {
         "category": "Computer Vision",
@@ -2160,12 +1190,727 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.78,
+        "conviction": 0.7,
         "overall": 76,
-        "rationale": "Overall opportunity score 76/100 (confidence 82%). Strongest on technical depth and defensibility; watch differentiation. Led by Daniel Walsh (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+        "rationale": "Overall opportunity score 76/100 (confidence 56%). Strongest on technical depth and defensibility; watch differentiation. Led by Daniel Walsh (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
       },
       "id": "sample-d39295a621ff",
       "month": "2026-05"
+    },
+    {
+      "name": "Harvey AI Inc.",
+      "source": "sample",
+      "source_id": "sample-6204007",
+      "jurisdiction": "Delaware, USA",
+      "formation_date": "2026-03-28",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "AI assistant for legal research and contract workflows.",
+      "raw": {
+        "name": "Harvey AI Inc.",
+        "source_id": "sample-6204007",
+        "jurisdiction": "Delaware, USA",
+        "formation_date": "2026-03-28",
+        "description": "AI assistant for legal research and contract workflows.",
+        "website": "https://harvey.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "General AI",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "AI assistant for legal research and contract workflows.",
+        "market_category": "General AI",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Harvey AI Inc. surfaced via sample as a newly formed entity in Delaware, USA. Classifier confidence that it is AI-related is high (75%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Daniel Reyes",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Figma (since acquired); background in Computer Science.",
+          "previous_companies": [
+            "Figma"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Reyes%20harveyaiinc.",
+          "pedigree": 65,
+          "source": "synthetic"
+        },
+        {
+          "name": "Daniel Andersson",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Meta AI (FAIR); PhD, Caltech.",
+          "previous_companies": [
+            "Meta AI (FAIR)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Andersson%20harveyaiinc.",
+          "pedigree": 86,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 72,
+            "reason": "2 founder(s) profiled; avg pedigree 75/100"
+          },
+          "market_size": {
+            "score": 79,
+            "reason": "General AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 57,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 78,
+            "reason": "General AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 56,
+            "reason": "General AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 67,
+            "reason": "Current investor momentum in General AI."
+          }
+        },
+        "overall": 69,
+        "confidence": 0.57
+      },
+      "competitive": {
+        "category": "General AI",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Google DeepMind",
+          "Mistral AI"
+        ],
+        "adjacent": [
+          "Scale AI Inc.",
+          "Mistral AI SAS",
+          "Snorkel AI Inc."
+        ],
+        "white_space": "a sharp ICP and a non-obvious wedge.",
+        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.65,
+        "overall": 69,
+        "rationale": "Overall opportunity score 69/100 (confidence 56%). Strongest on market size and technical depth; watch defensibility. Led by Daniel Reyes (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
+      },
+      "id": "sample-43f4edf00264",
+      "month": "2026-03"
+    },
+    {
+      "name": "Perplexity AI Inc.",
+      "source": "sample",
+      "source_id": "sample-5110450",
+      "jurisdiction": "California, USA",
+      "formation_date": "2026-03-10",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "AI-native answer engine with real-time web retrieval.",
+      "raw": {
+        "name": "Perplexity AI Inc.",
+        "source_id": "sample-5110450",
+        "jurisdiction": "California, USA",
+        "formation_date": "2026-03-10",
+        "description": "AI-native answer engine with real-time web retrieval.",
+        "website": "https://perplexity.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "AI Infrastructure",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "AI-native answer engine with real-time web retrieval.",
+        "market_category": "AI Infrastructure",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Perplexity AI Inc. surfaced via sample as a newly formed entity in California, USA. Classifier confidence that it is AI-related is high (75%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Elena Reyes",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; NLP at Berkeley.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Reyes%20perplexityaiinc.",
+          "pedigree": 58,
+          "source": "synthetic"
+        },
+        {
+          "name": "Aisha Larsson",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Scale AI (since acquired); background in Computer Science.",
+          "previous_companies": [
+            "Scale AI"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Larsson%20perplexityaiinc.",
+          "pedigree": 78,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 63,
+            "reason": "2 founder(s) profiled; avg pedigree 68/100"
+          },
+          "market_size": {
+            "score": 92,
+            "reason": "AI Infrastructure TAM prior."
+          },
+          "product_differentiation": {
+            "score": 66,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 89,
+            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 70,
+            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 85,
+            "reason": "Current investor momentum in AI Infrastructure."
+          }
+        },
+        "overall": 76,
+        "confidence": 0.57
+      },
+      "competitive": {
+        "category": "AI Infrastructure",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Together AI",
+          "Modal",
+          "Fireworks AI",
+          "CoreWeave"
+        ],
+        "adjacent": [
+          "Pinecone Systems Inc.",
+          "Weights & Biases Inc.",
+          "Together AI Inc.",
+          "Weaviate B.V."
+        ],
+        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
+        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.7,
+        "overall": 76,
+        "rationale": "Overall opportunity score 76/100 (confidence 56%). Strongest on market size and technical depth; watch team. Led by Elena Reyes (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+      },
+      "id": "sample-df630351a491",
+      "month": "2026-03"
+    },
+    {
+      "name": "Sardine AI Inc.",
+      "source": "sample",
+      "source_id": "sample-2221449",
+      "jurisdiction": "Massachusetts, USA",
+      "formation_date": "2026-02-05",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "AI fraud prevention and compliance for fintech.",
+      "raw": {
+        "name": "Sardine AI Inc.",
+        "source_id": "sample-2221449",
+        "jurisdiction": "Massachusetts, USA",
+        "formation_date": "2026-02-05",
+        "description": "AI fraud prevention and compliance for fintech.",
+        "website": "https://sardine.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "Fintech AI",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "AI fraud prevention and compliance for fintech.",
+        "market_category": "Fintech AI",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Sardine AI Inc. surfaced via sample as a newly formed entity in Massachusetts, USA. Classifier confidence that it is AI-related is high (75%), best fitting the Fintech AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
+        "market_note": "High willingness-to-pay and clear ROI, offset by regulatory scrutiny and incumbent data advantages.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction.",
+          "Regulatory and compliance overhead can slow go-to-market."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Sofia Mbeki",
+          "role": "Co-founder & CEO",
+          "background": "Early engineer at Weights & Biases (since acquired); background in Electrical Engineering.",
+          "previous_companies": [
+            "Weights & Biases"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Sofia%20Mbeki%20sardineaiinc.",
+          "pedigree": 77,
+          "source": "synthetic"
+        },
+        {
+          "name": "Elena Yamamoto",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Figma (since acquired); background in Machine Learning.",
+          "previous_companies": [
+            "Figma"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Elena%20Yamamoto%20sardineaiinc.",
+          "pedigree": 79,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 74,
+            "reason": "2 founder(s) profiled; avg pedigree 78/100"
+          },
+          "market_size": {
+            "score": 83,
+            "reason": "Fintech AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 56,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 79,
+            "reason": "Fintech AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 77,
+            "reason": "Fintech AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 73,
+            "reason": "Current investor momentum in Fintech AI."
+          }
+        },
+        "overall": 74,
+        "confidence": 0.56
+      },
+      "competitive": {
+        "category": "Fintech AI",
+        "leaders": [
+          "Ramp",
+          "Sardine",
+          "Stripe Radar",
+          "Hummingbird"
+        ],
+        "adjacent": [],
+        "white_space": "regulatory-grade accuracy and incumbent data moats.",
+        "positioning": "Enters Fintech AI against incumbents like Ramp, Sardine, Stripe Radar. Key white space: regulatory-grade accuracy and incumbent data moats."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.69,
+        "overall": 74,
+        "rationale": "Overall opportunity score 74/100 (confidence 56%). Strongest on market size and technical depth; watch differentiation. Led by Sofia Mbeki (Co-founder & CEO). Competes with Ramp, Sardine, Stripe Radar."
+      },
+      "id": "sample-77382836b7d0",
+      "month": "2026-02"
+    },
+    {
+      "name": "Mistral AI SAS",
+      "source": "sample",
+      "source_id": "sample-4447169",
+      "jurisdiction": "Berlin, DE",
+      "formation_date": "2025-11-19",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "Open-weight foundation models and enterprise AI platform.",
+      "raw": {
+        "name": "Mistral AI SAS",
+        "source_id": "sample-4447169",
+        "jurisdiction": "Berlin, DE",
+        "formation_date": "2025-11-19",
+        "description": "Open-weight foundation models and enterprise AI platform.",
+        "website": "https://mistral.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "General AI",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "Open-weight foundation models and enterprise AI platform.",
+        "market_category": "General AI",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Mistral AI SAS surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (75%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Maya Silva",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at Databricks; PhD, Stanford.",
+          "previous_companies": [
+            "Databricks"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Maya%20Silva%20mistralaisas",
+          "pedigree": 90,
+          "source": "synthetic"
+        },
+        {
+          "name": "Ravi Patel",
+          "role": "Co-founder & CTO",
+          "background": "Former senior researcher at Google DeepMind; PhD, Oxford.",
+          "previous_companies": [
+            "Google DeepMind"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Patel%20mistralaisas",
+          "pedigree": 93,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 96,
+            "reason": "2 founder(s) profiled; avg pedigree 91/100"
+          },
+          "market_size": {
+            "score": 70,
+            "reason": "General AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 68,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 81,
+            "reason": "General AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 66,
+            "reason": "General AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 75,
+            "reason": "Current investor momentum in General AI."
+          }
+        },
+        "overall": 77,
+        "confidence": 0.58
+      },
+      "competitive": {
+        "category": "General AI",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Google DeepMind",
+          "Mistral AI"
+        ],
+        "adjacent": [
+          "Harvey AI Inc.",
+          "Scale AI Inc.",
+          "Snorkel AI Inc."
+        ],
+        "white_space": "a sharp ICP and a non-obvious wedge.",
+        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.71,
+        "overall": 77,
+        "rationale": "Overall opportunity score 77/100 (confidence 57%). Strongest on team and technical depth; watch defensibility. Led by Maya Silva (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
+      },
+      "id": "sample-096dff9610aa",
+      "month": "2025-11"
+    },
+    {
+      "name": "Skild AI Inc.",
+      "source": "sample",
+      "source_id": "sample-5439483",
+      "jurisdiction": "New York, USA",
+      "formation_date": "2025-11-16",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "General-purpose AI brain for diverse robot embodiments.",
+      "raw": {
+        "name": "Skild AI Inc.",
+        "source_id": "sample-5439483",
+        "jurisdiction": "New York, USA",
+        "formation_date": "2025-11-16",
+        "description": "General-purpose AI brain for diverse robot embodiments.",
+        "website": "https://skild.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "Robotics",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "General-purpose AI brain for diverse robot embodiments.",
+        "market_category": "Robotics",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Skild AI Inc. surfaced via sample as a newly formed entity in New York, USA. Classifier confidence that it is AI-related is high (75%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction.",
+          "Hardware capital intensity and long deployment cycles."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Ethan Chen",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Electrical Engineering at Stanford.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Chen%20skildaiinc.",
+          "pedigree": 51,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 51,
+            "reason": "1 founder(s) profiled; avg pedigree 51/100"
+          },
+          "market_size": {
+            "score": 80,
+            "reason": "Robotics TAM prior."
+          },
+          "product_differentiation": {
+            "score": 73,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 91,
+            "reason": "Robotics technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 86,
+            "reason": "Robotics moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 84,
+            "reason": "Current investor momentum in Robotics."
+          }
+        },
+        "overall": 75,
+        "confidence": 0.57
+      },
+      "competitive": {
+        "category": "Robotics",
+        "leaders": [
+          "Figure",
+          "Physical Intelligence",
+          "Skild AI",
+          "Covariant"
+        ],
+        "adjacent": [
+          "Figure AI Inc.",
+          "Covariant Inc."
+        ],
+        "white_space": "real-world reliability and a profitable beachhead deployment.",
+        "positioning": "Enters Robotics against incumbents like Figure, Physical Intelligence, Skild AI. Key white space: real-world reliability and a profitable beachhead deployment."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.7,
+        "overall": 75,
+        "rationale": "Overall opportunity score 75/100 (confidence 56%). Strongest on technical depth and defensibility; watch team. Led by Ethan Chen (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
+      },
+      "id": "sample-31c7626a17f6",
+      "month": "2025-11"
+    },
+    {
+      "name": "Snorkel AI Inc.",
+      "source": "sample",
+      "source_id": "sample-5687867",
+      "jurisdiction": "Berlin, DE",
+      "formation_date": "2025-10-24",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "Data-centric AI platform for programmatic labeling.",
+      "raw": {
+        "name": "Snorkel AI Inc.",
+        "source_id": "sample-5687867",
+        "jurisdiction": "Berlin, DE",
+        "formation_date": "2025-10-24",
+        "description": "Data-centric AI platform for programmatic labeling.",
+        "website": "https://snorkel.ai"
+      },
+      "ai_score": 0.754,
+      "is_ai": true,
+      "ai_signals": [
+        "ai (name)",
+        "ai (description)"
+      ],
+      "ai_category": "General AI",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "Data-centric AI platform for programmatic labeling.",
+        "market_category": "General AI",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Snorkel AI Inc. surfaced via sample as a newly formed entity in Berlin, DE. Classifier confidence that it is AI-related is high (75%), best fitting the General AI category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (name), ai (description). Market read: Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "market_note": "Broad positioning; the memo flags a need to sharpen the wedge and ICP.",
+        "risks": [
+          "No discoverable web presence yet; hard to verify traction."
+        ],
+        "signals": [
+          "ai (name)",
+          "ai (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Liam Patel",
+          "role": "Co-founder & CEO",
+          "background": "Second-time founder; Robotics at Tsinghua.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Liam%20Patel%20snorkelaiinc.",
+          "pedigree": 54,
+          "source": "synthetic"
+        },
+        {
+          "name": "Daniel Garcia",
+          "role": "Co-founder & CTO",
+          "background": "Second-time founder; Applied Mathematics at ETH Z\u00fcrich.",
+          "previous_companies": [
+            "(prior startup, undisclosed)"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Garcia%20snorkelaiinc.",
+          "pedigree": 51,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 52,
+            "reason": "2 founder(s) profiled; avg pedigree 52/100"
+          },
+          "market_size": {
+            "score": 79,
+            "reason": "General AI TAM prior."
+          },
+          "product_differentiation": {
+            "score": 73,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 80,
+            "reason": "General AI technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 61,
+            "reason": "General AI moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 73,
+            "reason": "Current investor momentum in General AI."
+          }
+        },
+        "overall": 69,
+        "confidence": 0.57
+      },
+      "competitive": {
+        "category": "General AI",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Google DeepMind",
+          "Mistral AI"
+        ],
+        "adjacent": [
+          "Harvey AI Inc.",
+          "Scale AI Inc.",
+          "Mistral AI SAS"
+        ],
+        "white_space": "a sharp ICP and a non-obvious wedge.",
+        "positioning": "Enters General AI against incumbents like OpenAI, Anthropic, Google DeepMind. Key white space: a sharp ICP and a non-obvious wedge."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.65,
+        "overall": 69,
+        "rationale": "Overall opportunity score 69/100 (confidence 56%). Strongest on technical depth and market size; watch team. Led by Liam Patel (Co-founder & CEO). Competes with OpenAI, Anthropic, Google DeepMind."
+      },
+      "id": "sample-ec48f6dc1c2f",
+      "month": "2025-10"
     },
     {
       "name": "Roboflow Inc.",
@@ -2174,8 +1919,8 @@
       "jurisdiction": "Texas, USA",
       "formation_date": "2025-10-27",
       "discovered_date": "2026-05-31",
-      "website": "https://roboflow.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Computer vision platform for training and deploying models.",
       "raw": {
         "name": "Roboflow Inc.",
@@ -2200,7 +1945,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: computer vision (description). Market read: Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "market_note": "Mature ML discipline with deep verticals (industrial, medical, security); moats come from proprietary data and integrations.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "computer vision (description)"
@@ -2215,7 +1960,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Khan%20roboflow.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Khan%20roboflowinc.",
           "pedigree": 57,
           "source": "synthetic"
         },
@@ -2226,7 +1971,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Novak%20roboflow.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Novak%20roboflowinc.",
           "pedigree": 57,
           "source": "synthetic"
         }
@@ -2259,7 +2004,7 @@
           }
         },
         "overall": 70,
-        "confidence": 0.79
+        "confidence": 0.54
       },
       "competitive": {
         "category": "Computer Vision",
@@ -2278,9 +2023,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.73,
+        "conviction": 0.65,
         "overall": 70,
-        "rationale": "Overall opportunity score 70/100 (confidence 79%). Strongest on technical depth and market size; watch team. Led by Ethan Khan (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
+        "rationale": "Overall opportunity score 70/100 (confidence 54%). Strongest on technical depth and market size; watch team. Led by Ethan Khan (Co-founder & CEO). Competes with Scale AI, Roboflow, Landing AI."
       },
       "id": "sample-6dbdc8d32202",
       "month": "2025-10"
@@ -2292,8 +2037,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-01-14",
       "discovered_date": "2026-05-31",
-      "website": "https://hex.tech",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Collaborative data workspace with AI analytics copilot.",
       "raw": {
         "name": "Hex Technologies Inc.",
@@ -2319,7 +2064,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (description), copilot (description). Market read: Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
         "market_note": "Bottoms-up developer adoption can compound fast, but monetization and platform risk (model vendors shipping native features) are key questions.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (description)",
@@ -2335,7 +2080,7 @@
           "previous_companies": [
             "Cruise"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Walsh%20hex.tech",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Aisha%20Walsh%20hextechnologiesinc.",
           "pedigree": 76,
           "source": "synthetic"
         }
@@ -2368,7 +2113,7 @@
           }
         },
         "overall": 73,
-        "confidence": 0.82
+        "confidence": 0.57
       },
       "competitive": {
         "category": "Developer Tools",
@@ -2385,123 +2130,122 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.76,
+        "conviction": 0.68,
         "overall": 73,
-        "rationale": "Overall opportunity score 73/100 (confidence 82%). Strongest on technical depth and team; watch differentiation. Led by Aisha Walsh (Co-founder & CEO). Competes with GitHub Copilot, Cursor, Replit."
+        "rationale": "Overall opportunity score 73/100 (confidence 56%). Strongest on technical depth and team; watch differentiation. Led by Aisha Walsh (Co-founder & CEO). Competes with GitHub Copilot, Cursor, Replit."
       },
       "id": "sample-c4ebfccbf6da",
       "month": "2026-01"
     },
     {
-      "name": "Sierra Technologies Inc.",
+      "name": "Covariant Inc.",
       "source": "sample",
-      "source_id": "sample-2461176",
-      "jurisdiction": "Tel Aviv, IL",
-      "formation_date": "2026-02-13",
+      "source_id": "sample-4475430",
+      "jurisdiction": "London, UK",
+      "formation_date": "2025-11-26",
       "discovered_date": "2026-05-31",
-      "website": "https://sierra.ai",
-      "website_verified": true,
-      "description": "Conversational AI agents for enterprise customer experience.",
+      "website": null,
+      "website_verified": false,
+      "description": "AI robotics for warehouse picking and manipulation.",
       "raw": {
-        "name": "Sierra Technologies Inc.",
-        "source_id": "sample-2461176",
-        "jurisdiction": "Tel Aviv, IL",
-        "formation_date": "2026-02-13",
-        "description": "Conversational AI agents for enterprise customer experience.",
-        "website": "https://sierra.ai"
+        "name": "Covariant Inc.",
+        "source_id": "sample-4475430",
+        "jurisdiction": "London, UK",
+        "formation_date": "2025-11-26",
+        "description": "AI robotics for warehouse picking and manipulation.",
+        "website": "https://covariant.ai"
       },
-      "ai_score": 0.6271,
+      "ai_score": 0.6225,
       "is_ai": true,
       "ai_signals": [
-        "ai (website)",
-        "ai (description)"
+        "ai (description)",
+        "robotics (description)"
       ],
-      "ai_category": "AI Agents",
+      "ai_category": "Robotics",
       "memo": {
         "generated_by": "heuristic",
-        "one_liner": "Conversational AI agents for enterprise customer experience.",
-        "market_category": "AI Agents",
+        "one_liner": "AI robotics for warehouse picking and manipulation.",
+        "market_category": "Robotics",
         "estimated_stage": "Pre-seed / Formation",
-        "thesis": "Sierra Technologies Inc. surfaced via sample as a newly formed entity in Tel Aviv, IL. Classifier confidence that it is AI-related is moderate (63%), best fitting the AI Agents category. No website on file yet (typical for very recently formed entities).",
-        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (website), ai (description). Market read: Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
-        "market_note": "Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
+        "thesis": "Covariant Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is moderate (62%), best fitting the Robotics category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (description), robotics (description). Market read: Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
+        "market_note": "Hardware + AI; long capital cycles and real-world reliability bar, but durable moats once deployed.",
         "risks": [
-          "Standard early-stage execution and distribution risk."
+          "No discoverable web presence yet; hard to verify traction.",
+          "Hardware capital intensity and long deployment cycles."
         ],
         "signals": [
-          "ai (website)",
-          "ai (description)"
+          "ai (description)",
+          "robotics (description)"
         ],
         "website_analyzed": false
       },
       "founders": [
         {
-          "name": "Hannah Andersson",
+          "name": "Zoe Walsh",
           "role": "Co-founder & CEO",
-          "background": "Former senior researcher at NVIDIA; PhD, Berkeley.",
+          "background": "Early engineer at Hugging Face (since acquired); background in NLP.",
           "previous_companies": [
-            "NVIDIA"
+            "Hugging Face"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Hannah%20Andersson%20sierra.ai",
-          "pedigree": 85,
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Zoe%20Walsh%20covariantinc.",
+          "pedigree": 77,
           "source": "synthetic"
         }
       ],
       "scores": {
         "dimensions": {
           "team_quality": {
-            "score": 86,
-            "reason": "1 founder(s) profiled; avg pedigree 85/100"
+            "score": 74,
+            "reason": "1 founder(s) profiled; avg pedigree 77/100"
           },
           "market_size": {
-            "score": 84,
-            "reason": "AI Agents TAM prior."
+            "score": 79,
+            "reason": "Robotics TAM prior."
           },
           "product_differentiation": {
-            "score": 51,
-            "reason": "1 strong AI signal(s); description specificity factored in."
+            "score": 65,
+            "reason": "2 strong AI signal(s); description specificity factored in."
           },
           "technical_complexity": {
-            "score": 79,
-            "reason": "AI Agents technical baseline scaled by AI confidence."
+            "score": 94,
+            "reason": "Robotics technical baseline scaled by AI confidence."
           },
           "defensibility": {
-            "score": 57,
-            "reason": "AI Agents moat profile (data/regulatory/network effects)."
+            "score": 80,
+            "reason": "Robotics moat profile (data/regulatory/network effects)."
           },
           "timing": {
-            "score": 94,
-            "reason": "Current investor momentum in AI Agents."
+            "score": 83,
+            "reason": "Current investor momentum in Robotics."
           }
         },
-        "overall": 75,
-        "confidence": 0.83
+        "overall": 78,
+        "confidence": 0.57
       },
       "competitive": {
-        "category": "AI Agents",
+        "category": "Robotics",
         "leaders": [
-          "Cognition (Devin)",
-          "Sierra",
-          "Adept",
-          "CrewAI",
-          "LangChain"
+          "Figure",
+          "Physical Intelligence",
+          "Skild AI",
+          "Covariant"
         ],
         "adjacent": [
-          "Cursor (Anysphere Inc.)",
-          "CrewAI Inc.",
-          "Replit Inc."
+          "Figure AI Inc.",
+          "Skild AI Inc."
         ],
-        "white_space": "reliability, evaluation, and a defensible workflow wedge.",
-        "positioning": "Enters AI Agents against incumbents like Cognition (Devin), Sierra, Adept. Key white space: reliability, evaluation, and a defensible workflow wedge."
+        "white_space": "real-world reliability and a profitable beachhead deployment.",
+        "positioning": "Enters Robotics against incumbents like Figure, Physical Intelligence, Skild AI. Key white space: real-world reliability and a profitable beachhead deployment."
       },
       "recommendation": {
-        "verdict": "Track closely",
-        "conviction": 0.77,
-        "overall": 75,
-        "rationale": "Overall opportunity score 75/100 (confidence 83%). Strongest on timing and team; watch differentiation. Led by Hannah Andersson (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+        "verdict": "Strong interest",
+        "conviction": 0.72,
+        "overall": 78,
+        "rationale": "Overall opportunity score 78/100 (confidence 56%). Strongest on technical depth and timing; watch differentiation. Led by Zoe Walsh (Co-founder & CEO). Competes with Figure, Physical Intelligence, Skild AI."
       },
-      "id": "sample-3cf2592ddca3",
-      "month": "2026-02"
+      "id": "sample-eac43cb353c6",
+      "month": "2025-11"
     },
     {
       "name": "Groq Inc.",
@@ -2510,8 +2254,8 @@
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-10-28",
       "discovered_date": "2026-05-31",
-      "website": "https://groq.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "LPU inference hardware and cloud for low-latency LLM serving.",
       "raw": {
         "name": "Groq Inc.",
@@ -2536,6 +2280,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: llm (description). Market read: Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "market_note": "Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "risks": [
+          "No discoverable web presence yet; hard to verify traction.",
           "Exposed to frontier-model commoditization and platform risk."
         ],
         "signals": [
@@ -2551,7 +2296,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Silva%20groq.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Silva%20groqinc.",
           "pedigree": 50,
           "source": "synthetic"
         },
@@ -2562,7 +2307,7 @@
           "previous_companies": [
             "Microsoft Research"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Rossi%20groq.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ravi%20Rossi%20groqinc.",
           "pedigree": 90,
           "source": "synthetic"
         }
@@ -2595,7 +2340,7 @@
           }
         },
         "overall": 73,
-        "confidence": 0.79
+        "confidence": 0.54
       },
       "competitive": {
         "category": "NLP / Language",
@@ -2615,9 +2360,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.75,
+        "conviction": 0.67,
         "overall": 73,
-        "rationale": "Overall opportunity score 73/100 (confidence 79%). Strongest on technical depth and market size; watch defensibility. Led by Ravi Silva (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
+        "rationale": "Overall opportunity score 73/100 (confidence 54%). Strongest on technical depth and market size; watch defensibility. Led by Ravi Silva (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
       },
       "id": "sample-f08d9cd9a216",
       "month": "2025-10"
@@ -2629,8 +2374,8 @@
       "jurisdiction": "New York, USA",
       "formation_date": "2025-10-10",
       "discovered_date": "2026-05-31",
-      "website": "https://langchain.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Developer platform for building LLM-powered applications and agents.",
       "raw": {
         "name": "LangChain Inc.",
@@ -2655,6 +2400,7 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: llm (description). Market read: Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "market_note": "Directly exposed to frontier-model commoditization; winners own a domain, data loop, or distribution advantage.",
         "risks": [
+          "No discoverable web presence yet; hard to verify traction.",
           "Exposed to frontier-model commoditization and platform risk."
         ],
         "signals": [
@@ -2670,7 +2416,7 @@
           "previous_companies": [
             "Tesla Autopilot"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lucas%20Mbeki%20langchain.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lucas%20Mbeki%20langchaininc.",
           "pedigree": 90,
           "source": "synthetic"
         },
@@ -2681,7 +2427,7 @@
           "previous_companies": [
             "Amazon AWS"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Yamamoto%20langchain.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Yamamoto%20langchaininc.",
           "pedigree": 90,
           "source": "synthetic"
         }
@@ -2714,7 +2460,7 @@
           }
         },
         "overall": 74,
-        "confidence": 0.8
+        "confidence": 0.55
       },
       "competitive": {
         "category": "NLP / Language",
@@ -2734,9 +2480,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.76,
+        "conviction": 0.68,
         "overall": 74,
-        "rationale": "Overall opportunity score 74/100 (confidence 80%). Strongest on team and technical depth; watch defensibility. Led by Lucas Mbeki (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
+        "rationale": "Overall opportunity score 74/100 (confidence 55%). Strongest on team and technical depth; watch defensibility. Led by Lucas Mbeki (Co-founder & CEO). Competes with OpenAI, Anthropic, Cohere."
       },
       "id": "sample-1f3c4e1ee1bc",
       "month": "2025-10"
@@ -2748,8 +2494,8 @@
       "jurisdiction": "Texas, USA",
       "formation_date": "2026-03-01",
       "discovered_date": "2026-05-31",
-      "website": "https://crewai.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Framework for orchestrating role-playing autonomous AI agents.",
       "raw": {
         "name": "CrewAI Inc.",
@@ -2775,7 +2521,8 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: ai (description), autonomous (description). Market read: Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "market_note": "Early, fast-moving category; differentiation hinges on reliability, distribution, and a defensible workflow wedge.",
         "risks": [
-          "AI-relevance is uncertain; may be buzzword-only positioning."
+          "AI-relevance is uncertain; may be buzzword-only positioning.",
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "ai (description)",
@@ -2791,7 +2538,7 @@
           "previous_companies": [
             "Cohere"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Liam%20Mbeki%20crewai.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Liam%20Mbeki%20crewaiinc.",
           "pedigree": 78,
           "source": "synthetic"
         },
@@ -2802,7 +2549,7 @@
           "previous_companies": [
             "Benchling"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Okafor%20crewai.com",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Okafor%20crewaiinc.",
           "pedigree": 76,
           "source": "synthetic"
         }
@@ -2835,7 +2582,7 @@
           }
         },
         "overall": 73,
-        "confidence": 0.83
+        "confidence": 0.58
       },
       "competitive": {
         "category": "AI Agents",
@@ -2848,7 +2595,6 @@
         ],
         "adjacent": [
           "Cursor (Anysphere Inc.)",
-          "Sierra Technologies Inc.",
           "Replit Inc."
         ],
         "white_space": "reliability, evaluation, and a defensible workflow wedge.",
@@ -2856,11 +2602,136 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.76,
+        "conviction": 0.69,
         "overall": 73,
-        "rationale": "Overall opportunity score 73/100 (confidence 83%). Strongest on timing and team; watch defensibility. Led by Liam Mbeki (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
+        "rationale": "Overall opportunity score 73/100 (confidence 57%). Strongest on timing and team; watch defensibility. Led by Liam Mbeki (Co-founder & CEO). Competes with Cognition (Devin), Sierra, Adept."
       },
       "id": "sample-f9bbeb64ae5a",
+      "month": "2026-03"
+    },
+    {
+      "name": "Weights & Biases Inc.",
+      "source": "sample",
+      "source_id": "sample-1017556",
+      "jurisdiction": "London, UK",
+      "formation_date": "2026-03-17",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "MLOps platform for experiment tracking and model monitoring.",
+      "raw": {
+        "name": "Weights & Biases Inc.",
+        "source_id": "sample-1017556",
+        "jurisdiction": "London, UK",
+        "formation_date": "2026-03-17",
+        "description": "MLOps platform for experiment tracking and model monitoring.",
+        "website": "https://wandb.ai"
+      },
+      "ai_score": 0.5744,
+      "is_ai": true,
+      "ai_signals": [
+        "mlops (description)",
+        "model (description)"
+      ],
+      "ai_category": "AI Infrastructure",
+      "memo": {
+        "generated_by": "heuristic",
+        "one_liner": "MLOps platform for experiment tracking and model monitoring.",
+        "market_category": "AI Infrastructure",
+        "estimated_stage": "Pre-seed / Formation",
+        "thesis": "Weights & Biases Inc. surfaced via sample as a newly formed entity in London, UK. Classifier confidence that it is AI-related is moderate (57%), best fitting the AI Infrastructure category. No website on file yet (typical for very recently formed entities).",
+        "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: mlops (description), model (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
+        "risks": [
+          "AI-relevance is uncertain; may be buzzword-only positioning.",
+          "No discoverable web presence yet; hard to verify traction."
+        ],
+        "signals": [
+          "mlops (description)",
+          "model (description)"
+        ],
+        "website_analyzed": false
+      },
+      "founders": [
+        {
+          "name": "Mateo Cohen",
+          "role": "Co-founder & CEO",
+          "background": "Former senior researcher at NVIDIA; PhD, ETH Z\u00fcrich.",
+          "previous_companies": [
+            "NVIDIA"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Mateo%20Cohen%20weights&biasesinc.",
+          "pedigree": 82,
+          "source": "synthetic"
+        },
+        {
+          "name": "Daniel Patel",
+          "role": "Co-founder & CTO",
+          "background": "Early engineer at Cruise (since acquired); background in Machine Learning.",
+          "previous_companies": [
+            "Cruise"
+          ],
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Daniel%20Patel%20weights&biasesinc.",
+          "pedigree": 67,
+          "source": "synthetic"
+        }
+      ],
+      "scores": {
+        "dimensions": {
+          "team_quality": {
+            "score": 72,
+            "reason": "2 founder(s) profiled; avg pedigree 74/100"
+          },
+          "market_size": {
+            "score": 83,
+            "reason": "AI Infrastructure TAM prior."
+          },
+          "product_differentiation": {
+            "score": 58,
+            "reason": "2 strong AI signal(s); description specificity factored in."
+          },
+          "technical_complexity": {
+            "score": 88,
+            "reason": "AI Infrastructure technical baseline scaled by AI confidence."
+          },
+          "defensibility": {
+            "score": 72,
+            "reason": "AI Infrastructure moat profile (data/regulatory/network effects)."
+          },
+          "timing": {
+            "score": 85,
+            "reason": "Current investor momentum in AI Infrastructure."
+          }
+        },
+        "overall": 75,
+        "confidence": 0.58
+      },
+      "competitive": {
+        "category": "AI Infrastructure",
+        "leaders": [
+          "OpenAI",
+          "Anthropic",
+          "Together AI",
+          "Modal",
+          "Fireworks AI",
+          "CoreWeave"
+        ],
+        "adjacent": [
+          "Pinecone Systems Inc.",
+          "Perplexity AI Inc.",
+          "Together AI Inc.",
+          "Weaviate B.V."
+        ],
+        "white_space": "cost/latency at the inference layer and vertical-specific serving.",
+        "positioning": "Enters AI Infrastructure against incumbents like OpenAI, Anthropic, Together AI. Key white space: cost/latency at the inference layer and vertical-specific serving."
+      },
+      "recommendation": {
+        "verdict": "Track closely",
+        "conviction": 0.7,
+        "overall": 75,
+        "rationale": "Overall opportunity score 75/100 (confidence 57%). Strongest on technical depth and timing; watch differentiation. Led by Mateo Cohen (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+      },
+      "id": "sample-ecfb14b2d3f6",
       "month": "2026-03"
     },
     {
@@ -2870,8 +2741,8 @@
       "jurisdiction": "New York, USA",
       "formation_date": "2026-04-30",
       "discovered_date": "2026-05-31",
-      "website": "https://pinecone.io",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Managed vector database for production RAG applications.",
       "raw": {
         "name": "Pinecone Systems Inc.",
@@ -2896,7 +2767,8 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: vector database (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "risks": [
-          "AI-relevance is uncertain; may be buzzword-only positioning."
+          "AI-relevance is uncertain; may be buzzword-only positioning.",
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "vector database (description)"
@@ -2911,7 +2783,7 @@
           "previous_companies": [
             "Databricks"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lena%20Rossi%20pinecone.io",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Lena%20Rossi%20pineconesystemsinc.",
           "pedigree": 91,
           "source": "synthetic"
         },
@@ -2922,7 +2794,7 @@
           "previous_companies": [
             "Anthropic"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Sofia%20Schmidt%20pinecone.io",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Sofia%20Schmidt%20pineconesystemsinc.",
           "pedigree": 85,
           "source": "synthetic"
         }
@@ -2955,7 +2827,7 @@
           }
         },
         "overall": 82,
-        "confidence": 0.78
+        "confidence": 0.53
       },
       "competitive": {
         "category": "AI Infrastructure",
@@ -2978,9 +2850,9 @@
       },
       "recommendation": {
         "verdict": "Strong interest",
-        "conviction": 0.81,
+        "conviction": 0.73,
         "overall": 82,
-        "rationale": "Overall opportunity score 82/100 (confidence 78%). Strongest on team and technical depth; watch differentiation. Led by Lena Rossi (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+        "rationale": "Overall opportunity score 82/100 (confidence 53%). Strongest on team and technical depth; watch differentiation. Led by Lena Rossi (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
       },
       "id": "sample-739b688e2d11",
       "month": "2026-04"
@@ -2992,8 +2864,8 @@
       "jurisdiction": "Toronto, CA",
       "formation_date": "2025-12-08",
       "discovered_date": "2026-05-31",
-      "website": "https://weaviate.io",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Open-source vector database and hybrid search engine.",
       "raw": {
         "name": "Weaviate B.V.",
@@ -3018,7 +2890,8 @@
         "reasoning": "Category placement and stage are inferred from name, registry metadata, and any on-page text. Signals: vector database (description). Market read: Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "market_note": "Picks-and-shovels layer for the AI build-out; large but capital-intensive and increasingly contested by incumbents.",
         "risks": [
-          "AI-relevance is uncertain; may be buzzword-only positioning."
+          "AI-relevance is uncertain; may be buzzword-only positioning.",
+          "No discoverable web presence yet; hard to verify traction."
         ],
         "signals": [
           "vector database (description)"
@@ -3033,7 +2906,7 @@
           "previous_companies": [
             "(prior startup, undisclosed)"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Nguyen%20weaviate.io",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Omar%20Nguyen%20weaviateb.v.",
           "pedigree": 56,
           "source": "synthetic"
         },
@@ -3044,7 +2917,7 @@
           "previous_companies": [
             "Cruise"
           ],
-          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Andersson%20weaviate.io",
+          "profile_url": "https://www.linkedin.com/search/results/people/?keywords=Ethan%20Andersson%20weaviateb.v.",
           "pedigree": 71,
           "source": "synthetic"
         }
@@ -3077,7 +2950,7 @@
           }
         },
         "overall": 77,
-        "confidence": 0.78
+        "confidence": 0.53
       },
       "competitive": {
         "category": "AI Infrastructure",
@@ -3100,9 +2973,9 @@
       },
       "recommendation": {
         "verdict": "Track closely",
-        "conviction": 0.77,
+        "conviction": 0.7,
         "overall": 77,
-        "rationale": "Overall opportunity score 77/100 (confidence 78%). Strongest on technical depth and timing; watch differentiation. Led by Omar Nguyen (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
+        "rationale": "Overall opportunity score 77/100 (confidence 53%). Strongest on technical depth and timing; watch differentiation. Led by Omar Nguyen (Co-founder & CEO). Competes with OpenAI, Anthropic, Together AI."
       },
       "id": "sample-77eeb06f24ca",
       "month": "2025-12"
@@ -3114,8 +2987,8 @@
       "jurisdiction": "Tel Aviv, IL",
       "formation_date": "2026-05-22",
       "discovered_date": "2026-05-31",
-      "website": "https://hippocraticai.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Safety-focused LLMs for healthcare workflows.",
       "raw": {
         "name": "Hippocratic AI Inc.",
@@ -3146,8 +3019,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-04-05",
       "discovered_date": "2026-05-31",
-      "website": "https://voyageai.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Embedding models optimized for retrieval and search.",
       "raw": {
         "name": "Voyage AI Inc.",
@@ -3178,8 +3051,8 @@
       "jurisdiction": "Toronto, CA",
       "formation_date": "2026-03-16",
       "discovered_date": "2026-05-31",
-      "website": "https://ramp.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Corporate card and spend platform with AI-powered finance automation.",
       "raw": {
         "name": "Ramp Business Corporation",
@@ -3211,8 +3084,8 @@
       "jurisdiction": "Massachusetts, USA",
       "formation_date": "2025-10-21",
       "discovered_date": "2026-05-31",
-      "website": "https://sourcegraph.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "AI coding assistant and codebase intelligence platform.",
       "raw": {
         "name": "Sourcegraph Inc.",
@@ -3275,8 +3148,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2025-11-28",
       "discovered_date": "2026-05-31",
-      "website": "https://modal.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Serverless GPU compute platform for AI model training and inference.",
       "raw": {
         "name": "Modal Labs Inc.",
@@ -3341,8 +3214,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2026-03-26",
       "discovered_date": "2026-05-31",
-      "website": "https://ambiencehealthcare.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "AI operating system for clinical documentation.",
       "raw": {
         "name": "Ambience Healthcare Inc.",
@@ -3367,14 +3240,46 @@
       "month": "2026-03"
     },
     {
+      "name": "Sierra Technologies Inc.",
+      "source": "sample",
+      "source_id": "sample-2461176",
+      "jurisdiction": "Tel Aviv, IL",
+      "formation_date": "2026-02-13",
+      "discovered_date": "2026-05-31",
+      "website": null,
+      "website_verified": false,
+      "description": "Conversational AI agents for enterprise customer experience.",
+      "raw": {
+        "name": "Sierra Technologies Inc.",
+        "source_id": "sample-2461176",
+        "jurisdiction": "Tel Aviv, IL",
+        "formation_date": "2026-02-13",
+        "description": "Conversational AI agents for enterprise customer experience.",
+        "website": "https://sierra.ai"
+      },
+      "ai_score": 0.31,
+      "is_ai": false,
+      "ai_signals": [
+        "ai (description)"
+      ],
+      "ai_category": "",
+      "memo": null,
+      "founders": [],
+      "scores": null,
+      "competitive": null,
+      "recommendation": null,
+      "id": "sample-3cf2592ddca3",
+      "month": "2026-02"
+    },
+    {
       "name": "Glean Technologies Inc.",
       "source": "sample",
       "source_id": "sample-8709039",
       "jurisdiction": "Singapore, SG",
       "formation_date": "2026-01-30",
       "discovered_date": "2026-05-31",
-      "website": "https://glean.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Enterprise AI search and knowledge discovery across apps.",
       "raw": {
         "name": "Glean Technologies Inc.",
@@ -3405,8 +3310,8 @@
       "jurisdiction": "Toronto, CA",
       "formation_date": "2025-12-21",
       "discovered_date": "2026-05-31",
-      "website": "https://abridge.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "AI clinical documentation from ambient conversation.",
       "raw": {
         "name": "Abridge Inc.",
@@ -3437,8 +3342,8 @@
       "jurisdiction": "Washington, USA",
       "formation_date": "2025-12-16",
       "discovered_date": "2026-05-31",
-      "website": "https://anyscale.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Ray-based platform for scaling AI and Python workloads.",
       "raw": {
         "name": "Anyscale Inc.",
@@ -3469,8 +3374,8 @@
       "jurisdiction": "California, USA",
       "formation_date": "2025-10-15",
       "discovered_date": "2026-05-31",
-      "website": "https://elevenlabs.io",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "AI voice synthesis and speech generation platform.",
       "raw": {
         "name": "ElevenLabs Inc.",
@@ -3501,8 +3406,8 @@
       "jurisdiction": "Paris, FR",
       "formation_date": "2025-10-22",
       "discovered_date": "2026-05-31",
-      "website": "https://baseten.co",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Model serving infrastructure for production ML deployments.",
       "raw": {
         "name": "Baseten Inc.",
@@ -3565,8 +3470,8 @@
       "jurisdiction": "California, USA",
       "formation_date": "2026-05-07",
       "discovered_date": "2026-05-31",
-      "website": "https://pika.art",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Generative video model for text-to-video creation.",
       "raw": {
         "name": "Pika Labs Inc.",
@@ -3713,8 +3618,8 @@
       "jurisdiction": "Massachusetts, USA",
       "formation_date": "2026-05-01",
       "discovered_date": "2026-05-31",
-      "website": "https://cohere.com",
-      "website_verified": true,
+      "website": null,
+      "website_verified": false,
       "description": "Enterprise NLP platform for search, generation, and embeddings.",
       "raw": {
         "name": "Cohere Inc.",

@@ -53,10 +53,12 @@ turns a raw public record into an investor-ready recommendation:
 library — **no install required**.
 
 ```bash
-# 1. Generate the bundled sample dataset (synthetic but realistic)
-python -m scout gen-sample
+# 1. Build the sample dataset by scraping recent Delaware incorporations
+#    (entities formed within the last 30 days). Falls back gracefully — the
+#    committed sample_companies.json already contains data.
+python -m scout gen-sample --max-age-days 30
 
-# 2. Discover + classify + research from the offline sample, then export
+# 2. Discover + classify + research from the sample, then export
 python -m scout run --source sample --research --export
 
 # 3. Open the dashboard
@@ -66,6 +68,21 @@ cd dashboard && python -m http.server 8000
 
 That's it. The committed `dashboard/data.json` means the dashboard also works
 the instant you deploy it — no pipeline run needed.
+
+### Run against the live Delaware registry
+
+Newly incorporated firms are exactly what we want to catch in their first weeks.
+This connector scrapes the official Delaware Division of Corporations ICIS
+portal (no bulk API exists), reads each entity's incorporation date, and keeps
+only those formed within the scout window.
+
+```bash
+python -m scout run --source delaware --max-age-days 30 --research --export
+```
+
+> The portal is rate-limited and occasionally returns transient errors; the
+> connector retries with backoff and fails soft (a bad record never aborts the
+> run). `gen-sample` uses this same source.
 
 ### Run against the live SEC EDGAR source
 
@@ -100,15 +117,15 @@ the heuristic classifier and heuristic memos — it never hard-fails.
 
 | Command | Description |
 | --- | --- |
-| `python -m scout gen-sample` | (Re)generate the bundled sample dataset |
+| `python -m scout gen-sample` | Scrape recent Delaware filings into the sample JSON |
 | `python -m scout run` | Discover → classify → (research) → store |
 | `python -m scout export` | Re-export `dashboard/data.json` from the DB |
 | `python -m scout stats` | Print database stats |
 | `python -m scout verify-links` | Verify every website URL in the sample JSON resolves |
 
-Useful `run` flags: `--source {sample,sec_edgar}`, `--limit N`, `--llm`,
-`--research`, `--no-fetch-site`, `--export`, `--query`, `--days-back`,
-`--forms`, `--user-agent`.
+Useful `run` flags: `--source {sample,delaware,sec_edgar}`, `--limit N`,
+`--max-age-days N`, `--llm`, `--research`, `--no-fetch-site`, `--export`,
+`--query`, `--days-back`, `--forms`, `--user-agent`.
 
 ---
 

@@ -1,8 +1,7 @@
 """Offline sample source.
 
-Loads a bundled, realistic dataset of newly formed companies so the entire
-pipeline runs end-to-end with zero network access or API keys. This is the
-default source and is what powers the committed demo dashboard.
+Loads the bundled dataset produced by `python -m scout gen-sample`, which
+scrapes recently incorporated Delaware Division of Corporations records.
 """
 
 from __future__ import annotations
@@ -27,17 +26,17 @@ class SampleSource(Source):
         if not self.data_file.exists():
             raise FileNotFoundError(
                 f"Sample data not found at {self.data_file}. "
-                "Run `python -m scout gen-sample` to create it."
+                "Run `python -m scout gen-sample` to scrape Delaware records."
             )
         records = json.loads(self.data_file.read_text())
         for rec in records[:limit]:
             yield Company(
                 name=rec["name"],
-                source=self.name,
+                source=rec.get("source", self.name),
                 source_id=rec.get("source_id", rec["name"]),
-                jurisdiction=rec.get("jurisdiction", ""),
+                jurisdiction=rec.get("jurisdiction", "Delaware, USA"),
                 formation_date=rec.get("formation_date"),
                 website=rec.get("website"),
                 description=rec.get("description", ""),
-                raw=rec,
+                raw=rec.get("raw", rec),
             )

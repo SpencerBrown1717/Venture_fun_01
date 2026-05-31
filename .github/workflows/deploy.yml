@@ -29,10 +29,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Generate sample dataset
-        run: python -m scout gen-sample
+      - name: Scrape Delaware filings (refresh sample, best-effort)
+        continue-on-error: true
+        run: python -m scout gen-sample --max-age-days 30 --limit 80
 
-      - name: Run the Venture Analyst Swarm (offline baseline)
+      - name: Run Venture Analyst Swarm on Delaware sample
         run: python -m scout run --source sample --research --no-fetch-site --export
 
       - name: Enrich with live SEC EDGAR Form D filings (best-effort)
