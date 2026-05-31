@@ -89,7 +89,11 @@ function renderStats() {
   const verified = state.companies.filter((c) => c.verified_real).length;
   const capital = ai.reduce((a, c) => a + raisedOf(c), 0);
   const catCount = {};
-  ai.forEach((c) => { if (c.ai_category) catCount[c.ai_category] = (catCount[c.ai_category] || 0) + 1; });
+  ai.forEach((c) => {
+    // "General AI" is the catch-all bucket — exclude it from "hottest" so the
+    // stat surfaces a meaningful subsector.
+    if (c.ai_category && c.ai_category !== "General AI") catCount[c.ai_category] = (catCount[c.ai_category] || 0) + 1;
+  });
   const hottest = Object.entries(catCount).sort((a, b) => b[1] - a[1])[0];
 
   const preFormD = s.pre_form_d ?? state.companies.filter((c) => !formDFound(c)).length;
@@ -97,7 +101,7 @@ function renderStats() {
     { num: s.total ?? state.companies.length, lbl: "Discovered" },
     { num: ai.length, lbl: "AI-related", accent: true },
     { num: preFormD, lbl: "Pre-Form-D", accent: true },
-    { num: verified, lbl: "SEC-verified" },
+    { num: verified, lbl: "Verified real" },
     { num: fmtMoney(capital) || "—", lbl: "Capital tracked", serif: true },
     { num: hottest ? hottest[0] : "—", lbl: "Hottest category", serif: true },
   ];
@@ -369,8 +373,14 @@ const FINANCE_CLASS = {
   "Weak unverified signal": "fin-weak", "Unknown financing status": "fin-weak",
 };
 
-function badgesHtml(c, max = 4) {
-  const b = c.badges || [];
+// Badges that just restate the financing pill already shown in the metaline.
+// We hide them on compact cards to avoid triple-labeling, but keep them in the
+// full drawer for completeness.
+const FIN_DUP_BADGES = new Set(["Confirmed Form D", "No Form D found", "Probable SAFE-stage"]);
+
+function badgesHtml(c, max = 4, skipFinDup = false) {
+  let b = c.badges || [];
+  if (skipFinDup) b = b.filter((x) => !FIN_DUP_BADGES.has(x));
   if (!b.length) return "";
   return `<div class="badges">${b.slice(0, max).map((x) =>
     `<span class="badge b-${slug(x)}">${escapeHtml(x)}</span>`).join("")}</div>`;
@@ -410,7 +420,7 @@ function cardHtml(c) {
       <div class="metaline">${meta}</div>
       ${c.description ? `<p class="desc">${escapeHtml(c.description)}</p>` : ""}
       ${fline}
-      ${badgesHtml(c)}
+      ${badgesHtml(c, 4, true)}
       <div class="tags">${cat}${recBadge}</div>
       <div class="card-foot">
         ${link ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener">${escapeHtml(linkLabel)}</a>` : `<span class="sub">no website yet</span>`}

@@ -121,7 +121,8 @@ class Database:
         return Company.from_row(dict(row)) if row else None
 
     def all(self, min_score: float = 0.0, ai_only: bool = False) -> list[Company]:
-        sql = "SELECT * FROM companies WHERE ai_score >= ?"
+        # COALESCE so legacy rows with NULL ai_score still load (backward compat).
+        sql = "SELECT * FROM companies WHERE COALESCE(ai_score, 0) >= ?"
         params: list = [min_score]
         if ai_only:
             sql += " AND is_ai = 1"
