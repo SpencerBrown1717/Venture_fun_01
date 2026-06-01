@@ -1266,6 +1266,22 @@ function ingest(text, label) {
   if (!contacts.length) { setNetStatus(`Parsed ${escapeHtml(label)}, but found no contact rows — expecting a Gmail or LinkedIn CSV export.`, true); return; }
   state.contacts = contacts;
   state.matches = matchContacts(contacts);
+  // Build 1/3 — run the investor intro matching engine on the same contacts.
+  const investorUniverse = buildInvestorUniverse({
+    companies: state.companies || [],
+    investors: (state.vc && state.vc.investors) || [],
+    partners: []
+  });
+  const investorIntroMatches = buildInvestorIntroMatches(contacts, investorUniverse);
+  const superConnectors = buildSuperConnectors({ startupIntroMatches: state.matches, investorIntroMatches });
+  const enrichedCompanies = attachInvestorAccessToCompanies(state.companies || [], investorIntroMatches);
+  state.investorUniverse = investorUniverse;
+  state.investorIntroMatches = investorIntroMatches;
+  state.superConnectors = superConnectors;
+  state.enrichedCompanies = enrichedCompanies;
+  console.info("[network] investor universe", investorUniverse.length);
+  console.info("[network] investor intro matches", investorIntroMatches.length);
+  console.info("[network] super connectors", superConnectors.length);
   const reach = new Set(state.matches.map((m) => m.company.id)).size;
   setNetStatus(`Parsed ${contacts.length} contacts from ${escapeHtml(label)} · ${state.matches.length} warm path${state.matches.length === 1 ? "" : "s"} into ${reach} compan${reach === 1 ? "y" : "ies"}. Contacts stayed in your browser.`, false);
   updateNetworkCount();
@@ -1298,6 +1314,817 @@ function sampleContacts() {
 }
 const csvCell = (s) => { s = String(s ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
 
+/* =========================================================
+   Network v16 — Investor Intro Matching Engine
+   Build 1/3: data + matching layer only
+   ========================================================= */
+
+const INVESTOR_TITLE_KEYWORDS = [
+  "vc",
+  "venture",
+  "ventures",
+  "capital",
+  "investor",
+  "investment",
+  "partner",
+  "principal",
+  "associate",
+  "scout",
+  "analyst",
+  "fund",
+  "growth",
+  "seed",
+  "pre-seed",
+  "accelerator"
+];
+
+const FREEMAIL_DOMAINS = new Set([
+  "gmail.com",
+  "yahoo.com",
+  "hotmail.com",
+  "outlook.com",
+  "icloud.com",
+  "me.com",
+  "aol.com",
+  "proton.me",
+  "protonmail.com"
+]);
+
+function safeText(value) {
+  return String(value || "").trim();
+}
+
+function normalizeKey(value) {
+  return safeText(value)
+    .toLowerCase()
+    .replace(/^https?:\/\//, "")
+    .replace(/^www\./, "")
+    .replace(/\/$/, "")
+    .replace(/[^a-z0-9. -]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function normalizeName(value) {
+  return safeText(value)
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\b(llc|inc|co|company|corp|corporation|ltd|limited|management|partners|partner|ventures|venture|capital|fund|funds)\b/g, "")
+    .replace(/[^a-z0-9 ]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function getEmailDomain(email) {
+  const raw = safeText(email).toLowerCase();
+  if (!raw.includes("@")) return "";
+  return raw.split("@").pop().trim();
+}
+
+function isFreemailDomain(domain) {
+  return FREEMAIL_DOMAINS.has(normalizeKey(domain));
+}
+
+function includesNormalized(haystack, needle) {
+  const h = normalizeKey(haystack);
+  const n = normalizeKey(needle);
+  return Boolean(h && n && h.includes(n));
+}
+
+function hasInvestorTitleSignal(contact) {
+  const title = normalizeKey(
+    [
+      contact.title,
+      contact.headline,
+      contact.position,
+      contact.role,
+      contact.notes
+    ].filter(Boolean).join(" ")
+  );
+
+  return INVESTOR_TITLE_KEYWORDS.some((keyword) =>
+    title.includes(keyword)
+  );
+}
+
+function contactFullText(contact) {
+  return normalizeKey(
+    [
+      contact.name,
+      contact.firstName,
+      contact.lastName,
+      contact.email,
+      contact.company,
+      contact.employer,
+      contact.organization,
+      contact.title,
+      contact.role,
+      contact.headline,
+      contact.linkedin,
+      contact.website,
+      contact.notes
+    ].filter(Boolean).join(" ")
+  );
+}
+
+function getContactName(contact) {
+  const explicit = safeText(contact.name || contact.fullName);
+  if (explicit) return explicit;
+
+  const first = safeText(contact.firstName);
+  const last = safeText(contact.lastName);
+  return [first, last].filter(Boolean).join(" ") || "Unknown contact";
+}
+
+function getContactCompany(contact) {
+  return safeText(
+    contact.company ||
+    contact.employer ||
+    contact.organization ||
+    contact.currentCompany ||
+    ""
+  );
+}
+
+function getContactTitle(contact) {
+  return safeText(
+    contact.title ||
+    contact.role ||
+    contact.position ||
+    contact.headline ||
+    ""
+  );
+}
+
+function getContactEmail(contact) {
+  return safeText(contact.email || contact.emailAddress || contact.workEmail || "");
+}
+
+function getContactLinkedIn(contact) {
+  return safeText(contact.linkedin || contact.linkedIn || contact.linkedinUrl || contact.url || "");
+}
+
+/**
+ * Builds investor records from whatever data is already available.
+ *
+ * Accepts:
+ * - existing investors array, if present
+ * - company records that contain investor fields
+ * - manually defined partner records, if present
+ *
+ * This should be defensive because data.json may evolve.
+ */
+function buildInvestorUniverse({ companies = [], investors = [], partners = [] } = {}) {
+  const firmMap = new Map();
+
+  function upsertFirm(rawFirm) {
+    const name = safeText(rawFirm.name || rawFirm.firm || rawFirm.investor || rawFirm.investorName);
+    if (!name) return null;
+
+    const key = normalizeName(name);
+    if (!key) return null;
+
+    const existing = firmMap.get(key) || {
+      name,
+      normalizedName: key,
+      domain: "",
+      website: "",
+      thesisTags: [],
+      partners: [],
+      portfolioCompanies: [],
+      sourceRecords: []
+    };
+
+    existing.name = existing.name || name;
+    existing.domain = existing.domain || safeText(rawFirm.domain || rawFirm.emailDomain || "");
+    existing.website = existing.website || safeText(rawFirm.website || rawFirm.url || "");
+    existing.thesisTags = Array.from(new Set([
+      ...existing.thesisTags,
+      ...asArray(rawFirm.thesisTags),
+      ...asArray(rawFirm.focus),
+      ...asArray(rawFirm.categories)
+    ].map(safeText).filter(Boolean)));
+
+    existing.sourceRecords.push(rawFirm);
+    firmMap.set(key, existing);
+    return existing;
+  }
+
+  function addPartnerToFirm(firm, rawPartner) {
+    if (!firm || !rawPartner) return;
+
+    const partnerName = safeText(rawPartner.name || rawPartner.partner || rawPartner.fullName);
+    if (!partnerName) return;
+
+    const partner = {
+      name: partnerName,
+      title: safeText(rawPartner.title || rawPartner.role || ""),
+      linkedin: safeText(rawPartner.linkedin || rawPartner.linkedinUrl || ""),
+      x: safeText(rawPartner.x || rawPartner.twitter || ""),
+      focus: asArray(rawPartner.focus || rawPartner.thesisTags || rawPartner.categories)
+        .map(safeText)
+        .filter(Boolean)
+    };
+
+    const existingKey = normalizeName(partner.name);
+    const alreadyExists = firm.partners.some((p) => normalizeName(p.name) === existingKey);
+    if (!alreadyExists) firm.partners.push(partner);
+  }
+
+  investors.forEach((investor) => {
+    const firm = upsertFirm(investor);
+
+    asArray(investor.partners).forEach((partner) => {
+      addPartnerToFirm(firm, partner);
+    });
+
+    asArray(investor.portfolioCompanies).forEach((companyName) => {
+      const clean = safeText(companyName);
+      if (clean && !firm.portfolioCompanies.includes(clean)) {
+        firm.portfolioCompanies.push(clean);
+      }
+    });
+  });
+
+  partners.forEach((partner) => {
+    const firmName = safeText(partner.firm || partner.investor || partner.investorFirm);
+    const firm = upsertFirm({ name: firmName });
+    addPartnerToFirm(firm, partner);
+  });
+
+  companies.forEach((company) => {
+    const companyName = safeText(company.name || company.company || company.title);
+
+    const knownInvestors = [
+      ...asArray(company.investors),
+      ...asArray(company.knownInvestors),
+      ...asArray(company.possibleInvestors),
+      ...asArray(company.backers),
+      ...asArray(company.firms)
+    ];
+
+    knownInvestors.forEach((raw) => {
+      const firmName = typeof raw === "string"
+        ? raw
+        : safeText(raw.name || raw.firm || raw.investor);
+
+      const firm = upsertFirm(typeof raw === "string" ? { name: raw } : raw);
+      if (firm && companyName && !firm.portfolioCompanies.includes(companyName)) {
+        firm.portfolioCompanies.push(companyName);
+      }
+
+      if (firm && typeof raw === "object") {
+        asArray(raw.partners).forEach((partner) => {
+          addPartnerToFirm(firm, partner);
+        });
+      }
+    });
+  });
+
+  return Array.from(firmMap.values())
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function asArray(value) {
+  if (!value) return [];
+  if (Array.isArray(value)) return value;
+  if (typeof value === "string") {
+    return value
+      .split(/[;,|]/)
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  return [value];
+}
+
+/**
+ * Main investor matching function.
+ *
+ * Inputs:
+ * - contacts: parsed contacts from Gmail / LinkedIn CSV
+ * - investorUniverse: normalized investor firm records
+ *
+ * Output:
+ * - investor intro matches
+ */
+function buildInvestorIntroMatches(contacts = [], investorUniverse = []) {
+  const matches = [];
+
+  contacts.forEach((contact) => {
+    const contactName = getContactName(contact);
+    const contactEmail = getContactEmail(contact);
+    const contactDomain = getEmailDomain(contactEmail);
+    const contactCompany = getContactCompany(contact);
+    const contactTitle = getContactTitle(contact);
+    const contactLinkedIn = getContactLinkedIn(contact);
+    const contactText = contactFullText(contact);
+
+    investorUniverse.forEach((firm) => {
+      const firmName = safeText(firm.name);
+      const firmDomain = normalizeKey(firm.domain || domainFromWebsite(firm.website));
+      const firmNameNorm = normalizeName(firmName);
+      const contactCompanyNorm = normalizeName(contactCompany);
+
+      const signals = [];
+      const sourceFields = [];
+      let verified = false;
+
+      if (contactCompanyNorm && firmNameNorm && contactCompanyNorm === firmNameNorm) {
+        signals.push("employer_exact_match");
+        sourceFields.push("contact.company");
+        verified = true;
+      }
+
+      if (
+        contactCompanyNorm &&
+        firmNameNorm &&
+        (contactCompanyNorm.includes(firmNameNorm) || firmNameNorm.includes(contactCompanyNorm))
+      ) {
+        signals.push("employer_fuzzy_match");
+        sourceFields.push("contact.company");
+      }
+
+      if (
+        contactDomain &&
+        firmDomain &&
+        !isFreemailDomain(contactDomain) &&
+        contactDomain === firmDomain
+      ) {
+        signals.push("email_domain_match");
+        sourceFields.push("contact.email");
+        verified = true;
+      }
+
+      if (firmName && includesNormalized(contact.notes, firmName)) {
+        signals.push("notes_mention_firm");
+        sourceFields.push("contact.notes");
+      }
+
+      if (firmName && includesNormalized(contactTitle, firmName)) {
+        signals.push("title_mentions_firm");
+        sourceFields.push("contact.title");
+      }
+
+      if (hasInvestorTitleSignal(contact)) {
+        signals.push("title_vc_keyword");
+        sourceFields.push("contact.title");
+      }
+
+      const matchedPartner = findBestPartnerMatch(contact, firm);
+
+      if (matchedPartner) {
+        signals.push(...matchedPartner.signals);
+        sourceFields.push(...matchedPartner.sourceFields);
+        if (matchedPartner.verified) verified = true;
+      }
+
+      const strongEnough =
+        signals.includes("employer_exact_match") ||
+        signals.includes("email_domain_match") ||
+        signals.includes("partner_name_match") ||
+        (
+          signals.includes("employer_fuzzy_match") &&
+          signals.includes("title_vc_keyword")
+        ) ||
+        (
+          signals.includes("notes_mention_firm") &&
+          signals.includes("title_vc_keyword")
+        );
+
+      if (!strongEnough) return;
+
+      const confidence = investorConfidenceFromSignals(signals, verified);
+      const investorAccessScore = computeInvestorAccessScore({
+        signals,
+        verified,
+        confidence,
+        contact,
+        firm,
+        partner: matchedPartner && matchedPartner.partner
+      });
+
+      const partner = matchedPartner && matchedPartner.partner;
+
+      matches.push({
+        type: "investor_intro",
+        contactName,
+        contactEmail,
+        contactLinkedIn,
+        contactTitle,
+        contactCompany,
+        targetInvestor: firm.name,
+        targetInvestorDomain: firmDomain,
+        targetPartner: partner ? partner.name : "",
+        targetPartnerTitle: partner ? safeText(partner.title) : "",
+        relationshipPath: [
+          "You",
+          contactName,
+          firm.name,
+          ...(partner ? [partner.name] : [])
+        ],
+        matchReason: investorMatchReason(signals, firm, partner),
+        matchSignals: Array.from(new Set(signals)),
+        sourceFields: Array.from(new Set(sourceFields)),
+        confidence,
+        verified,
+        investorAccessScore,
+        recommendedAsk: buildInvestorRecommendedAsk({
+          contactName,
+          firm,
+          partner,
+          confidence
+        })
+      });
+    });
+  });
+
+  return dedupeInvestorIntroMatches(matches)
+    .sort((a, b) => b.investorAccessScore - a.investorAccessScore);
+}
+
+function domainFromWebsite(website) {
+  const raw = normalizeKey(website);
+  if (!raw) return "";
+  return raw.split("/")[0].replace(/^www\./, "");
+}
+
+function findBestPartnerMatch(contact, firm) {
+  const text = contactFullText(contact);
+  const company = normalizeName(getContactCompany(contact));
+  const email = normalizeKey(getContactEmail(contact));
+  const linkedin = normalizeKey(getContactLinkedIn(contact));
+
+  let best = null;
+
+  asArray(firm.partners).forEach((partner) => {
+    const partnerName = safeText(partner.name);
+    const partnerNameNorm = normalizeName(partnerName);
+    const partnerLinkedIn = normalizeKey(partner.linkedin);
+
+    const signals = [];
+    const sourceFields = [];
+    let verified = false;
+
+    if (partnerNameNorm && text.includes(partnerNameNorm)) {
+      signals.push("partner_name_match");
+      sourceFields.push("contact.full_text");
+    }
+
+    if (partnerLinkedIn && linkedin && partnerLinkedIn === linkedin) {
+      signals.push("partner_linkedin_exact_match");
+      sourceFields.push("contact.linkedin");
+      verified = true;
+    }
+
+    if (partnerNameNorm && company && company.includes(partnerNameNorm)) {
+      signals.push("partner_name_in_company_field");
+      sourceFields.push("contact.company");
+    }
+
+    if (!signals.length) return;
+
+    const score =
+      (signals.includes("partner_linkedin_exact_match") ? 50 : 0) +
+      (signals.includes("partner_name_match") ? 30 : 0) +
+      (signals.includes("partner_name_in_company_field") ? 15 : 0);
+
+    if (!best || score > best.score) {
+      best = {
+        partner,
+        signals,
+        sourceFields,
+        verified,
+        score
+      };
+    }
+  });
+
+  return best;
+}
+
+function investorConfidenceFromSignals(signals, verified) {
+  const set = new Set(signals);
+
+  if (
+    verified &&
+    (
+      set.has("email_domain_match") ||
+      set.has("employer_exact_match") ||
+      set.has("partner_linkedin_exact_match")
+    )
+  ) {
+    return "high";
+  }
+
+  if (
+    set.has("partner_name_match") ||
+    (
+      set.has("employer_fuzzy_match") &&
+      set.has("title_vc_keyword")
+    )
+  ) {
+    return "medium";
+  }
+
+  if (
+    set.has("notes_mention_firm") ||
+    set.has("title_mentions_firm")
+  ) {
+    return "medium";
+  }
+
+  return "low";
+}
+
+function computeInvestorAccessScore({ signals, verified, confidence, contact, firm, partner }) {
+  const set = new Set(signals);
+  let score = 30;
+
+  if (verified) score += 20;
+  if (confidence === "high") score += 20;
+  if (confidence === "medium") score += 10;
+
+  if (set.has("email_domain_match")) score += 18;
+  if (set.has("employer_exact_match")) score += 18;
+  if (set.has("partner_linkedin_exact_match")) score += 20;
+  if (set.has("partner_name_match")) score += 12;
+  if (set.has("title_vc_keyword")) score += 8;
+  if (set.has("notes_mention_firm")) score += 6;
+
+  if (getContactEmail(contact)) score += 4;
+  if (getContactLinkedIn(contact)) score += 4;
+  if (partner && partner.name) score += 8;
+  if (asArray(firm.portfolioCompanies).length > 0) score += 4;
+  if (asArray(firm.thesisTags).length > 0) score += 4;
+
+  return Math.max(0, Math.min(100, Math.round(score)));
+}
+
+function investorMatchReason(signals, firm, partner) {
+  const set = new Set(signals);
+
+  if (set.has("partner_linkedin_exact_match")) {
+    return `Contact LinkedIn matched ${partner.name}.`;
+  }
+
+  if (set.has("email_domain_match")) {
+    return `Contact email domain matched ${firm.name}.`;
+  }
+
+  if (set.has("employer_exact_match")) {
+    return `Contact employer matched ${firm.name}.`;
+  }
+
+  if (set.has("partner_name_match")) {
+    return `Contact record mentions partner ${partner.name}.`;
+  }
+
+  if (set.has("employer_fuzzy_match") && set.has("title_vc_keyword")) {
+    return `Contact employer appears related to ${firm.name}, with investor-title signal.`;
+  }
+
+  if (set.has("notes_mention_firm")) {
+    return `Contact notes mention ${firm.name}.`;
+  }
+
+  return `Contact appears connected to ${firm.name}.`;
+}
+
+function buildInvestorRecommendedAsk({ contactName, firm, partner, confidence }) {
+  const partnerPhrase = partner && partner.name
+    ? `${partner.name}${partner.title ? `, ${partner.title}` : ""}`
+    : `the right partner`;
+
+  if (confidence === "high") {
+    return `Ask ${contactName} whether ${partnerPhrase} at ${firm.name} is the right person for this category.`;
+  }
+
+  if (confidence === "medium") {
+    return `Ask ${contactName} whether they know the right person at ${firm.name} for early AI opportunities.`;
+  }
+
+  return `Ask ${contactName} to confirm whether they have a real connection to ${firm.name} before requesting an intro.`;
+}
+
+function dedupeInvestorIntroMatches(matches) {
+  const seen = new Map();
+
+  matches.forEach((match) => {
+    const key = [
+      normalizeName(match.contactName),
+      normalizeKey(match.contactEmail),
+      normalizeName(match.targetInvestor),
+      normalizeName(match.targetPartner)
+    ].join("|");
+
+    const existing = seen.get(key);
+
+    if (!existing || match.investorAccessScore > existing.investorAccessScore) {
+      seen.set(key, match);
+    }
+  });
+
+  return Array.from(seen.values());
+}
+
+/**
+ * Super-connectors are contacts who connect to multiple valuable nodes.
+ *
+ * This works across startup intro matches and investor intro matches.
+ */
+function buildSuperConnectors({ startupIntroMatches = [], investorIntroMatches = [] } = {}) {
+  const connectorMap = new Map();
+
+  function ensureConnector(match) {
+    const name = safeText(match.contactName || match.connectorName || match.name);
+    const email = safeText(match.contactEmail || match.email);
+    const key = normalizeKey(email || name);
+
+    if (!key) return null;
+
+    if (!connectorMap.has(key)) {
+      connectorMap.set(key, {
+        contactName: name,
+        contactEmail: email,
+        startupTargets: new Set(),
+        investorTargets: new Set(),
+        partnerTargets: new Set(),
+        paths: [],
+        bestScore: 0,
+        connectorType: "unknown"
+      });
+    }
+
+    return connectorMap.get(key);
+  }
+
+  startupIntroMatches.forEach((match) => {
+    const connector = ensureConnector(match);
+    if (!connector) return;
+
+    const company = safeText(match.targetCompany || match.company || match.companyName);
+    if (company) connector.startupTargets.add(company);
+
+    connector.paths.push(match);
+    connector.bestScore = Math.max(
+      connector.bestScore,
+      Number(match.founderAccessScore || match.introScore || match.score || 0)
+    );
+  });
+
+  investorIntroMatches.forEach((match) => {
+    const connector = ensureConnector(match);
+    if (!connector) return;
+
+    if (match.targetInvestor) connector.investorTargets.add(match.targetInvestor);
+    if (match.targetPartner) connector.partnerTargets.add(match.targetPartner);
+
+    connector.paths.push(match);
+    connector.bestScore = Math.max(
+      connector.bestScore,
+      Number(match.investorAccessScore || 0)
+    );
+  });
+
+  return Array.from(connectorMap.values())
+    .map((connector) => {
+      const startupCount = connector.startupTargets.size;
+      const investorCount = connector.investorTargets.size;
+      const partnerCount = connector.partnerTargets.size;
+
+      let connectorType = "single_path_connector";
+
+      if (startupCount > 0 && investorCount > 0) {
+        connectorType = "bridge_super_connector";
+      } else if (startupCount >= 2) {
+        connectorType = "founder_side_super_connector";
+      } else if (investorCount >= 2 || partnerCount >= 2) {
+        connectorType = "investor_side_super_connector";
+      }
+
+      const leverageScore =
+        connector.bestScore +
+        startupCount * 8 +
+        investorCount * 10 +
+        partnerCount * 6 +
+        (connectorType === "bridge_super_connector" ? 20 : 0);
+
+      return {
+        contactName: connector.contactName,
+        contactEmail: connector.contactEmail,
+        startupTargets: Array.from(connector.startupTargets),
+        investorTargets: Array.from(connector.investorTargets),
+        partnerTargets: Array.from(connector.partnerTargets),
+        pathCount: connector.paths.length,
+        connectorType,
+        leverageScore: Math.min(100, Math.round(leverageScore)),
+        recommendedAction: buildSuperConnectorAction({
+          name: connector.contactName,
+          startupCount,
+          investorCount,
+          partnerCount,
+          connectorType
+        })
+      };
+    })
+    .filter((connector) => connector.pathCount >= 2 || connector.connectorType !== "single_path_connector")
+    .sort((a, b) => b.leverageScore - a.leverageScore);
+}
+
+function buildSuperConnectorAction({ name, startupCount, investorCount, partnerCount, connectorType }) {
+  if (connectorType === "bridge_super_connector") {
+    return `Ask ${name} for category-level feedback first; they may bridge both startup and investor access.`;
+  }
+
+  if (connectorType === "founder_side_super_connector") {
+    return `Ask ${name} which of the ${startupCount} connected startups is most worth prioritizing.`;
+  }
+
+  if (connectorType === "investor_side_super_connector") {
+    return `Ask ${name} which investor or partner is closest to this category.`;
+  }
+
+  return `Ask ${name} to confirm the relationship before requesting a specific intro.`;
+}
+
+/**
+ * Optional helper:
+ * Enrich company records with investor access.
+ *
+ * This lets the next build show:
+ * - Founder Access Score
+ * - Investor Access Score
+ * - Total Access Score
+ */
+function attachInvestorAccessToCompanies(companies = [], investorIntroMatches = []) {
+  return companies.map((company) => {
+    const companyName = safeText(company.name || company.company || company.title);
+    const companyInvestors = [
+      ...asArray(company.investors),
+      ...asArray(company.knownInvestors),
+      ...asArray(company.possibleInvestors),
+      ...asArray(company.backers)
+    ].map((item) => {
+      if (typeof item === "string") return item;
+      return safeText(item.name || item.firm || item.investor);
+    }).filter(Boolean);
+
+    const relatedInvestorMatches = investorIntroMatches.filter((match) => {
+      return companyInvestors.some((investorName) =>
+        normalizeName(investorName) === normalizeName(match.targetInvestor)
+      );
+    });
+
+    const investorAccessScore = relatedInvestorMatches.length
+      ? Math.max(...relatedInvestorMatches.map((m) => Number(m.investorAccessScore || 0)))
+      : 0;
+
+    const founderAccessScore = Number(company.founderAccessScore || company.introScore || 0);
+    const opportunityScore = Number(company.score || company.opportunityScore || company.aiScore || 0);
+
+    const totalAccessScore = Math.min(
+      100,
+      Math.round(
+        founderAccessScore * 0.35 +
+        investorAccessScore * 0.35 +
+        opportunityScore * 0.30
+      )
+    );
+
+    return {
+      ...company,
+      investorIntroMatches: relatedInvestorMatches,
+      investorAccessScore,
+      totalAccessScore,
+      accessLabel: accessLabelFromScores({
+        founderAccessScore,
+        investorAccessScore,
+        totalAccessScore
+      })
+    };
+  });
+}
+
+function accessLabelFromScores({ founderAccessScore, investorAccessScore, totalAccessScore }) {
+  if (founderAccessScore >= 75 && investorAccessScore >= 75) {
+    return "A+ — Strong founder and investor access";
+  }
+
+  if (founderAccessScore >= 75) {
+    return "A — Strong founder access";
+  }
+
+  if (investorAccessScore >= 75) {
+    return "A — Strong investor access";
+  }
+
+  if (totalAccessScore >= 60) {
+    return "B — Useful path, needs verification";
+  }
+
+  return "C — Weak or missing access path";
+}
+
 // --- 3b · render warm-intro list -------------------------------------------
 function renderNetwork() {
   const has = state.contacts.length > 0;
@@ -1316,6 +2143,16 @@ function renderNetwork() {
     { num: targets.length, lbl: state.netAiOnly ? "AI companies reachable" : "Companies reachable", accent: true },
     { num: founderPaths, lbl: "Founder paths" },
   ];
+  // Build 1/3 debug stats — confirm the investor data layer ran (only after a match).
+  if (state.investorUniverse && state.investorUniverse.length) {
+    const introMatches = state.investorIntroMatches || [];
+    strip.push(
+      { num: state.investorUniverse.length, lbl: "Investor firms" },
+      { num: introMatches.length, lbl: "Investor paths", accent: true },
+      { num: introMatches.filter((m) => m.targetPartner).length, lbl: "Partner paths" },
+      { num: (state.superConnectors || []).length, lbl: "Super-connectors", accent: true },
+    );
+  }
   $("netStrip").innerHTML = strip.map((c) =>
     `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}">${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`).join("");
 
