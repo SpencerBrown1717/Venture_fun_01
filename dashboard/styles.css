@@ -515,6 +515,32 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 .watch-controls .searchbar.inline .search-ico { font-size: 14px; }
 .watch-controls .searchbar.inline input { font-size: 13px; }
 .card.deal.investor h3 { font-size: 17px; }
+.card.deal.investor { cursor: pointer; }
+.card.deal.investor:hover { border-color: rgba(198,242,78,0.35); }
+.card.deal.investor:focus-visible { outline: 2px solid var(--accent-dim); outline-offset: 2px; }
+.card.deal.investor h3 .vbadge { font-size: 8.5px; margin-left: 6px; vertical-align: middle; }
+.inv-tagline { font-size: 12.5px; color: var(--txt-2); margin-top: 6px; font-style: italic; max-width: 42ch; }
+
+/* Investor contact links */
+.inv-links { display: flex; flex-wrap: wrap; gap: 6px; margin: 2px 0 4px; }
+.inv-links.full { gap: 8px; margin: 0; }
+.inv-link {
+  font-family: var(--mono); font-size: 10.5px; text-decoration: none;
+  color: var(--txt-2); background: var(--panel-2); border: 1px solid var(--line-2);
+  border-radius: 7px; padding: 5px 10px; transition: all 0.15s; white-space: nowrap;
+}
+.inv-link:hover { color: var(--accent); border-color: var(--accent-dim); background: rgba(198,242,78,0.06); }
+.inv-link.li { color: #7eb8ff; border-color: rgba(126,184,255,0.35); }
+.inv-link.li:hover { color: #a8d4ff; border-color: rgba(126,184,255,0.55); }
+.inv-link.x { color: var(--txt); border-color: rgba(255,255,255,0.2); }
+.inv-link.web { color: var(--accent); border-color: rgba(198,242,78,0.3); }
+.inv-link.mail { color: var(--track); border-color: rgba(139,233,253,0.3); }
+.inv-link.search, .inv-link.guess { border-style: dashed; opacity: 0.85; }
+.inv-link.search::after, .inv-link.guess::after { content: " ↗"; font-size: 9px; opacity: 0.6; }
+.inv-cta .inv-link { font-size: 12px; padding: 8px 14px; }
+.inv-portfolio { margin-top: 8px; }
+.inv-portfolio .board td { font-size: 12.5px; }
+.inv-portfolio .bname { font-size: 14px; }
 
 /* ---- Responsive ---- */
 @media (max-width: 860px) {
@@ -578,4 +604,7 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 
   .footer { padding: 20px 16px; }
   .radar-intro h2 { font-size: 24px; }
+  .inv-links { gap: 5px; }
+  .inv-link { font-size: 10px; padding: 4px 8px; }
+  .inv-portfolio .board-wrap { overflow-x: auto; }
 }

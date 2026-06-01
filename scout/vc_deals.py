@@ -16,8 +16,10 @@ from __future__ import annotations
 
 import datetime as _dt
 import json
+from collections import Counter
 from pathlib import Path
 
+from scout.investor_directory import enrich
 from scout.watch import _excel_date, _is_ai, _num, _read_rows, _split
 
 DEFAULT_XLSX = Path(__file__).parent / "data" / "vc_deals.xlsx"
@@ -49,6 +51,7 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
     c_deal = col("DEAL ID")
     c_company = col("PORTFOLIO COMPANY")
     c_inv = col("INVESTORS")
+    c_inv_id = col("INVESTOR ID")
     c_inv_t = col("INVESTOR TYPE")
     c_date = col("DEAL DATE")
     c_stage = col("STAGE")
@@ -57,6 +60,7 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
     c_vert = col("INDUSTRY VERTICALS")
     c_size_usd = col("DEAL SIZE (USD")
     c_size = col("DEAL SIZE")
+    c_lead = col("LEAD PARTNERS")
     c_inv_city = col("INVESTOR CITY")
     c_inv_state = col("INVESTOR STATE")
     c_inv_country = col("INVESTOR COUNTRY")
@@ -84,6 +88,7 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
         if deal_id:
             deal_size[deal_id] = size or 0.0
 
+        verticals = _split(get(row, c_vert))
         comp = {
             "name": company,
             "stage": _clean(get(row, c_stage)),
@@ -93,34 +98,53 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
                 "company": company,
                 "primary_industry": _clean(get(row, c_ind)),
                 "sub_industries": _split(get(row, c_sub)),
-                "verticals": _split(get(row, c_vert)),
+                "verticals": verticals,
             }),
+            "industry": _clean(get(row, c_ind)),
+            "verticals": verticals[:4],
         }
 
         inv = investors.get(firm)
         if inv is None:
             inv = investors[firm] = {
                 "name": firm,
+                "investor_id": _clean(get(row, c_inv_id)),
                 "type": _clean(get(row, c_inv_t)),
                 "city": _clean(get(row, c_inv_city)),
                 "state": _clean(get(row, c_inv_state)),
                 "country": _clean(get(row, c_inv_country)),
                 "companies": [],
+                "lead_partners": set(),
+                "stages": Counter(),
+                "verticals": Counter(),
                 "_seen": set(),
             }
         if company not in inv["_seen"]:
             inv["_seen"].add(company)
             inv["companies"].append(comp)
-        # Backfill location if the first row was missing it.
+        stage = comp["stage"]
+        if stage:
+            inv["stages"][stage] += 1
+        for v in verticals:
+            inv["verticals"][v] += 1
+        partner = _clean(get(row, c_lead))
+        if partner:
+            inv["lead_partners"].add(partner)
         for k, c in (("city", c_inv_city), ("state", c_inv_state), ("country", c_inv_country)):
             if not inv[k]:
                 inv[k] = _clean(get(row, c))
 
     out = []
     for inv in investors.values():
-        comps = inv["companies"]
+        comps = sorted(inv["companies"], key=lambda c: (c["date"] or "", c["size_usd_mn"] or 0), reverse=True)
+        profile = enrich(inv["name"])
+        latest = comps[0]["date"] if comps else None
+        stages = [{"stage": s, "count": n} for s, n in inv["stages"].most_common()]
+        focus = [v for v, _ in inv["verticals"].most_common(6)]
+        partners = sorted(inv["lead_partners"])
         out.append({
             "name": inv["name"],
+            "investor_id": inv["investor_id"],
             "type": inv["type"],
             "city": inv["city"],
             "state": inv["state"],
@@ -128,17 +152,23 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
             "deals": len(comps),
             "ai_deals": sum(1 for c in comps if c["is_ai"]),
             "total_usd_mn": round(sum(c["size_usd_mn"] or 0 for c in comps), 2),
-            "companies": sorted(comps, key=lambda c: (c["date"] or "", c["size_usd_mn"] or 0), reverse=True),
+            "latest_deal": latest,
+            "stages": stages,
+            "focus": focus,
+            "lead_partners": partners,
+            "profile": profile,
+            "companies": comps,
         })
-    # Most active first, then most capital deployed-alongside, then name.
     out.sort(key=lambda x: (x["deals"], x["total_usd_mn"], x["name"].lower()), reverse=True)
 
+    verified = sum(1 for i in out if i["profile"].get("verified"))
     stats = {
         "investors": len(out),
         "firms": len(companies),
         "deals": len(deal_ids),
         "total_capital_mn": round(sum(deal_size.values()), 1),
         "ai_firms": len({c for inv in out for c in [d["name"] for d in inv["companies"] if d["is_ai"]]}),
+        "profiles_verified": verified,
     }
     return {"investors": out, "stats": stats}
 
@@ -166,4 +196,5 @@ if __name__ == "__main__":
     p = export(args.xlsx, args.out)
     s = p["stats"]
     print(f"Wrote {args.out} — {s['investors']} investors across {s['firms']} firms, "
-          f"{s['deals']} deals, ${s['total_capital_mn']}mn total.")
+          f"{s['deals']} deals, ${s['total_capital_mn']}mn total, "
+          f"{s['profiles_verified']} verified profiles.")
