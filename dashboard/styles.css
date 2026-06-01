@@ -140,7 +140,7 @@ main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; paddin
 /* ---- Tabs ---- */
 .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
 .tab {
-  background: none; border: none; cursor: pointer;
+  background: none; border: none; cursor: pointer; flex: 0 0 auto; white-space: nowrap;
   font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
   color: var(--txt-3); padding: 12px 16px; border-bottom: 2px solid transparent;
   transition: color 0.15s;
@@ -526,7 +526,56 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
   .hstat { border-bottom: 1px solid var(--line); }
   .health-detail { grid-template-columns: 1fr; }
   .trends-grid { grid-template-columns: 1fr; }
-  .tabs { overflow-x: auto; }
+  /* tabs become a horizontal swipe rail */
+  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
   .board .bcat { display: none; }
   .viewtoggle { display: none; }
+}
+
+/* ---- Phones ---- */
+@media (max-width: 560px) {
+  main { padding: 0 16px 64px; }
+  .statusbar { padding: 9px 16px; }
+  .sb-sub, .sb-feed { display: none; }            /* keep just ● SCOUT + clock */
+  .sb-right { gap: 10px; }
+
+  .hero { padding: 30px 0 26px; gap: 22px; }
+  .hero h1 { font-size: clamp(34px, 12vw, 46px); }
+  .lede { font-size: 15px; }
+
+  /* stat strips: 2-up on phones, clean borders */
+  .health-strip, .watch-strip { grid-template-columns: repeat(2, 1fr); }
+  .hstat { border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+  .hstat:nth-child(3n) { border-right: 1px solid var(--line); }   /* undo desktop rule */
+  .health-strip .hstat:nth-child(2n), .watch-strip .hstat:nth-child(2n) { border-right: none; }
+  .hnum { font-size: 26px; }
+
+  /* one card per row, never overflow on narrow screens */
+  .cards { grid-template-columns: 1fr; }
+  .month-head { font-size: 19px; }
+
+  /* filters/controls stack comfortably */
+  .controls, .watch-controls { gap: 8px; }
+  .controls select, .watch-controls select { flex: 1 1 auto; }
+  .slider { width: 100%; }
+  .watch-controls .searchbar.inline { min-width: 100%; }
+
+  /* 16px inputs prevent iOS auto-zoom on focus */
+  .searchbar input,
+  .controls select, .watch-controls select,
+  .watch-controls .searchbar.inline input { font-size: 16px; }
+
+  /* drawer goes full-width */
+  .drawer { width: 100vw; padding: 26px 18px 56px; }
+  .drawer h2 { font-size: 24px; }
+  .memo-grid { grid-template-columns: 1fr; }
+
+  /* leaderboard: rank + company + score only; tap a row for full detail */
+  .board .bconf, .board .bverd { display: none; }
+  .board th, .board td { padding: 10px 12px; }
+  .board .bname { font-size: 15px; }
+
+  .footer { padding: 20px 16px; }
+  .radar-intro h2 { font-size: 24px; }
 }

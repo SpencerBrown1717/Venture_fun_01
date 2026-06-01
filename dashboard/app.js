@@ -295,7 +295,7 @@ function renderReview() {
 // --- Leaderboard -----------------------------------------------------------
 function renderBoard() {
   const board = (state.data.leaderboard || []).slice(0, 25);
-  const head = `<thead><tr><th>#</th><th>Company</th><th>Category</th><th class="num">Opp</th><th class="num">Conf</th><th>Verdict</th></tr></thead>`;
+  const head = `<thead><tr><th>#</th><th>Company</th><th class="bcat">Category</th><th class="num">Opp</th><th class="num bconf">Conf</th><th class="bverd">Verdict</th></tr></thead>`;
   const body = board.map((r, i) => {
     const c = state.byId[r.id];
     return `<tr data-board="${escapeHtml(r.id)}">
@@ -303,8 +303,8 @@ function renderBoard() {
       <td class="bname">${escapeHtml(r.name)}${c && c.verified_real ? ' <span class="vdot" title="SEC-verified">✓</span>' : ""}</td>
       <td class="bcat">${escapeHtml(r.ai_category || "—")}</td>
       <td class="num"><b>${r.overall}</b></td>
-      <td class="num">${fmtPct(r.confidence)}</td>
-      <td><span class="verdict ${VERDICT_CLASS[r.verdict] || ""}">${escapeHtml(r.verdict || "")}</span></td>
+      <td class="num bconf">${fmtPct(r.confidence)}</td>
+      <td class="bverd"><span class="verdict ${VERDICT_CLASS[r.verdict] || ""}">${escapeHtml(r.verdict || "")}</span></td>
     </tr>`;
   }).join("");
   $("board").innerHTML = head + `<tbody>${body}</tbody>`;
