@@ -1,17 +1,17 @@
-"""Preqin deals export → dashboard JSON.
+"""VC deals export → dashboard JSON.
 
-Reads a Preqin "deals export" .xlsx (one row per investor-per-deal) and
+Reads a VC "deals export" .xlsx (one row per investor-per-deal) and
 aggregates it into one record per deal/company — the "Startups to Watch" feed:
 recently-closed, investor-backed (mostly seed-stage AI) financings.
 
 This is a *confirmed financing* source, distinct from the SEC EDGAR Form D feed
 and the inferred Pre-Form-D Radar. The provenance is preserved: every record
 carries its source deal id, the closing date, the round size, and the full
-investor syndicate exactly as reported by Preqin.
+investor syndicate exactly as reported.
 
 Dependency-free: parses the OOXML zip/XML directly (no openpyxl required).
 
-    python -m scout preqin --export
+    python -m scout watch --export
 """
 
 from __future__ import annotations
@@ -26,8 +26,8 @@ from xml.etree import ElementTree as ET
 _NS = "{http://schemas.openxmlformats.org/spreadsheetml/2006/main}"
 _EXCEL_EPOCH = date(1899, 12, 30)  # Excel's day 0 (accounts for the 1900 leap bug)
 
-DEFAULT_XLSX = Path(__file__).parent / "data" / "preqin_deals.xlsx"
-DEFAULT_OUT = Path(__file__).parent.parent / "dashboard" / "preqin.json"
+DEFAULT_XLSX = Path(__file__).parent / "data" / "watch_deals.xlsx"
+DEFAULT_OUT = Path(__file__).parent.parent / "dashboard" / "watch.json"
 
 
 def _col_index(ref: str) -> int:
@@ -195,7 +195,7 @@ def export(xlsx_path: Path = DEFAULT_XLSX, out_path: Path = DEFAULT_OUT) -> dict
 
     payload = {
         "generated_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
-        "source": "Preqin deals export · 2026-03-25",
+        "source": "VC deals export · 2026-03-25",
         "stats": {
             "deals": len(deals),
             "ai_deals": sum(1 for d in deals if d["is_ai"]),
@@ -214,7 +214,7 @@ def export(xlsx_path: Path = DEFAULT_XLSX, out_path: Path = DEFAULT_OUT) -> dict
 if __name__ == "__main__":
     import argparse
 
-    ap = argparse.ArgumentParser(description="Convert a Preqin deals export to dashboard/preqin.json")
+    ap = argparse.ArgumentParser(description="Convert a VC deals export to dashboard/watch.json")
     ap.add_argument("--xlsx", type=Path, default=DEFAULT_XLSX)
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     args = ap.parse_args()

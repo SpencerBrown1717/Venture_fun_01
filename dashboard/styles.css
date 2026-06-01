@@ -481,7 +481,7 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 .board td.num b { font-family: var(--serif); font-size: 18px; color: var(--accent); }
 
 /* ===========================================================================
-   Startups to Watch (Preqin deals)
+   Startups to Watch (VC deals)
    =========================================================================== */
 .watch-controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-bottom: 16px; }
 .watch-controls select {

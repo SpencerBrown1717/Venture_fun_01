@@ -11,7 +11,7 @@
 
 const state = {
   data: null,
-  preqin: null,
+  watch: null,
   vc: null,
   companies: [],
   byId: {},
@@ -128,11 +128,11 @@ async function load() {
   }
   state.companies = state.data.companies || [];
   state.companies.forEach((c) => { state.byId[c.id] = c; });
-  // Preqin "Startups to Watch" is an optional companion dataset.
+  // "Startups to Watch" is an optional companion dataset.
   try {
-    const pr = await fetch("preqin.json", { cache: "no-store" });
-    if (pr.ok) state.preqin = await pr.json();
-  } catch (_) { state.preqin = null; }
+    const pr = await fetch("watch.json", { cache: "no-store" });
+    if (pr.ok) state.watch = await pr.json();
+  } catch (_) { state.watch = null; }
   // VC deals export (investor-centric view) — also optional.
   try {
     const vc = await fetch("vc_deals.json", { cache: "no-store" });
@@ -312,14 +312,14 @@ function renderBoard() {
     tr.addEventListener("click", () => openMemo(tr.getAttribute("data-board"))));
 }
 
-// --- Startups to Watch (Preqin deals) --------------------------------------
-function preqinDeals() { return (state.preqin && state.preqin.deals) || []; }
+// --- Startups to Watch (VC deals) ------------------------------------------
+function watchDeals() { return (state.watch && state.watch.deals) || []; }
 function updateWatchCount() {
-  const n = preqinDeals().filter((d) => d.is_ai).length || preqinDeals().length;
+  const n = watchDeals().filter((d) => d.is_ai).length || watchDeals().length;
   $("watchCount").textContent = n;
 }
 function initWatch() {
-  const deals = preqinDeals();
+  const deals = watchDeals();
   if (!deals.length) return;
   const stages = [...new Set(deals.map((d) => d.stage).filter(Boolean))].sort();
   $("watchStage").innerHTML = `<option value="">All stages</option>` +
@@ -330,10 +330,10 @@ function initWatch() {
 }
 function renderWatch() {
   const f = state.watchFilters;
-  let rows = preqinDeals().slice();
+  let rows = watchDeals().slice();
   if (!rows.length) {
     $("watchEmpty").hidden = false;
-    $("watchEmpty").textContent = "No Preqin dataset loaded.";
+    $("watchEmpty").textContent = "No deals dataset loaded.";
     $("watchStrip").innerHTML = "";
     $("watchGroups").innerHTML = "";
     return;
@@ -346,13 +346,13 @@ function renderWatch() {
     return (b.deal_size_usd_mn || 0) - (a.deal_size_usd_mn || 0);
   });
 
-  const s = (state.preqin && state.preqin.stats) || {};
+  const s = (state.watch && state.watch.stats) || {};
   const total = rows.reduce((a, d) => a + (d.deal_size_usd_mn || 0), 0);
   const strip = [
     { num: rows.length, lbl: "Funded startups", accent: true },
     { num: `$${total >= 1000 ? (total / 1000).toFixed(1) + "B" : Math.round(total) + "M"}`, lbl: "Capital tracked" },
     { num: s.investors ?? "—", lbl: "Investors" },
-    { num: state.preqin.source || "Preqin", lbl: "Source", small: true },
+    { num: state.watch.source || "VC export", lbl: "Source", small: true },
   ];
   $("watchStrip").innerHTML = strip.map((c) =>
     `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}" ${c.small ? 'style="font-size:18px"' : ""}>${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`

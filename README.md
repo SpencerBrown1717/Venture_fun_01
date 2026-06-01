@@ -135,10 +135,10 @@ step or backend.
   no backend) and it groups here.
 - **Leaderboard** — top AI companies by opportunity score, with category and
   momentum signals beneath.
-- **Startups to Watch** — recently *funded* AI-native startups from a **Preqin
+- **Startups to Watch** — recently *funded* AI-native startups from a **VC
   deals export**: confirmed financing rounds with round size and the full
   investor syndicate. Where the radar infers, this is reported — a complement to
-  the pre-Form-D layer. Built via `python -m scout preqin` → `dashboard/preqin.json`.
+  the pre-Form-D layer. Built via `python -m scout watch` → `dashboard/watch.json`.
 
 Every company opens an **analysis drawer** with the recommendation, an
 evidence panel ("Why this company is here" — sources used vs. missing-data
@@ -223,7 +223,7 @@ the heuristic classifier and heuristic memos — it never hard-fails.
 | `python -m scout export` | Re-export `dashboard/data.json` from the DB |
 | `python -m scout stats` | Print database stats |
 | `python -m scout verify-links` | Verify every website URL in the sample JSON resolves |
-| `python -m scout preqin` | Convert a Preqin deals export → `dashboard/preqin.json` (Startups to Watch) |
+| `python -m scout watch` | Convert a VC deals export → `dashboard/watch.json` (Startups to Watch) |
 
 Useful `run` flags: `--source {sample,delaware,delaware_icis,sec_edgar}`, `--limit N`,
 `--max-age-days N`, `--llm`, `--research`, `--no-fetch-site`, `--export`,

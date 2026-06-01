@@ -1,13 +1,13 @@
 """VC deals export → investor-centric dashboard JSON.
 
-Reads a Preqin-style deals export (one row per investor-per-deal) and aggregates
+Reads a VC deals export (one row per investor-per-deal) and aggregates
 it by *investor firm* — the "Investors" tab: who is backing the recently-funded
 AI startups, and which portfolio firms each has invested in.
 
 This is the complement to the company-centric "Startups to Watch" feed: same
 underlying deals, pivoted around the investors instead of the firms.
 
-Dependency-free — reuses the OOXML reader from ``scout.preqin``.
+Dependency-free — reuses the OOXML reader from ``scout.watch``.
 
     python -m scout.vc_deals          # writes dashboard/vc_deals.json
 """
@@ -18,7 +18,7 @@ import datetime as _dt
 import json
 from pathlib import Path
 
-from scout.preqin import _excel_date, _is_ai, _num, _read_rows, _split
+from scout.watch import _excel_date, _is_ai, _num, _read_rows, _split
 
 DEFAULT_XLSX = Path(__file__).parent / "data" / "vc_deals.xlsx"
 DEFAULT_OUT = Path(__file__).parent.parent / "dashboard" / "vc_deals.json"
@@ -147,7 +147,7 @@ def export(xlsx_path: Path = DEFAULT_XLSX, out_path: Path = DEFAULT_OUT) -> dict
     data = parse(xlsx_path)
     payload = {
         "generated_at": _dt.datetime.now(_dt.timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z"),
-        "source": "VC_Deals.xlsx · Preqin export",
+        "source": "VC export",
         "stats": data["stats"],
         "investors": data["investors"],
     }
