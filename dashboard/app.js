@@ -436,8 +436,8 @@ function renderInvestors() {
   const strip = [
     { num: vcInvestors().length, lbl: "Investors", accent: true },
     { num: s.firms ?? "—", lbl: "Portfolio firms" },
-    { num: s.deals ?? "—", lbl: "Deals" },
-    { num: state.vc.source || "VC deals", lbl: "Source", small: true },
+    { num: s.profiles_verified ?? "—", lbl: "Verified profiles" },
+    { num: state.vc.source || "VC export", lbl: "Source", small: true },
   ];
   $("investorStrip").innerHTML = strip.map((c) =>
     `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}" ${c.small ? 'style="font-size:18px"' : ""}>${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`
@@ -445,34 +445,119 @@ function renderInvestors() {
 
   $("investorEmpty").hidden = rows.length !== 0;
   $("investorGroups").innerHTML = rows.map(investorCardHtml).join("");
+  $("investorGroups").querySelectorAll("[data-investor]").forEach((el) =>
+    el.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      openInvestor(el.getAttribute("data-investor"));
+    })
+  );
+}
+
+function investorLinkBar(p, compact) {
+  if (!p) return "";
+  const links = [];
+  const v = p.verified;
+  if (p.website) links.push(`<a class="inv-link web${v ? "" : " guess"}" href="${escapeHtml(p.website)}" target="_blank" rel="noopener" title="Website">${compact ? "↗" : "Website"}</a>`);
+  if (p.linkedin) links.push(`<a class="inv-link li${v ? "" : " search"}" href="${escapeHtml(p.linkedin)}" target="_blank" rel="noopener" title="LinkedIn">LinkedIn</a>`);
+  if (p.x) links.push(`<a class="inv-link x${v ? "" : " search"}" href="${escapeHtml(p.x)}" target="_blank" rel="noopener" title="X">X</a>`);
+  if (p.email) links.push(`<a class="inv-link mail${v ? "" : " guess"}" href="mailto:${escapeHtml(p.email)}" title="Email">${compact ? "✉" : p.email}</a>`);
+  if (!links.length) return "";
+  return `<div class="inv-links">${links.join("")}</div>`;
 }
 
 function investorCardHtml(inv) {
   const loc = [inv.city, inv.state, inv.country].filter(Boolean).join(", ");
+  const p = inv.profile || {};
   const firms = (inv.companies || []);
-  const firmChips = firms.slice(0, 8).map((c) =>
+  const firmChips = firms.slice(0, 6).map((c) =>
     `<span class="inv${c.is_ai ? " ai" : ""}" title="${escapeHtml((c.stage || "") + (c.size_usd_mn ? " · " + fmtMn(c.size_usd_mn) : ""))}">${escapeHtml(c.name)}</span>`
   ).join("");
-  const more = firms.length > 8 ? `<span class="inv more">+${firms.length - 8}</span>` : "";
+  const more = firms.length > 6 ? `<span class="inv more">+${firms.length - 6}</span>` : "";
+  const stages = (inv.stages || []).map((s) => `<span class="pill-meta">${escapeHtml(s.stage)} ×${s.count}</span>`).join("");
+  const focus = (inv.focus || []).slice(0, 4).map((v) => `<span class="tag cat">${escapeHtml(v)}</span>`).join("");
+  const partners = (inv.lead_partners || []).slice(0, 3);
+  const partnerLine = partners.length
+    ? `<div class="founders-line"><span class="fk">Partners</span>${escapeHtml(partners.join(", "))}${inv.lead_partners.length > 3 ? ` +${inv.lead_partners.length - 3}` : ""}</div>`
+    : "";
+  const tagline = p.tagline ? `<div class="inv-tagline">${escapeHtml(p.tagline)}</div>` : "";
+  const verified = p.verified ? `<span class="vbadge">✓ Verified profile</span>` : "";
   return `
-    <div class="card deal investor">
+    <div class="card deal investor" data-investor="${escapeHtml(inv.name)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(inv.name)} profile">
       <div class="card-top">
         <div>
-          <h3>${escapeHtml(inv.name)}</h3>
-          <div class="sub">${escapeHtml(loc || "—")}</div>
+          <h3>${escapeHtml(inv.name)} ${verified}</h3>
+          <div class="sub">${escapeHtml(loc || "—")}${inv.latest_deal ? ` · latest ${escapeHtml(inv.latest_deal)}` : ""}</div>
+          ${tagline}
         </div>
         <div class="opp-badge size"><div class="v">${inv.deals}</div><div class="l">${inv.deals === 1 ? "deal" : "deals"}</div></div>
       </div>
+      ${investorLinkBar(p, true)}
       <div class="metaline">
         ${inv.type ? `<span class="pill-meta">${escapeHtml(inv.type)}</span>` : ""}
         ${inv.total_usd_mn ? `<span class="pill-meta raised">${fmtMn(inv.total_usd_mn)} alongside</span>` : ""}
         ${inv.ai_deals ? `<span class="pill-meta fin-safe">${inv.ai_deals} AI</span>` : ""}
+        ${stages}
       </div>
+      ${focus ? `<div class="tags">${focus}</div>` : ""}
+      ${partnerLine}
       <div class="inv-block">
-        <div class="fk">Portfolio firms in this dataset</div>
+        <div class="fk">Portfolio in this dataset</div>
         <div class="inv-row">${firmChips}${more}</div>
       </div>
+      <div class="card-foot">
+        <span class="sub">Click for full profile</span>
+        <button class="memo-btn" type="button">Profile →</button>
+      </div>
     </div>`;
+}
+
+function openInvestor(name) {
+  const inv = vcInvestors().find((i) => i.name === name);
+  if (!inv) return;
+  const p = inv.profile || {};
+  const loc = [inv.city, inv.state, inv.country].filter(Boolean).join(", ");
+  const portfolio = (inv.companies || []).map((c) =>
+    `<tr><td class="bname">${escapeHtml(c.name)}</td><td>${escapeHtml(c.stage || "—")}</td><td class="num">${c.size_usd_mn ? fmtMn(c.size_usd_mn) : "—"}</td><td>${escapeHtml(c.date || "—")}</td><td>${c.is_ai ? '<span class="pill-meta fin-safe">AI</span>' : ""}</td></tr>`
+  ).join("");
+  const stages = (inv.stages || []).map((s) => `<span class="pill-meta">${escapeHtml(s.stage)} ×${s.count}</span>`).join(" ");
+  const focus = (inv.focus || []).map((v) => `<span class="tag cat">${escapeHtml(v)}</span>`).join("");
+  const partners = (inv.lead_partners || []).map((n) => `<span class="inv">${escapeHtml(n)}</span>`).join("");
+  const linksFull = investorLinkBar(p, false);
+  const cta = linksFull ? `<div class="drawer-cta inv-cta">${linksFull.replace(/class="inv-links"/g, 'class="inv-links full"')}</div>` : "";
+
+  $("drawer").innerHTML = `
+    <button class="close" aria-label="Close">×</button>
+    <h2>${escapeHtml(inv.name)}</h2>
+    <div class="memo-sub">${escapeHtml(loc)}${p.tagline ? ` · ${escapeHtml(p.tagline)}` : ""}
+      <span class="badge-gen">${p.verified ? "verified profile" : "search links"}</span></div>
+    ${cta}
+    <div class="memo-grid">
+      <div class="memo-kv"><div class="k">Deals in dataset</div><div class="v">${inv.deals}</div></div>
+      <div class="memo-kv"><div class="k">Capital alongside</div><div class="v">${inv.total_usd_mn ? fmtMn(inv.total_usd_mn) : "—"}</div></div>
+      <div class="memo-kv"><div class="k">AI portfolio</div><div class="v">${inv.ai_deals || 0} firms</div></div>
+      <div class="memo-kv"><div class="k">Latest deal</div><div class="v">${escapeHtml(inv.latest_deal || "—")}</div></div>
+      <div class="memo-kv"><div class="k">Firm type</div><div class="v">${escapeHtml(inv.type || "—")}</div></div>
+      <div class="memo-kv"><div class="k">HQ</div><div class="v">${escapeHtml(loc || "—")}</div></div>
+    </div>
+    ${stages ? `<div class="memo-sec"><h4>Stage mix</h4><div class="metaline">${stages}</div></div>` : ""}
+    ${focus ? `<div class="memo-sec"><h4>Focus areas</h4><div class="tags">${focus}</div></div>` : ""}
+    ${partners ? `<div class="memo-sec"><h4>Lead partners (from deals)</h4><div class="inv-row">${partners}</div></div>` : ""}
+    <div class="memo-sec">
+      <h4>Portfolio firms (${inv.deals})</h4>
+      <div class="board-wrap inv-portfolio">
+        <table class="board"><thead><tr><th>Company</th><th>Stage</th><th class="num">Round</th><th>Date</th><th></th></tr></thead><tbody>${portfolio}</tbody></table>
+      </div>
+    </div>
+    <div class="drawer-cta">
+      ${p.website ? `<a class="primary" href="${escapeHtml(p.website)}" target="_blank" rel="noopener">Visit website ↗</a>` : ""}
+      ${p.linkedin ? `<a href="${escapeHtml(p.linkedin)}" target="_blank" rel="noopener">LinkedIn ↗</a>` : ""}
+      ${p.x ? `<a href="${escapeHtml(p.x)}" target="_blank" rel="noopener">X ↗</a>` : ""}
+      ${p.email ? `<a href="mailto:${escapeHtml(p.email)}">Email ↗</a>` : ""}
+    </div>`;
+  $("drawer").hidden = false;
+  $("drawerOverlay").hidden = false;
+  $("drawer").scrollTop = 0;
+  $("drawer").querySelector(".close").addEventListener("click", closeMemo);
 }
 
 // --- Trends ----------------------------------------------------------------
