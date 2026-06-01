@@ -1,5 +1,297 @@
 [
   {
+    "name": "KKR Private Equity Conglomerate LLC",
+    "source": "delaware",
+    "source_id": "0001957845",
+    "jurisdiction": "Delaware, USA",
+    "formation_date": "2026-06-01",
+    "description": "Form D/A filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $10,159,286,124 raised (Growth).",
+    "raw": {
+      "cik": "0001957845",
+      "accession": "0001957845-26-000047:primary_doc.xml",
+      "file_date": "2026-06-01",
+      "file_type": "D/A",
+      "inc_states": [
+        "DE"
+      ],
+      "biz_states": [
+        "NY"
+      ],
+      "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001957845&type=D",
+      "registry": "SEC EDGAR",
+      "industry_group": "Other",
+      "is_fund": false,
+      "offering_amount": null,
+      "amount_sold": 10159286124,
+      "revenue_range": "",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1957845/000195784526000047/primary_doc.xml",
+      "stage": "Growth"
+    },
+    "founders": [
+      {
+        "name": "Nathaniel Taylor",
+        "role": "Director",
+        "location": "Menlo Park, CA",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Nathaniel%20Taylor%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Peter Stavros",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Peter%20Stavros%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Christopher Harrington",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Christopher%20Harrington%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Alisa Wood",
+        "role": "Executive Officer, Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Alisa%20Wood%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Elizabeth Van Aken",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Elizabeth%20Van%20Aken%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Susan Schnabel",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Susan%20Schnabel%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Ronald Schmitz",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Ronald%20Schmitz%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Kelly Williams",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Kelly%20Williams%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Jeffrey Van Horn",
+        "role": "Executive Officer",
+        "location": "San Francisco, CA",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Jeffrey%20Van%20Horn%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Thomas Naratil",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Thomas%20Naratil%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Sung Cho",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Sung%20Cho%20KKR%20Private%20Equity%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      }
+    ],
+    "stage": "Growth"
+  },
+  {
+    "name": "KKR Infrastructure Conglomerate LLC",
+    "source": "delaware",
+    "source_id": "0001948056",
+    "jurisdiction": "Delaware, USA",
+    "formation_date": "2026-06-01",
+    "description": "Form D/A filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $7,443,571,084 raised (Growth).",
+    "raw": {
+      "cik": "0001948056",
+      "accession": "0001948056-26-000042:primary_doc.xml",
+      "file_date": "2026-06-01",
+      "file_type": "D/A",
+      "inc_states": [
+        "DE"
+      ],
+      "biz_states": [
+        "NY"
+      ],
+      "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001948056&type=D",
+      "registry": "SEC EDGAR",
+      "industry_group": "Other",
+      "is_fund": false,
+      "offering_amount": null,
+      "amount_sold": 7443571084,
+      "revenue_range": "",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1948056/000194805626000042/primary_doc.xml",
+      "stage": "Growth"
+    },
+    "founders": [
+      {
+        "name": "Raj Agrawal",
+        "role": "Director",
+        "location": "Menlo Park, CA",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Raj%20Agrawal%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Tara Davies",
+        "role": "Executive Officer, Director",
+        "location": "London, X0",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Tara%20Davies%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "James Cunningham",
+        "role": "Executive Officer, Director",
+        "location": "Houston, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=James%20Cunningham%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Michael Ryan",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Michael%20Ryan%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Joshua Mills",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Joshua%20Mills%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Philip Nolan",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Philip%20Nolan%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "John Somerhalder II",
+        "role": "Director",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=John%20Somerhalder%20II%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Mark Matthews",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mark%20Matthews%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Sung Cho",
+        "role": "Executive Officer",
+        "location": "New York, NY",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Sung%20Cho%20KKR%20Infrastructure%20Conglomerate%20LLC",
+        "source": "sec_filing"
+      }
+    ],
+    "stage": "Growth"
+  },
+  {
+    "name": "HIG Holdings, LLC",
+    "source": "delaware",
+    "source_id": "0001479577",
+    "jurisdiction": "Delaware, USA",
+    "formation_date": "2026-06-01",
+    "description": "Form D filer on SEC EDGAR incorporated in Delaware (new exempt securities offering). Form D reports $41,000,000 raised (Series B).",
+    "raw": {
+      "cik": "0001479577",
+      "accession": "0001479577-26-000004:primary_doc.xml",
+      "file_date": "2026-06-01",
+      "file_type": "D",
+      "inc_states": [
+        "DE"
+      ],
+      "biz_states": [
+        "TX"
+      ],
+      "edgar_url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001479577&type=D",
+      "registry": "SEC EDGAR",
+      "industry_group": "Insurance",
+      "is_fund": false,
+      "offering_amount": 41000000,
+      "amount_sold": 41000000,
+      "revenue_range": "",
+      "filing_url": "https://www.sec.gov/Archives/edgar/data/1479577/000147957726000004/primary_doc.xml",
+      "stage": "Series B"
+    },
+    "founders": [
+      {
+        "name": "James Reid",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=James%20Reid%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "James Krause",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=James%20Krause%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Andrew Reutter",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Andrew%20Reutter%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Christopher Rooker",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Christopher%20Rooker%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Michael Parks",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Michael%20Parks%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "James Hubbard",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=James%20Hubbard%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Mary Russell",
+        "role": "Executive Officer, Director",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mary%20Russell%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      },
+      {
+        "name": "Anthony Haas",
+        "role": "Executive Officer",
+        "location": "Fort Worth, TX",
+        "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Anthony%20Haas%20HIG%20Holdings%2C%20LLC",
+        "source": "sec_filing"
+      }
+    ],
+    "stage": "Series B"
+  },
+  {
     "name": "474 Holdco LLC",
     "source": "delaware",
     "source_id": "0002131060",
