@@ -231,18 +231,6 @@ function initTabs() {
       switchTab(next.getAttribute("data-tab"));
     });
   });
-  // Show the right-edge fade only while the rail overflows and isn't scrolled to the end.
-  const nav = document.querySelector(".tabs");
-  if (nav) {
-    const sync = () => {
-      const overflowing = nav.scrollWidth > nav.clientWidth + 1;
-      const atEnd = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 2;
-      nav.classList.toggle("is-overflowing", overflowing && !atEnd);
-    };
-    nav.addEventListener("scroll", sync, { passive: true });
-    window.addEventListener("resize", sync);
-    sync();
-  }
 }
 function switchTab(name) {
   state.tab = name;
@@ -250,7 +238,6 @@ function switchTab(name) {
     const on = t.getAttribute("data-tab") === name;
     t.classList.toggle("active", on);
     t.setAttribute("aria-selected", on ? "true" : "false");
-    if (on) t.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
   });
   TABS.forEach((n) => { $("panel-" + n).hidden = n !== name; });
   if (name === "radar") renderRadar();

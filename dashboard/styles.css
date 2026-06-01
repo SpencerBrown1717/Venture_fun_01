@@ -145,14 +145,11 @@ main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; paddin
   margin: 0 -28px 24px; padding: 9px 28px;
   border-bottom: 1px solid var(--line);
   background: rgba(10,11,13,0.88); backdrop-filter: blur(12px);
-  overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity;
-  /* fade the right edge so it's clear the rail scrolls when tabs overflow */
-  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
-          mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+  /* wrap so every tab is always visible — never hidden behind a scroll rail */
+  flex-wrap: wrap; row-gap: 4px;
 }
-.tabs:not(.is-overflowing) { -webkit-mask-image: none; mask-image: none; }
 .tabs::-webkit-scrollbar { display: none; }
-.tab-divider { flex: 0 0 auto; align-self: stretch; width: 1px; margin: 4px 6px; background: var(--line-2); }
+.tab-divider { flex: 0 0 auto; align-self: center; width: 1px; height: 20px; margin: 0 6px; background: var(--line-2); }
 .tab-group-label {
   flex: 0 0 auto; align-self: center; white-space: nowrap;
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
@@ -588,10 +585,10 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
   .hstat { border-bottom: 1px solid var(--line); }
   .health-detail { grid-template-columns: 1fr; }
   .trends-grid { grid-template-columns: 1fr; }
-  /* tabs become a horizontal swipe rail */
-  .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-  .tabs::-webkit-scrollbar { display: none; }
+  /* tabs wrap to multiple rows so all are reachable without scrolling */
+  .tab { padding: 7px 10px; font-size: 11px; }
   .tab-group-label { display: none; }
+  .tab-divider { display: none; }
   .board .bcat { display: none; }
   .viewtoggle { display: none; }
 }
