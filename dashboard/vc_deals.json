@@ -1,0 +1,3848 @@
+{
+  "generated_at": "2026-06-01T01:03:08Z",
+  "source": "VC_Deals.xlsx \u00b7 Preqin export",
+  "stats": {
+    "investors": 179,
+    "firms": 93,
+    "deals": 93,
+    "total_capital_mn": 1418.8,
+    "ai_firms": 92
+  },
+  "investors": [
+    {
+      "name": "Y Combinator",
+      "type": "Private Equity Firm",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US",
+      "deals": 16,
+      "ai_deals": 15,
+      "total_usd_mn": 134.9,
+      "companies": [
+        {
+          "name": "Respan",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Laminar",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "AgentMail, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-03-10",
+          "is_ai": true
+        },
+        {
+          "name": "14.ai",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-03-03",
+          "is_ai": true
+        },
+        {
+          "name": "Trace",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-02-26",
+          "is_ai": true
+        },
+        {
+          "name": "Sphinx Labs, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.1,
+          "date": "2026-02-17",
+          "is_ai": true
+        },
+        {
+          "name": "Vybe AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-02-16",
+          "is_ai": true
+        },
+        {
+          "name": "Manufact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.3,
+          "date": "2026-02-12",
+          "is_ai": true
+        },
+        {
+          "name": "Simple AI Lab Company",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Clearly AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.4,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Poetiq, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 45.8,
+          "date": "2026-01-29",
+          "is_ai": true
+        },
+        {
+          "name": "Uplift AI",
+          "stage": "Seed",
+          "size_usd_mn": 3.5,
+          "date": "2026-01-29",
+          "is_ai": true
+        },
+        {
+          "name": "Modelence",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-01-28",
+          "is_ai": true
+        },
+        {
+          "name": "Risotto",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-01-27",
+          "is_ai": false
+        },
+        {
+          "name": "Unusual",
+          "stage": "Seed",
+          "size_usd_mn": 3.6,
+          "date": "2026-01-02",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Andreessen Horowitz",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 12,
+      "ai_deals": 12,
+      "total_usd_mn": 226.77,
+      "companies": [
+        {
+          "name": "Ezra AI Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-03-23",
+          "is_ai": true
+        },
+        {
+          "name": "Handle",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        },
+        {
+          "name": "Taya",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        },
+        {
+          "name": "Anchr, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-03-10",
+          "is_ai": true
+        },
+        {
+          "name": "Cotool, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.4,
+          "date": "2026-03-05",
+          "is_ai": true
+        },
+        {
+          "name": "Pensive Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.87,
+          "date": "2026-02-27",
+          "is_ai": true
+        },
+        {
+          "name": "AdZen",
+          "stage": "Seed",
+          "size_usd_mn": null,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Shizuku AI",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-09",
+          "is_ai": true
+        },
+        {
+          "name": "Phylo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 13.5,
+          "date": "2026-02-03",
+          "is_ai": true
+        },
+        {
+          "name": "Sentra",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-28",
+          "is_ai": true
+        },
+        {
+          "name": "Inferact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 150.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        },
+        {
+          "name": "Nexxa.ai, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 9.0,
+          "date": "2026-01-21",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Sequoia Capital",
+      "type": "Fund Manager",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 4,
+      "ai_deals": 4,
+      "total_usd_mn": 341.87,
+      "companies": [
+        {
+          "name": "Pensive Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.87,
+          "date": "2026-02-27",
+          "is_ai": true
+        },
+        {
+          "name": "Flapping Airplanes",
+          "stage": "Seed",
+          "size_usd_mn": 180.0,
+          "date": "2026-01-27",
+          "is_ai": true
+        },
+        {
+          "name": "Inferact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 150.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        },
+        {
+          "name": "Blockit AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Menlo Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 209.25,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Phylo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 13.5,
+          "date": "2026-02-03",
+          "is_ai": true
+        },
+        {
+          "name": "Flapping Airplanes",
+          "stage": "Seed",
+          "size_usd_mn": 180.0,
+          "date": "2026-01-27",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Threshold Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 70.6,
+      "companies": [
+        {
+          "name": "Veritus, Inc",
+          "stage": "Seed",
+          "size_usd_mn": 10.1,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        },
+        {
+          "name": "Topos Bio",
+          "stage": "Seed",
+          "size_usd_mn": 10.5,
+          "date": "2026-01-08",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Mayfield Fund",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 31.37,
+      "companies": [
+        {
+          "name": "Multiply Technology, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 9.5,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Pensive Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.87,
+          "date": "2026-02-27",
+          "is_ai": true
+        },
+        {
+          "name": "Kana",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Basis Set",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 29.9,
+      "companies": [
+        {
+          "name": "Quill Notes, LLC",
+          "stage": "Seed",
+          "size_usd_mn": 6.5,
+          "date": "2026-02-25",
+          "is_ai": true
+        },
+        {
+          "name": "Reflow Systems Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Clearly AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.4,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "MaC Venture Capital",
+      "type": "Private Equity Firm",
+      "city": "Los Angeles",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 26.0,
+      "companies": [
+        {
+          "name": "Autoscience Institute",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Taya",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        },
+        {
+          "name": "Powerline",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Ritual Capital",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 2,
+      "total_usd_mn": 24.7,
+      "companies": [
+        {
+          "name": "Manufact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.3,
+          "date": "2026-02-12",
+          "is_ai": true
+        },
+        {
+          "name": "Clearly AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.4,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Risotto",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-01-27",
+          "is_ai": false
+        }
+      ]
+    },
+    {
+      "name": "Long Journey Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 21.4,
+      "companies": [
+        {
+          "name": "Eragon Corp.",
+          "stage": "Seed",
+          "size_usd_mn": 12.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Anchr, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-03-10",
+          "is_ai": true
+        },
+        {
+          "name": "Unusual",
+          "stage": "Seed",
+          "size_usd_mn": 3.6,
+          "date": "2026-01-02",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Liquid 2 Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 14.6,
+      "companies": [
+        {
+          "name": "Manufact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.3,
+          "date": "2026-02-12",
+          "is_ai": true
+        },
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Antigravity",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 3,
+      "ai_deals": 3,
+      "total_usd_mn": 13.2,
+      "companies": [
+        {
+          "name": "Respan",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        },
+        {
+          "name": "Sentra",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-28",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Fifty Years",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 302.0,
+      "companies": [
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        },
+        {
+          "name": "Merge Labs, PBC",
+          "stage": "Seed",
+          "size_usd_mn": 252.0,
+          "date": "2026-01-15",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Conviction",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 193.5,
+      "companies": [
+        {
+          "name": "Phylo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 13.5,
+          "date": "2026-02-03",
+          "is_ai": true
+        },
+        {
+          "name": "Flapping Airplanes",
+          "stage": "Seed",
+          "size_usd_mn": 180.0,
+          "date": "2026-01-27",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Redpoint Ventures",
+      "type": "Private Equity Firm",
+      "city": "Woodside",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 184.0,
+      "companies": [
+        {
+          "name": "JetStream Security Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 34.0,
+          "date": "2026-03-03",
+          "is_ai": true
+        },
+        {
+          "name": "Inferact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 150.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Operator Collective",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "California",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 61.55,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Poetiq, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 45.8,
+          "date": "2026-01-29",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Emergence Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 60.1,
+      "companies": [
+        {
+          "name": "Veritus, Inc",
+          "stage": "Seed",
+          "size_usd_mn": 10.1,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Gradient Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 24.95,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Ditto",
+          "stage": "Seed",
+          "size_usd_mn": 9.2,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Bling Capital",
+      "type": "Private Equity Firm",
+      "city": "San Jose",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 22.5,
+      "companies": [
+        {
+          "name": "Hamilton AI Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-03-19",
+          "is_ai": true
+        },
+        {
+          "name": "Reflow Systems Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Accel",
+      "type": "Private Equity Firm (Investor)",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 21.45,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        },
+        {
+          "name": "Fibr.ai",
+          "stage": "Seed",
+          "size_usd_mn": 5.7,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Sorenson Capital",
+      "type": "Private Equity Firm",
+      "city": "Lehi",
+      "state": "UT",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 17.42,
+      "companies": [
+        {
+          "name": "Multiply Technology, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 9.5,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "DiversiFi",
+          "stage": "Seed",
+          "size_usd_mn": 7.92,
+          "date": "2026-01-16",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "SV Angel",
+      "type": "Private Equity Firm (Investor)",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 16.5,
+      "companies": [
+        {
+          "name": "14.ai",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-03-03",
+          "is_ai": true
+        },
+        {
+          "name": "Phylo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 13.5,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "WndrCo",
+      "type": "Private Equity Firm",
+      "city": "Redwood City",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 12.9,
+      "companies": [
+        {
+          "name": "Crafting Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.5,
+          "date": "2026-03-09",
+          "is_ai": true
+        },
+        {
+          "name": "Cotool, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.4,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Costanoa Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "California",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 12.15,
+      "companies": [
+        {
+          "name": "Manifold",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        },
+        {
+          "name": "Midship Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 4.15,
+          "date": "2026-01-27",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Kleiner Perkins",
+      "type": "Private Equity Firm (Investor)",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 12.0,
+      "companies": [
+        {
+          "name": "Health Universe",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-03-19",
+          "is_ai": true
+        },
+        {
+          "name": "Uptool, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Precursor Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 10.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        },
+        {
+          "name": "Sentra",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-28",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Slow",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 2,
+      "ai_deals": 2,
+      "total_usd_mn": 7.2,
+      "companies": [
+        {
+          "name": "Ando",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-02-12",
+          "is_ai": true
+        },
+        {
+          "name": "AlphaLit",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-01-13",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Openai Startup Fund Management",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 252.0,
+      "companies": [
+        {
+          "name": "Merge Labs, PBC",
+          "stage": "Seed",
+          "size_usd_mn": 252.0,
+          "date": "2026-01-15",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Interface Fund",
+      "type": "Private Equity Firm",
+      "city": "California",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 252.0,
+      "companies": [
+        {
+          "name": "Merge Labs, PBC",
+          "stage": "Seed",
+          "size_usd_mn": 252.0,
+          "date": "2026-01-15",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "GV",
+      "type": "Private Equity Firm",
+      "city": "Mountain View",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 180.0,
+      "companies": [
+        {
+          "name": "Flapping Airplanes",
+          "stage": "Seed",
+          "size_usd_mn": 180.0,
+          "date": "2026-01-27",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Lightspeed Venture Partners",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 150.0,
+      "companies": [
+        {
+          "name": "Inferact, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 150.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Neo",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 50.0,
+      "companies": [
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Mozilla Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 50.0,
+      "companies": [
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Alpha Intelligence Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 50.0,
+      "companies": [
+        {
+          "name": "Adaption Labs",
+          "stage": "Seed",
+          "size_usd_mn": 50.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Fyrfly Venture Partners",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 45.8,
+      "companies": [
+        {
+          "name": "Poetiq, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 45.8,
+          "date": "2026-01-29",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Greylock Partners",
+      "type": "Private Equity Firm (Investor)",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 45.0,
+      "companies": [
+        {
+          "name": "Cylake",
+          "stage": "Seed",
+          "size_usd_mn": 45.0,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Valley Capital Partners",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 43.32,
+      "companies": [
+        {
+          "name": "Factify Technologies IL Ltd.",
+          "stage": "Seed",
+          "size_usd_mn": 43.32,
+          "date": "2026-01-28",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Series X Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 26.0,
+      "companies": [
+        {
+          "name": "Anori, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 26.0,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Prologis",
+      "type": "Fund Manager",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 26.0,
+      "companies": [
+        {
+          "name": "Anori, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 26.0,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Builders VC",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 26.0,
+      "companies": [
+        {
+          "name": "Anori, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 26.0,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Felicis Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 20.0,
+      "companies": [
+        {
+          "name": "Standard Kernel Co.",
+          "stage": "Seed",
+          "size_usd_mn": 20.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Essence VC",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 20.0,
+      "companies": [
+        {
+          "name": "Standard Kernel Co.",
+          "stage": "Seed",
+          "size_usd_mn": 20.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Cowboy Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 20.0,
+      "companies": [
+        {
+          "name": "Standard Kernel Co.",
+          "stage": "Seed",
+          "size_usd_mn": 20.0,
+          "date": "2026-03-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Okta Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 15.75,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Coinbase Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 15.75,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Array Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 15.75,
+      "companies": [
+        {
+          "name": "Sapiom, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.75,
+          "date": "2026-02-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Designer Fund",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 15.0,
+      "companies": [
+        {
+          "name": "Reflow Systems Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Better Tomorrow Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 15.0,
+      "companies": [
+        {
+          "name": "Reflow Systems Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 15.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "True Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Simple AI Lab Company",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Toyota Ventures",
+      "type": "Private Equity Firm",
+      "city": "Los Altos",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Autoscience Institute",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "S32",
+      "type": "Private Equity Firm",
+      "city": null,
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Autoscience Institute",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Range Ventures",
+      "type": "Private Equity Firm",
+      "city": "Denver",
+      "state": "CO",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Great Sky",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-03-13",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "First Harmonic",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Simple AI Lab Company",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Bison Ventures",
+      "type": "Private Equity Firm (Investor)",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 14.0,
+      "companies": [
+        {
+          "name": "Great Sky",
+          "stage": "Seed",
+          "size_usd_mn": 14.0,
+          "date": "2026-03-13",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Zetta Venture Partners",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 13.5,
+      "companies": [
+        {
+          "name": "Phylo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 13.5,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Soma Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 12.0,
+      "companies": [
+        {
+          "name": "Eragon Corp.",
+          "stage": "Seed",
+          "size_usd_mn": 12.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Axiom",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 12.0,
+      "companies": [
+        {
+          "name": "Eragon Corp.",
+          "stage": "Seed",
+          "size_usd_mn": 12.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Homebrew",
+      "type": "Private Equity Firm",
+      "city": "Burlingame",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 11.5,
+      "companies": [
+        {
+          "name": "Archimetis",
+          "stage": "Seed",
+          "size_usd_mn": 11.5,
+          "date": "2026-02-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Borusan Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 11.5,
+      "companies": [
+        {
+          "name": "Archimetis",
+          "stage": "Seed",
+          "size_usd_mn": 11.5,
+          "date": "2026-02-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Neo Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.5,
+      "companies": [
+        {
+          "name": "Topos Bio",
+          "stage": "Seed",
+          "size_usd_mn": 10.5,
+          "date": "2026-01-08",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Crosslink Capital",
+      "type": "Fund Manager",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.1,
+      "companies": [
+        {
+          "name": "Veritus, Inc",
+          "stage": "Seed",
+          "size_usd_mn": 10.1,
+          "date": "2026-02-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Unlock Venture Partners",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.0,
+      "companies": [
+        {
+          "name": "Sophia Space Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-02-24",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Uncork Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.0,
+      "companies": [
+        {
+          "name": "Mirai",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-02-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "First Round Capital",
+      "type": "Private Equity Firm (Investor)",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.0,
+      "companies": [
+        {
+          "name": "Vybe AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-02-16",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Bonfire Ventures",
+      "type": "Private Equity Firm",
+      "city": "Los Angeles",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 0,
+      "total_usd_mn": 10.0,
+      "companies": [
+        {
+          "name": "Risotto",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-01-27",
+          "is_ai": false
+        }
+      ]
+    },
+    {
+      "name": "Alpha Fund Management",
+      "type": "Hedge Fund Manager",
+      "city": "Newport Beach",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 10.0,
+      "companies": [
+        {
+          "name": "Sophia Space Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 10.0,
+          "date": "2026-02-24",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Ten Eleven",
+      "type": "Private Equity Firm",
+      "city": "Burlingame",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 9.88,
+      "companies": [
+        {
+          "name": "Furl, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 9.88,
+          "date": "2026-01-21",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Scribble Ventures",
+      "type": "Private Equity Firm",
+      "city": "Portola Valley",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 9.2,
+      "companies": [
+        {
+          "name": "Ditto",
+          "stage": "Seed",
+          "size_usd_mn": 9.2,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Madrona Venture Group",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.5,
+      "companies": [
+        {
+          "name": "Scala",
+          "stage": "Seed",
+          "size_usd_mn": 8.5,
+          "date": "2026-02-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "FUSE",
+      "type": "Private Equity Firm",
+      "city": "Bellevue",
+      "state": "Washington",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.5,
+      "companies": [
+        {
+          "name": "Scala",
+          "stage": "Seed",
+          "size_usd_mn": 8.5,
+          "date": "2026-02-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Crosspoint Capital Partners",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.4,
+      "companies": [
+        {
+          "name": "Clearly AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.4,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Wireframe Ventures",
+      "type": "Private Equity Firm",
+      "city": "Mill Valley",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Ezra Climate, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Stepchange",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Ezra Climate, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Stalwart Ventures",
+      "type": "Private Equity Firm",
+      "city": "Provo",
+      "state": "UT",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Novaworks, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "ServiceNow Ventures",
+      "type": "Private Equity Firm",
+      "city": "Santa Clara",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Novaworks, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Rain Capital",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Manifold",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Perceptive Ventures",
+      "type": "Private Equity Firm",
+      "city": "Laguna Beach",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Giant Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-02-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Modern Technical Fund Management",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Manifold",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Matrix Partners",
+      "type": "Fund Manager",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Giant Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-02-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Leap Forward Ventures",
+      "type": "Private Equity Firm",
+      "city": "Larkspur",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Ezra Climate, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "KDX Management",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Ezra Climate, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Griffin Gaming Partners",
+      "type": "Private Equity Firm",
+      "city": "Santa Monica",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Giant Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-02-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Flex Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Giant Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-02-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Congruent Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 8.0,
+      "companies": [
+        {
+          "name": "Ezra Climate, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 8.0,
+          "date": "2026-03-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Peterson Ventures",
+      "type": "Private Equity Firm",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.92,
+      "companies": [
+        {
+          "name": "DiversiFi",
+          "stage": "Seed",
+          "size_usd_mn": 7.92,
+          "date": "2026-01-16",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Kickstart",
+      "type": "Private Equity Firm",
+      "city": "Cottonwood Heights",
+      "state": "UT",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.92,
+      "companies": [
+        {
+          "name": "DiversiFi",
+          "stage": "Seed",
+          "size_usd_mn": 7.92,
+          "date": "2026-01-16",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Weekend Fund",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.5,
+      "companies": [
+        {
+          "name": "Hamilton AI Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "HF0",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.5,
+      "companies": [
+        {
+          "name": "Hamilton AI Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Correlation Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.5,
+      "companies": [
+        {
+          "name": "Hamilton AI Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Cambrian Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.5,
+      "companies": [
+        {
+          "name": "Hamilton AI Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Boulder Ventures",
+      "type": "Private Equity Firm",
+      "city": "Boulder",
+      "state": "CO",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.5,
+      "companies": [
+        {
+          "name": "Comeryx Insurance Services, Inc",
+          "stage": "Seed",
+          "size_usd_mn": 7.5,
+          "date": "2026-02-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Union Labs",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Ubiquity Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Tuesday Capital",
+      "type": "Private Equity Firm (Investor)",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Raisewell Ventures",
+      "type": "Private Equity Firm",
+      "city": "Berkeley",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Radicle Impact Partners",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Oregon Venture Fund",
+      "type": "Private Equity Firm",
+      "city": "Portland",
+      "state": "OR",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "AiStrike",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-01-21",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "LG Technology Ventures",
+      "type": "Private Equity Firm",
+      "city": "Santa Clara",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Powerline",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "J-Ventures",
+      "type": "Private Equity Firm",
+      "city": "Sunnyvale",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Powerline",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Faction",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Meld",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-01-14",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Earthshot Ventures",
+      "type": "Private Equity Firm",
+      "city": "East Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "E8 Angels",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "CLAI",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Powerline",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Breakthrough Venture Capital",
+      "type": "Private Equity Firm",
+      "city": "Casper",
+      "state": "WY",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "Derapi, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Blumberg Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 7.0,
+      "companies": [
+        {
+          "name": "AiStrike",
+          "stage": "Seed",
+          "size_usd_mn": 7.0,
+          "date": "2026-01-21",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Morado Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.5,
+      "companies": [
+        {
+          "name": "Quill Notes, LLC",
+          "stage": "Seed",
+          "size_usd_mn": 6.5,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "AME Cloud Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.5,
+      "companies": [
+        {
+          "name": "Quill Notes, LLC",
+          "stage": "Seed",
+          "size_usd_mn": 6.5,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "500 Global",
+      "type": "Private Equity Firm",
+      "city": "Pleasant Hill",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.5,
+      "companies": [
+        {
+          "name": "Quill Notes, LLC",
+          "stage": "Seed",
+          "size_usd_mn": 6.5,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Rebellion Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.1,
+      "companies": [
+        {
+          "name": "Airrived Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.1,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Plug and Play",
+      "type": "Private Equity Firm",
+      "city": "Sunnyvale",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.1,
+      "companies": [
+        {
+          "name": "Airrived Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.1,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Cannage Capital",
+      "type": "Private Equity Firm",
+      "city": "Las Vegas",
+      "state": "NV",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.1,
+      "companies": [
+        {
+          "name": "Airrived Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.1,
+          "date": "2026-02-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Radius Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.0,
+      "companies": [
+        {
+          "name": "Worldscape.ai",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-03-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "NovaWave Capital",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.0,
+      "companies": [
+        {
+          "name": "PADO AI Orchestration, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-03-19",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Khosla Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.0,
+      "companies": [
+        {
+          "name": "Uptool, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Eclipse Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 6.0,
+      "companies": [
+        {
+          "name": "Uptool, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 6.0,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "TSVC",
+      "type": "Private Equity Firm",
+      "city": "Los Altos",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.8,
+      "companies": [
+        {
+          "name": "Expert Intelligence",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Sierra Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.8,
+      "companies": [
+        {
+          "name": "Expert Intelligence",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Offline Ventures",
+      "type": "Private Equity Firm",
+      "city": "Mill Valley",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.8,
+      "companies": [
+        {
+          "name": "Anchr, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-03-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Acorn Pacific Ventures",
+      "type": "Private Equity Firm (Investor)",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.8,
+      "companies": [
+        {
+          "name": "Expert Intelligence",
+          "stage": "Seed",
+          "size_usd_mn": 5.8,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Headline",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.74,
+      "companies": [
+        {
+          "name": "InfiniMind",
+          "stage": "Seed",
+          "size_usd_mn": 5.74,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "MVP Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.7,
+      "companies": [
+        {
+          "name": "Fibr.ai",
+          "stage": "Seed",
+          "size_usd_mn": 5.7,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Mischief",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.5,
+      "companies": [
+        {
+          "name": "Crafting Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.5,
+          "date": "2026-03-09",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "K5 Global",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.5,
+      "companies": [
+        {
+          "name": "Kled",
+          "stage": "Seed",
+          "size_usd_mn": 5.5,
+          "date": "2026-03-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Reach Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.34,
+      "companies": [
+        {
+          "name": "Cashmere Publishing",
+          "stage": "Seed",
+          "size_usd_mn": 5.34,
+          "date": "2026-01-07",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Fortitude Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.34,
+      "companies": [
+        {
+          "name": "Cashmere Publishing",
+          "stage": "Seed",
+          "size_usd_mn": 5.34,
+          "date": "2026-01-07",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "South Park Commons",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.3,
+      "companies": [
+        {
+          "name": "Nyne",
+          "stage": "Seed",
+          "size_usd_mn": 5.3,
+          "date": "2026-03-13",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Moxxie Ventures",
+      "type": "Private Equity Firm",
+      "city": "Boulder",
+      "state": "Colorado",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.3,
+      "companies": [
+        {
+          "name": "Orange Slice, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.3,
+          "date": "2026-02-06",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "1984 Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.3,
+      "companies": [
+        {
+          "name": "Orange Slice, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.3,
+          "date": "2026-02-06",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Western Technology Investment",
+      "type": "Fund Manager",
+      "city": "Portola Valley",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Theory Forge Management",
+      "type": "Private Equity Firm",
+      "city": "Culver City",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Outside VC",
+      "type": "Private Equity Firm",
+      "city": "Denver",
+      "state": "CO",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Okapi Venture Capital",
+      "type": "Private Equity Firm",
+      "city": "Newport Beach",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Mucker Capital",
+      "type": "Private Equity Firm",
+      "city": "Venice",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "MS&AD Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Launch Factory",
+      "type": "Private Equity Firm",
+      "city": "San Diego",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "FalconX Ventures",
+      "type": "Private Equity Firm",
+      "city": "Milpitas",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Draper",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Calm Ventures",
+      "type": "Private Equity Firm",
+      "city": "Los Angeles",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Boost VC",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Bee Partners",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.1,
+      "companies": [
+        {
+          "name": "Feltsense",
+          "stage": "Seed",
+          "size_usd_mn": 5.1,
+          "date": "2026-02-04",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Switch VC",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Inhouse",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Run Ventures",
+      "type": "Private Equity Firm",
+      "city": "Salt Lake City",
+      "state": "UT",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Inhouse",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Royal Street Ventures",
+      "type": "Private Equity Firm",
+      "city": "Park City",
+      "state": "UT",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Inhouse",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Ripple VC",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "t54 Labs",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "PayPal Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Jose",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Pinch AI Corp.",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-15",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Parable",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Sentra",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-28",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Original Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Blockit AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Lattice Capital Management",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Neuramint Limited",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Infinity Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Pinch AI Corp.",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-15",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Haystack",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Blockit AI, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-01-22",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Hat Trick Capital",
+      "type": "Private Equity Firm",
+      "city": "California",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Respan",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-03-18",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Franklin Templeton",
+      "type": "Fund Manager",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "t54 Labs",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Berkeley SkyDeck Fund",
+      "type": "Private Equity Firm",
+      "city": "Berkeley",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "Allos",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2025-12-29",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Anagram Asset Management",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 5.0,
+      "companies": [
+        {
+          "name": "t54 Labs",
+          "stage": "Seed",
+          "size_usd_mn": 5.0,
+          "date": "2026-02-25",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Delphi Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.2,
+      "companies": [
+        {
+          "name": "GenFlux",
+          "stage": "Seed",
+          "size_usd_mn": 4.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Progression",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.0,
+      "companies": [
+        {
+          "name": "Procode AI",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-03-02",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Pioneer Square Labs",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.0,
+      "companies": [
+        {
+          "name": "Certivo, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-02-17",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Monochrome Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.0,
+      "companies": [
+        {
+          "name": "Ando",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-02-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Mana Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.0,
+      "companies": [
+        {
+          "name": "Ando",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-02-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Blitzscaling Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 4.0,
+      "companies": [
+        {
+          "name": "Ando",
+          "stage": "Seed",
+          "size_usd_mn": 4.0,
+          "date": "2026-02-12",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Phosphor Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.6,
+      "companies": [
+        {
+          "name": "Unusual",
+          "stage": "Seed",
+          "size_usd_mn": 3.6,
+          "date": "2026-01-02",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Relentless",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.5,
+      "companies": [
+        {
+          "name": "Advocacy",
+          "stage": "Seed",
+          "size_usd_mn": 3.5,
+          "date": "2026-03-06",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Moment Ventures",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.5,
+      "companies": [
+        {
+          "name": "Uplift AI",
+          "stage": "Seed",
+          "size_usd_mn": 3.5,
+          "date": "2026-01-29",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Telegraph Hill Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Ezra AI Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-03-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Schema Ventures",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Penny Jar Capital",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Ezra AI Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-03-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Lombardstreet Ventures",
+      "type": "Private Equity Firm",
+      "city": "Menlo Park",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "LMNT Ventures",
+      "type": "Private Equity Firm",
+      "city": "Bend",
+      "state": "OR",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Ezra AI Labs Inc.",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-03-23",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "BBQ Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Amino Capital",
+      "type": "Private Equity Firm",
+      "city": "Palo Alto",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.2,
+      "companies": [
+        {
+          "name": "Veria Labs",
+          "stage": "Seed",
+          "size_usd_mn": 3.2,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Wefunder",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.0,
+      "companies": [
+        {
+          "name": "Trace",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-02-26",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Tekedia Capital",
+      "type": "Private Equity Firm",
+      "city": "Sheridan",
+      "state": "WY",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.0,
+      "companies": [
+        {
+          "name": "Cybervergent",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-03-05",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Goodwater Capital",
+      "type": "Private Equity Firm",
+      "city": "Burlingame",
+      "state": "California",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.0,
+      "companies": [
+        {
+          "name": "Trace",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-02-26",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Capria Ventures",
+      "type": "Private Equity Firm",
+      "city": "Seattle",
+      "state": "WA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.0,
+      "companies": [
+        {
+          "name": "ThirdAI Automation Inc",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-02-11",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Base Case Capital",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 3.0,
+      "companies": [
+        {
+          "name": "14.ai",
+          "stage": "Seed",
+          "size_usd_mn": 3.0,
+          "date": "2026-03-03",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "SVQUAD",
+      "type": "Private Equity Firm",
+      "city": "Monte Sereno",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 0,
+      "companies": [
+        {
+          "name": "AdZen",
+          "stage": "Seed",
+          "size_usd_mn": null,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Inventus Capital Partners",
+      "type": "Private Equity Firm",
+      "city": "Burlingame",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 0,
+      "companies": [
+        {
+          "name": "AdZen",
+          "stage": "Seed",
+          "size_usd_mn": null,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Fiat Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Francisco",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 0,
+      "companies": [
+        {
+          "name": "AdZen",
+          "stage": "Seed",
+          "size_usd_mn": null,
+          "date": "2026-02-10",
+          "is_ai": true
+        }
+      ]
+    },
+    {
+      "name": "Ballistic Ventures",
+      "type": "Private Equity Firm",
+      "city": "San Mateo",
+      "state": "CA",
+      "country": "US",
+      "deals": 1,
+      "ai_deals": 1,
+      "total_usd_mn": 0,
+      "companies": [
+        {
+          "name": "Armadin, Inc.",
+          "stage": "Seed",
+          "size_usd_mn": null,
+          "date": "2026-03-10",
+          "is_ai": true
+        }
+      ]
+    }
+  ]
+}

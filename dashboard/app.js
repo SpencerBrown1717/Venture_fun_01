@@ -12,12 +12,14 @@
 const state = {
   data: null,
   preqin: null,
+  vc: null,
   companies: [],
   byId: {},
   filtered: [],
   view: "grid",
   tab: "all",
   watchFilters: { stage: "", sort: "size", aiOnly: true },
+  investorFilters: { sort: "deals", query: "", aiOnly: false },
   review: loadReview(),
   filters: {
     aiOnly: true, category: "", financing: "", tier: "", source: "",
@@ -131,10 +133,16 @@ async function load() {
     const pr = await fetch("preqin.json", { cache: "no-store" });
     if (pr.ok) state.preqin = await pr.json();
   } catch (_) { state.preqin = null; }
+  // VC deals export (investor-centric view) — also optional.
+  try {
+    const vc = await fetch("vc_deals.json", { cache: "no-store" });
+    if (vc.ok) state.vc = await vc.json();
+  } catch (_) { state.vc = null; }
   initControls();
   initTabs();
   initHealth();
   initWatch();
+  initInvestors();
   renderHealth();
   renderTrends();
   renderBoard();
@@ -142,6 +150,7 @@ async function load() {
   updateFormdCount();
   updateReviewCount();
   updateWatchCount();
+  updateInvestorCount();
   apply();
 }
 
@@ -209,7 +218,7 @@ function renderHealth() {
 }
 
 // --- Tabs ------------------------------------------------------------------
-const TABS = ["all", "radar", "formd", "review", "board", "watch"];
+const TABS = ["all", "radar", "formd", "review", "board", "watch", "investors"];
 function initTabs() {
   document.querySelectorAll(".tab").forEach((t) =>
     t.addEventListener("click", () => switchTab(t.getAttribute("data-tab")))
@@ -223,6 +232,7 @@ function switchTab(name) {
   if (name === "formd") renderFormd();
   if (name === "review") renderReview();
   if (name === "watch") renderWatch();
+  if (name === "investors") renderInvestors();
 }
 
 function updateRadarCount() {
@@ -385,6 +395,82 @@ function dealCardHtml(d) {
       <div class="inv-block">
         <div class="fk">${invs.length} investor${invs.length === 1 ? "" : "s"}</div>
         <div class="inv-row">${invChips}${more}</div>
+      </div>
+    </div>`;
+}
+
+// --- Investors (VC_Deals.xlsx) ---------------------------------------------
+function vcInvestors() { return (state.vc && state.vc.investors) || []; }
+function updateInvestorCount() { $("investorCount").textContent = vcInvestors().length; }
+
+function initInvestors() {
+  if (!vcInvestors().length) return;
+  $("investorSort").addEventListener("change", (e) => { state.investorFilters.sort = e.target.value; renderInvestors(); });
+  $("investorAiOnly").addEventListener("change", (e) => { state.investorFilters.aiOnly = e.target.checked; renderInvestors(); });
+  $("investorSearch").addEventListener("input", debounce((e) => { state.investorFilters.query = e.target.value.toLowerCase().trim(); renderInvestors(); }, 180));
+}
+
+function renderInvestors() {
+  const f = state.investorFilters;
+  let rows = vcInvestors().slice();
+  if (!rows.length) {
+    $("investorEmpty").hidden = false;
+    $("investorEmpty").textContent = "No VC deals dataset loaded.";
+    $("investorStrip").innerHTML = "";
+    $("investorGroups").innerHTML = "";
+    return;
+  }
+  if (f.aiOnly) rows = rows.filter((i) => (i.ai_deals || 0) > 0);
+  if (f.query) {
+    rows = rows.filter((i) =>
+      i.name.toLowerCase().includes(f.query) ||
+      (i.companies || []).some((c) => c.name.toLowerCase().includes(f.query)));
+  }
+  rows.sort((a, b) => {
+    if (f.sort === "name") return a.name.localeCompare(b.name);
+    if (f.sort === "capital") return (b.total_usd_mn || 0) - (a.total_usd_mn || 0);
+    return (b.deals || 0) - (a.deals || 0) || (b.total_usd_mn || 0) - (a.total_usd_mn || 0);
+  });
+
+  const s = (state.vc && state.vc.stats) || {};
+  const strip = [
+    { num: vcInvestors().length, lbl: "Investors", accent: true },
+    { num: s.firms ?? "—", lbl: "Portfolio firms" },
+    { num: s.deals ?? "—", lbl: "Deals" },
+    { num: state.vc.source || "VC deals", lbl: "Source", small: true },
+  ];
+  $("investorStrip").innerHTML = strip.map((c) =>
+    `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}" ${c.small ? 'style="font-size:18px"' : ""}>${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`
+  ).join("");
+
+  $("investorEmpty").hidden = rows.length !== 0;
+  $("investorGroups").innerHTML = rows.map(investorCardHtml).join("");
+}
+
+function investorCardHtml(inv) {
+  const loc = [inv.city, inv.state, inv.country].filter(Boolean).join(", ");
+  const firms = (inv.companies || []);
+  const firmChips = firms.slice(0, 8).map((c) =>
+    `<span class="inv${c.is_ai ? " ai" : ""}" title="${escapeHtml((c.stage || "") + (c.size_usd_mn ? " · " + fmtMn(c.size_usd_mn) : ""))}">${escapeHtml(c.name)}</span>`
+  ).join("");
+  const more = firms.length > 8 ? `<span class="inv more">+${firms.length - 8}</span>` : "";
+  return `
+    <div class="card deal investor">
+      <div class="card-top">
+        <div>
+          <h3>${escapeHtml(inv.name)}</h3>
+          <div class="sub">${escapeHtml(loc || "—")}</div>
+        </div>
+        <div class="opp-badge size"><div class="v">${inv.deals}</div><div class="l">${inv.deals === 1 ? "deal" : "deals"}</div></div>
+      </div>
+      <div class="metaline">
+        ${inv.type ? `<span class="pill-meta">${escapeHtml(inv.type)}</span>` : ""}
+        ${inv.total_usd_mn ? `<span class="pill-meta raised">${fmtMn(inv.total_usd_mn)} alongside</span>` : ""}
+        ${inv.ai_deals ? `<span class="pill-meta fin-safe">${inv.ai_deals} AI</span>` : ""}
+      </div>
+      <div class="inv-block">
+        <div class="fk">Portfolio firms in this dataset</div>
+        <div class="inv-row">${firmChips}${more}</div>
       </div>
     </div>`;
 }

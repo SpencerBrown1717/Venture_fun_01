@@ -68,6 +68,7 @@
       <button class="tab" data-tab="review" role="tab">◎ Needs Review <span class="tab-count" id="reviewCount">0</span></button>
       <button class="tab" data-tab="board" role="tab">▲ Leaderboard</button>
       <button class="tab" data-tab="watch" role="tab">★ Startups to Watch <span class="tab-count" id="watchCount">0</span></button>
+      <button class="tab" data-tab="investors" role="tab">⬡ Investors <span class="tab-count" id="investorCount">0</span></button>
     </nav>
 
     <!-- ALL COMPANIES TAB -->
@@ -223,6 +224,31 @@
       <div id="watchStrip" class="watch-strip"></div>
       <div id="watchGroups" class="cards"></div>
       <div id="watchEmpty" class="empty" hidden>No deals match.</div>
+    </section>
+
+    <!-- INVESTORS TAB (VC_Deals.xlsx) -->
+    <section class="tabpanel" id="panel-investors" hidden>
+      <div class="radar-intro">
+        <h2>Investors</h2>
+        <p>The <b>VC firms</b> backing the recently-funded startups in the deals export, and the
+        <b>portfolio firms</b> each has invested in. <span class="muted">Same deals as Startups to Watch,
+        pivoted around the investor.</span></p>
+      </div>
+      <div class="watch-controls">
+        <div class="searchbar inline">
+          <span class="search-ico">⌕</span>
+          <input id="investorSearch" type="search" autocomplete="off" placeholder="Search investors or portfolio firms…" />
+        </div>
+        <select id="investorSort" aria-label="Sort investors">
+          <option value="deals">Sort: Most deals ↓</option>
+          <option value="capital">Sort: Capital alongside ↓</option>
+          <option value="name">Sort: A→Z</option>
+        </select>
+        <label class="toggle"><input type="checkbox" id="investorAiOnly" /><span>AI backers only</span></label>
+      </div>
+      <div id="investorStrip" class="watch-strip"></div>
+      <div id="investorGroups" class="cards"></div>
+      <div id="investorEmpty" class="empty" hidden>No investors match.</div>
     </section>
   </main>
 
