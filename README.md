@@ -8,7 +8,9 @@
 An agentic pipeline ingests public company records (SEC EDGAR Form D, the open
 YC dataset, and a VC deals export), classifies AI-relatedness, researches each
 firm, scores the opportunity, and publishes a single static dashboard — no
-backend, no build step.
+backend, no build step. A client-side **Network** tab then turns your own
+contacts into warm paths to those companies, their investors, and the partners
+who can make the intro.
 
 ---
 
@@ -31,7 +33,7 @@ the dashboard works instantly with no pipeline run.
 
 ## The dashboard
 
-Seven tabs, grouped into **Discovery** and **Funding**:
+Eight tabs, grouped into **Discovery**, **Funding**, and **Access**:
 
 | Tab | What it shows |
 | --- | --- |
@@ -39,9 +41,10 @@ Seven tabs, grouped into **Discovery** and **Funding**:
 | **Pre-Form-D Radar** | Probable SAFE-stage / pre-seed AI firms with no public Form D yet — labeled as inference |
 | **Confirmed Form D** | SEC-verified filings, each linked to its EDGAR record |
 | **Needs Review** | Local triage queue (Needs review / Track / Outreach / Pass), stored in `localStorage` |
-| **Leaderboard** | Top AI companies by opportunity score |
+| **Leaderboard** | Top AI companies by opportunity score, with trend, category, momentum, and geography charts |
 | **Startups to Watch** | Recently *funded* AI startups from a VC deals export, with investor syndicates |
 | **Investors** | The VC firms behind those deals — website/LinkedIn/X/email, lead partners, stage mix, and a portfolio table (click any card) |
+| **⧉ Network** | Your contacts → warm paths into companies, investors, and partners (see below) |
 
 Every company opens an **analysis drawer**: recommendation, evidence panel
 ("why this is here" + missing-data checklist), founders, a 6-dimension
@@ -50,6 +53,26 @@ opportunity score, competitive landscape, risks, and verification.
 **Honesty-first:** evidence score (how much we *know*) is kept separate from
 opportunity score (how *interesting* it looks). Founders/links are only shown
 when they come from a verified source; guessed values are clearly flagged.
+
+### Network — warm-intro engine (client-side)
+
+Drop in a **Gmail (Google Contacts)** or **LinkedIn `Connections.csv`** export —
+parsed entirely in your browser, contacts never leave the page — and SCOUT maps
+your relationships onto the dataset:
+
+- **Matching** — contacts → founders named in SEC filings + company domains
+  (startup paths), and → investor firms + their lead partners (investor paths),
+  with **super-connector** detection for people who bridge several targets.
+- **Relationship graph** — a radial SVG of You → contacts → companies / investors
+  / partners, with 6 filters (startup, investor, partner, company↔investor,
+  verified-only, A/A+ access) and click-through node drawers.
+- **Action layer** — investor warm-intro cards and super-connector cards with
+  access score + grade, an **evidence audit** (signal/source chips, verified vs.
+  inferred), and **copyable outreach drafts** (intro request / direct note / CRM).
+- **Saved targets** — companies + investors you flag, persisted in `localStorage`.
+
+Same honesty-first rule as the rest of the app: verified paths are kept distinct
+from name-only inferences.
 
 ---
 

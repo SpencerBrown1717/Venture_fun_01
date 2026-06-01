@@ -596,6 +596,9 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 /* ---- Phones ---- */
 @media (max-width: 560px) {
   main { padding: 0 16px 64px; }
+  /* match the tab rail's full-bleed offset to the reduced mobile padding so the
+     sticky nav doesn't bleed ~12px past the viewport (no horizontal scroll). */
+  .tabs { margin-left: -16px; margin-right: -16px; padding-left: 16px; padding-right: 16px; }
   .statusbar { padding: 9px 16px; }
   .sb-sub, .sb-feed { display: none; }            /* keep just ● SCOUT + clock */
   .sb-right { gap: 10px; }
