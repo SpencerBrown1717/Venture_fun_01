@@ -61,14 +61,17 @@
     </section>
 
     <!-- Tabs (spec 5.9 required tabs) -->
-    <nav class="tabs" role="tablist">
-      <button class="tab active" data-tab="all" role="tab">◷ All Companies</button>
-      <button class="tab" data-tab="radar" role="tab">⦿ Pre-Form-D Radar <span class="tab-count" id="radarCount">0</span></button>
-      <button class="tab" data-tab="formd" role="tab">✓ Confirmed Form D <span class="tab-count" id="formdCount">0</span></button>
-      <button class="tab" data-tab="review" role="tab">◎ Needs Review <span class="tab-count" id="reviewCount">0</span></button>
-      <button class="tab" data-tab="board" role="tab">▲ Leaderboard</button>
-      <button class="tab" data-tab="watch" role="tab">★ Startups to Watch <span class="tab-count" id="watchCount">0</span></button>
-      <button class="tab" data-tab="investors" role="tab">⬡ Investors <span class="tab-count" id="investorCount">0</span></button>
+    <nav class="tabs" role="tablist" aria-label="Dashboard views">
+      <span class="tab-group-label" aria-hidden="true">Discovery</span>
+      <button class="tab active" data-tab="all" role="tab" aria-selected="true">◷ All Companies</button>
+      <button class="tab" data-tab="radar" role="tab" aria-selected="false">⦿ Pre-Form-D Radar <span class="tab-count" id="radarCount">0</span></button>
+      <button class="tab" data-tab="formd" role="tab" aria-selected="false">✓ Confirmed Form D <span class="tab-count" id="formdCount">0</span></button>
+      <button class="tab" data-tab="review" role="tab" aria-selected="false">◎ Needs Review <span class="tab-count" id="reviewCount">0</span></button>
+      <button class="tab" data-tab="board" role="tab" aria-selected="false">▲ Leaderboard</button>
+      <span class="tab-divider" aria-hidden="true"></span>
+      <span class="tab-group-label" aria-hidden="true">Funding</span>
+      <button class="tab" data-tab="watch" role="tab" aria-selected="false">★ Startups to Watch <span class="tab-count" id="watchCount">0</span></button>
+      <button class="tab" data-tab="investors" role="tab" aria-selected="false">⬡ Investors <span class="tab-count" id="investorCount">0</span></button>
     </nav>
 
     <!-- ALL COMPANIES TAB -->

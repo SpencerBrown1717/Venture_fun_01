@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-01T01:47:28Z",
+  "generated_at": "2026-06-01T02:32:05Z",
   "source": "VC export",
   "stats": {
     "investors": 179,
@@ -36,7 +36,13 @@
         "RegTech"
       ],
       "lead_partners": [
-        "Tom Blomfield"
+        {
+          "name": "Tom Blomfield",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Tom%20Blomfield%20Y%20Combinator",
+          "x": "https://x.com/search?q=Tom%20Blomfield&f=user",
+          "email": "tom@ycombinator.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.ycombinator.com",
@@ -273,9 +279,27 @@
         "Smart Supply Chain"
       ],
       "lead_partners": [
-        "Andrew Chen",
-        "Marco Mascorro, Justine Moore, Martin Casado",
-        "Troy Kirwin"
+        {
+          "name": "Andrew Chen",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Andrew%20Chen%20Andreessen%20Horowitz",
+          "x": "https://x.com/search?q=Andrew%20Chen&f=user",
+          "email": "andrew@a16z.com",
+          "email_guess": true
+        },
+        {
+          "name": "Marco Mascorro, Justine Moore, Martin Casado",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Marco%20Mascorro%2C%20Justine%20Moore%2C%20Martin%20Casado%20Andreessen%20Horowitz",
+          "x": "https://x.com/search?q=Marco%20Mascorro%2C%20Justine%20Moore%2C%20Martin%20Casado&f=user",
+          "email": "marco@a16z.com",
+          "email_guess": true
+        },
+        {
+          "name": "Troy Kirwin",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Troy%20Kirwin%20Andreessen%20Horowitz",
+          "x": "https://x.com/search?q=Troy%20Kirwin&f=user",
+          "email": "troy@a16z.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://a16z.com",
@@ -461,8 +485,20 @@
         "Deep Learning"
       ],
       "lead_partners": [
-        "David Cahn",
-        "Patrick Grady"
+        {
+          "name": "David Cahn",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=David%20Cahn%20Sequoia%20Capital",
+          "x": "https://x.com/search?q=David%20Cahn&f=user",
+          "email": "david@sequoiacap.com",
+          "email_guess": true
+        },
+        {
+          "name": "Patrick Grady",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Patrick%20Grady%20Sequoia%20Capital",
+          "x": "https://x.com/search?q=Patrick%20Grady&f=user",
+          "email": "patrick@sequoiacap.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.sequoiacap.com",
@@ -548,7 +584,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Matt Kraning"
+        {
+          "name": "Matt Kraning",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Matt%20Kraning%20Menlo%20Ventures",
+          "x": "https://x.com/search?q=Matt%20Kraning&f=user",
+          "email": "matt@menlovc.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.menlovc.com",
@@ -622,8 +664,20 @@
         "Deep Learning"
       ],
       "lead_partners": [
-        "Lisa Xu",
-        "Mohammad Islam"
+        {
+          "name": "Lisa Xu",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Lisa%20Xu%20Threshold%20Ventures",
+          "x": "https://x.com/search?q=Lisa%20Xu&f=user",
+          "email": "lisa@threshold.vc",
+          "email_guess": true
+        },
+        {
+          "name": "Mohammad Islam",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mohammad%20Islam%20Threshold%20Ventures",
+          "x": "https://x.com/search?q=Mohammad%20Islam&f=user",
+          "email": "mohammad@threshold.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://threshold.vc",
@@ -700,8 +754,20 @@
         "Machine Learning"
       ],
       "lead_partners": [
-        "Navin Chaddha",
-        "Patrick Salyer"
+        {
+          "name": "Navin Chaddha",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Navin%20Chaddha%20Mayfield%20Fund",
+          "x": "https://x.com/search?q=Navin%20Chaddha&f=user",
+          "email": "navin@mayfield.com",
+          "email_guess": true
+        },
+        {
+          "name": "Patrick Salyer",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Patrick%20Salyer%20Mayfield%20Fund",
+          "x": "https://x.com/search?q=Patrick%20Salyer&f=user",
+          "email": "patrick@mayfield.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.mayfield.com",
@@ -848,8 +914,20 @@
         "Wearables & Quantified Self"
       ],
       "lead_partners": [
-        "Adrian Fenty",
-        "Marlon Nichols"
+        {
+          "name": "Adrian Fenty",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Adrian%20Fenty%20MaC%20Venture%20Capital",
+          "x": "https://x.com/search?q=Adrian%20Fenty&f=user",
+          "email": "adrian@macventurecapital.com",
+          "email_guess": true
+        },
+        {
+          "name": "Marlon Nichols",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Marlon%20Nichols%20MaC%20Venture%20Capital",
+          "x": "https://x.com/search?q=Marlon%20Nichols&f=user",
+          "email": "marlon@macventurecapital.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://macventurecapital.com",
@@ -995,7 +1073,13 @@
         "Machine Learning"
       ],
       "lead_partners": [
-        "Arielle Zuckerberg"
+        {
+          "name": "Arielle Zuckerberg",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Arielle%20Zuckerberg%20Long%20Journey%20Ventures",
+          "x": "https://x.com/search?q=Arielle%20Zuckerberg&f=user",
+          "email": "arielle@longjourney.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.longjourney.vc",
@@ -1325,7 +1409,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Erica Brescia"
+        {
+          "name": "Erica Brescia",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Erica%20Brescia%20Redpoint%20Ventures",
+          "x": "https://x.com/search?q=Erica%20Brescia&f=user",
+          "email": "erica@redpoint.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.redpoint.com",
@@ -1445,7 +1535,13 @@
         "Deep Learning"
       ],
       "lead_partners": [
-        "Yazan El-Baba"
+        {
+          "name": "Yazan El-Baba",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Yazan%20El-Baba%20Emergence%20Capital",
+          "x": "https://x.com/search?q=Yazan%20El-Baba&f=user",
+          "email": "yazan@emcap.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.emcap.com",
@@ -1509,7 +1605,13 @@
         "Machine Learning"
       ],
       "lead_partners": [
-        "Vig Sachidananda"
+        {
+          "name": "Vig Sachidananda",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Vig%20Sachidananda%20Gradient%20Ventures",
+          "x": "https://x.com/search?q=Vig%20Sachidananda&f=user",
+          "email": "vig@gradient.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://gradient.com",
@@ -1629,8 +1731,20 @@
         "Saas"
       ],
       "lead_partners": [
-        "Amit Kumar",
-        "Prayank Swaroop"
+        {
+          "name": "Amit Kumar",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Amit%20Kumar%20Accel",
+          "x": "https://x.com/search?q=Amit%20Kumar&f=user",
+          "email": "amit@accel.com",
+          "email_guess": true
+        },
+        {
+          "name": "Prayank Swaroop",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Prayank%20Swaroop%20Accel",
+          "x": "https://x.com/search?q=Prayank%20Swaroop&f=user",
+          "email": "prayank@accel.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.accel.com",
@@ -1691,7 +1805,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Eric Hilton"
+        {
+          "name": "Eric Hilton",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Eric%20Hilton%20Sorenson%20Capital",
+          "x": "https://x.com/search?q=Eric%20Hilton&f=user",
+          "email": "eric@sorensoncapital.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.sorensoncapital.com",
@@ -1810,7 +1930,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Chenli Wang"
+        {
+          "name": "Chenli Wang",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Chenli%20Wang%20WndrCo",
+          "x": "https://x.com/search?q=Chenli%20Wang&f=user",
+          "email": "chenli@wndrco.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.wndrco.com",
@@ -1871,8 +1997,20 @@
         "Saas"
       ],
       "lead_partners": [
-        "Amy Cheetham",
-        "John Cowgill"
+        {
+          "name": "Amy Cheetham",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Amy%20Cheetham%20Costanoa%20Ventures",
+          "x": "https://x.com/search?q=Amy%20Cheetham&f=user",
+          "email": "amy@costanoa.vc",
+          "email_guess": true
+        },
+        {
+          "name": "John Cowgill",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=John%20Cowgill%20Costanoa%20Ventures",
+          "x": "https://x.com/search?q=John%20Cowgill&f=user",
+          "email": "john@costanoa.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.costanoa.vc",
@@ -1990,7 +2128,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Marina Girgis"
+        {
+          "name": "Marina Girgis",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Marina%20Girgis%20Precursor%20Ventures",
+          "x": "https://x.com/search?q=Marina%20Girgis&f=user",
+          "email": "marina@precursorvc.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://precursorvc.com",
@@ -2048,7 +2192,13 @@
         "RegTech"
       ],
       "lead_partners": [
-        "Sam Lessin"
+        {
+          "name": "Sam Lessin",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Sam%20Lessin%20Slow",
+          "x": "https://x.com/search?q=Sam%20Lessin&f=user",
+          "email": "sam@slow.co",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://slow.co",
@@ -2206,7 +2356,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Dave Munichiello"
+        {
+          "name": "Dave Munichiello",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Dave%20Munichiello%20GV",
+          "x": "https://x.com/search?q=Dave%20Munichiello&f=user",
+          "email": "dave@gv.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.gv.com",
@@ -2345,7 +2501,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Mohamed Nanabhay, Saayeli Bruni"
+        {
+          "name": "Mohamed Nanabhay, Saayeli Bruni",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mohamed%20Nanabhay%2C%20Saayeli%20Bruni%20Mozilla%20Ventures",
+          "x": "https://x.com/search?q=Mohamed%20Nanabhay%2C%20Saayeli%20Bruni&f=user",
+          "email": "mohamed@mozilla.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://mozilla.vc",
@@ -2393,7 +2555,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Nhi L\u00ea, Coby Yeung, Alex Leung, Antoine Blondeau, Katharina Maier, Arnaud Barthelemy, Uday Sandhu, Terry Chou, Alberto Pelliccione, Axel Badalian, Arun Vijay"
+        {
+          "name": "Nhi L\u00ea, Coby Yeung, Alex Leung, Antoine Blondeau, Katharina Maier, Arnaud Barthelemy, Uday Sandhu, Terry Chou, Alberto Pelliccione, Axel Badalian, Arun Vijay",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Nhi%20L%C3%AA%2C%20Coby%20Yeung%2C%20Alex%20Leung%2C%20Antoine%20Blondeau%2C%20Katharina%20Maier%2C%20Arnaud%20Barthelemy%2C%20Uday%20Sandhu%2C%20Terry%20Chou%2C%20Alberto%20Pelliccione%2C%20Axel%20Badalian%2C%20Arun%20Vijay%20Alpha%20Intelligence%20Capital",
+          "x": "https://x.com/search?q=Nhi%20L%C3%AA%2C%20Coby%20Yeung%2C%20Alex%20Leung%2C%20Antoine%20Blondeau%2C%20Katharina%20Maier%2C%20Arnaud%20Barthelemy%2C%20Uday%20Sandhu%2C%20Terry%20Chou%2C%20Alberto%20Pelliccione%2C%20Axel%20Badalian%2C%20Arun%20Vijay&f=user",
+          "email": "nhi@alpha-intelligence.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.alpha-intelligence.com",
@@ -2440,7 +2608,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Philipp Stauffer"
+        {
+          "name": "Philipp Stauffer",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Philipp%20Stauffer%20Fyrfly%20Venture%20Partners",
+          "x": "https://x.com/search?q=Philipp%20Stauffer&f=user",
+          "email": "philipp@fyrfly.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.fyrfly.com",
@@ -2486,7 +2660,13 @@
         "Cloud Computing"
       ],
       "lead_partners": [
-        "Asheem Chandna"
+        {
+          "name": "Asheem Chandna",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Asheem%20Chandna%20Greylock%20Partners",
+          "x": "https://x.com/search?q=Asheem%20Chandna&f=user",
+          "email": "asheem@greylock.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://greylock.com",
@@ -2532,7 +2712,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Steve O'Hara"
+        {
+          "name": "Steve O'Hara",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Steve%20O%27Hara%20Valley%20Capital%20Partners",
+          "x": "https://x.com/search?q=Steve%20O%27Hara&f=user",
+          "email": "steve@valleycapital.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.valleycapital.vc",
@@ -3294,7 +3480,13 @@
         "Cloud Computing"
       ],
       "lead_partners": [
-        "Ari Wright"
+        {
+          "name": "Ari Wright",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Ari%20Wright%20Bison%20Ventures",
+          "x": "https://x.com/search?q=Ari%20Wright&f=user",
+          "email": "ari@bison.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.bison.vc",
@@ -3428,7 +3620,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Sandhya Venkatachalam"
+        {
+          "name": "Sandhya Venkatachalam",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Sandhya%20Venkatachalam%20Axiom",
+          "x": "https://x.com/search?q=Sandhya%20Venkatachalam&f=user",
+          "email": "sandhya@axiompartners.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.axiompartners.vc",
@@ -3797,7 +3995,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Jim Andelman"
+        {
+          "name": "Jim Andelman",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Jim%20Andelman%20Bonfire%20Ventures",
+          "x": "https://x.com/search?q=Jim%20Andelman&f=user",
+          "email": "jim@bonfirevc.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.bonfirevc.com",
@@ -3889,7 +4093,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Mark Hatfield"
+        {
+          "name": "Mark Hatfield",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Mark%20Hatfield%20Ten%20Eleven",
+          "x": "https://x.com/search?q=Mark%20Hatfield&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.teneleven.com",
@@ -3982,7 +4192,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Matt McIlwain"
+        {
+          "name": "Matt McIlwain",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Matt%20McIlwain%20Madrona%20Venture%20Group",
+          "x": "https://x.com/search?q=Matt%20McIlwain&f=user",
+          "email": "matt@madrona.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.madrona.com",
@@ -4030,7 +4246,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Kellan Carter"
+        {
+          "name": "Kellan Carter",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Kellan%20Carter%20FUSE",
+          "x": "https://x.com/search?q=Kellan%20Carter&f=user",
+          "email": "kellan@fuse.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.fuse.vc",
@@ -4209,7 +4431,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "David Mann"
+        {
+          "name": "David Mann",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=David%20Mann%20Stalwart%20Ventures",
+          "x": "https://x.com/search?q=David%20Mann&f=user",
+          "email": "david@stalwart.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.stalwart.vc",
@@ -4255,7 +4483,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Victor Chang"
+        {
+          "name": "Victor Chang",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Victor%20Chang%20ServiceNow%20Ventures",
+          "x": "https://x.com/search?q=Victor%20Chang&f=user",
+          "email": "victor@servicenow.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.servicenow.com/company/ventures.html",
@@ -4436,7 +4670,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Dana Stalder"
+        {
+          "name": "Dana Stalder",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Dana%20Stalder%20Matrix%20Partners",
+          "x": "https://x.com/search?q=Dana%20Stalder&f=user",
+          "email": "dana@matrixpartners.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.matrixpartners.com",
@@ -4572,7 +4812,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Pierre Planche"
+        {
+          "name": "Pierre Planche",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Pierre%20Planche%20Griffin%20Gaming%20Partners",
+          "x": "https://x.com/search?q=Pierre%20Planche&f=user",
+          "email": "pierre@griffingp.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.griffingp.com",
@@ -4665,7 +4911,13 @@
         "Machine Learning"
       ],
       "lead_partners": [
-        "Eliza Cushman"
+        {
+          "name": "Eliza Cushman",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Eliza%20Cushman%20Congruent%20Ventures",
+          "x": "https://x.com/search?q=Eliza%20Cushman&f=user",
+          "email": "eliza@congruentvc.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.congruentvc.com",
@@ -5234,7 +5486,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Lynn Fletcher, Alline Akintore, Matt Compton, Melissa Freeman, Gloria Zabel, Mary Geyer"
+        {
+          "name": "Lynn Fletcher, Alline Akintore, Matt Compton, Melissa Freeman, Gloria Zabel, Mary Geyer",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Lynn%20Fletcher%2C%20Alline%20Akintore%2C%20Matt%20Compton%2C%20Melissa%20Freeman%2C%20Gloria%20Zabel%2C%20Mary%20Geyer%20Oregon%20Venture%20Fund",
+          "x": "https://x.com/search?q=Lynn%20Fletcher%2C%20Alline%20Akintore%2C%20Matt%20Compton%2C%20Melissa%20Freeman%2C%20Gloria%20Zabel%2C%20Mary%20Geyer&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.oregon.com",
@@ -5279,7 +5537,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Robert McIntyre"
+        {
+          "name": "Robert McIntyre",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Robert%20McIntyre%20LG%20Technology%20Ventures",
+          "x": "https://x.com/search?q=Robert%20McIntyre&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.lgtechnology.com",
@@ -5325,7 +5589,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Eran Sandhaus"
+        {
+          "name": "Eran Sandhaus",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Eran%20Sandhaus%20J-Ventures",
+          "x": "https://x.com/search?q=Eran%20Sandhaus&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.jventures.com",
@@ -5375,7 +5645,13 @@
         "Processing & Payment Infrastructure"
       ],
       "lead_partners": [
-        "Will Leas"
+        {
+          "name": "Will Leas",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Will%20Leas%20Faction",
+          "x": "https://x.com/search?q=Will%20Leas&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.faction.com",
@@ -5423,7 +5699,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Ramsay Siegal"
+        {
+          "name": "Ramsay Siegal",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Ramsay%20Siegal%20Earthshot%20Ventures",
+          "x": "https://x.com/search?q=Ramsay%20Siegal&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.earthshot.com",
@@ -5513,7 +5795,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Ajay Gupta"
+        {
+          "name": "Ajay Gupta",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Ajay%20Gupta%20CLAI",
+          "x": "https://x.com/search?q=Ajay%20Gupta&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.clai.com",
@@ -5602,7 +5890,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Pramod Gosavi"
+        {
+          "name": "Pramod Gosavi",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Pramod%20Gosavi%20Blumberg%20Capital",
+          "x": "https://x.com/search?q=Pramod%20Gosavi&f=user",
+          "email": "pramod@blumbergcapital.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.blumbergcapital.com",
@@ -5730,7 +6024,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Christine Tsai"
+        {
+          "name": "Christine Tsai",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Christine%20Tsai%20500%20Global",
+          "x": "https://x.com/search?q=Christine%20Tsai&f=user",
+          "email": "christine@500.co",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://500.co",
@@ -5776,7 +6076,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Jukka Alanen"
+        {
+          "name": "Jukka Alanen",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Jukka%20Alanen%20Rebellion%20Ventures",
+          "x": "https://x.com/search?q=Jukka%20Alanen&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.rebellion.com",
@@ -5824,7 +6130,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Eugenio Gonzalez, Amit Patel, Alde Gonz\u00e1lez, Carlos Perez-Pla"
+        {
+          "name": "Eugenio Gonzalez, Amit Patel, Alde Gonz\u00e1lez, Carlos Perez-Pla",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Eugenio%20Gonzalez%2C%20Amit%20Patel%2C%20Alde%20Gonz%C3%A1lez%2C%20Carlos%20Perez-Pla%20Plug%20and%20Play",
+          "x": "https://x.com/search?q=Eugenio%20Gonzalez%2C%20Amit%20Patel%2C%20Alde%20Gonz%C3%A1lez%2C%20Carlos%20Perez-Pla&f=user",
+          "email": "eugenio@plugandplaytechcenter.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.plugandplaytechcenter.com",
@@ -5872,7 +6184,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Shelley Zhuang"
+        {
+          "name": "Shelley Zhuang",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Shelley%20Zhuang%20Cannage%20Capital",
+          "x": "https://x.com/search?q=Shelley%20Zhuang&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.cannage.com",
@@ -6139,7 +6457,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Ben Ben"
+        {
+          "name": "Ben Ben",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Ben%20Ben%20Sierra%20Ventures",
+          "x": "https://x.com/search?q=Ben%20Ben&f=user",
+          "email": "ben@sierraventures.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.sierraventures.com",
@@ -6366,7 +6690,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Dustin Moring"
+        {
+          "name": "Dustin Moring",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Dustin%20Moring%20Mischief",
+          "x": "https://x.com/search?q=Dustin%20Moring&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.mischief.com",
@@ -6456,7 +6786,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Shauntel Garvey, James Kim"
+        {
+          "name": "Shauntel Garvey, James Kim",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Shauntel%20Garvey%2C%20James%20Kim%20Reach%20Capital",
+          "x": "https://x.com/search?q=Shauntel%20Garvey%2C%20James%20Kim&f=user",
+          "email": "shauntel@reachcap.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.reachcap.com",
@@ -6504,7 +6840,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Sungjoon Cho"
+        {
+          "name": "Sungjoon Cho",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Sungjoon%20Cho%20Fortitude%20Ventures",
+          "x": "https://x.com/search?q=Sungjoon%20Cho&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.fortitude.com",
@@ -6642,7 +6984,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Samit Kalra"
+        {
+          "name": "Samit Kalra",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Samit%20Kalra%201984%20Ventures",
+          "x": "https://x.com/search?q=Samit%20Kalra&f=user",
+          "email": "samit@1984.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.1984.vc",
@@ -6730,7 +7078,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Matt Schlicht, Ben Parr"
+        {
+          "name": "Matt Schlicht, Ben Parr",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Matt%20Schlicht%2C%20Ben%20Parr%20Theory%20Forge%20Management",
+          "x": "https://x.com/search?q=Matt%20Schlicht%2C%20Ben%20Parr&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.theoryforge.com",
@@ -7110,7 +7464,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Gus Domel"
+        {
+          "name": "Gus Domel",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Gus%20Domel%20Boost%20VC",
+          "x": "https://x.com/search?q=Gus%20Domel&f=user",
+          "email": "gus@boost.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.boost.vc",
@@ -7550,7 +7910,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Jay Ganatra"
+        {
+          "name": "Jay Ganatra",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Jay%20Ganatra%20Infinity%20Ventures",
+          "x": "https://x.com/search?q=Jay%20Ganatra&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.infinity.com",
@@ -7684,7 +8050,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Tony Pecore"
+        {
+          "name": "Tony Pecore",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Tony%20Pecore%20Franklin%20Templeton",
+          "x": "https://x.com/search?q=Tony%20Pecore&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.franklintempleton.com",
@@ -8122,7 +8494,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Damir Becirovic"
+        {
+          "name": "Damir Becirovic",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Damir%20Becirovic%20Relentless",
+          "x": "https://x.com/search?q=Damir%20Becirovic&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.relentless.com",
@@ -8648,7 +9026,13 @@
         "Artificial Intelligence"
       ],
       "lead_partners": [
-        "Surya Mantha"
+        {
+          "name": "Surya Mantha",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Surya%20Mantha%20Capria%20Ventures",
+          "x": "https://x.com/search?q=Surya%20Mantha&f=user",
+          "email": "surya@capria.vc",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.capria.vc",
@@ -8789,7 +9173,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Manu Rekhi"
+        {
+          "name": "Manu Rekhi",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Manu%20Rekhi%20Inventus%20Capital%20Partners",
+          "x": "https://x.com/search?q=Manu%20Rekhi&f=user",
+          "email": "manu@inventuscap.com",
+          "email_guess": true
+        }
       ],
       "profile": {
         "website": "https://www.inventuscap.com",
@@ -8839,7 +9229,13 @@
         "Saas"
       ],
       "lead_partners": [
-        "Drew Glover"
+        {
+          "name": "Drew Glover",
+          "linkedin": "https://www.linkedin.com/search/results/people/?keywords=Drew%20Glover%20Fiat%20Ventures",
+          "x": "https://x.com/search?q=Drew%20Glover&f=user",
+          "email": null,
+          "email_guess": false
+        }
       ],
       "profile": {
         "website": "https://www.fiat.com",
