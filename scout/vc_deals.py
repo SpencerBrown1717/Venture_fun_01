@@ -19,7 +19,7 @@ import json
 from collections import Counter
 from pathlib import Path
 
-from scout.investor_directory import enrich
+from scout.investor_directory import enrich, partner_profile
 from scout.watch import _excel_date, _is_ai, _num, _read_rows, _split
 
 DEFAULT_XLSX = Path(__file__).parent / "data" / "vc_deals.xlsx"
@@ -141,7 +141,7 @@ def parse(xlsx_path: Path = DEFAULT_XLSX) -> dict:
         latest = comps[0]["date"] if comps else None
         stages = [{"stage": s, "count": n} for s, n in inv["stages"].most_common()]
         focus = [v for v, _ in inv["verticals"].most_common(6)]
-        partners = sorted(inv["lead_partners"])
+        partners = [partner_profile(n, inv["name"], profile) for n in sorted(inv["lead_partners"])]
         out.append({
             "name": inv["name"],
             "investor_id": inv["investor_id"],

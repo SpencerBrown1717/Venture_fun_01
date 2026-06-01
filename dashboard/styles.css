@@ -24,6 +24,7 @@
   --pass: #6b7280;
   --shadow: 0 18px 50px rgba(0,0,0,0.55);
   --radius: 14px;
+  --statusbar-h: 39px;
   --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
@@ -138,16 +139,28 @@ main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; paddin
 .stat .num.serif-sm { font-size: 26px; }
 
 /* ---- Tabs ---- */
-.tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 24px; }
-.tab {
-  background: none; border: none; cursor: pointer; flex: 0 0 auto; white-space: nowrap;
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em;
-  color: var(--txt-3); padding: 12px 16px; border-bottom: 2px solid transparent;
-  transition: color 0.15s;
+.tabs {
+  position: sticky; top: var(--statusbar-h, 39px); z-index: 30;
+  display: flex; gap: 6px; align-items: center;
+  margin: 0 -28px 24px; padding: 9px 28px;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10,11,13,0.88); backdrop-filter: blur(12px);
+  overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity;
 }
-.tab:hover { color: var(--txt-2); }
-.tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-.tab-count { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: var(--panel-2); color: var(--txt-2); font-size: 11px; text-align: center; }
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  display: inline-flex; align-items: center; gap: 7px; scroll-snap-align: start;
+  background: none; border: 1px solid transparent; cursor: pointer; flex: 0 0 auto; white-space: nowrap;
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.04em;
+  color: var(--txt-3); padding: 8px 13px; border-radius: 9px;
+  transition: color 0.15s, background 0.15s, border-color 0.15s;
+}
+.tab:hover { color: var(--txt); background: var(--panel-2); }
+.tab:focus-visible { outline: 2px solid var(--accent-dim); outline-offset: 1px; }
+.tab.active { color: var(--accent); background: rgba(198,242,78,0.12); border-color: rgba(198,242,78,0.35); }
+.tab-count { display: inline-block; min-width: 18px; padding: 0 5px; border-radius: 9px; background: var(--panel-2); color: var(--txt-2); font-size: 11px; text-align: center; transition: all 0.15s; }
+.tab:hover .tab-count { background: var(--panel); }
+.tab.active .tab-count { background: var(--accent); color: #0a0b0d; }
 
 /* ---- Search ---- */
 .searchbar {
@@ -541,6 +554,18 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 .inv-portfolio { margin-top: 8px; }
 .inv-portfolio .board td { font-size: 12.5px; }
 .inv-portfolio .bname { font-size: 14px; }
+
+/* Lead partner contact rows (drawer) */
+.partner-list { display: flex; flex-direction: column; gap: 8px; }
+.partner-row {
+  display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap;
+  padding: 9px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--panel);
+}
+.partner-name { font-size: 14px; color: var(--txt); font-weight: 500; }
+.partner-links { display: flex; gap: 6px; flex-wrap: wrap; }
+.partner-links .inv-link { padding: 4px 9px; }
+.partner-links .inv-link.x { font-style: normal; }
+.partner-note { font-size: 11px; color: var(--txt-3); margin-top: 8px; font-style: italic; }
 
 /* ---- Responsive ---- */
 @media (max-width: 860px) {

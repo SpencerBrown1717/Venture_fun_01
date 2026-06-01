@@ -720,3 +720,37 @@ def enrich(name: str) -> dict:
         "email": email,
         "verified": False,
     }
+
+
+def _domain(website: str | None) -> str | None:
+    if not website:
+        return None
+    host = re.sub(r"^https?://", "", website).split("/")[0]
+    host = host.replace("www.", "").strip()
+    return host or None
+
+
+def partner_profile(partner: str, firm: str, profile: dict | None) -> dict:
+    """Contact links for an individual lead partner.
+
+    LinkedIn / X are people-search links (they resolve to a real query, never a
+    fabricated profile URL). An email is offered only when the firm has a
+    *verified* domain, built from the common ``first@domain`` VC pattern and
+    flagged as a best-guess in the UI.
+    """
+    q_full = quote(f"{partner} {firm}")
+    links: dict[str, str | None] = {
+        "name": partner,
+        "linkedin": f"https://www.linkedin.com/search/results/people/?keywords={q_full}",
+        "x": f"https://x.com/search?q={quote(partner)}&f=user",
+        "email": None,
+        "email_guess": False,
+    }
+    domain = _domain(profile.get("website")) if profile and profile.get("verified") else None
+    parts = [p for p in re.split(r"\s+", partner.strip()) if p]
+    if domain and parts:
+        first = re.sub(r"[^a-z]", "", parts[0].lower())
+        if first:
+            links["email"] = f"{first}@{domain}"
+            links["email_guess"] = True
+    return links

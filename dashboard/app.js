@@ -220,13 +220,26 @@ function renderHealth() {
 // --- Tabs ------------------------------------------------------------------
 const TABS = ["all", "radar", "formd", "review", "board", "watch", "investors"];
 function initTabs() {
-  document.querySelectorAll(".tab").forEach((t) =>
-    t.addEventListener("click", () => switchTab(t.getAttribute("data-tab")))
-  );
+  const tabs = [...document.querySelectorAll(".tab")];
+  tabs.forEach((t, i) => {
+    t.addEventListener("click", () => switchTab(t.getAttribute("data-tab")));
+    t.addEventListener("keydown", (e) => {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      e.preventDefault();
+      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      next.focus();
+      switchTab(next.getAttribute("data-tab"));
+    });
+  });
 }
 function switchTab(name) {
   state.tab = name;
-  document.querySelectorAll(".tab").forEach((t) => t.classList.toggle("active", t.getAttribute("data-tab") === name));
+  document.querySelectorAll(".tab").forEach((t) => {
+    const on = t.getAttribute("data-tab") === name;
+    t.classList.toggle("active", on);
+    t.setAttribute("aria-selected", on ? "true" : "false");
+    if (on) t.scrollIntoView({ block: "nearest", inline: "nearest", behavior: "smooth" });
+  });
   TABS.forEach((n) => { $("panel-" + n).hidden = n !== name; });
   if (name === "radar") renderRadar();
   if (name === "formd") renderFormd();
@@ -475,9 +488,10 @@ function investorCardHtml(inv) {
   const more = firms.length > 6 ? `<span class="inv more">+${firms.length - 6}</span>` : "";
   const stages = (inv.stages || []).map((s) => `<span class="pill-meta">${escapeHtml(s.stage)} ×${s.count}</span>`).join("");
   const focus = (inv.focus || []).slice(0, 4).map((v) => `<span class="tag cat">${escapeHtml(v)}</span>`).join("");
-  const partners = (inv.lead_partners || []).slice(0, 3);
+  const partners = inv.lead_partners || [];
+  const partnerNames = partners.slice(0, 3).map((p) => escapeHtml(p.name)).join(", ");
   const partnerLine = partners.length
-    ? `<div class="founders-line"><span class="fk">Partners</span>${escapeHtml(partners.join(", "))}${inv.lead_partners.length > 3 ? ` +${inv.lead_partners.length - 3}` : ""}</div>`
+    ? `<div class="founders-line"><span class="fk">Partners</span>${partnerNames}${partners.length > 3 ? ` +${partners.length - 3}` : ""}</div>`
     : "";
   const tagline = p.tagline ? `<div class="inv-tagline">${escapeHtml(p.tagline)}</div>` : "";
   const verified = p.verified ? `<span class="vbadge">✓ Verified profile</span>` : "";
@@ -521,7 +535,15 @@ function openInvestor(name) {
   ).join("");
   const stages = (inv.stages || []).map((s) => `<span class="pill-meta">${escapeHtml(s.stage)} ×${s.count}</span>`).join(" ");
   const focus = (inv.focus || []).map((v) => `<span class="tag cat">${escapeHtml(v)}</span>`).join("");
-  const partners = (inv.lead_partners || []).map((n) => `<span class="inv">${escapeHtml(n)}</span>`).join("");
+  const partnerRows = (inv.lead_partners || []).map((pr) => `
+    <div class="partner-row">
+      <span class="partner-name">${escapeHtml(pr.name)}</span>
+      <span class="partner-links">
+        ${pr.linkedin ? `<a class="inv-link li search" href="${escapeHtml(pr.linkedin)}" target="_blank" rel="noopener" title="Find on LinkedIn">in</a>` : ""}
+        ${pr.x ? `<a class="inv-link x search" href="${escapeHtml(pr.x)}" target="_blank" rel="noopener" title="Find on X">X</a>` : ""}
+        ${pr.email ? `<a class="inv-link mail${pr.email_guess ? " guess" : ""}" href="mailto:${escapeHtml(pr.email)}" title="${pr.email_guess ? "Best-guess email" : "Email"}">✉ ${escapeHtml(pr.email)}</a>` : ""}
+      </span>
+    </div>`).join("");
   const linksFull = investorLinkBar(p, false);
   const cta = linksFull ? `<div class="drawer-cta inv-cta">${linksFull.replace(/class="inv-links"/g, 'class="inv-links full"')}</div>` : "";
 
@@ -541,7 +563,7 @@ function openInvestor(name) {
     </div>
     ${stages ? `<div class="memo-sec"><h4>Stage mix</h4><div class="metaline">${stages}</div></div>` : ""}
     ${focus ? `<div class="memo-sec"><h4>Focus areas</h4><div class="tags">${focus}</div></div>` : ""}
-    ${partners ? `<div class="memo-sec"><h4>Lead partners (from deals)</h4><div class="inv-row">${partners}</div></div>` : ""}
+    ${partnerRows ? `<div class="memo-sec"><h4>Lead partners (from deals)</h4><div class="partner-list">${partnerRows}</div><div class="partner-note">LinkedIn / X are people-search links; emails marked ◌ are best-guess from the firm domain.</div></div>` : ""}
     <div class="memo-sec">
       <h4>Portfolio firms (${inv.deals})</h4>
       <div class="board-wrap inv-portfolio">
