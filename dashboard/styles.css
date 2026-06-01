@@ -146,8 +146,19 @@ main { position: relative; z-index: 1; max-width: 1180px; margin: 0 auto; paddin
   border-bottom: 1px solid var(--line);
   background: rgba(10,11,13,0.88); backdrop-filter: blur(12px);
   overflow-x: auto; scrollbar-width: none; scroll-snap-type: x proximity;
+  /* fade the right edge so it's clear the rail scrolls when tabs overflow */
+  -webkit-mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
+          mask-image: linear-gradient(90deg, #000 0, #000 calc(100% - 26px), transparent 100%);
 }
+.tabs:not(.is-overflowing) { -webkit-mask-image: none; mask-image: none; }
 .tabs::-webkit-scrollbar { display: none; }
+.tab-divider { flex: 0 0 auto; align-self: stretch; width: 1px; margin: 4px 6px; background: var(--line-2); }
+.tab-group-label {
+  flex: 0 0 auto; align-self: center; white-space: nowrap;
+  font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--txt-3); padding: 0 6px 0 2px; user-select: none;
+}
+.tab-group-label:not(:first-child) { padding-left: 0; }
 .tab {
   display: inline-flex; align-items: center; gap: 7px; scroll-snap-align: start;
   background: none; border: 1px solid transparent; cursor: pointer; flex: 0 0 auto; white-space: nowrap;
@@ -580,6 +591,7 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
   /* tabs become a horizontal swipe rail */
   .tabs { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
   .tabs::-webkit-scrollbar { display: none; }
+  .tab-group-label { display: none; }
   .board .bcat { display: none; }
   .viewtoggle { display: none; }
 }
