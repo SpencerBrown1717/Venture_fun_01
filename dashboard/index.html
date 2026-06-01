@@ -300,9 +300,49 @@
         <div id="netGraph" class="net-graph" data-network-graph></div>
       </div>
 
+      <div class="network-action-grid" id="netActionGrid" hidden>
+        <div class="network-action-panel">
+          <div class="network-section-heading">
+            <span class="eyebrow">Warm intros</span>
+            <h3>Investor access</h3>
+            <p class="muted">Contacts who can open a door to a firm or a specific partner — each with a draft you can copy.</p>
+          </div>
+          <div class="network-card-stack" data-investor-intro-cards></div>
+        </div>
+        <div class="network-action-panel">
+          <div class="network-section-heading">
+            <span class="eyebrow">Leverage</span>
+            <h3>Super-connectors</h3>
+            <p class="muted">One contact who bridges several startups and investors is worth a category-level conversation first.</p>
+          </div>
+          <div class="network-card-stack" data-super-connector-cards></div>
+        </div>
+      </div>
+
       <div id="netList" class="net-list"></div>
       <div id="netEmpty" class="empty">No contacts matched yet. Upload a CSV, paste rows, or
         <b>load a sample</b> to see warm paths into the radar.</div>
+
+      <div class="network-targets-panel">
+        <div class="network-section-heading with-action">
+          <div>
+            <span class="eyebrow">Pipeline</span>
+            <h3>Saved targets</h3>
+            <p class="muted">Stored in your browser only — no backend. Save companies and investors as you triage warm paths.</p>
+          </div>
+          <button class="ghost-button small" type="button" data-clear-network-targets>Clear saved targets</button>
+        </div>
+        <div class="network-target-grid">
+          <div class="target-list-wrap">
+            <div class="mini-label">Companies</div>
+            <div class="target-list" data-company-target-list></div>
+          </div>
+          <div class="target-list-wrap">
+            <div class="mini-label">Investors</div>
+            <div class="target-list" data-investor-target-list></div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 

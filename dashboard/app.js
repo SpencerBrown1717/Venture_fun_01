@@ -1964,8 +1964,10 @@ function buildSuperConnectors({ startupIntroMatches = [], investorIntroMatches =
   const connectorMap = new Map();
 
   function ensureConnector(match) {
-    const name = safeText(match.contactName || match.connectorName || match.name);
-    const email = safeText(match.contactEmail || match.email);
+    // Investor matches carry contactName/contactEmail; real startup matches carry
+    // the contact at match.contact.{name,email}. Support both shapes.
+    const name = safeText(match.contactName || match.connectorName || match.name || (match.contact && match.contact.name));
+    const email = safeText(match.contactEmail || match.email || (match.contact && match.contact.email));
     const key = normalizeKey(email || name);
 
     if (!key) return null;
@@ -1990,13 +1992,16 @@ function buildSuperConnectors({ startupIntroMatches = [], investorIntroMatches =
     const connector = ensureConnector(match);
     if (!connector) return;
 
-    const company = safeText(match.targetCompany || match.company || match.companyName);
+    // Real startup matches (state.matches) carry `company` as an object {id,name,scores}.
+    const company = safeText(
+      match.targetCompany || (match.company && match.company.name) || match.companyName || match.company
+    );
     if (company) connector.startupTargets.add(company);
 
     connector.paths.push(match);
     connector.bestScore = Math.max(
       connector.bestScore,
-      Number(match.founderAccessScore || match.introScore || match.score || 0)
+      Number(match.founderAccessScore || match.introScore || (match.company && match.company.scores && match.company.scores.overall) || 0)
     );
   });
 
@@ -2055,7 +2060,9 @@ function buildSuperConnectors({ startupIntroMatches = [], investorIntroMatches =
         })
       };
     })
-    .filter((connector) => connector.pathCount >= 2 || connector.connectorType !== "single_path_connector")
+    // A real super-connector reaches >= 2 distinct valuable nodes (startups +
+    // investor firms) — not just one company via two path types.
+    .filter((connector) => (connector.startupTargets.length + connector.investorTargets.length) >= 2)
     .sort((a, b) => b.leverageScore - a.leverageScore);
 }
 
@@ -2159,6 +2166,10 @@ function renderNetwork() {
   $("netEmpty").hidden = has;
   $("netStrip").hidden = !has;
   $("netGraphWrap").hidden = !has;
+  // Saved targets persist independent of any match — always render them (Build 3/3).
+  const actionGrid = document.getElementById("netActionGrid");
+  if (actionGrid) actionGrid.hidden = !has;
+  renderNetworkTargets();
   if (!has) { $("netList").innerHTML = ""; $("netGraph").innerHTML = ""; return; }
 
   const targets = netTargets();
@@ -2190,6 +2201,9 @@ function renderNetwork() {
   $("netGraphWrap").hidden = !hasGraph;
   if (hasGraph) renderNetworkGraphFromState(); else $("netGraph").innerHTML = "";
 
+  // Build 3/3 — investor + super-connector cards render right after the graph.
+  renderNetworkActionLayerFromState();
+
   if (!targets.length) {
     $("netList").innerHTML = introCount
       ? `<div class="empty">No startup paths from these contacts, but ${introCount} investor path${introCount === 1 ? "" : "s"} — explore the graph above.</div>`
@@ -2198,7 +2212,12 @@ function renderNetwork() {
   }
   $("netList").innerHTML = targets.map(targetCardHtml).join("");
   $("netList").querySelectorAll("[data-memo]").forEach((b) =>
-    b.addEventListener("click", (e) => { if (e.target.closest("a")) return; openMemo(b.getAttribute("data-memo")); }));
+    b.addEventListener("click", (e) => { if (e.target.closest("a") || e.target.closest("button")) return; openMemo(b.getAttribute("data-memo")); }));
+  const targetFor = (id) => netTargets().find((t) => t.company.id === id);
+  $("netList").querySelectorAll("[data-copy-startup-draft]").forEach((b) =>
+    b.addEventListener("click", (e) => { e.stopPropagation(); const t = targetFor(b.getAttribute("data-company-id")); if (t) copyTextWithFeedback(buildStartupDraft(t), b); }));
+  $("netList").querySelectorAll("[data-save-company-target]").forEach((b) =>
+    b.addEventListener("click", (e) => { e.stopPropagation(); const t = targetFor(b.getAttribute("data-company-id")); if (t) { saveNetworkTarget("company", companyTargetFromStartupMatch(t)); copyButtonFeedback(b, "Saved ✓"); } }));
 }
 
 function targetCardHtml(t) {
@@ -2231,6 +2250,10 @@ function targetCardHtml(t) {
       </div>
       <div class="tags">${cat}<span class="pill-meta">${t.paths.length} warm ${t.paths.length === 1 ? "path" : "paths"}</span></div>
       <div class="net-paths">${rows}</div>
+      <div class="intro-actions startup-card-actions">
+        <button class="ghost-button small" type="button" data-copy-startup-draft data-company-id="${escapeHtml(c.id)}">Copy founder ask</button>
+        <button class="ghost-button small" type="button" data-save-company-target data-company-id="${escapeHtml(c.id)}">Save company</button>
+      </div>
     </div>`;
 }
 
@@ -2589,6 +2612,355 @@ function contactNodeDrawerHTML(node) {
 function companyNodeDrawerHTML(node) {
   const c = node.company || {};
   return `<div class="net-drawer"><span class="nd-kind nd-kind-company">Target company</span><h2>${escapeHtml(node.label)}</h2><div class="memo-sub">${escapeHtml(c.jurisdiction || "—")}</div></div>`;
+}
+
+// ===========================================================================
+// NETWORK ACTION LAYER (Build 3/3) — investor warm-intro cards, super-connector
+//   cards, copyable outreach drafts, localStorage-backed saved target lists,
+//   and an evidence audit (signal/source chips). Reads Build 1/3+2/3 state
+//   (state.investorIntroMatches / state.superConnectors / state.matches).
+//   Client-side only; saved targets persist in localStorage.
+// ===========================================================================
+
+const NETWORK_TARGETS_STORAGE_KEY = "scout_network_targets_v1";
+const networkInvestorCards = new Map();   // card id -> investor intro match
+const networkConnectorCards = new Map();  // card id -> super-connector
+
+const SIGNAL_LABELS = {
+  employer_exact_match: "Employer match (exact)",
+  employer_fuzzy_match: "Employer match (fuzzy)",
+  email_domain_match: "Email domain match",
+  partner_name_match: "Partner name match",
+  partner_linkedin_exact_match: "Partner LinkedIn match",
+  partner_linkedin_match: "Partner LinkedIn match",
+  title_vc_keyword: "VC-style title",
+  linkedin_firm_match: "LinkedIn → firm",
+};
+const STRONG_SIGNALS = new Set(["employer_exact_match", "email_domain_match", "partner_linkedin_exact_match", "partner_linkedin_match"]);
+
+function readableSignal(sig) {
+  const key = safeText(sig);
+  if (SIGNAL_LABELS[key]) return SIGNAL_LABELS[key];
+  return key.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+}
+function readableConnectorType(type) {
+  return {
+    bridge_super_connector: "Bridge connector · startup + investor",
+    founder_side_super_connector: "Founder-side connector",
+    investor_side_super_connector: "Investor-side connector",
+    single_path_connector: "Single-path connector",
+  }[type] || "Connector";
+}
+function accessGradeFromScore(score) {
+  const s = Number(score || 0);
+  if (s >= 90) return { grade: "A+", cls: "grade-aplus" };
+  if (s >= 75) return { grade: "A", cls: "grade-a" };
+  if (s >= 60) return { grade: "B", cls: "grade-b" };
+  if (s >= 40) return { grade: "C", cls: "grade-c" };
+  return { grade: "D", cls: "grade-d" };
+}
+function inferThesisFitFromMatch(m) {
+  const firm = (state.investorUniverse || []).find((f) => normalizeName(f.name) === normalizeName(m.targetInvestor));
+  const tags = asArray(firm && firm.thesisTags).map(safeText).filter(Boolean).slice(0, 3);
+  return tags.length ? `It looks aligned with their focus on ${tags.join(", ")}.` : "";
+}
+
+function renderPathPills(path) {
+  const parts = asArray(path).map(safeText).filter(Boolean);
+  if (!parts.length) return "";
+  return `<div class="path-pill-row">${parts.map((p, i) =>
+    `<span class="path-pill">${escapeHtml(p)}</span>${i < parts.length - 1 ? `<span class="path-arrow">→</span>` : ""}`).join("")}</div>`;
+}
+function renderEvidenceChips(signals, sourceFields) {
+  const sigChips = asArray(signals).map((s) =>
+    `<span class="evidence-chip${STRONG_SIGNALS.has(safeText(s)) ? " is-verified" : ""}">${escapeHtml(readableSignal(s))}</span>`);
+  const srcChips = asArray(sourceFields).map((f) =>
+    `<span class="evidence-chip is-source">${escapeHtml(safeText(f))}</span>`);
+  const all = sigChips.concat(srcChips);
+  return all.length ? all.join("") : `<span class="evidence-chip">No structured signals</span>`;
+}
+
+// --- outreach drafts -------------------------------------------------------
+function buildFallbackInvestorAsk(m) {
+  return `Ask ${m.contactName || "your contact"} to confirm their connection to ${m.targetInvestor} before requesting a specific intro.`;
+}
+function buildInvestorDraft(m, type) {
+  const firm = m.targetInvestor;
+  const partner = m.targetPartner ? `${m.targetPartner}${m.targetPartnerTitle ? `, ${m.targetPartnerTitle}` : ""}` : "";
+  const contact = m.contactName || "there";
+  const fit = inferThesisFitFromMatch(m);
+  const path = asArray(m.relationshipPath).map(safeText).filter(Boolean).join(" → ");
+  if (type === "direct") {
+    return `Hi ${contact} — I saw you're connected to ${firm}${partner ? ` (${partner})` : ""}. `
+      + `I'm working on an early-stage AI opportunity that may fit their thesis.${fit ? " " + fit : ""} `
+      + `Any chance you could make a warm intro, or point me to the best person there?`;
+  }
+  if (type === "crm") {
+    return [
+      `[Investor access] ${firm}${partner ? ` · ${partner}` : ""}`,
+      `Connector: ${m.contactName || "—"}${m.contactTitle ? `, ${m.contactTitle}` : ""}${m.contactCompany ? ` @ ${m.contactCompany}` : ""}`,
+      `Path: ${path || "You → contact → firm"}`,
+      `Confidence: ${m.confidence || "—"} · Access score: ${m.investorAccessScore == null ? "—" : m.investorAccessScore}${m.verified ? " · verified" : " · inferred"}`,
+      `Evidence: ${m.matchReason || "—"} [${asArray(m.matchSignals).join(", ") || "no signals"}]`,
+      `Next step: ${m.recommendedAsk || buildFallbackInvestorAsk(m)}`,
+    ].join("\n");
+  }
+  // intro (forwardable request)
+  return [
+    `Subject: Quick intro to ${firm}?`,
+    ``,
+    `Hi ${contact},`,
+    ``,
+    `Hope you're well. I'm looking at ${firm}${partner ? ` — ideally ${partner}` : ""} for an early-stage AI opportunity I'm working on.${fit ? " " + fit : ""}`,
+    ``,
+    `Would you be open to a quick intro, or pointing me to the right person there? Happy to send a short forwardable blurb.`,
+    ``,
+    `Thanks!`,
+  ].join("\n");
+}
+function buildFallbackSuperConnectorAction(sc) {
+  return `Ask ${sc.contactName} which of their connections is the best fit before requesting a specific intro.`;
+}
+function buildSuperConnectorDraft(sc, type) {
+  const name = sc.contactName || "there";
+  const startups = asArray(sc.startupTargets).slice(0, 3).join(", ");
+  const investors = asArray(sc.investorTargets).slice(0, 3).join(", ");
+  const top = [startups, investors].filter(Boolean).join(" and ") || "a few things I'm tracking";
+  if (type === "specific") {
+    return `Hi ${name} — you're connected to ${top}. I'm working on an early-stage AI opportunity and would value a warm intro to whichever of these is the best fit. Could you point me to the right one?`;
+  }
+  if (type === "crm") {
+    return [
+      `[Super-connector] ${sc.contactName} · ${readableConnectorType(sc.connectorType)}`,
+      `Startups: ${asArray(sc.startupTargets).join(", ") || "—"}`,
+      `Investors: ${asArray(sc.investorTargets).join(", ") || "—"}`,
+      `Partners: ${asArray(sc.partnerTargets).join(", ") || "—"}`,
+      `Leverage score: ${sc.leverageScore}`,
+      `Next step: ${sc.recommendedAction || buildFallbackSuperConnectorAction(sc)}`,
+    ].join("\n");
+  }
+  // category-level ask
+  return `Hi ${name} — you seem connected across a few things I'm tracking (${top}). `
+    + `Before I ask for anything specific, would you be open to a quick category-level read on where the most interesting early-stage AI activity is right now?`;
+}
+function buildStartupDraft(t) {
+  const c = t.company, best = (t.paths || [])[0] || {}, ct = best.contact || {};
+  const cat = c.ai_category ? ` in ${c.ai_category}` : "";
+  return `Hi ${ct.name || "there"} — I noticed your connection to ${c.name}. I'm looking at early-stage AI companies${cat} and would love a quick intro to the founding team, or a pointer to who's best to reach. Open to it?`;
+}
+
+// --- clipboard -------------------------------------------------------------
+function fallbackCopyText(text) {
+  try {
+    const ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    document.execCommand("copy"); document.body.removeChild(ta);
+  } catch (_) {}
+}
+function copyButtonFeedback(btn, label) {
+  if (!btn) return;
+  if (btn.__fbTimer) { clearTimeout(btn.__fbTimer); btn.textContent = btn.__fbOld; }
+  btn.__fbOld = btn.textContent;
+  btn.textContent = label || "Copied ✓";
+  btn.classList.add("is-success");
+  btn.__fbTimer = setTimeout(() => { btn.textContent = btn.__fbOld; btn.classList.remove("is-success"); btn.__fbTimer = null; }, 1500);
+}
+function copyTextWithFeedback(text, btn, label) {
+  const done = () => copyButtonFeedback(btn, label);
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(done).catch(() => { fallbackCopyText(text); done(); });
+  } else { fallbackCopyText(text); done(); }
+}
+
+// --- saved targets (localStorage) ------------------------------------------
+function getNetworkTargets() {
+  try {
+    const o = JSON.parse(localStorage.getItem(NETWORK_TARGETS_STORAGE_KEY) || "null");
+    return { companies: asArray(o && o.companies), investors: asArray(o && o.investors) };
+  } catch (_) { return { companies: [], investors: [] }; }
+}
+function setNetworkTargets(targets) {
+  try {
+    localStorage.setItem(NETWORK_TARGETS_STORAGE_KEY, JSON.stringify({
+      companies: asArray(targets.companies), investors: asArray(targets.investors),
+    }));
+  } catch (_) {}
+}
+function saveNetworkTarget(kind, target) {
+  if (!target || !target.id) return;
+  const t = getNetworkTargets();
+  const list = kind === "investor" ? t.investors : t.companies;
+  if (!list.some((x) => x.id === target.id)) list.push(target);
+  setNetworkTargets(t);
+  renderNetworkTargets();
+}
+function removeNetworkTarget(kind, id) {
+  const t = getNetworkTargets();
+  if (kind === "investor") t.investors = t.investors.filter((x) => x.id !== id);
+  else t.companies = t.companies.filter((x) => x.id !== id);
+  setNetworkTargets(t);
+  renderNetworkTargets();
+}
+function investorTargetFromMatch(m) {
+  return { id: slugId(m.targetInvestor), kind: "investor", name: m.targetInvestor, partner: m.targetPartner || "", score: Number(m.investorAccessScore || 0) };
+}
+function companyTargetFromStartupMatch(t) {
+  const c = t.company || {};
+  return { id: c.id, kind: "company", name: c.name, score: oppOf(c), jurisdiction: c.jurisdiction || "" };
+}
+function companyTargetHTML(x) {
+  const meta = [x.score ? `opp ${x.score}` : "", x.jurisdiction].filter(Boolean).join(" · ");
+  return `<div class="target-item"><div class="target-body"><b>${escapeHtml(x.name)}</b>${meta ? `<div class="target-meta">${escapeHtml(meta)}</div>` : ""}</div>
+    <button class="ghost-button small" type="button" data-remove-target="${escapeHtml(x.id)}" data-target-kind="company">Remove</button></div>`;
+}
+function investorTargetHTML(x) {
+  const meta = [x.partner ? `partner ${x.partner}` : "", x.score ? `access ${x.score}` : ""].filter(Boolean).join(" · ");
+  return `<div class="target-item"><div class="target-body"><b>${escapeHtml(x.name)}</b>${meta ? `<div class="target-meta">${escapeHtml(meta)}</div>` : ""}</div>
+    <button class="ghost-button small" type="button" data-remove-target="${escapeHtml(x.id)}" data-target-kind="investor">Remove</button></div>`;
+}
+function renderNetworkTargets() {
+  const coHost = document.querySelector("[data-company-target-list]");
+  const invHost = document.querySelector("[data-investor-target-list]");
+  if (!coHost && !invHost) return;
+  const t = getNetworkTargets();
+  if (coHost) coHost.innerHTML = t.companies.length ? t.companies.map(companyTargetHTML).join("") : `<div class="target-empty">No saved companies yet.</div>`;
+  if (invHost) invHost.innerHTML = t.investors.length ? t.investors.map(investorTargetHTML).join("") : `<div class="target-empty">No saved investors yet.</div>`;
+  document.querySelectorAll("[data-remove-target]").forEach((b) =>
+    b.addEventListener("click", () => removeNetworkTarget(b.getAttribute("data-target-kind"), b.getAttribute("data-remove-target"))));
+  const clearBtn = document.querySelector("[data-clear-network-targets]");
+  if (clearBtn && !clearBtn.__bound) {
+    clearBtn.__bound = true;
+    clearBtn.addEventListener("click", () => { setNetworkTargets({ companies: [], investors: [] }); renderNetworkTargets(); });
+  }
+}
+
+// --- cards -----------------------------------------------------------------
+function investorIntroCardHTML(m, id) {
+  const grade = accessGradeFromScore(m.investorAccessScore);
+  const partnerLine = m.targetPartner
+    ? `<div class="intro-card-partner">Partner · <b>${escapeHtml(m.targetPartner)}</b>${m.targetPartnerTitle ? ` · ${escapeHtml(m.targetPartnerTitle)}` : ""}</div>` : "";
+  const connector = [m.contactName, m.contactTitle, m.contactCompany].map(safeText).filter(Boolean).join(" · ") || "—";
+  const ask = m.recommendedAsk || buildFallbackInvestorAsk(m);
+  return `
+    <article class="network-intro-card investor-intro-card" data-card-id="${escapeHtml(id)}">
+      <div class="intro-card-topline">
+        <div class="intro-card-id">
+          <span class="eyebrow">Investor access</span>
+          <h4>${escapeHtml(m.targetInvestor)}</h4>
+          ${partnerLine}
+        </div>
+        <div class="intro-score ${m.verified ? "score-verified" : "score-inferred"}">
+          <span class="access-grade ${grade.cls}">${grade.grade}</span>
+          <span class="score-num">${escapeHtml(m.investorAccessScore == null ? "—" : m.investorAccessScore)}</span>
+          <span class="score-lbl">access</span>
+        </div>
+      </div>
+      <div class="intro-card-grid">
+        <div><div class="mini-label">Best connector</div><div>${escapeHtml(connector)}</div></div>
+        <div><div class="mini-label">Confidence</div><div>${escapeHtml(m.confidence || "—")} ${m.verified ? `<span class="np-tag precise">verified</span>` : `<span class="np-tag infer">inferred</span>`}</div></div>
+      </div>
+      <div class="relationship-path"><div class="mini-label">Relationship path</div>${renderPathPills(m.relationshipPath && m.relationshipPath.length ? m.relationshipPath : ["You", m.contactName, m.targetInvestor, m.targetPartner])}</div>
+      <div class="evidence-box">
+        <div class="evidence-header">Evidence audit</div>
+        <p>${escapeHtml(m.matchReason || "Contact appears connected to this firm.")}</p>
+        <div class="evidence-chip-row">${renderEvidenceChips(m.matchSignals, m.sourceFields)}</div>
+      </div>
+      <div class="recommended-ask"><div class="mini-label">Recommended ask</div><p>${escapeHtml(ask)}</p></div>
+      <div class="intro-actions">
+        <button class="primary-button small" type="button" data-copy-investor-draft data-draft-type="intro" data-card-id="${escapeHtml(id)}">Copy intro draft</button>
+        <button class="ghost-button small" type="button" data-copy-investor-draft data-draft-type="direct" data-card-id="${escapeHtml(id)}">Copy direct note</button>
+        <button class="ghost-button small" type="button" data-copy-investor-draft data-draft-type="crm" data-card-id="${escapeHtml(id)}">Copy CRM note</button>
+        <button class="ghost-button small" type="button" data-save-investor-target data-card-id="${escapeHtml(id)}">Save target</button>
+      </div>
+    </article>`;
+}
+function superConnectorCardHTML(sc, id) {
+  const targetList = (label, arr) => {
+    const items = asArray(arr);
+    if (!items.length) return "";
+    return `<div class="connector-target-group"><div class="mini-label">${escapeHtml(label)}</div><div>${items.slice(0, 6).map((x) => `<span class="path-pill">${escapeHtml(x)}</span>`).join(" ")}</div></div>`;
+  };
+  return `
+    <article class="network-intro-card super-connector-card" data-connector-id="${escapeHtml(id)}">
+      <div class="intro-card-topline">
+        <div class="intro-card-id">
+          <span class="eyebrow">Super-connector</span>
+          <h4>${escapeHtml(sc.contactName || "Contact")}</h4>
+          <div class="connector-type">${escapeHtml(readableConnectorType(sc.connectorType))}</div>
+        </div>
+        <div class="intro-score score-verified">
+          <span class="score-num">${escapeHtml(sc.leverageScore)}</span>
+          <span class="score-lbl">leverage</span>
+        </div>
+      </div>
+      <div class="connector-stats">
+        <div class="connector-stat"><b>${asArray(sc.startupTargets).length}</b><span>startups</span></div>
+        <div class="connector-stat"><b>${asArray(sc.investorTargets).length}</b><span>investors</span></div>
+        <div class="connector-stat"><b>${asArray(sc.partnerTargets).length}</b><span>partners</span></div>
+      </div>
+      <div class="connector-targets">
+        ${targetList("Startups", sc.startupTargets)}
+        ${targetList("Investors", sc.investorTargets)}
+        ${targetList("Partners", sc.partnerTargets)}
+      </div>
+      <div class="recommended-ask"><div class="mini-label">Recommended action</div><p>${escapeHtml(sc.recommendedAction || buildFallbackSuperConnectorAction(sc))}</p></div>
+      <div class="intro-actions">
+        <button class="primary-button small" type="button" data-copy-connector-draft data-draft-type="category" data-connector-id="${escapeHtml(id)}">Copy category ask</button>
+        <button class="ghost-button small" type="button" data-copy-connector-draft data-draft-type="specific" data-connector-id="${escapeHtml(id)}">Copy specific ask</button>
+        <button class="ghost-button small" type="button" data-copy-connector-draft data-draft-type="crm" data-connector-id="${escapeHtml(id)}">Copy CRM note</button>
+      </div>
+    </article>`;
+}
+
+function renderInvestorIntroCards() {
+  const host = document.querySelector("[data-investor-intro-cards]");
+  if (!host) return;
+  networkInvestorCards.clear();
+  const matches = (state.investorIntroMatches || []).slice().sort((a, b) => (b.investorAccessScore || 0) - (a.investorAccessScore || 0));
+  if (!matches.length) {
+    host.innerHTML = `<div class="network-empty-card">No investor paths yet. Load the sample, or import contacts whose company or LinkedIn matches a firm in the deals export.</div>`;
+    return;
+  }
+  host.innerHTML = matches.map((m, i) => {
+    const id = slugId(`${m.targetInvestor}-${m.contactName}-${m.targetPartner || ""}-${i}`);
+    networkInvestorCards.set(id, m);
+    return investorIntroCardHTML(m, id);
+  }).join("");
+}
+function renderSuperConnectorCards() {
+  const host = document.querySelector("[data-super-connector-cards]");
+  if (!host) return;
+  networkConnectorCards.clear();
+  const list = state.superConnectors || [];
+  if (!list.length) {
+    host.innerHTML = `<div class="network-empty-card">No super-connectors yet. These surface when one contact bridges multiple startups and/or investors — try a fuller contact export.</div>`;
+    return;
+  }
+  host.innerHTML = list.map((sc, i) => {
+    const id = slugId(`${sc.contactName}-${i}`);
+    networkConnectorCards.set(id, sc);
+    return superConnectorCardHTML(sc, id);
+  }).join("");
+}
+function bindNetworkActionEvents() {
+  document.querySelectorAll("[data-copy-investor-draft]").forEach((b) => b.addEventListener("click", () => {
+    const m = networkInvestorCards.get(b.getAttribute("data-card-id")); if (!m) return;
+    copyTextWithFeedback(buildInvestorDraft(m, b.getAttribute("data-draft-type")), b);
+  }));
+  document.querySelectorAll("[data-save-investor-target]").forEach((b) => b.addEventListener("click", () => {
+    const m = networkInvestorCards.get(b.getAttribute("data-card-id")); if (!m) return;
+    saveNetworkTarget("investor", investorTargetFromMatch(m)); copyButtonFeedback(b, "Saved ✓");
+  }));
+  document.querySelectorAll("[data-copy-connector-draft]").forEach((b) => b.addEventListener("click", () => {
+    const sc = networkConnectorCards.get(b.getAttribute("data-connector-id")); if (!sc) return;
+    copyTextWithFeedback(buildSuperConnectorDraft(sc, b.getAttribute("data-draft-type")), b);
+  }));
+}
+function renderNetworkActionLayerFromState() {
+  renderInvestorIntroCards();
+  renderSuperConnectorCards();
+  bindNetworkActionEvents();
 }
 
 function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
