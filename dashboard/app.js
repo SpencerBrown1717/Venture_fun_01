@@ -143,6 +143,7 @@ async function load() {
   initHealth();
   initWatch();
   initInvestors();
+  initNetwork();
   renderHealth();
   renderTrends();
   renderBoard();
@@ -151,6 +152,7 @@ async function load() {
   updateReviewCount();
   updateWatchCount();
   updateInvestorCount();
+  updateNetworkCount();
   apply();
 }
 
@@ -218,7 +220,7 @@ function renderHealth() {
 }
 
 // --- Tabs ------------------------------------------------------------------
-const TABS = ["all", "radar", "formd", "review", "board", "watch", "investors"];
+const TABS = ["all", "radar", "formd", "review", "board", "watch", "investors", "network"];
 function initTabs() {
   const tabs = [...document.querySelectorAll(".tab")];
   tabs.forEach((t, i) => {
@@ -245,6 +247,7 @@ function switchTab(name) {
   if (name === "review") renderReview();
   if (name === "watch") renderWatch();
   if (name === "investors") renderInvestors();
+  if (name === "network") renderNetwork();
 }
 
 function updateRadarCount() {
@@ -1037,6 +1040,381 @@ function openMemo(id) {
   );
 }
 function closeMemo() { $("drawer").hidden = true; $("drawerOverlay").hidden = true; }
+
+// ===========================================================================
+// WARM INTRO NETWORK (Part 3) — client-side only.
+//   3a · parse Gmail / LinkedIn CSV exports + match against the dataset
+//   3b · upload/paste intake + ranked warm-intro list
+//   3c · radial relationship graph (SVG, on-theme)
+// Contacts are parsed in the browser and never leave the page — same
+// local-only model as the review queue. No backend, no upload.
+// ===========================================================================
+
+// --- 3a · robust CSV parser (quotes, embedded commas/newlines, "" escapes) -
+function parseCsv(text) {
+  const rows = [];
+  let row = [], field = "", i = 0, inQ = false;
+  text = String(text || "").replace(/^\uFEFF/, "");
+  while (i < text.length) {
+    const ch = text[i];
+    if (inQ) {
+      if (ch === '"') {
+        if (text[i + 1] === '"') { field += '"'; i += 2; continue; }
+        inQ = false; i++; continue;
+      }
+      field += ch; i++; continue;
+    }
+    if (ch === '"') { inQ = true; i++; continue; }
+    if (ch === ",") { row.push(field); field = ""; i++; continue; }
+    if (ch === "\r") { i++; continue; }
+    if (ch === "\n") { row.push(field); rows.push(row); row = []; field = ""; i++; continue; }
+    field += ch; i++;
+  }
+  if (field.length || row.length) { row.push(field); rows.push(row); }
+  return rows.filter((r) => r.some((c) => String(c).trim() !== ""));
+}
+
+// LinkedIn prepends a "Notes:" preamble — locate the real header row by
+// scoring each row on how many cells exactly look like known column names.
+// (Prose lines that merely mention "email address" can't fake this.)
+const HEADER_CELLS = new Set([
+  "name", "full name", "display name", "middle name",
+  "first name", "given name", "last name", "family name",
+  "email", "e-mail", "email address", "e-mail address",
+  "company", "organization", "organization name",
+  "position", "title", "job title", "role",
+  "url", "profile url", "linkedin", "connected on",
+]);
+function headerScore(cells) {
+  let n = 0;
+  for (const raw of cells) {
+    const c = String(raw).toLowerCase().trim();
+    if (HEADER_CELLS.has(c) || c.startsWith("e-mail 1") || c.startsWith("e-mail ") || c.startsWith("organization 1")) n++;
+  }
+  return n;
+}
+function findHeaderRow(rows) {
+  let best = 0, bestScore = 0;
+  for (let i = 0; i < Math.min(rows.length, 10); i++) {
+    const sc = headerScore(rows[i]);
+    if (sc > bestScore) { bestScore = sc; best = i; }
+  }
+  return bestScore >= 2 ? best : 0;
+}
+
+function pickCol(headers, candidates) {
+  const low = headers.map((h) => String(h).toLowerCase().trim());
+  for (const cand of candidates) { const idx = low.indexOf(cand); if (idx >= 0) return idx; }
+  for (const cand of candidates) { const idx = low.findIndex((h) => h.includes(cand)); if (idx >= 0) return idx; }
+  return -1;
+}
+
+const emailDomain = (e) => {
+  const m = String(e || "").toLowerCase().match(/@([^@\s>]+)/);
+  return m ? m[1].replace(/^www\./, "").replace(/[.,;]+$/, "") : "";
+};
+const FREEMAIL = new Set([
+  "gmail.com","googlemail.com","yahoo.com","ymail.com","hotmail.com","outlook.com",
+  "icloud.com","me.com","mac.com","aol.com","proton.me","protonmail.com","hey.com",
+  "msn.com","live.com","gmx.com","fastmail.com","zoho.com","yandex.com",
+]);
+
+function rowsToContacts(rows) {
+  if (!rows.length) return [];
+  const h = findHeaderRow(rows);
+  const headers = rows[h];
+  const body = rows.slice(h + 1);
+  const ci = {
+    full:  pickCol(headers, ["name", "full name", "display name"]),
+    first: pickCol(headers, ["first name", "given name"]),
+    last:  pickCol(headers, ["last name", "family name"]),
+    email: pickCol(headers, ["email address", "e-mail 1 - value", "e-mail address", "email", "e-mail"]),
+    org:   pickCol(headers, ["company", "organization 1 - name", "organization name", "organization"]),
+    title: pickCol(headers, ["position", "organization 1 - title", "organization title", "title", "job title", "role"]),
+    url:   pickCol(headers, ["url", "profile url", "linkedin"]),
+  };
+  const get = (r, idx) => (idx >= 0 && idx < r.length ? String(r[idx]).trim() : "");
+  const out = [];
+  for (const r of body) {
+    let name = get(r, ci.full);
+    if (!name) name = [get(r, ci.first), get(r, ci.last)].filter(Boolean).join(" ").trim();
+    const email = get(r, ci.email).split(/[;, ]+/)[0].trim();
+    const c = { name, email, emailDomain: emailDomain(email), company: get(r, ci.org), title: get(r, ci.title), url: get(r, ci.url) };
+    if (c.name || c.email || c.company) out.push(c);
+  }
+  return out;
+}
+
+// --- 3a · normalization + dataset indices ----------------------------------
+const stripAccents = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const normName = (s) => stripAccents(s).toLowerCase().replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
+const LEGAL = /\b(inc|incorporated|llc|l\s?l\s?c|corp|corporation|co|ltd|limited|company|holdings|group)\b/g;
+const companyKey = (s) => normName(s).replace(LEGAL, " ").replace(/\s+/g, " ").trim();
+function hostOf(url) {
+  if (!url) return "";
+  try { return new URL(/^https?:\/\//.test(url) ? url : "https://" + url).hostname.replace(/^www\./, "").toLowerCase(); }
+  catch { return String(url).toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0]; }
+}
+const normalizeDomain = (d) => String(d || "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").split("/")[0];
+const companyDomain = (c) => normalizeDomain(c.domain) || hostOf(c.website || "");
+
+function buildNetIndex() {
+  if (state.netIndex) return state.netIndex;
+  const byDomain = new Map(), byCompanyKey = new Map(), byFounder = new Map();
+  const push = (map, k, v) => { (map.get(k) || map.set(k, []).get(k)).push(v); };
+  for (const c of state.companies) {
+    const dom = companyDomain(c);
+    if (dom && !byDomain.has(dom)) byDomain.set(dom, c);
+    const ck = companyKey(c.name);
+    if (ck && ck.length >= 3) push(byCompanyKey, ck, c);
+    for (const f of (c.founders || [])) {
+      const nn = normName(f.name);
+      const toks = nn.split(" ").filter(Boolean);
+      if (toks.length >= 2 && toks[0].length >= 2 && toks[toks.length - 1].length >= 2) push(byFounder, nn, { company: c, founder: f });
+    }
+  }
+  state.netIndex = { byDomain, byCompanyKey, byFounder };
+  return state.netIndex;
+}
+
+// --- 3a · matching engine --------------------------------------------------
+const PATH = {
+  domain:   { label: "Works there",    sub: "email domain matches company domain", cls: "p-domain",   icon: "◉", precise: true  },
+  founder:  { label: "Knows founder",  sub: "name matches a founder in an SEC filing", cls: "p-founder",  icon: "★", precise: false },
+  employer: { label: "Lists employer", sub: "contact's employer field matches company", cls: "p-employer", icon: "▣", precise: false },
+};
+const PATH_ORDER = { domain: 0, founder: 1, employer: 2 };
+
+function matchContacts(contacts) {
+  const { byDomain, byCompanyKey, byFounder } = buildNetIndex();
+  const matches = [], seen = new Set();
+  contacts.forEach((ct, idx) => {
+    const add = (company, type, why) => {
+      const key = idx + "|" + company.id + "|" + type;
+      if (seen.has(key)) return;
+      seen.add(key);
+      matches.push({ contact: ct, contactIdx: idx, company, type, why });
+    };
+    if (ct.emailDomain && !FREEMAIL.has(ct.emailDomain) && byDomain.has(ct.emailDomain)) {
+      add(byDomain.get(ct.emailDomain), "domain", `${ct.email} is on @${ct.emailDomain}`);
+    }
+    const nn = normName(ct.name);
+    if (nn && byFounder.has(nn)) {
+      for (const { company, founder } of byFounder.get(nn))
+        add(company, "founder", `${ct.name} matches ${founder.name}${founder.role ? ", " + founder.role : ""}`);
+    }
+    const ck = companyKey(ct.company);
+    if (ck && ck.length >= 3 && byCompanyKey.has(ck)) {
+      for (const co of byCompanyKey.get(ck)) add(co, "employer", `lists “${ct.company}” as employer`);
+    }
+  });
+  return collapseMatches(matches);
+}
+// Drop the weaker "employer" path when a precise "domain" path exists for the same pair.
+function collapseMatches(matches) {
+  const hasDomain = new Set(matches.filter((m) => m.type === "domain").map((m) => m.contactIdx + "|" + m.company.id));
+  return matches.filter((m) => !(m.type === "employer" && hasDomain.has(m.contactIdx + "|" + m.company.id)));
+}
+
+function netTargets() {
+  const byCo = new Map();
+  for (const m of state.matches) {
+    const id = m.company.id;
+    if (!byCo.has(id)) byCo.set(id, { company: m.company, paths: [] });
+    byCo.get(id).paths.push(m);
+  }
+  let targets = [...byCo.values()];
+  if (state.netAiOnly) targets = targets.filter((t) => t.company.is_ai);
+  targets.forEach((t) => t.paths.sort((a, b) => PATH_ORDER[a.type] - PATH_ORDER[b.type]));
+  targets.sort((a, b) => oppOf(b.company) - oppOf(a.company) || b.paths.length - a.paths.length);
+  return targets;
+}
+
+// --- 3b · intake (upload / paste / sample) ---------------------------------
+function initNetwork() {
+  state.contacts = []; state.matches = []; state.netIndex = null; state.netAiOnly = true;
+  const drop = $("netDrop");
+  $("netBrowse").addEventListener("click", () => $("netFile").click());
+  $("netFile").addEventListener("change", (e) => { const f = e.target.files[0]; if (f) readFileToMatch(f); e.target.value = ""; });
+  ["dragover", "dragenter"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.add("drag"); }));
+  ["dragleave", "dragend"].forEach((ev) => drop.addEventListener(ev, (e) => { e.preventDefault(); drop.classList.remove("drag"); }));
+  drop.addEventListener("drop", (e) => {
+    e.preventDefault(); drop.classList.remove("drag");
+    const f = e.dataTransfer && e.dataTransfer.files[0]; if (f) readFileToMatch(f);
+  });
+  $("netMatch").addEventListener("click", () => ingest($("netPaste").value, "pasted text"));
+  $("netSample").addEventListener("click", () => { $("netPaste").value = ""; ingest(sampleContacts(), "sample contacts"); });
+  $("netClear").addEventListener("click", () => {
+    state.contacts = []; state.matches = []; $("netPaste").value = "";
+    $("netStatus").hidden = true; updateNetworkCount(); renderNetwork();
+  });
+  $("netAiOnly").addEventListener("change", (e) => { state.netAiOnly = e.target.checked; renderNetwork(); });
+}
+
+function readFileToMatch(file) {
+  const fr = new FileReader();
+  fr.onload = () => ingest(String(fr.result || ""), file.name);
+  fr.onerror = () => setNetStatus("Could not read that file.", true);
+  fr.readAsText(file);
+}
+
+function ingest(text, label) {
+  if (!String(text || "").trim()) { setNetStatus("Nothing to parse — paste CSV rows or choose a file.", true); return; }
+  let contacts;
+  try { contacts = rowsToContacts(parseCsv(text)); }
+  catch (_) { setNetStatus("Could not parse that CSV.", true); return; }
+  if (!contacts.length) { setNetStatus(`Parsed ${escapeHtml(label)}, but found no contact rows — expecting a Gmail or LinkedIn CSV export.`, true); return; }
+  state.contacts = contacts;
+  state.matches = matchContacts(contacts);
+  const reach = new Set(state.matches.map((m) => m.company.id)).size;
+  setNetStatus(`Parsed ${contacts.length} contacts from ${escapeHtml(label)} · ${state.matches.length} warm path${state.matches.length === 1 ? "" : "s"} into ${reach} compan${reach === 1 ? "y" : "ies"}. Contacts stayed in your browser.`, false);
+  updateNetworkCount();
+  switchTab("network");
+}
+
+function setNetStatus(msg, isErr) {
+  const el = $("netStatus");
+  el.hidden = false; el.textContent = msg;
+  el.className = "net-status" + (isErr ? " err" : "");
+}
+function updateNetworkCount() { $("networkCount").textContent = new Set(state.matches.map((m) => m.company.id)).size; }
+
+// Synthesize a demo CSV from the loaded dataset so the feature always lights up
+// without anyone uploading personal data.
+function sampleContacts() {
+  const lines = ["First Name,Last Name,Email Address,Company,Position,Connected On"];
+  const isFull = (n) => normName(n).split(" ").filter(Boolean).length >= 2;
+  state.companies.filter((c) => c.is_ai && (c.founders || []).some((f) => isFull(f.name))).slice(0, 8).forEach((c) => {
+    const f = c.founders.find((f) => isFull(f.name));
+    const p = f.name.split(/\s+/);
+    lines.push([csvCell(p[0]), csvCell(p.slice(1).join(" ")), "", csvCell(c.name), csvCell(f.role || "Founder"), "2024"].join(","));
+  });
+  state.companies.filter((c) => companyDomain(c)).slice(0, 5).forEach((c) => {
+    lines.push(["Alex", "Rivera", "alex@" + companyDomain(c), csvCell(c.name), "Engineering", "2023"].join(","));
+  });
+  lines.push("Jordan,Lee,jordan.lee@gmail.com,Acme Co,Designer,2022");
+  lines.push("Sam,Patel,sam@unrelated.io,Unrelated Holdings,Analyst,2021");
+  return lines.join("\n");
+}
+const csvCell = (s) => { s = String(s ?? ""); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+
+// --- 3b · render warm-intro list -------------------------------------------
+function renderNetwork() {
+  const has = state.contacts.length > 0;
+  $("netEmpty").hidden = has;
+  $("netStrip").hidden = !has;
+  $("netGraphWrap").hidden = !has;
+  if (!has) { $("netList").innerHTML = ""; $("netGraph").innerHTML = ""; return; }
+
+  const targets = netTargets();
+  const uniqConnectors = new Set(state.matches.map((m) => m.contactIdx)).size;
+  const founderPaths = state.matches.filter((m) => m.type === "founder").length;
+
+  const strip = [
+    { num: state.contacts.length, lbl: "Contacts parsed" },
+    { num: uniqConnectors, lbl: "Warm connectors", accent: true },
+    { num: targets.length, lbl: state.netAiOnly ? "AI companies reachable" : "Companies reachable", accent: true },
+    { num: founderPaths, lbl: "Founder paths" },
+  ];
+  $("netStrip").innerHTML = strip.map((c) =>
+    `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}">${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`).join("");
+
+  drawNetGraph(targets);
+
+  if (!targets.length) {
+    $("netGraphWrap").hidden = true;
+    $("netList").innerHTML = `<div class="empty">Parsed ${state.contacts.length} contacts, but none match ${state.netAiOnly ? "an AI " : "a "}company in the dataset yet. Try toggling “AI only”, or import a fuller export.</div>`;
+    return;
+  }
+  $("netList").innerHTML = targets.map(targetCardHtml).join("");
+  $("netList").querySelectorAll("[data-memo]").forEach((b) =>
+    b.addEventListener("click", (e) => { if (e.target.closest("a")) return; openMemo(b.getAttribute("data-memo")); }));
+}
+
+function targetCardHtml(t) {
+  const c = t.company;
+  const rows = t.paths.map((m) => {
+    const p = PATH[m.type], ct = m.contact, links = [];
+    if (ct.url) links.push(`<a href="${escapeHtml(ct.url)}" target="_blank" rel="noopener">profile ↗</a>`);
+    if (ct.email) links.push(`<a href="mailto:${escapeHtml(ct.email)}">email ↗</a>`);
+    return `<div class="net-path ${p.cls}">
+      <span class="np-ico" title="${escapeHtml(p.sub)}">${p.icon}</span>
+      <div class="np-body">
+        <div class="np-name">${escapeHtml(ct.name || ct.email || "Unknown contact")}
+          <span class="np-tag">${escapeHtml(p.label)}</span>
+          ${p.precise ? `<span class="np-tag precise">verified path</span>` : `<span class="np-tag infer">match — confirm identity</span>`}
+        </div>
+        <div class="np-why">${escapeHtml(m.why)}${ct.title ? ` · ${escapeHtml(ct.title)}` : ""}</div>
+      </div>
+      <div class="np-links">${links.join("")}</div>
+    </div>`;
+  }).join("");
+  const cat = c.ai_category ? `<span class="tag cat">${escapeHtml(c.ai_category)}</span>` : "";
+  return `
+    <div class="card net-target" data-memo="${escapeHtml(c.id)}">
+      <div class="card-top">
+        <div>
+          <h3>${escapeHtml(c.name)} ${verifiedBadge(c)}</h3>
+          <div class="sub">${escapeHtml(c.jurisdiction || "—")} · ${escapeHtml(financingOf(c))}</div>
+        </div>
+        ${c.scores ? `<div class="opp-badge"><div class="v">${c.scores.overall}</div><div class="l">opp</div></div>` : ""}
+      </div>
+      <div class="tags">${cat}<span class="pill-meta">${t.paths.length} warm ${t.paths.length === 1 ? "path" : "paths"}</span></div>
+      <div class="net-paths">${rows}</div>
+    </div>`;
+}
+
+// --- 3c · relationship graph (SVG) -----------------------------------------
+const truncate = (s, n) => { s = String(s || ""); return s.length > n ? s.slice(0, n - 1) + "…" : s; };
+
+function drawNetGraph(allTargets) {
+  const targets = allTargets.slice(0, 16);
+  if (!targets.length) { $("netGraph").innerHTML = ""; return; }
+
+  const W = 920, H = 540, cx = W / 2, cy = H / 2, Rco = 205, Rct = 108;
+
+  const order = [], seen = new Set();
+  targets.forEach((t) => t.paths.forEach((m) => { if (!seen.has(m.contactIdx)) { seen.add(m.contactIdx); order.push(m.contactIdx); } }));
+  const contacts = order.slice(0, 28);
+  const cPos = new Map(), M = contacts.length || 1;
+  contacts.forEach((ci, i) => {
+    const a = (-90 + i * 360 / M) * Math.PI / 180;
+    cPos.set(ci, { x: cx + Rct * Math.cos(a), y: cy + Rct * Math.sin(a) });
+  });
+  const N = targets.length;
+  const coPos = targets.map((t, i) => {
+    const a = (-90 + i * 360 / N) * Math.PI / 180;
+    return { x: cx + Rco * Math.cos(a), y: cy + Rco * Math.sin(a), t };
+  });
+
+  let edges = "";
+  contacts.forEach((ci) => { const p = cPos.get(ci); edges += `<line class="ne you" x1="${cx}" y1="${cy}" x2="${p.x.toFixed(1)}" y2="${p.y.toFixed(1)}"/>`; });
+  coPos.forEach((cp) => cp.t.paths.forEach((m) => {
+    const p = cPos.get(m.contactIdx); if (!p) return;
+    edges += `<line class="ne link ${PATH[m.type].cls}" x1="${p.x.toFixed(1)}" y1="${p.y.toFixed(1)}" x2="${cp.x.toFixed(1)}" y2="${cp.y.toFixed(1)}"/>`;
+  }));
+
+  let nodes = "";
+  coPos.forEach((cp) => {
+    const c = cp.t.company;
+    const anchor = cp.x < cx - 12 ? "end" : cp.x > cx + 12 ? "start" : "middle";
+    const dx = anchor === "end" ? -12 : anchor === "start" ? 12 : 0;
+    nodes += `<g class="nn co" data-memo="${escapeHtml(c.id)}" tabindex="0" role="button" aria-label="Open ${escapeHtml(c.name)} memo">
+      <circle cx="${cp.x.toFixed(1)}" cy="${cp.y.toFixed(1)}" r="7"/>
+      <text x="${(cp.x + dx).toFixed(1)}" y="${(cp.y + 3.5).toFixed(1)}" text-anchor="${anchor}">${escapeHtml(truncate(c.name, 18))}</text>
+    </g>`;
+  });
+  contacts.forEach((ci) => { const p = cPos.get(ci); nodes += `<g class="nn ct"><circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4.5"><title>${escapeHtml((state.contacts[ci] || {}).name || "")}</title></circle></g>`; });
+  nodes += `<g class="nn you"><circle cx="${cx}" cy="${cy}" r="12"/><text x="${cx}" y="${cy + 4}" text-anchor="middle">You</text></g>`;
+
+  $("netGraph").innerHTML = `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="net-svg" role="img" aria-label="Relationship graph from you, through your contacts, to target companies">
+    <g class="edges">${edges}</g><g class="nodes">${nodes}</g></svg>`;
+  $("netGraph").querySelectorAll(".nn.co").forEach((g) => {
+    const open = () => openMemo(g.getAttribute("data-memo"));
+    g.addEventListener("click", open);
+    g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+}
 
 function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }
 document.addEventListener("click", (e) => { if (e.target.id === "drawerOverlay") closeMemo(); });

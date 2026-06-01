@@ -72,6 +72,7 @@
       <span class="tab-group-label" aria-hidden="true">Funding</span>
       <button class="tab" data-tab="watch" role="tab" aria-selected="false">★ Startups to Watch <span class="tab-count" id="watchCount">0</span></button>
       <button class="tab" data-tab="investors" role="tab" aria-selected="false">⬡ Investors <span class="tab-count" id="investorCount">0</span></button>
+      <button class="tab" data-tab="network" role="tab" aria-selected="false">⧉ Network <span class="tab-count" id="networkCount">0</span></button>
     </nav>
 
     <!-- ALL COMPANIES TAB -->
@@ -253,6 +254,59 @@
       <div id="investorStrip" class="watch-strip"></div>
       <div id="investorGroups" class="cards"></div>
       <div id="investorEmpty" class="empty" hidden>No investors match.</div>
+    </section>
+
+    <!-- NETWORK TAB (warm intros, Part 3) -->
+    <section class="tabpanel" id="panel-network" hidden>
+      <div class="radar-intro">
+        <h2>Warm Intro Network</h2>
+        <p>Upload or paste your <b>Gmail contacts</b> or <b>LinkedIn connections</b> export. SCOUT matches them
+        against <b>founders named in SEC filings</b> and <b>company domains</b> in the dataset to surface
+        <b>warm paths</b> into target companies — ranked by opportunity. <span class="muted">Parsed entirely in
+        your browser; your contacts never leave this page — the same local-only model as the review queue.</span></p>
+      </div>
+
+      <div class="net-intake">
+        <div class="net-drop" id="netDrop">
+          <input type="file" id="netFile" accept=".csv,text/csv" hidden />
+          <div class="net-drop-inner">
+            <span class="net-drop-ico">⧉</span>
+            <div class="net-drop-copy">
+              <b>Drop a CSV here</b> or <button class="net-link" id="netBrowse" type="button">browse</button>
+              <div class="muted">Gmail (Google Contacts) export · LinkedIn <code>Connections.csv</code> · format auto-detected</div>
+            </div>
+          </div>
+        </div>
+        <div class="net-paste">
+          <textarea id="netPaste" autocomplete="off" spellcheck="false"
+            placeholder="…or paste CSV rows here, header row included (e.g. First Name,Last Name,Email Address,Company,Position)"></textarea>
+          <div class="net-actions">
+            <button class="net-btn primary" id="netMatch" type="button">Match contacts →</button>
+            <button class="net-btn" id="netSample" type="button">Load sample</button>
+            <button class="net-btn ghost" id="netClear" type="button">Clear</button>
+            <label class="toggle"><input type="checkbox" id="netAiOnly" checked /><span>AI only</span></label>
+          </div>
+        </div>
+      </div>
+      <div class="net-status" id="netStatus" hidden></div>
+
+      <div id="netStrip" class="watch-strip" hidden></div>
+
+      <div class="net-graph-wrap" id="netGraphWrap" hidden>
+        <div class="net-graph-head">
+          <h3>Relationship graph</h3>
+          <div class="net-legend">
+            <span class="lg you">You</span>
+            <span class="lg contact">Your contact</span>
+            <span class="lg target">Target company</span>
+          </div>
+        </div>
+        <div id="netGraph" class="net-graph"></div>
+      </div>
+
+      <div id="netList" class="net-list"></div>
+      <div id="netEmpty" class="empty">No contacts matched yet. Upload a CSV, paste rows, or
+        <b>load a sample</b> to see warm paths into the radar.</div>
     </section>
   </main>
 
