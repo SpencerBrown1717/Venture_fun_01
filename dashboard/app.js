@@ -1136,7 +1136,10 @@ function rowsToContacts(rows) {
   const get = (r, idx) => (idx >= 0 && idx < r.length ? String(r[idx]).trim() : "");
   const out = [];
   for (const r of body) {
-    let name = get(r, ci.full);
+    // Use the dedicated full-name column only when it isn't really the first/last
+    // column (pickCol's fuzzy "name" match can resolve to "First Name"); otherwise
+    // combine first + last so LinkedIn/Gmail exports yield a full name.
+    let name = ci.full >= 0 && ci.full !== ci.first && ci.full !== ci.last ? get(r, ci.full) : "";
     if (!name) name = [get(r, ci.first), get(r, ci.last)].filter(Boolean).join(" ").trim();
     const email = get(r, ci.email).split(/[;, ]+/)[0].trim();
     const c = { name, email, emailDomain: emailDomain(email), company: get(r, ci.org), title: get(r, ci.title), url: get(r, ci.url) };
@@ -1267,14 +1270,27 @@ function ingest(text, label) {
   state.contacts = contacts;
   state.matches = matchContacts(contacts);
   // Build 1/3 — run the investor intro matching engine on the same contacts.
+  // Map the dashboard's vc_deals investor shape (lead_partners / profile.website /
+  // companies / focus) into the universe shape the matcher expects.
   const investorUniverse = buildInvestorUniverse({
     companies: state.companies || [],
-    investors: (state.vc && state.vc.investors) || [],
+    investors: ((state.vc && state.vc.investors) || []).map((inv) => {
+      const site = (inv.profile && inv.profile.website) || "";
+      return {
+        name: inv.name,
+        website: site,
+        domain: site ? hostOf(site) : "",
+        thesisTags: inv.focus || [],
+        partners: (inv.lead_partners || []).map((p) => ({ name: p.name, linkedin: p.linkedin, x: p.x, title: "Partner" })),
+        portfolioCompanies: (inv.companies || []).map((c) => (typeof c === "string" ? c : c && c.name)).filter(Boolean),
+      };
+    }),
     partners: []
   });
   const investorIntroMatches = buildInvestorIntroMatches(contacts, investorUniverse);
   const superConnectors = buildSuperConnectors({ startupIntroMatches: state.matches, investorIntroMatches });
   const enrichedCompanies = attachInvestorAccessToCompanies(state.companies || [], investorIntroMatches);
+  state.warmIntroMatches = state.matches;
   state.investorUniverse = investorUniverse;
   state.investorIntroMatches = investorIntroMatches;
   state.superConnectors = superConnectors;
@@ -1307,6 +1323,18 @@ function sampleContacts() {
   });
   state.companies.filter((c) => companyDomain(c)).slice(0, 5).forEach((c) => {
     lines.push(["Alex", "Rivera", "alex@" + companyDomain(c), csvCell(c.name), "Engineering", "2023"].join(","));
+  });
+  // Investor-side synthetic contacts — demonstrate investor + partner access in
+  // the graph (uses real firm names from the deals export; clearly a demo).
+  const vcFirms = ((state.vc && state.vc.investors) || []).filter((f) => f && f.name);
+  vcFirms.slice(0, 4).forEach((f, i) => {
+    const lp = (f.lead_partners || [])[0];
+    if (lp && lp.name) {
+      const parts = String(lp.name).split(/\s+/);
+      lines.push([csvCell(parts[0]), csvCell(parts.slice(1).join(" ")), "", csvCell(f.name), "Partner", "2023"].join(","));
+    } else {
+      lines.push([(["Sam", "Robin", "Jess", "Lee"][i] || "Casey"), "Lane", "", csvCell(f.name), "Investor", "2023"].join(","));
+    }
   });
   lines.push("Jordan,Lee,jordan.lee@gmail.com,Acme Co,Designer,2022");
   lines.push("Sam,Patel,sam@unrelated.io,Unrelated Holdings,Analyst,2021");
@@ -2156,11 +2184,16 @@ function renderNetwork() {
   $("netStrip").innerHTML = strip.map((c) =>
     `<div class="hstat"><div class="hnum ${c.accent ? "accent" : ""}">${escapeHtml(c.num)}</div><div class="hlbl">${escapeHtml(c.lbl)}</div></div>`).join("");
 
-  drawNetGraph(targets);
+  // Build 2/3 — unified graph (startup + investor paths). Shown whenever either exists.
+  const introCount = (state.investorIntroMatches || []).length;
+  const hasGraph = targets.length > 0 || introCount > 0;
+  $("netGraphWrap").hidden = !hasGraph;
+  if (hasGraph) renderNetworkGraphFromState(); else $("netGraph").innerHTML = "";
 
   if (!targets.length) {
-    $("netGraphWrap").hidden = true;
-    $("netList").innerHTML = `<div class="empty">Parsed ${state.contacts.length} contacts, but none match ${state.netAiOnly ? "an AI " : "a "}company in the dataset yet. Try toggling “AI only”, or import a fuller export.</div>`;
+    $("netList").innerHTML = introCount
+      ? `<div class="empty">No startup paths from these contacts, but ${introCount} investor path${introCount === 1 ? "" : "s"} — explore the graph above.</div>`
+      : `<div class="empty">Parsed ${state.contacts.length} contacts, but none match ${state.netAiOnly ? "an AI " : "a "}company in the dataset yet. Try toggling “AI only”, or import a fuller export.</div>`;
     return;
   }
   $("netList").innerHTML = targets.map(targetCardHtml).join("");
@@ -2251,6 +2284,311 @@ function drawNetGraph(allTargets) {
     g.addEventListener("click", open);
     g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
   });
+}
+
+// ===========================================================================
+// NETWORK GRAPH UI (Build 2/3) — unified relationship graph
+//   Renders startup paths (You → contact → company) alongside investor paths
+//   (You → contact → investor firm → partner), with toggle filters and
+//   per-node drawers. Reads Build 1/3 state (state.matches / investorIntroMatches
+//   / investorUniverse / superConnectors / enrichedCompanies). Client-side only.
+// ===========================================================================
+
+const NETWORK_GRAPH_DEFAULT_FILTERS = {
+  startup: true,
+  investor: true,
+  partner: true,
+  companyInvestor: true,
+  verifiedOnly: false,
+  highAccessOnly: false,
+};
+const NETWORK_GRAPH_FILTER_PILLS = [
+  { key: "startup", lbl: "Startup paths" },
+  { key: "investor", lbl: "Investor paths" },
+  { key: "partner", lbl: "Partner paths" },
+  { key: "companyInvestor", lbl: "Company ↔ investor" },
+  { key: "verifiedOnly", lbl: "Verified only" },
+  { key: "highAccessOnly", lbl: "A / A+ paths" },
+];
+const NETWORK_GRAPH_LEGEND = [
+  { cls: "you", lbl: "You" },
+  { cls: "contact", lbl: "Your contact" },
+  { cls: "company", lbl: "Target company" },
+  { cls: "investor", lbl: "Investor firm" },
+  { cls: "partner", lbl: "Partner" },
+];
+const NETWORK_NODE_R = { you: 13, contact: 5, company: 7.5, investor: 8.5, partner: 6.5 };
+
+function getNetworkGraphFilters() {
+  if (!state.networkGraphFilters) state.networkGraphFilters = { ...NETWORK_GRAPH_DEFAULT_FILTERS };
+  return state.networkGraphFilters;
+}
+function setNetworkGraphFilter(key) {
+  const f = getNetworkGraphFilters();
+  if (!(key in f)) return;
+  f[key] = !f[key];
+  renderNetworkGraphFromState();
+}
+
+const slugId = (s) => safeText(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "x";
+const graphNodeId = (type, key) => `${type}:${slugId(key)}`;
+const truncateGraphLabel = (s, n) => truncate(s, n);
+const contactSlug = (email, name) => slugId(email || name || "contact");
+function scorePassesGraphFilter(score, filters) { return !filters.highAccessOnly || Number(score || 0) >= 75; }
+function confidencePassesGraphFilter(verified, filters) { return !filters.verifiedOnly || !!verified; }
+
+function buildNetworkGraphModel(st, filters) {
+  const nodes = new Map();
+  const edges = [];
+  const addNode = (id, data) => {
+    if (!nodes.has(id)) nodes.set(id, Object.assign({ id }, data));
+    else Object.assign(nodes.get(id), data, { id });
+    return nodes.get(id);
+  };
+  const addEdge = (from, to, kind, meta) => edges.push(Object.assign({ from, to, kind }, meta || {}));
+
+  addNode("you", { type: "you", label: "You" });
+
+  // Startup paths: You -> contact -> company (uses the existing engine output).
+  if (filters.startup) {
+    netTargets().slice(0, 16).forEach((t) => {
+      const co = t.company;
+      const coId = graphNodeId("company", co.id);
+      let used = false;
+      t.paths.forEach((m) => {
+        const verified = !!(PATH[m.type] && PATH[m.type].precise);
+        if (!confidencePassesGraphFilter(verified, filters)) return;
+        if (filters.highAccessOnly && !verified) return;
+        const ct = m.contact || {};
+        const ctId = graphNodeId("contact", ct.email || ct.name || ("idx-" + m.contactIdx));
+        addNode(ctId, { type: "contact", label: ct.name || ct.email || "Contact", contact: ct });
+        addEdge("you", ctId, "you-contact");
+        addEdge(ctId, coId, "contact-company", { pathType: m.type, verified });
+        used = true;
+      });
+      if (used) addNode(coId, { type: "company", label: co.name, companyId: co.id, company: co });
+    });
+  }
+
+  // Investor paths: You -> contact -> investor firm -> partner.
+  if (filters.investor) {
+    (st.investorIntroMatches || []).forEach((m) => {
+      if (!confidencePassesGraphFilter(m.verified, filters)) return;
+      if (!scorePassesGraphFilter(m.investorAccessScore, filters)) return;
+      const ctId = graphNodeId("contact", m.contactEmail || m.contactName || "contact");
+      addNode(ctId, {
+        type: "contact", label: m.contactName || m.contactEmail || "Contact",
+        contact: { name: m.contactName, email: m.contactEmail, url: m.contactLinkedIn, title: m.contactTitle, company: m.contactCompany },
+      });
+      const invId = graphNodeId("investor", m.targetInvestor);
+      addNode(invId, { type: "investor", label: m.targetInvestor, match: m });
+      addEdge("you", ctId, "you-contact");
+      addEdge(ctId, invId, "contact-investor", { verified: !!m.verified });
+      if (filters.partner && m.targetPartner) {
+        const pId = graphNodeId("partner", m.targetInvestor + " " + m.targetPartner);
+        addNode(pId, { type: "partner", label: m.targetPartner, match: m, firm: m.targetInvestor });
+        addEdge(invId, pId, "investor-partner", { verified: !!m.verified });
+      }
+    });
+  }
+
+  if (filters.companyInvestor) addCompanyInvestorEdges(nodes, edges, st);
+
+  return { nodes: Array.from(nodes.values()), edges };
+}
+
+// Link company nodes to investor nodes where the company carries investor data
+// (sparse for SEC radar companies — acceptable; never errors).
+function addCompanyInvestorEdges(nodes, edges, st) {
+  const invByName = new Map();
+  nodes.forEach((n) => { if (n.type === "investor") invByName.set(normalizeName(n.label), n.id); });
+  if (!invByName.size) return;
+  const byId = new Map((st.enrichedCompanies || []).map((c) => [c.id, c]));
+  nodes.forEach((n) => {
+    if (n.type !== "company") return;
+    const c = byId.get(n.companyId) || n.company || {};
+    const firms = [...asArray(c.investors), ...asArray(c.knownInvestors), ...asArray(c.possibleInvestors), ...asArray(c.backers)]
+      .map((x) => (typeof x === "string" ? x : safeText(x && (x.name || x.firm || x.investor)))).filter(Boolean);
+    firms.forEach((fn) => { const id = invByName.get(normalizeName(fn)); if (id) edges.push({ from: n.id, to: id, kind: "company-investor" }); });
+  });
+}
+
+function placeRing(arr, R, cx, cy, startDeg, pos, spanDeg) {
+  const span = spanDeg == null ? 360 : spanDeg;
+  const M = arr.length || 1;
+  const step = span >= 360 ? span / M : (M > 1 ? span / (M - 1) : 0);
+  arr.forEach((n, i) => {
+    const a = (startDeg + i * step) * Math.PI / 180;
+    pos.set(n.id, { x: cx + R * Math.cos(a), y: cy + R * Math.sin(a) });
+  });
+}
+
+function positionNetworkGraphNodes(model, W, H) {
+  const cx = W / 2, cy = H / 2, pos = new Map();
+  pos.set("you", { x: cx, y: cy });
+  const contacts = model.nodes.filter((n) => n.type === "contact");
+  const companies = model.nodes.filter((n) => n.type === "company");
+  const investors = model.nodes.filter((n) => n.type === "investor");
+  const partners = model.nodes.filter((n) => n.type === "partner");
+
+  placeRing(contacts, 122, cx, cy, -90, pos);            // inner ring, full circle
+  placeRing(companies, 238, cx, cy, 120, pos, 150);      // left arc — startup access
+  placeRing(investors, 238, cx, cy, -75, pos, 150);      // right arc — investor access
+  partners.forEach((p) => {
+    const e = model.edges.find((ed) => ed.kind === "investor-partner" && ed.to === p.id);
+    const inv = e && pos.get(e.from);
+    if (inv) {
+      const ang = Math.atan2(inv.y - cy, inv.x - cx);
+      pos.set(p.id, { x: cx + 320 * Math.cos(ang), y: cy + 320 * Math.sin(ang) });
+    } else pos.set(p.id, { x: cx + 320, y: cy });
+  });
+  return pos;
+}
+
+function renderNetworkSvgEdge(e, pos) {
+  const a = pos.get(e.from), b = pos.get(e.to);
+  if (!a || !b) return "";
+  return `<line class="ngraph-edge e-${e.kind}${e.verified ? " is-verified" : ""}" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"/>`;
+}
+
+function renderNetworkSvgNode(n, pos, cx) {
+  const p = pos.get(n.id);
+  if (!p) return "";
+  const r = NETWORK_NODE_R[n.type] || 6;
+  const isCenter = n.type === "you";
+  const anchor = isCenter ? "middle" : p.x < cx - 12 ? "end" : p.x > cx + 12 ? "start" : "middle";
+  const dx = isCenter ? 0 : anchor === "end" ? -(r + 5) : anchor === "start" ? (r + 5) : 0;
+  const dy = isCenter ? 4 : 3.4;
+  const interactive = !isCenter;
+  const label = isCenter ? "You" : truncateGraphLabel(n.label, 20);
+  const kindLabel = { contact: "contact", company: "company", investor: "investor firm", partner: "partner" }[n.type] || "node";
+  return `<g class="ngraph-node nn-${n.type}" data-node-id="${escapeHtml(n.id)}"${interactive ? ` tabindex="0" role="button" aria-label="Open ${escapeHtml(kindLabel)} ${escapeHtml(n.label)}"` : ""}>
+    <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="${r}"></circle>
+    <text x="${(p.x + dx).toFixed(1)}" y="${(p.y + dy).toFixed(1)}" text-anchor="${anchor}">${escapeHtml(label)}</text>
+  </g>`;
+}
+
+function renderNetworkRelationshipGraph(model) {
+  const W = 960, H = 580, cx = W / 2;
+  const pos = positionNetworkGraphNodes(model, W, H);
+  const edges = model.edges.map((e) => renderNetworkSvgEdge(e, pos)).join("");
+  const order = { contact: 0, company: 1, investor: 2, partner: 3, you: 4 };
+  const nodes = model.nodes.slice().sort((a, b) => (order[a.type] || 0) - (order[b.type] || 0))
+    .map((n) => renderNetworkSvgNode(n, pos, cx)).join("");
+  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" class="net-svg ngraph-svg" role="img" aria-label="Relationship graph: you, your contacts, target companies, investor firms and partners">
+    <g class="edges">${edges}</g><g class="nodes">${nodes}</g></svg>`;
+}
+
+function renderNetworkGraphControls() {
+  const host = document.querySelector("[data-network-graph-controls]");
+  if (!host) return;
+  const f = getNetworkGraphFilters();
+  host.innerHTML = NETWORK_GRAPH_FILTER_PILLS.map((p) =>
+    `<button type="button" class="ngraph-pill${f[p.key] ? " on" : ""}" data-graph-filter="${p.key}" aria-pressed="${f[p.key] ? "true" : "false"}">${escapeHtml(p.lbl)}</button>`).join("");
+  host.querySelectorAll("[data-graph-filter]").forEach((b) =>
+    b.addEventListener("click", () => setNetworkGraphFilter(b.getAttribute("data-graph-filter"))));
+}
+
+function renderNetworkGraphFromState() {
+  const host = document.querySelector("[data-network-graph]") || $("netGraph");
+  if (!host) return;
+  renderNetworkGraphControls();
+  const model = buildNetworkGraphModel(state, getNetworkGraphFilters());
+  const legend = `<div class="network-legend">${NETWORK_GRAPH_LEGEND.map((l) => `<span class="nlg nlg-${l.cls}">${escapeHtml(l.lbl)}</span>`).join("")}</div>`;
+  if (!model.nodes.some((n) => n.type !== "you")) {
+    host.innerHTML = legend + `<div class="ngraph-empty">No paths match the current filters.</div>`;
+    return;
+  }
+  host.innerHTML = legend + `<div class="ngraph-scroll">${renderNetworkRelationshipGraph(model)}</div>`;
+  const byId = new Map(model.nodes.map((n) => [n.id, n]));
+  host.querySelectorAll(".ngraph-node[data-node-id]").forEach((g) => {
+    const node = byId.get(g.getAttribute("data-node-id"));
+    if (!node || node.type === "you") return;
+    const open = () => openNetworkNodeDrawer(node);
+    g.addEventListener("click", open);
+    g.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(); } });
+  });
+}
+
+// --- node drawers (reuse the existing #drawer / #drawerOverlay + closeMemo) ---
+function openNetworkNodeDrawer(node) {
+  if (node.type === "company" && node.companyId && state.byId[node.companyId]) { openMemo(node.companyId); return; }
+  $("drawer").innerHTML = `<button class="close" aria-label="Close">×</button>` + networkNodeDrawerHTML(node);
+  $("drawer").hidden = false;
+  $("drawerOverlay").hidden = false;
+  $("drawer").scrollTop = 0;
+  $("drawer").querySelector(".close").addEventListener("click", closeMemo);
+}
+function networkNodeDrawerHTML(node) {
+  if (node.type === "investor") return investorNodeDrawerHTML(node);
+  if (node.type === "partner") return partnerNodeDrawerHTML(node);
+  if (node.type === "contact") return contactNodeDrawerHTML(node);
+  if (node.type === "company") return companyNodeDrawerHTML(node);
+  return `<h2>${escapeHtml(node.label || "")}</h2>`;
+}
+const pathChain = (arr) => arr.filter(Boolean).map((x) => `<span>${escapeHtml(x)}</span>`).join('<span class="nd-arrow">→</span>');
+
+function investorNodeDrawerHTML(node) {
+  const firmName = node.label;
+  const all = (state.investorIntroMatches || []).filter((m) => m.targetInvestor === firmName);
+  const best = all.slice().sort((a, b) => b.investorAccessScore - a.investorAccessScore)[0] || node.match || {};
+  const firm = (state.investorUniverse || []).find((f) => normalizeName(f.name) === normalizeName(firmName)) || {};
+  const site = firm.website ? (/^https?:/.test(firm.website) ? firm.website : "https://" + firm.website) : "";
+  const signals = (best.matchSignals || []).map((s) => `<span class="np-tag">${escapeHtml(s.replace(/_/g, " "))}</span>`).join(" ");
+  const partners = (firm.partners || []).map((p) => escapeHtml(p.name + (p.title ? " · " + p.title : ""))).join(", ");
+  return `
+    <div class="net-drawer">
+      <span class="nd-kind nd-kind-investor">Investor firm</span>
+      <h2>${escapeHtml(firmName)}</h2>
+      ${site ? `<div class="memo-sub"><a href="${escapeHtml(site)}" target="_blank" rel="noopener">${escapeHtml(domainFromWebsite(firm.website) || firm.website)} ↗</a></div>` : ""}
+      <div class="memo-grid">
+        <div class="memo-kv"><div class="k">Access score</div><div class="v">${escapeHtml(best.investorAccessScore == null ? "—" : best.investorAccessScore)}</div></div>
+        <div class="memo-kv"><div class="k">Confidence</div><div class="v">${escapeHtml(best.confidence || "—")}${best.verified ? " · verified" : ""}</div></div>
+        <div class="memo-kv"><div class="k">Warm paths</div><div class="v">${all.length || 1}</div></div>
+        <div class="memo-kv"><div class="k">Portfolio</div><div class="v">${(firm.portfolioCompanies || []).length || "—"}</div></div>
+      </div>
+      <div class="memo-sec"><h4>Best path</h4><div class="nd-path">${pathChain(best.relationshipPath || ["You", best.contactName, firmName])}</div></div>
+      <div class="memo-sec"><h4>Evidence</h4><p>${escapeHtml(best.matchReason || "Contact appears connected to this firm.")}</p>${signals ? `<div class="tags">${signals}</div>` : ""}</div>
+      ${partners ? `<div class="memo-sec"><h4>Partners</h4><p>${partners}</p></div>` : ""}
+      <div class="memo-sec"><h4>Recommended ask</h4><p>${escapeHtml(best.recommendedAsk || "")}</p></div>
+    </div>`;
+}
+function partnerNodeDrawerHTML(node) {
+  const m = node.match || {};
+  return `
+    <div class="net-drawer">
+      <span class="nd-kind nd-kind-partner">Partner</span>
+      <h2>${escapeHtml(node.label)}</h2>
+      <div class="memo-sub">${escapeHtml(m.targetPartnerTitle || "Partner")} · ${escapeHtml(m.targetInvestor || node.firm || "")}</div>
+      <div class="memo-sec"><h4>Path</h4><div class="nd-path">${pathChain(m.relationshipPath || ["You", m.contactName, m.targetInvestor, node.label])}</div></div>
+      <div class="memo-sec"><h4>Why it matters</h4><p>${escapeHtml(m.matchReason || "A warm path to a specific partner beats a cold firm intro.")}</p></div>
+      <div class="memo-sec"><h4>Recommended ask</h4><p>${escapeHtml(m.recommendedAsk || "")}</p></div>
+    </div>`;
+}
+function contactNodeDrawerHTML(node) {
+  const ct = node.contact || {};
+  const key = contactSlug(ct.email, ct.name || node.label);
+  const items = [];
+  (state.matches || []).filter((m) => contactSlug((m.contact || {}).email, (m.contact || {}).name) === key)
+    .forEach((m) => items.push(`<li>${escapeHtml(m.company.name)} <span class="muted">· startup (${escapeHtml((PATH[m.type] || {}).label || m.type)})</span></li>`));
+  const seen = new Set();
+  (state.investorIntroMatches || []).filter((m) => contactSlug(m.contactEmail, m.contactName) === key)
+    .forEach((m) => { if (seen.has(m.targetInvestor)) return; seen.add(m.targetInvestor); items.push(`<li>${escapeHtml(m.targetInvestor)} <span class="muted">· investor${m.targetPartner ? " (" + escapeHtml(m.targetPartner) + ")" : ""}</span></li>`); });
+  const links = [];
+  if (ct.url) links.push(`<a href="${escapeHtml(ct.url)}" target="_blank" rel="noopener">profile ↗</a>`);
+  if (ct.email) links.push(`<a href="mailto:${escapeHtml(ct.email)}">email ↗</a>`);
+  return `
+    <div class="net-drawer">
+      <span class="nd-kind nd-kind-contact">Your contact</span>
+      <h2>${escapeHtml(node.label)}</h2>
+      <div class="memo-sub">${escapeHtml([ct.title, ct.company].filter(Boolean).join(" · ") || "—")}</div>
+      ${links.length ? `<div class="drawer-cta">${links.join("")}</div>` : ""}
+      <div class="memo-sec"><h4>Connects you to</h4><ul>${items.join("") || "<li>—</li>"}</ul></div>
+    </div>`;
+}
+function companyNodeDrawerHTML(node) {
+  const c = node.company || {};
+  return `<div class="net-drawer"><span class="nd-kind nd-kind-company">Target company</span><h2>${escapeHtml(node.label)}</h2><div class="memo-sub">${escapeHtml(c.jurisdiction || "—")}</div></div>`;
 }
 
 function debounce(fn, ms) { let t; return (...a) => { clearTimeout(t); t = setTimeout(() => fn(...a), ms); }; }

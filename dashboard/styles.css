@@ -724,3 +724,62 @@ a.vbadge:hover { background: rgba(126,231,135,0.22); }
 .np-links a { color: var(--track); white-space: nowrap; text-decoration: none; }
 .np-links a:hover { text-decoration: underline; }
 @media (max-width: 760px) { .net-list { grid-template-columns: 1fr; } }
+
+/* ===========================================================================
+   Network graph UI (Build 2/3) — unified investor + startup relationship graph
+   =========================================================================== */
+.net-graph-controls { display: flex; flex-wrap: wrap; gap: 6px; }
+.ngraph-pill {
+  font-family: var(--mono); font-size: 10px; letter-spacing: .04em;
+  padding: 5px 10px; border-radius: 999px; cursor: pointer;
+  border: 1px solid var(--line-2); background: var(--panel); color: var(--txt-3);
+  transition: border-color .12s, color .12s, background .12s;
+}
+.ngraph-pill:hover { color: var(--txt-2); border-color: var(--accent-dim); }
+.ngraph-pill.on { background: rgba(198,242,78,0.12); border-color: var(--accent-dim); color: var(--accent); }
+
+.network-legend { display: flex; flex-wrap: wrap; gap: 14px; font-family: var(--mono); font-size: 10.5px; color: var(--txt-3); margin: 2px 0 8px; }
+.network-legend .nlg::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.nlg-you::before { background: var(--accent); }
+.nlg-contact::before { background: var(--track); }
+.nlg-company::before { background: var(--panel-2); border: 1.5px solid var(--accent-dim); }
+.nlg-investor::before { background: var(--monitor); }
+.nlg-partner::before { background: var(--mid); }
+
+.ngraph-scroll { width: 100%; }
+.ngraph-svg { width: 100%; height: auto; display: block; }
+.ngraph-empty { font-family: var(--mono); font-size: 12px; color: var(--txt-3); padding: 28px 4px; }
+
+.ngraph-edge { stroke-width: 1; }
+.e-you-contact { stroke: rgba(139,233,253,0.18); }
+.e-contact-company { stroke: rgba(198,242,78,0.30); }
+.e-contact-investor { stroke: rgba(179,164,255,0.42); }
+.e-investor-partner { stroke: rgba(255,209,102,0.50); }
+.e-company-investor { stroke: rgba(166,171,181,0.32); stroke-dasharray: 3 3; }
+.ngraph-edge.is-verified { stroke-width: 1.7; }
+
+.ngraph-node text { font-family: var(--mono); font-size: 11px; fill: var(--txt-2); pointer-events: none; }
+.ngraph-node circle { transition: fill .12s, stroke .12s; }
+.nn-you circle { fill: var(--accent); }
+.nn-you text { fill: #0a0b0d; font-weight: 600; }
+.nn-contact circle { fill: var(--track); }
+.nn-company circle { fill: var(--panel-2); stroke: var(--accent-dim); stroke-width: 1.5; }
+.nn-investor circle { fill: var(--monitor); }
+.nn-partner circle { fill: var(--mid); }
+.ngraph-node[role="button"] { cursor: pointer; }
+.ngraph-node[role="button"]:hover circle, .ngraph-node[role="button"]:focus circle { stroke: var(--accent); stroke-width: 2; }
+.ngraph-node[role="button"]:focus { outline: none; }
+.ngraph-node[role="button"]:hover text, .ngraph-node[role="button"]:focus text { fill: var(--txt); }
+
+.net-drawer .nd-kind { display: inline-block; font-family: var(--mono); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; border: 1px solid var(--line-2); color: var(--txt-2); }
+.nd-kind-investor { color: var(--monitor); border-color: rgba(179,164,255,0.35); }
+.nd-kind-partner { color: var(--mid); border-color: rgba(255,209,102,0.35); }
+.nd-kind-contact { color: var(--track); border-color: rgba(139,233,253,0.35); }
+.nd-kind-company { color: var(--accent); border-color: var(--accent-dim); }
+.nd-path { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; font-family: var(--mono); font-size: 12px; color: var(--txt); }
+.nd-path .nd-arrow { color: var(--txt-3); }
+
+@media (max-width: 760px) {
+  .ngraph-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .ngraph-svg { min-width: 640px; }
+}
